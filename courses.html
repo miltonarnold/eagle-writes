@@ -1,0 +1,1274 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="EAGLE WRITES courses in Pitch and Article Writing, Research Writing, and Data Analysis using Excel and SPSS.">
+
+    <meta name="keywords"
+          content="EAGLE WRITES courses, research writing, article writing, data analysis, Excel, SPSS">
+
+    <meta name="author" content="EAGLE WRITES">
+
+    <title>Courses | EAGLE WRITES</title>
+
+    <style>
+        /* ==================================================
+           RESET
+        ================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+
+        /* ==================================================
+           HEADER
+        ================================================== */
+        .header {
+            width: 100%;
+            background: #0b1f3a;
+            color: #ffffff;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.18);
+        }
+
+        .navbar {
+            width: 100%;
+            max-width: 1250px;
+            min-height: 92px;
+            margin: 0 auto;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+
+        /* ==================================================
+           LOGO
+        ================================================== */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-right: auto;
+        }
+
+        .logo-icon img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #f4b942;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.05;
+        }
+
+        .brand-name-eagle {
+            color: #ffffff;
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .brand-name-writes {
+            color: #f4b942;
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .brand-tagline {
+            color: #cbd5e1;
+            font-size: 9px;
+            margin-top: 5px;
+            letter-spacing: 0.6px;
+        }
+
+
+        /* ==================================================
+           NAVIGATION
+        ================================================== */
+        .nav-menu {
+            display: block;
+        }
+
+        .nav-list {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            list-style: none;
+        }
+
+        .nav-link {
+            display: inline-block;
+            padding: 10px 11px;
+            border-radius: 7px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(244, 185, 66, 0.18);
+            color: #f4b942;
+        }
+
+        .nav-link.active {
+            background: #f4b942;
+            color: #0b1f3a;
+        }
+
+
+        /* ==================================================
+           HEADER BUTTONS
+        ================================================== */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-whatsapp,
+        .btn-get-started-header {
+            display: inline-block;
+            padding: 11px 15px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: #ffffff;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1da851;
+        }
+
+        .btn-get-started-header {
+            background: #f4b942;
+            color: #0b1f3a;
+        }
+
+        .btn-get-started-header:hover {
+            background: #ffd166;
+        }
+
+
+        /* ==================================================
+           HERO
+        ================================================== */
+        .hero {
+            background: linear-gradient(135deg, #0b1f3a, #174979);
+            color: #ffffff;
+            padding: 95px 20px;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 17px;
+            border-radius: 30px;
+            border: 1px solid #f4b942;
+            background: rgba(244, 185, 66, 0.12);
+            margin-bottom: 20px;
+        }
+
+        .badge-text {
+            color: #f4b942;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .hero-heading {
+            color: #ffffff;
+            font-size: clamp(40px, 6vw, 65px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero-highlight {
+            color: #f4b942;
+        }
+
+        .hero-description {
+            max-width: 720px;
+            margin: 0 auto;
+            color: #e2e8f0;
+            font-size: 18px;
+        }
+
+
+        /* ==================================================
+           MAIN COURSES SECTION
+        ================================================== */
+        .courses {
+            padding: 85px 20px;
+            background: #ffffff;
+        }
+
+        .courses-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: #c27d00;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .section-heading {
+            color: #0b1f3a;
+            font-size: clamp(30px, 4vw, 45px);
+            line-height: 1.15;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: #5b6678;
+            font-size: 16px;
+        }
+
+
+        /* ==================================================
+           COURSE GRID
+        ================================================== */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .course-card {
+            position: relative;
+            background: #ffffff;
+            border: 1px solid #dce3ec;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 8px 25px rgba(11, 31, 58, 0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 17px 35px rgba(11, 31, 58, 0.14);
+        }
+
+        .course-card.featured-course {
+            border: 2px solid #f4b942;
+        }
+
+        .course-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #c27d00;
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .course-icon {
+            width: 62px;
+            height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: #fff4d2;
+            font-size: 29px;
+            margin-bottom: 21px;
+        }
+
+        .course-title {
+            color: #0b1f3a;
+            font-size: 23px;
+            margin-bottom: 14px;
+        }
+
+        .course-description {
+            color: #596579;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .course-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .course-features li {
+            color: #344054;
+            padding: 8px 0;
+            border-bottom: 1px solid #edf0f4;
+            font-size: 14px;
+        }
+
+        .course-features li::before {
+            content: "✓";
+            color: #c27d00;
+            font-weight: 800;
+            margin-right: 9px;
+        }
+
+
+        /* ==================================================
+           BUTTONS
+        ================================================== */
+        .btn {
+            display: inline-block;
+            padding: 13px 22px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary {
+            background: #0b1f3a;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #174979;
+            transform: translateY(-1px);
+        }
+
+
+        /* ==================================================
+           WHY LEARN WITH US
+        ================================================== */
+        .why-choose-us {
+            padding: 85px 20px;
+            background: #eef3f9;
+        }
+
+        .why-choose-us-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .benefit-card {
+            background: #ffffff;
+            padding: 28px 22px;
+            border-radius: 14px;
+            text-align: center;
+            box-shadow: 0 7px 20px rgba(11, 31, 58, 0.07);
+        }
+
+        .benefit-icon {
+            font-size: 31px;
+            margin-bottom: 15px;
+        }
+
+        .benefit-title {
+            color: #0b1f3a;
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .benefit-description {
+            color: #5b6678;
+            font-size: 14px;
+        }
+
+
+        /* ==================================================
+           CTA
+        ================================================== */
+        .contact {
+            background: #0b1f3a;
+            padding: 85px 20px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact .section-label {
+            color: #f4b942;
+        }
+
+        .contact .section-heading {
+            color: #ffffff;
+        }
+
+        .contact .hero-description {
+            color: #d7dee8;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: #ffffff;
+            color: #0b1f3a;
+        }
+
+        .btn-secondary:hover {
+            background: #e8edf3;
+        }
+
+
+        /* ==================================================
+           FOOTER
+        ================================================== */
+        .footer {
+            background: #071426;
+            color: #ffffff;
+            padding-top: 60px;
+        }
+
+        .footer-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.3fr;
+            gap: 45px;
+        }
+
+        .footer-title {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .footer-tagline {
+            color: #f4b942;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .footer-founder {
+            color: #cbd5e1;
+        }
+
+        .footer-nav-heading,
+        .footer-contact-heading {
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .footer-nav-list,
+        .footer-contact-list {
+            list-style: none;
+        }
+
+        .footer-nav-list li,
+        .footer-contact-list li {
+            margin-bottom: 9px;
+        }
+
+        .footer-link,
+        .footer-contact-link {
+            color: #cbd5e1;
+            font-size: 14px;
+            transition: color 0.25s ease;
+        }
+
+        .footer-link:hover,
+        .footer-contact-link:hover {
+            color: #f4b942;
+        }
+
+        .footer-bottom {
+            margin-top: 45px;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-bottom p {
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+
+        /* ==================================================
+           MOBILE
+        ================================================== */
+        @media (max-width: 1050px) {
+
+            .navbar {
+                flex-wrap: wrap;
+            }
+
+            .nav-menu {
+                width: 100%;
+                order: 3;
+                display: flex;
+                justify-content: center;
+            }
+
+            .nav-actions {
+                margin-left: auto;
+            }
+
+            .courses-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 12px 15px;
+            }
+
+            .logo-container {
+                width: 100%;
+            }
+
+            .brand-tagline {
+                display: none;
+            }
+
+            .logo-icon img {
+                width: 54px;
+                height: 54px;
+            }
+
+            .brand-name-eagle,
+            .brand-name-writes {
+                font-size: 18px;
+            }
+
+            .nav-menu {
+                width: 100%;
+            }
+
+            .nav-list {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .nav-link {
+                font-size: 13px;
+                padding: 8px 9px;
+            }
+
+            .nav-actions {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 70px 20px;
+            }
+
+            .courses,
+            .why-choose-us,
+            .contact {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- ==================================================
+         HEADER
+    ================================================== -->
+    <header class="header">
+
+        <nav class="navbar">
+
+            <!-- LOGO -->
+            <div class="logo-container">
+
+                <div class="logo-icon">
+                    <img
+                        src="Images/logo.milto.jpg"
+                        alt="EAGLE WRITES logo">
+                </div>
+
+                <div class="brand-text">
+
+                    <span class="brand-name-eagle">
+                        EAGLE
+                    </span>
+
+                    <span class="brand-name-writes">
+                        WRITES
+                    </span>
+
+                    <span class="brand-tagline">
+                        RESEARCH • ANALYTICS • CONSULTING
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <div class="nav-menu">
+
+                <ul class="nav-list">
+
+                    <li>
+                        <a href="index.html" class="nav-link">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html" class="nav-link">
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="services.html" class="nav-link">
+                            Services
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="courses.html"
+                            class="nav-link active">
+                            Courses
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="portfolio.html" class="nav-link">
+                            Portfolio
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html" class="nav-link">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- ACTION BUTTONS -->
+            <div class="nav-actions">
+
+                <a
+                    href="https://wa.me/254748513346"
+                    class="btn-whatsapp">
+
+                    WhatsApp
+
+                </a>
+
+                <a
+                    href="contact.html"
+                    class="btn-get-started-header">
+
+                    Get Started
+
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ==================================================
+         HERO
+    ================================================== -->
+    <section class="hero">
+
+        <div class="hero-container">
+
+            <div class="hero-badge">
+                <span class="badge-text">
+                    EAGLE WRITES COURSES
+                </span>
+            </div>
+
+            <h1 class="hero-heading">
+
+                Learn.
+
+                <span class="hero-highlight">
+                    Write. Analyze. Succeed.
+                </span>
+
+            </h1>
+
+            <p class="hero-description">
+
+                Practical training designed to develop your research,
+                writing, data analysis, and professional skills.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         COURSES
+    ================================================== -->
+    <section class="courses">
+
+        <div class="courses-container">
+
+            <div class="section-header">
+
+                <span class="section-label">
+                    OUR COURSES
+                </span>
+
+                <h2 class="section-heading">
+                    Build Skills That Create Results
+                </h2>
+
+                <p>
+                    Choose a course and develop practical skills that you
+                    can apply in academic, professional, and business work.
+                </p>
+
+            </div>
+
+
+            <div class="courses-grid">
+
+
+                <!-- COURSE 1 -->
+                <article class="course-card">
+
+                    <div class="course-number">
+                        01
+                    </div>
+
+                    <div class="course-icon">
+                        ✍️
+                    </div>
+
+                    <h3 class="course-title">
+                        Pitch and Article Writing
+                    </h3>
+
+                    <p class="course-description">
+
+                        Learn how to develop strong ideas, create compelling
+                        pitches, structure articles, and communicate ideas
+                        clearly to your target audience.
+
+                    </p>
+
+                    <ul class="course-features">
+
+                        <li>Idea Development</li>
+                        <li>Pitch Writing</li>
+                        <li>Article Structure</li>
+                        <li>Professional Writing</li>
+                        <li>Editing and Proofreading</li>
+
+                    </ul>
+
+                    <a
+                        href="enroll.html?course=pitch"
+                        class="btn btn-primary">
+
+                        Enroll Now
+
+                    </a>
+
+                </article>
+
+
+
+                <!-- COURSE 2 -->
+                <article class="course-card featured-course">
+
+                    <div class="course-number">
+                        02
+                    </div>
+
+                    <div class="course-icon">
+                        📚
+                    </div>
+
+                    <h3 class="course-title">
+                        Research Writing
+                    </h3>
+
+                    <p class="course-description">
+
+                        Master the development of research proposals and
+                        research papers from topic selection through
+                        presentation of findings and conclusions.
+
+                    </p>
+
+                    <ul class="course-features">
+
+                        <li>Research Proposal Writing</li>
+                        <li>Literature Review</li>
+                        <li>Research Methodology</li>
+                        <li>Data Presentation</li>
+                        <li>Research Paper Writing</li>
+
+                    </ul>
+
+                    <a
+                        href="enroll.html?course=research"
+                        class="btn btn-primary">
+
+                        Enroll Now
+
+                    </a>
+
+                </article>
+
+
+
+                <!-- COURSE 3 -->
+                <article class="course-card">
+
+                    <div class="course-number">
+                        03
+                    </div>
+
+                    <div class="course-icon">
+                        📊
+                    </div>
+
+                    <h3 class="course-title">
+                        Data Analysis
+                    </h3>
+
+                    <p class="course-description">
+
+                        Develop practical data analysis skills using
+                        Microsoft Excel and SPSS for academic research
+                        and professional decision-making.
+
+                    </p>
+
+                    <ul class="course-features">
+
+                        <li>Data Preparation</li>
+                        <li>Microsoft Excel</li>
+                        <li>SPSS</li>
+                        <li>Descriptive Statistics</li>
+                        <li>Correlation and Regression</li>
+
+                    </ul>
+
+                    <a
+                        href="enroll.html?course=data-analysis"
+                        class="btn btn-primary">
+
+                        Enroll Now
+
+                    </a>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         WHY LEARN WITH US
+    ================================================== -->
+    <section class="why-choose-us">
+
+        <div class="why-choose-us-container">
+
+            <div class="section-header">
+
+                <span class="section-label">
+                    WHY LEARN WITH US
+                </span>
+
+                <h2 class="section-heading">
+                    Practical Training. Real Skills.
+                </h2>
+
+            </div>
+
+
+            <div class="benefits-grid">
+
+
+                <!-- BENEFIT 1 -->
+                <article class="benefit-card">
+
+                    <div class="benefit-icon">
+                        🎯
+                    </div>
+
+                    <h3 class="benefit-title">
+                        Practical Learning
+                    </h3>
+
+                    <p class="benefit-description">
+
+                        Focus on skills and techniques that can be applied
+                        to real academic and professional projects.
+
+                    </p>
+
+                </article>
+
+
+                <!-- BENEFIT 2 -->
+                <article class="benefit-card">
+
+                    <div class="benefit-icon">
+                        👨‍🏫
+                    </div>
+
+                    <h3 class="benefit-title">
+                        Expert Guidance
+                    </h3>
+
+                    <p class="benefit-description">
+
+                        Receive structured guidance from an experienced
+                        research and analytics consultant.
+
+                    </p>
+
+                </article>
+
+
+                <!-- BENEFIT 3 -->
+                <article class="benefit-card">
+
+                    <div class="benefit-icon">
+                        💻
+                    </div>
+
+                    <h3 class="benefit-title">
+                        Useful Tools
+                    </h3>
+
+                    <p class="benefit-description">
+
+                        Learn practical tools including Microsoft Excel
+                        and SPSS for research and data analysis.
+
+                    </p>
+
+                </article>
+
+
+                <!-- BENEFIT 4 -->
+                <article class="benefit-card">
+
+                    <div class="benefit-icon">
+                        🚀
+                    </div>
+
+                    <h3 class="benefit-title">
+                        Career Growth
+                    </h3>
+
+                    <p class="benefit-description">
+
+                        Build valuable skills that can support your academic,
+                        professional, and entrepreneurial journey.
+
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         CTA
+    ================================================== -->
+    <section class="contact">
+
+        <div class="contact-container">
+
+            <div class="section-header">
+
+                <span class="section-label">
+                    START LEARNING
+                </span>
+
+                <h2 class="section-heading">
+                    Ready to Start Learning?
+                </h2>
+
+                <p class="hero-description">
+
+                    Choose your course and take the next step toward
+                    developing practical research and professional skills.
+
+                </p>
+
+            </div>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="enroll.html"
+                    class="btn btn-primary">
+
+                    Start Your Enrollment
+
+                </a>
+
+                <a
+                    href="contact.html"
+                    class="btn btn-secondary">
+
+                    Contact Us
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         FOOTER
+    ================================================== -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+
+            <!-- BRAND -->
+            <div>
+
+                <h2 class="footer-title">
+                    EAGLE WRITES
+                </h2>
+
+                <p class="footer-tagline">
+                    RESEARCH • ANALYTICS • CONSULTING
+                </p>
+
+                <p class="footer-founder">
+                    Founded by Arnold Milton
+                </p>
+
+            </div>
+
+
+            <!-- QUICK LINKS -->
+            <div>
+
+                <h3 class="footer-nav-heading">
+                    Quick Links
+                </h3>
+
+                <ul class="footer-nav-list">
+
+                    <li>
+                        <a href="index.html" class="footer-link">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html" class="footer-link">
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="services.html" class="footer-link">
+                            Services
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="courses.html" class="footer-link">
+                            Courses
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="portfolio.html" class="footer-link">
+                            Portfolio
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html" class="footer-link">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- CONTACT -->
+            <div>
+
+                <h3 class="footer-contact-heading">
+                    Contact Us
+                </h3>
+
+                <ul class="footer-contact-list">
+
+                    <li>
+                        <a
+                            href="tel:+254748513346"
+                            class="footer-contact-link">
+
+                            +254 748 513 346
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="mailto:miltonarnold535@gmail.com"
+                            class="footer-contact-link">
+
+                            miltonarnold535@gmail.com
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://wa.me/254748513346"
+                            class="footer-contact-link">
+
+                            WhatsApp Us
+
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER BOTTOM -->
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 EAGLE WRITES. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
+```

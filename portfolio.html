@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<meta name="description"
+    content="Explore EAGLE WRITES research, data analysis, financial research, and consulting projects.">
+
+<title>Portfolio | EAGLE WRITES</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f7f9fc;
+        color: #162033;
+        line-height: 1.6;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .container {
+        width: min(1180px, 92%);
+        margin: 0 auto;
+    }
+
+    /* ================= HEADER ================= */
+
+    .header {
+        background: #0b1f3a;
+        color: white;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
+    }
+
+    .header-inner {
+        min-height: 82px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 25px;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+    }
+
+    .logo {
+        width: 52px;
+        height: 52px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid #f4b942;
+    }
+
+    .brand h1 {
+        font-size: 20px;
+        color: #ffffff;
+        letter-spacing: 1px;
+    }
+
+    .brand p {
+        font-size: 10px;
+        color: #f4b942;
+        letter-spacing: 1px;
+        margin-top: 2px;
+    }
+
+    .navigation {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 20px;
+    }
+
+    .nav-list {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        list-style: none;
+    }
+
+    .nav-link {
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 600;
+        transition: 0.25s ease;
+        padding: 8px 2px;
+        position: relative;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        color: #f4b942;
+    }
+
+    .nav-link.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        background: #f4b942;
+    }
+
+    .whatsapp-button,
+    .get-started-button {
+        padding: 11px 17px;
+        border-radius: 7px;
+        font-size: 13px;
+        font-weight: 700;
+        transition: 0.25s ease;
+    }
+
+    .whatsapp-button {
+        color: #0b1f3a;
+        background: #ffffff;
+    }
+
+    .whatsapp-button:hover {
+        background: #f4b942;
+        color: #0b1f3a;
+    }
+
+    .get-started-button {
+        background: #f4b942;
+        color: #0b1f3a;
+    }
+
+    .get-started-button:hover {
+        background: #ffffff;
+    }
+
+    /* ================= HERO ================= */
+
+    .page-hero {
+        background:
+            linear-gradient(rgba(11, 31, 58, 0.95), rgba(11, 31, 58, 0.95)),
+            url("Images/logo.milto.jpg") center/cover no-repeat;
+        color: white;
+        padding: 105px 0 100px;
+        text-align: center;
+    }
+
+    .hero-badge,
+    .section-label {
+        display: inline-block;
+        color: #f4b942;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 2px;
+    }
+
+    .hero-badge {
+        border: 1px solid rgba(244, 185, 66, 0.65);
+        padding: 8px 15px;
+        border-radius: 25px;
+        margin-bottom: 22px;
+    }
+
+    .page-hero h2 {
+        max-width: 850px;
+        margin: 0 auto 18px;
+        font-size: clamp(34px, 5vw, 54px);
+        line-height: 1.15;
+    }
+
+    .page-hero p {
+        max-width: 760px;
+        margin: 0 auto;
+        color: #e2e8f0;
+        font-size: 17px;
+    }
+
+    /* ================= SECTIONS ================= */
+
+    .portfolio-section,
+    .capabilities-section {
+        padding: 90px 0;
+    }
+
+    .portfolio-section {
+        background: #ffffff;
+    }
+
+    .capabilities-section {
+        background: #f3f6fa;
+    }
+
+    .section-heading {
+        text-align: center;
+        max-width: 760px;
+        margin: 0 auto 48px;
+    }
+
+    .section-heading h2 {
+        font-size: 38px;
+        line-height: 1.2;
+        color: #0b1f3a;
+        margin: 10px 0 15px;
+    }
+
+    .section-heading p {
+        color: #5b6575;
+        font-size: 16px;
+    }
+
+    /* ================= PORTFOLIO GRID ================= */
+
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 26px;
+    }
+
+    .portfolio-card {
+        background: #ffffff;
+        border: 1px solid #e3e8ef;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 8px 25px rgba(11, 31, 58, 0.07);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .portfolio-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 35px rgba(11, 31, 58, 0.12);
+    }
+
+    .portfolio-icon {
+        width: 58px;
+        height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff6dc;
+        border-radius: 14px;
+        font-size: 27px;
+        margin-bottom: 22px;
+    }
+
+    .portfolio-category {
+        display: block;
+        color: #c18a16;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        margin-bottom: 10px;
+    }
+
+    .portfolio-card h3 {
+        color: #0b1f3a;
+        font-size: 21px;
+        line-height: 1.35;
+        margin-bottom: 14px;
+    }
+
+    .portfolio-card p {
+        color: #606b7b;
+        font-size: 15px;
+        margin-bottom: 21px;
+    }
+
+    .portfolio-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .portfolio-tags span {
+        background: #eef2f7;
+        color: #344054;
+        padding: 6px 10px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    /* ================= CAPABILITIES ================= */
+
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
+    }
+
+    .info-card {
+        background: #ffffff;
+        border: 1px solid #e1e7ef;
+        border-radius: 14px;
+        padding: 27px;
+        box-shadow: 0 7px 22px rgba(11, 31, 58, 0.05);
+    }
+
+    .info-card h3 {
+        color: #0b1f3a;
+        font-size: 19px;
+        margin-bottom: 10px;
+    }
+
+    .info-card p {
+        color: #626d7c;
+        font-size: 14px;
+    }
+
+    /* ================= CTA ================= */
+
+    .cta-section {
+        background: #0b1f3a;
+        color: white;
+        padding: 85px 0;
+        text-align: center;
+    }
+
+    .cta-section h2 {
+        font-size: 38px;
+        margin-bottom: 15px;
+    }
+
+    .cta-section p {
+        max-width: 700px;
+        margin: 0 auto 30px;
+        color: #d8e0eb;
+        font-size: 16px;
+    }
+
+    .cta-buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .primary-button,
+    .secondary-button {
+        display: inline-block;
+        padding: 13px 22px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 14px;
+        transition: 0.25s ease;
+    }
+
+    .primary-button {
+        background: #f4b942;
+        color: #0b1f3a;
+    }
+
+    .primary-button:hover {
+        background: #ffffff;
+    }
+
+    .secondary-button {
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+    }
+
+    .secondary-button:hover {
+        background: #ffffff;
+        color: #0b1f3a;
+    }
+
+    /* ================= FOOTER ================= */
+
+    .footer {
+        background: #071629;
+        color: #d9e1eb;
+        padding: 60px 0 20px;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr 1fr;
+        gap: 45px;
+    }
+
+    .footer h3 {
+        color: #ffffff;
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+
+    .footer p {
+        color: #aeb8c7;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .footer-grid > div:nth-child(2) a {
+        display: block;
+        color: #aeb8c7;
+        margin-bottom: 8px;
+        font-size: 14px;
+        transition: 0.2s ease;
+    }
+
+    .footer-grid > div:nth-child(2) a:hover {
+        color: #f4b942;
+    }
+
+    .footer-grid > div:nth-child(3) a {
+        color: #f4b942;
+        font-size: 14px;
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 40px;
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    .footer-bottom p {
+        margin: 0;
+        font-size: 13px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 1050px) {
+        .navigation {
+            gap: 12px;
+        }
+
+        .nav-list {
+            gap: 12px;
+        }
+
+        .portfolio-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .benefits-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 850px) {
+        .header-inner {
+            padding: 16px 0;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .logo-container {
+            justify-content: center;
+        }
+
+        .navigation {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-list {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .page-hero {
+            padding: 80px 0;
+        }
+
+        .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+    }
+
+    @media (max-width: 650px) {
+        .portfolio-grid,
+        .benefits-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .page-hero h2 {
+            font-size: 34px;
+        }
+
+        .section-heading h2,
+        .cta-section h2 {
+            font-size: 30px;
+        }
+
+        .navigation {
+            flex-direction: column;
+        }
+
+        .nav-list {
+            gap: 10px 14px;
+        }
+
+        .whatsapp-button,
+        .get-started-button {
+            display: inline-block;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- HEADER -->
+<header class="header">
+    <div class="container header-inner">
+
+        <a href="index.html" class="logo-container">
+            <img src="Images/logo.milto.jpg"
+                 alt="EAGLE WRITES Logo"
+                 class="logo">
+
+            <div class="brand">
+                <h1>EAGLE WRITES</h1>
+                <p>RESEARCH • ANALYTICS • CONSULTING</p>
+            </div>
+        </a>
+
+        <nav class="navigation" aria-label="Main navigation">
+
+            <ul class="nav-list">
+                <li>
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+
+                <li>
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+
+                <li>
+                    <a href="services.html" class="nav-link">Services</a>
+                </li>
+
+                <li>
+                    <a href="courses.html" class="nav-link">Courses</a>
+                </li>
+
+                <li>
+                    <a href="portfolio.html" class="nav-link active">Portfolio</a>
+                </li>
+
+                <li>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+
+            <a href="https://wa.me/254748513346"
+               class="whatsapp-button"
+               target="_blank"
+               rel="noopener noreferrer">
+                WhatsApp
+            </a>
+
+            <a href="enroll.html"
+               class="get-started-button">
+                Get Started
+            </a>
+
+        </nav>
+    </div>
+</header>
+
+
+<!-- PORTFOLIO HERO -->
+<section class="page-hero">
+    <div class="container">
+
+        <span class="hero-badge">
+            OUR PORTFOLIO
+        </span>
+
+        <h2>
+            Research, Analysis &amp; Consulting Projects
+        </h2>
+
+        <p>
+            Explore examples of research and analytical work across
+            finance, business, data analysis, and academic research.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- PORTFOLIO -->
+<section class="portfolio-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                SELECTED PROJECTS
+            </span>
+
+            <h2>
+                Our Work
+            </h2>
+
+            <p>
+                Our projects demonstrate practical application of
+                research, financial analysis, data analytics, and
+                business research.
+            </p>
+
+        </div>
+
+
+        <div class="portfolio-grid">
+
+            <!-- PROJECT 1 -->
+            <div class="portfolio-card">
+
+                <div class="portfolio-icon">
+                    📊
+                </div>
+
+                <span class="portfolio-category">
+                    FINANCIAL RESEARCH
+                </span>
+
+                <h3>
+                    Financial Literacy and Savings Behavior
+                </h3>
+
+                <p>
+                    Research examining the influence of financial
+                    literacy on savings behavior among SACCO members
+                    in Eldoret, Kenya.
+                </p>
+
+                <div class="portfolio-tags">
+                    <span>Financial Literacy</span>
+                    <span>Research</span>
+                    <span>Regression</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 2 -->
+            <div class="portfolio-card">
+
+                <div class="portfolio-icon">
+                    🔗
+                </div>
+
+                <span class="portfolio-category">
+                    ACCOUNTING RESEARCH
+                </span>
+
+                <h3>
+                    Blockchain Integration in Accounting Systems
+                </h3>
+
+                <p>
+                    Research exploring how blockchain technology can
+                    improve accounting systems, transparency,
+                    security, and financial information management.
+                </p>
+
+                <div class="portfolio-tags">
+                    <span>Blockchain</span>
+                    <span>Accounting</span>
+                    <span>Technology</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 3 -->
+            <div class="portfolio-card">
+
+                <div class="portfolio-icon">
+                    🔍
+                </div>
+
+                <span class="portfolio-category">
+                    FORENSIC ACCOUNTING
+                </span>
+
+                <h3>
+                    Forensic Accounting Research
+                </h3>
+
+                <p>
+                    Research examining the role of forensic accounting
+                    in detecting and preventing financial fraud within
+                    organizations and public institutions.
+                </p>
+
+                <div class="portfolio-tags">
+                    <span>Forensic Accounting</span>
+                    <span>Fraud</span>
+                    <span>Audit</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 4 -->
+            <div class="portfolio-card">
+
+                <div class="portfolio-icon">
+                    📦
+                </div>
+
+                <span class="portfolio-category">
+                    BUSINESS ANALYSIS
+                </span>
+
+                <h3>
+                    Inventory Control Analysis
+                </h3>
+
+                <p>
+                    Analysis of inventory control practices and their
+                    relationship with operational efficiency in a
+                    manufacturing environment.
+                </p>
+
+                <div class="portfolio-tags">
+                    <span>Inventory</span>
+                    <span>Operations</span>
+                    <span>Analysis</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 5 -->
+            <div class="portfolio-card">
+
+                <div class="portfolio-icon">
+                    📈
+                </div>
+
+                <span class="portfolio-category">
+                    DATA ANALYSIS
+                </span>
+
+                <h3>
+                    Data Analysis &amp; Visualization
+                </h3>
+
+                <p>
+                    Development of analytical reports and visual
+                    presentations using Excel, SPSS, and Power BI
+                    to communicate meaningful insights from data.
+                </p>
+
+                <div class="portfolio-tags">
+                    <span>Excel</span>
+                    <span>SPSS</span>
+                    <span>Power BI</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 6 -->
+            <div class="portfolio-card">
+
+                <div class="portfolio-icon">
+                    💼
+                </div>
+
+                <span class="portfolio-category">
+                    CONSULTING
+                </span>
+
+                <h3>
+                    Business Research &amp; Consulting
+                </h3>
+
+                <p>
+                    Research and analytical support designed to help
+                    businesses understand problems, evaluate
+                    opportunities, and make informed decisions.
+                </p>
+
+                <div class="portfolio-tags">
+                    <span>Business Research</span>
+                    <span>Consulting</span>
+                    <span>Strategy</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CAPABILITIES -->
+<section class="capabilities-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                OUR CAPABILITIES
+            </span>
+
+            <h2>
+                What We Bring To Every Project
+            </h2>
+
+        </div>
+
+
+        <div class="benefits-grid">
+
+            <div class="info-card">
+                <h3>
+                    Research Expertise
+                </h3>
+
+                <p>
+                    Structured research support from problem
+                    identification to findings and recommendations.
+                </p>
+            </div>
+
+
+            <div class="info-card">
+                <h3>
+                    Analytical Thinking
+                </h3>
+
+                <p>
+                    We use data and evidence to identify patterns,
+                    relationships, and meaningful insights.
+                </p>
+            </div>
+
+
+            <div class="info-card">
+                <h3>
+                    Clear Presentation
+                </h3>
+
+                <p>
+                    Complex information is transformed into clear,
+                    understandable reports and visualizations.
+                </p>
+            </div>
+
+
+            <div class="info-card">
+                <h3>
+                    Practical Solutions
+                </h3>
+
+                <p>
+                    Our work focuses on solutions that can be applied
+                    in academic, professional, and business settings.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+<section class="cta-section">
+
+    <div class="container">
+
+        <h2>
+            Have a Project in Mind?
+        </h2>
+
+        <p>
+            Let EAGLE WRITES provide the research, writing,
+            analysis, or consulting support you need.
+        </p>
+
+        <div class="cta-buttons">
+
+            <a href="contact.html"
+               class="primary-button">
+                Discuss Your Project
+            </a>
+
+            <a href="enroll.html"
+               class="secondary-button">
+                Get Started
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+                <h3>EAGLE WRITES</h3>
+
+                <p>
+                    RESEARCH • ANALYTICS • CONSULTING
+                </p>
+
+                <p>
+                    Founder: Arnold Milton
+                </p>
+            </div>
+
+
+            <div>
+                <h3>Quick Links</h3>
+
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="courses.html">Courses</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+
+            <div>
+                <h3>Contact</h3>
+
+                <p>
+                    +254 748 513 346
+                </p>
+
+                <p>
+                    miltonarnold535@gmail.com
+                </p>
+
+                <a href="https://wa.me/254748513346"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    WhatsApp Us
+                </a>
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 EAGLE WRITES. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+```
+
+</body>
+</html>

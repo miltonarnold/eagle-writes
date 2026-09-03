@@ -1,0 +1,1740 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Enroll for EAGLE WRITES courses in Pitch and Article Writing, Research Writing, and Data Analysis.">
+
+    <meta name="keywords"
+          content="EAGLE WRITES, course enrollment, research writing, article writing, data analysis, Excel, SPSS">
+
+    <meta name="author"
+          content="EAGLE WRITES">
+
+    <title>Enrollment | EAGLE WRITES</title>
+
+
+    <!-- =========================================================
+         PAGE STYLES
+    ========================================================== -->
+    <style>
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        .header {
+            width: 100%;
+            background: #0b1f3a;
+            color: #ffffff;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+        }
+
+        .navbar {
+            width: 100%;
+            max-width: 1250px;
+            min-height: 92px;
+            margin: 0 auto;
+            padding: 15px 25px;
+
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+
+        /* =====================================================
+           BRAND
+        ====================================================== */
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-right: auto;
+        }
+
+        .logo-icon img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #f4b942;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .brand-name-eagle {
+            color: #ffffff;
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .brand-name-writes {
+            color: #f4b942;
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .brand-tagline {
+            color: #cbd5e1;
+            font-size: 9px;
+            margin-top: 5px;
+            letter-spacing: 0.6px;
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ====================================================== */
+
+        .nav-menu {
+            display: block;
+        }
+
+        .nav-list {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            list-style: none;
+        }
+
+        .nav-link {
+            display: inline-block;
+            padding: 10px 11px;
+            border-radius: 7px;
+
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: 0.25s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(244, 185, 66, 0.16);
+            color: #f4b942;
+        }
+
+        .nav-link.active {
+            background: #f4b942;
+            color: #0b1f3a;
+        }
+
+
+        /* =====================================================
+           HEADER BUTTONS
+        ====================================================== */
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-whatsapp,
+        .btn-get-started-header {
+            display: inline-block;
+
+            padding: 11px 15px;
+            border-radius: 7px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            white-space: nowrap;
+            transition: 0.25s ease;
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: #ffffff;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1da851;
+        }
+
+        .btn-get-started-header {
+            background: #f4b942;
+            color: #0b1f3a;
+        }
+
+        .btn-get-started-header:hover {
+            background: #ffd166;
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .page-hero {
+            background: linear-gradient(
+                135deg,
+                #0b1f3a,
+                #174979
+            );
+
+            color: #ffffff;
+
+            text-align: center;
+
+            padding: 90px 20px;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+
+            padding: 8px 17px;
+
+            border-radius: 30px;
+
+            border: 1px solid #f4b942;
+
+            background: rgba(244, 185, 66, 0.12);
+
+            margin-bottom: 20px;
+
+            color: #f4b942;
+
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .page-hero h1 {
+            color: #ffffff;
+            font-size: clamp(38px, 6vw, 60px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .page-hero h1 span {
+            color: #f4b942;
+        }
+
+        .page-hero p {
+            max-width: 720px;
+
+            margin: 0 auto;
+
+            color: #e2e8f0;
+
+            font-size: 18px;
+        }
+
+
+        /* =====================================================
+           ENROLLMENT SECTION
+        ====================================================== */
+
+        .enrollment-section {
+            background: #ffffff;
+            padding: 85px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .enrollment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+
+            align-items: start;
+        }
+
+
+        /* =====================================================
+           LEFT INFORMATION
+        ====================================================== */
+
+        .enrollment-info {
+            padding-top: 10px;
+        }
+
+        .section-label {
+            display: inline-block;
+
+            color: #c27d00;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 10px;
+        }
+
+        .enrollment-info h2 {
+            color: #0b1f3a;
+
+            font-size: clamp(30px, 4vw, 43px);
+
+            line-height: 1.15;
+
+            margin-bottom: 16px;
+        }
+
+        .enrollment-intro {
+            color: #596579;
+
+            font-size: 16px;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =====================================================
+           COURSE INFORMATION CARDS
+        ====================================================== */
+
+        .enrollment-course {
+            display: flex;
+
+            gap: 18px;
+
+            padding: 20px;
+
+            margin-bottom: 16px;
+
+            background: #f7f9fc;
+
+            border: 1px solid #e0e6ee;
+
+            border-radius: 13px;
+
+            transition: 0.25s ease;
+        }
+
+        .enrollment-course:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 25px rgba(11, 31, 58, 0.08);
+        }
+
+        .course-icon {
+            width: 58px;
+            height: 58px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background: #fff2ce;
+
+            font-size: 27px;
+        }
+
+        .enrollment-course h3 {
+            color: #0b1f3a;
+
+            font-size: 18px;
+
+            margin-bottom: 5px;
+        }
+
+        .enrollment-course p {
+            color: #5b6678;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           FORM CONTAINER
+        ====================================================== */
+
+        .enrollment-form-container {
+            background: #ffffff;
+
+            border: 1px solid #dce3ec;
+
+            border-radius: 17px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 12px 35px rgba(11, 31, 58, 0.10);
+        }
+
+        .enrollment-form-container h2 {
+            color: #0b1f3a;
+
+            font-size: 30px;
+
+            margin-bottom: 7px;
+        }
+
+        .enrollment-form-container > p {
+            color: #667085;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =====================================================
+           FORM FIELDS
+        ====================================================== */
+
+        .form-group {
+            margin-bottom: 19px;
+        }
+
+        .form-label {
+            display: block;
+
+            color: #172033;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            margin-bottom: 7px;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+
+            border: 1px solid #cdd6e2;
+
+            background: #ffffff;
+
+            color: #172033;
+
+            border-radius: 8px;
+
+            padding: 13px 14px;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #8b95a5;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: #174979;
+
+            box-shadow:
+                0 0 0 3px rgba(23, 73, 121, 0.10);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+
+        /* =====================================================
+           SUBMIT BUTTON
+        ====================================================== */
+
+        .primary-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+
+            padding: 14px 20px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #0b1f3a;
+
+            color: #ffffff;
+
+            font-size: 15px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+        .primary-button:hover {
+            background: #174979;
+
+            transform: translateY(-1px);
+        }
+
+        .primary-button:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+
+        /* =====================================================
+           MESSAGE
+        ====================================================== */
+
+        #enrollment-message {
+            min-height: 25px;
+
+            margin-top: 15px;
+
+            text-align: center;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           CTA
+        ====================================================== */
+
+        .cta-section {
+            padding: 80px 20px;
+
+            background: #eef3f9;
+
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: #0b1f3a;
+
+            font-size: clamp(30px, 4vw, 43px);
+
+            margin-bottom: 15px;
+        }
+
+        .cta-section > .container > p {
+            max-width: 700px;
+
+            margin: 0 auto 25px;
+
+            color: #5b6678;
+
+            font-size: 16px;
+        }
+
+        .cta-buttons {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 14px;
+
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons a {
+            width: auto;
+            min-width: 160px;
+        }
+
+        .secondary-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-width: 160px;
+
+            padding: 14px 20px;
+
+            border-radius: 8px;
+
+            background: #ffffff;
+
+            color: #0b1f3a;
+
+            border: 1px solid #cbd5e1;
+
+            font-size: 15px;
+            font-weight: 800;
+
+            transition: 0.25s ease;
+        }
+
+        .secondary-button:hover {
+            background: #e9eef5;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        .footer {
+            background: #071426;
+
+            color: #ffffff;
+
+            padding-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+
+            grid-template-columns: 2fr 1fr 1.3fr;
+
+            gap: 45px;
+
+            padding: 0 20px;
+        }
+
+        .footer h3 {
+            color: #ffffff;
+
+            margin-bottom: 14px;
+        }
+
+        .footer p {
+            color: #cbd5e1;
+
+            font-size: 14px;
+
+            margin-bottom: 8px;
+        }
+
+        .footer-brand-title {
+            color: #ffffff;
+
+            font-size: 23px;
+
+            margin-bottom: 10px;
+        }
+
+        .footer-tagline {
+            color: #f4b942 !important;
+        }
+
+        .footer-links {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+
+            font-size: 14px;
+
+            transition: 0.25s ease;
+        }
+
+        .footer-links a:hover {
+            color: #f4b942;
+        }
+
+        .footer-contact-list {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 9px;
+        }
+
+        .footer-contact-list a {
+            color: #cbd5e1;
+
+            font-size: 14px;
+        }
+
+        .footer-contact-list a:hover {
+            color: #f4b942;
+        }
+
+        .footer-bottom {
+            margin-top: 45px;
+
+            padding: 20px;
+
+            border-top:
+                1px solid rgba(255, 255, 255, 0.10);
+
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+
+            color: #94a3b8;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 1050px) {
+
+            .navbar {
+                flex-wrap: wrap;
+            }
+
+            .nav-menu {
+                width: 100%;
+
+                order: 3;
+
+                display: flex;
+
+                justify-content: center;
+            }
+
+            .nav-actions {
+                margin-left: auto;
+            }
+
+            .enrollment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns:
+                    1fr
+                    1fr;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 12px 15px;
+            }
+
+            .logo-container {
+                width: 100%;
+            }
+
+            .brand-tagline {
+                display: none;
+            }
+
+            .logo-icon img {
+                width: 54px;
+                height: 54px;
+            }
+
+            .brand-name-eagle,
+            .brand-name-writes {
+                font-size: 18px;
+            }
+
+            .nav-menu {
+                width: 100%;
+            }
+
+            .nav-list {
+                width: 100%;
+
+                justify-content: center;
+
+                flex-wrap: wrap;
+            }
+
+            .nav-link {
+                font-size: 13px;
+
+                padding: 8px 9px;
+            }
+
+            .nav-actions {
+                width: 100%;
+
+                justify-content: center;
+            }
+
+            .page-hero {
+                padding: 65px 20px;
+            }
+
+            .enrollment-section,
+            .cta-section {
+                padding: 60px 20px;
+            }
+
+            .enrollment-form-container {
+                padding: 24px 20px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons a {
+                width: 100%;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+
+            <!-- LOGO -->
+            <div class="logo-container">
+
+                <div class="logo-icon">
+
+                    <img
+                        src="Images/logo.milto.jpg"
+                        alt="EAGLE WRITES logo">
+
+                </div>
+
+
+                <div class="brand-text">
+
+                    <span class="brand-name-eagle">
+                        EAGLE
+                    </span>
+
+                    <span class="brand-name-writes">
+                        WRITES
+                    </span>
+
+                    <span class="brand-tagline">
+                        RESEARCH • ANALYTICS • CONSULTING
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <div class="nav-menu">
+
+                <ul class="nav-list">
+
+                    <li>
+                        <a
+                            href="index.html"
+                            class="nav-link">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="about.html"
+                            class="nav-link">
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="services.html"
+                            class="nav-link">
+                            Services
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="courses.html"
+                            class="nav-link active">
+                            Courses
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="portfolio.html"
+                            class="nav-link">
+                            Portfolio
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="contact.html"
+                            class="nav-link">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- HEADER ACTIONS -->
+            <div class="nav-actions">
+
+                <a
+                    href="https://wa.me/254748513346"
+                    class="btn-whatsapp">
+
+                    WhatsApp
+
+                </a>
+
+
+                <a
+                    href="contact.html"
+                    class="btn-get-started-header">
+
+                    Get Started
+
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
+
+    <section class="page-hero">
+
+        <div class="hero-container">
+
+            <div class="hero-badge">
+                COURSE ENROLLMENT
+            </div>
+
+
+            <h1>
+                Start Your
+                <span>Learning Journey</span>
+            </h1>
+
+
+            <p>
+                Choose your course and submit your enrollment request.
+                Our team will contact you with the next steps.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         ENROLLMENT
+    ========================================================== -->
+
+    <section class="enrollment-section">
+
+        <div class="container">
+
+            <div class="enrollment-grid">
+
+
+                <!-- =================================================
+                     COURSE INFORMATION
+                ================================================== -->
+
+                <div class="enrollment-info">
+
+                    <span class="section-label">
+                        EAGLE WRITES COURSES
+                    </span>
+
+
+                    <h2>
+                        Choose The Right Course For You
+                    </h2>
+
+
+                    <p class="enrollment-intro">
+                        Complete the enrollment form and select the course
+                        you would like to take.
+                    </p>
+
+
+                    <!-- COURSE 1 -->
+                    <div class="enrollment-course">
+
+                        <div class="course-icon">
+                            ✍️
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Pitch and Article Writing
+                            </h3>
+
+                            <p>
+                                Develop professional pitching and article
+                                writing skills.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COURSE 2 -->
+                    <div class="enrollment-course">
+
+                        <div class="course-icon">
+                            📚
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Research Writing
+                            </h3>
+
+                            <p>
+                                Learn research proposal and research paper
+                                writing.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COURSE 3 -->
+                    <div class="enrollment-course">
+
+                        <div class="course-icon">
+                            📊
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Data Analysis
+                            </h3>
+
+                            <p>
+                                Learn practical data analysis using Excel
+                                and SPSS.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ENROLLMENT FORM
+                ================================================== -->
+
+                <div class="enrollment-form-container">
+
+                    <h2>
+                        Enrollment Form
+                    </h2>
+
+
+                    <p>
+                        Please provide your details below.
+                    </p>
+
+
+                    <form id="enrollment-form">
+
+
+                        <!-- COURSE -->
+                        <div class="form-group">
+
+                            <label
+                                for="course"
+                                class="form-label">
+
+                                Select Course
+
+                            </label>
+
+
+                            <select
+                                id="course"
+                                name="course"
+                                class="form-select"
+                                required>
+
+                                <option value="">
+                                    Choose a course
+                                </option>
+
+
+                                <option
+                                    value="79e4c5b9-ae77-474d-a16d-1d46591d772f"
+                                    data-title="Pitch and Article Writing">
+
+                                    Pitch and Article Writing
+
+                                </option>
+
+
+                                <option
+                                    value="7e505c63-a463-49a9-806c-a26605403116"
+                                    data-title="Research Writing">
+
+                                    Research Writing
+
+                                </option>
+
+
+                                <option
+                                    value="1016e41b-3f16-41fb-bfc2-a0e358230ab0"
+                                    data-title="Data Analysis">
+
+                                    Data Analysis
+
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- NAME -->
+                        <div class="form-group">
+
+                            <label
+                                for="full_name"
+                                class="form-label">
+
+                                Full Name
+
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="full_name"
+                                name="full_name"
+                                class="form-input"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                required>
+
+                        </div>
+
+
+
+                        <!-- EMAIL -->
+                        <div class="form-group">
+
+                            <label
+                                for="email"
+                                class="form-label">
+
+                                Email Address
+
+                            </label>
+
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="form-input"
+                                placeholder="Enter your email address"
+                                autocomplete="email"
+                                required>
+
+                        </div>
+
+
+
+                        <!-- PHONE -->
+                        <div class="form-group">
+
+                            <label
+                                for="phone"
+                                class="form-label">
+
+                                Phone Number
+
+                            </label>
+
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                class="form-input"
+                                placeholder="Enter your phone number"
+                                autocomplete="tel"
+                                required>
+
+                        </div>
+
+
+
+                        <!-- MESSAGE -->
+                        <div class="form-group">
+
+                            <label
+                                for="message"
+                                class="form-label">
+
+                                Message
+
+                            </label>
+
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                class="form-textarea"
+                                rows="5"
+                                placeholder="Tell us anything we should know about your enrollment..."></textarea>
+
+                        </div>
+
+
+
+                        <!-- SUBMIT -->
+                        <button
+                            type="submit"
+                            class="primary-button"
+                            id="submit-enrollment">
+
+                            Submit Enrollment
+
+                        </button>
+
+
+                        <!-- STATUS MESSAGE -->
+                        <p id="enrollment-message"></p>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         CTA
+    ========================================================== -->
+
+    <section class="cta-section">
+
+        <div class="container">
+
+            <h2>
+                Have Questions Before Enrolling?
+            </h2>
+
+
+            <p>
+                Contact EAGLE WRITES directly if you need more information
+                about any of our courses.
+            </p>
+
+
+            <div class="cta-buttons">
+
+                <a
+                    href="https://wa.me/254748513346"
+                    class="primary-button">
+
+                    WhatsApp Us
+
+                </a>
+
+
+                <a
+                    href="contact.html"
+                    class="secondary-button">
+
+                    Contact Us
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+
+                <!-- BRAND -->
+                <div>
+
+                    <h3 class="footer-brand-title">
+                        EAGLE WRITES
+                    </h3>
+
+
+                    <p class="footer-tagline">
+                        RESEARCH • ANALYTICS • CONSULTING
+                    </p>
+
+
+                    <p>
+                        Founder: Arnold Milton
+                    </p>
+
+                </div>
+
+
+                <!-- QUICK LINKS -->
+                <div>
+
+                    <h3>
+                        Quick Links
+                    </h3>
+
+
+                    <div class="footer-links">
+
+                        <a href="index.html">
+                            Home
+                        </a>
+
+                        <a href="about.html">
+                            About
+                        </a>
+
+                        <a href="services.html">
+                            Services
+                        </a>
+
+                        <a href="courses.html">
+                            Courses
+                        </a>
+
+                        <a href="portfolio.html">
+                            Portfolio
+                        </a>
+
+                        <a href="contact.html">
+                            Contact
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONTACT -->
+                <div>
+
+                    <h3>
+                        Contact
+                    </h3>
+
+
+                    <div class="footer-contact-list">
+
+                        <a href="tel:+254748513346">
+                            +254 748 513 346
+                        </a>
+
+
+                        <a href="mailto:miltonarnold535@gmail.com">
+                            miltonarnold535@gmail.com
+                        </a>
+
+
+                        <a href="https://wa.me/254748513346">
+                            WhatsApp Us
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER BOTTOM -->
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 EAGLE WRITES. All Rights Reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         SUPABASE
+    ========================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <script>
+
+        /* =====================================================
+           SUPABASE CONFIGURATION
+        ====================================================== */
+
+        const SUPABASE_URL =
+            'https://ekkvghdnejvyjykagafr.supabase.co';
+
+        const SUPABASE_ANON_KEY =
+            'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
+
+
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_ANON_KEY
+            );
+
+
+
+        /* =====================================================
+           AUTO-SELECT COURSE FROM URL
+           
+           Examples:
+           enroll.html?course=pitch
+           enroll.html?course=research
+           enroll.html?course=data-analysis
+        ====================================================== */
+
+        function selectCourseFromURL() {
+
+            const params =
+                new URLSearchParams(window.location.search);
+
+            const course =
+                params.get('course');
+
+            const courseSelect =
+                document.getElementById('course');
+
+
+            if (!course || !courseSelect) {
+                return;
+            }
+
+
+            const courseMap = {
+
+                'pitch':
+                    '79e4c5b9-ae77-474d-a16d-1d46591d772f',
+
+                'research':
+                    '7e505c63-a463-49a9-806c-a26605403116',
+
+                'data-analysis':
+                    '1016e41b-3f16-41fb-bfc2-a0e358230ab0'
+
+            };
+
+
+            if (courseMap[course]) {
+
+                courseSelect.value =
+                    courseMap[course];
+
+            }
+
+        }
+
+
+        /* Run when page loads */
+        selectCourseFromURL();
+
+
+
+        /* =====================================================
+           ENROLLMENT FORM
+        ====================================================== */
+
+        const enrollmentForm =
+            document.getElementById('enrollment-form');
+
+
+        enrollmentForm.addEventListener(
+            'submit',
+            async function(event) {
+
+                event.preventDefault();
+
+
+                const messageBox =
+                    document.getElementById(
+                        'enrollment-message'
+                    );
+
+
+                const submitButton =
+                    document.getElementById(
+                        'submit-enrollment'
+                    );
+
+
+                const courseSelect =
+                    document.getElementById('course');
+
+
+                const selectedOption =
+                    courseSelect.options[
+                        courseSelect.selectedIndex
+                    ];
+
+
+                const courseId =
+                    courseSelect.value;
+
+
+                const courseTitle =
+                    selectedOption.getAttribute(
+                        'data-title'
+                    );
+
+
+                const fullName =
+                    document.getElementById(
+                        'full_name'
+                    ).value.trim();
+
+
+                const email =
+                    document.getElementById(
+                        'email'
+                    ).value.trim();
+
+
+                const phone =
+                    document.getElementById(
+                        'phone'
+                    ).value.trim();
+
+
+                const message =
+                    document.getElementById(
+                        'message'
+                    ).value.trim();
+
+
+                /* Basic validation */
+                if (
+                    !courseId ||
+                    !courseTitle ||
+                    !fullName ||
+                    !email ||
+                    !phone
+                ) {
+
+                    messageBox.textContent =
+                        'Please complete all required fields.';
+
+                    messageBox.style.color =
+                        '#b42318';
+
+                    return;
+
+                }
+
+
+                /* Disable button while submitting */
+                submitButton.disabled = true;
+
+                submitButton.textContent =
+                    'Submitting...';
+
+
+                messageBox.textContent =
+                    'Submitting your enrollment...';
+
+                messageBox.style.color =
+                    '#174979';
+
+
+                try {
+
+                    const { error } =
+                        await supabaseClient
+                            .from('enrollments')
+                            .insert([
+                                {
+                                    course_id: courseId,
+                                    course_title: courseTitle,
+                                    full_name: fullName,
+                                    email: email,
+                                    phone: phone,
+                                    message: message,
+                                    status: 'pending'
+                                }
+                            ]);
+
+
+                    if (error) {
+
+                        console.error(
+                            'Enrollment error:',
+                            error
+                        );
+
+
+                        messageBox.textContent =
+                            'Unable to submit enrollment. Please try again.';
+
+                        messageBox.style.color =
+                            '#b42318';
+
+                        return;
+                    }
+
+
+                    /* Successful submission */
+                    messageBox.textContent =
+                        'Enrollment submitted successfully! We will contact you soon.';
+
+                    messageBox.style.color =
+                        '#087443';
+
+
+                    enrollmentForm.reset();
+
+
+                } catch (error) {
+
+                    console.error(
+                        'Unexpected enrollment error:',
+                        error
+                    );
+
+
+                    messageBox.textContent =
+                        'Something went wrong. Please try again.';
+
+                    messageBox.style.color =
+                        '#b42318';
+
+
+                } finally {
+
+                    submitButton.disabled = false;
+
+                    submitButton.textContent =
+                        'Submit Enrollment';
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
+```

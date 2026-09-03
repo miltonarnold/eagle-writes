@@ -1,0 +1,1884 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Contact EAGLE WRITES for research writing, academic writing, data analysis, and consulting services.">
+
+    <meta name="keywords"
+        content="EAGLE WRITES, research writing, academic writing, data analysis, Power BI, consulting">
+
+    <meta name="author"
+        content="EAGLE WRITES">
+
+    <title>Contact | EAGLE WRITES</title>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        .header {
+            width: 100%;
+            background: #0b1f3a;
+            color: #ffffff;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+        }
+
+        .navbar {
+            width: 100%;
+            max-width: 1250px;
+            min-height: 92px;
+            margin: 0 auto;
+            padding: 15px 25px;
+
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+
+        /* =====================================================
+           LOGO / BRAND
+        ====================================================== */
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-right: auto;
+        }
+
+        .logo-icon img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #f4b942;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .brand-name-eagle {
+            color: #ffffff;
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .brand-name-writes {
+            color: #f4b942;
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .brand-tagline {
+            color: #cbd5e1;
+            font-size: 9px;
+            margin-top: 5px;
+            letter-spacing: 0.6px;
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ====================================================== */
+
+        .nav-menu {
+            display: block;
+        }
+
+        .nav-list {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            list-style: none;
+        }
+
+        .nav-link {
+            display: inline-block;
+            padding: 10px 11px;
+            border-radius: 7px;
+
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: 0.25s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(244, 185, 66, 0.16);
+            color: #f4b942;
+        }
+
+        .nav-link.active {
+            background: #f4b942;
+            color: #0b1f3a;
+        }
+
+
+        /* =====================================================
+           HEADER BUTTONS
+        ====================================================== */
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-whatsapp,
+        .btn-get-started-header {
+            display: inline-block;
+
+            padding: 11px 15px;
+
+            border-radius: 7px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            white-space: nowrap;
+
+            transition: 0.25s ease;
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: #ffffff;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1da851;
+        }
+
+        .btn-get-started-header {
+            background: #f4b942;
+            color: #0b1f3a;
+        }
+
+        .btn-get-started-header:hover {
+            background: #ffd166;
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .page-hero {
+            background: linear-gradient(
+                135deg,
+                #0b1f3a,
+                #174979
+            );
+
+            color: #ffffff;
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+
+            padding: 8px 17px;
+            margin-bottom: 20px;
+
+            border-radius: 30px;
+            border: 1px solid #f4b942;
+
+            background: rgba(244, 185, 66, 0.12);
+
+            color: #f4b942;
+
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .page-hero h1 {
+            color: #ffffff;
+
+            font-size: clamp(38px, 6vw, 60px);
+
+            line-height: 1.1;
+
+            margin-bottom: 20px;
+        }
+
+        .page-hero h1 span {
+            color: #f4b942;
+        }
+
+        .page-hero p {
+            max-width: 720px;
+            margin: 0 auto;
+
+            color: #e2e8f0;
+            font-size: 18px;
+        }
+
+
+        /* =====================================================
+           CONTACT SECTION
+        ====================================================== */
+
+        .contact-section {
+            padding: 85px 20px;
+            background: #ffffff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+
+            grid-template-columns: 0.9fr 1.1fr;
+
+            gap: 55px;
+
+            align-items: start;
+        }
+
+
+        /* =====================================================
+           CONTACT INFORMATION
+        ====================================================== */
+
+        .contact-information {
+            padding-top: 10px;
+        }
+
+        .section-label {
+            display: inline-block;
+
+            color: #c27d00;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 10px;
+        }
+
+        .contact-information h2 {
+            color: #0b1f3a;
+
+            font-size: clamp(30px, 4vw, 43px);
+
+            line-height: 1.15;
+
+            margin-bottom: 15px;
+        }
+
+        .contact-information > p {
+            color: #5b6678;
+
+            font-size: 16px;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =====================================================
+           CONTACT ITEMS
+        ====================================================== */
+
+        .contact-item {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 16px;
+
+            padding: 20px;
+
+            margin-bottom: 15px;
+
+            background: #f7f9fc;
+
+            border: 1px solid #dfe5ed;
+
+            border-radius: 13px;
+
+            transition: 0.25s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 25px rgba(11, 31, 58, 0.08);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #fff2ce;
+
+            border-radius: 12px;
+
+            font-size: 24px;
+        }
+
+        .contact-item h3 {
+            color: #0b1f3a;
+
+            font-size: 17px;
+
+            margin-bottom: 3px;
+        }
+
+        .contact-item a {
+            color: #174979;
+
+            font-size: 15px;
+
+            font-weight: 600;
+        }
+
+        .contact-item a:hover {
+            color: #c27d00;
+        }
+
+        .contact-item p {
+            color: #344054;
+            font-size: 15px;
+        }
+
+        .contact-item span {
+            color: #667085;
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           CONTACT FORM
+        ====================================================== */
+
+        .contact-form-container {
+            padding: 35px;
+
+            background: #ffffff;
+
+            border: 1px solid #dce3ec;
+
+            border-radius: 17px;
+
+            box-shadow:
+                0 12px 35px rgba(11, 31, 58, 0.10);
+        }
+
+        .contact-form-container h2 {
+            color: #0b1f3a;
+
+            font-size: 30px;
+
+            margin-bottom: 7px;
+        }
+
+        .contact-form-container > p {
+            color: #667085;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =====================================================
+           FORM
+        ====================================================== */
+
+        .form-group {
+            margin-bottom: 19px;
+        }
+
+        .form-label {
+            display: block;
+
+            color: #172033;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            margin-bottom: 7px;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border: 1px solid #cdd6e2;
+
+            border-radius: 8px;
+
+            background: #ffffff;
+
+            color: #172033;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.2s ease;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #8b95a5;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: #174979;
+
+            box-shadow:
+                0 0 0 3px rgba(23, 73, 121, 0.10);
+        }
+
+        .form-textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+
+        /* =====================================================
+           SUBMIT BUTTON
+        ====================================================== */
+
+        .primary-button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+
+            padding: 14px 20px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #0b1f3a;
+
+            color: #ffffff;
+
+            font-size: 15px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+        .primary-button:hover {
+            background: #174979;
+        }
+
+        .primary-button:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+
+        /* =====================================================
+           MESSAGE
+        ====================================================== */
+
+        #contact-message {
+            min-height: 25px;
+
+            margin-top: 15px;
+
+            text-align: center;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           QUICK CONTACT
+        ====================================================== */
+
+        .quick-contact-section {
+            padding: 85px 20px;
+
+            background: #eef3f9;
+        }
+
+        .section-heading {
+            max-width: 800px;
+
+            margin: 0 auto 45px;
+
+            text-align: center;
+        }
+
+        .section-heading h2 {
+            color: #0b1f3a;
+
+            font-size: clamp(30px, 4vw, 43px);
+
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            color: #5b6678;
+
+            font-size: 16px;
+        }
+
+        .quick-contact-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+        .quick-contact-card {
+            display: block;
+
+            padding: 32px 25px;
+
+            background: #ffffff;
+
+            border: 1px solid #dce3ec;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            box-shadow:
+                0 7px 20px rgba(11, 31, 58, 0.07);
+
+            transition: 0.25s ease;
+        }
+
+        .quick-contact-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 16px 30px rgba(11, 31, 58, 0.12);
+        }
+
+        .quick-contact-card .service-icon {
+            width: 60px;
+            height: 60px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 18px;
+
+            border-radius: 14px;
+
+            background: #fff2ce;
+
+            font-size: 28px;
+        }
+
+        .quick-contact-card h3 {
+            color: #0b1f3a;
+
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+        .quick-contact-card p {
+            color: #5b6678;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           CTA
+        ====================================================== */
+
+        .cta-section {
+            padding: 80px 20px;
+
+            background: #ffffff;
+
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: #0b1f3a;
+
+            font-size: clamp(30px, 4vw, 43px);
+
+            margin-bottom: 14px;
+        }
+
+        .cta-section p {
+            max-width: 700px;
+
+            margin: 0 auto 25px;
+
+            color: #5b6678;
+
+            font-size: 16px;
+        }
+
+        .cta-section .primary-button {
+            width: auto;
+            min-width: 180px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        .footer {
+            padding-top: 60px;
+
+            background: #071426;
+
+            color: #ffffff;
+        }
+
+        .footer-grid {
+            display: grid;
+
+            grid-template-columns:
+                2fr
+                1fr
+                1.3fr;
+
+            gap: 45px;
+
+            padding: 0 20px;
+        }
+
+        .footer h3 {
+            color: #ffffff;
+            margin-bottom: 14px;
+        }
+
+        .footer p {
+            color: #cbd5e1;
+
+            font-size: 14px;
+
+            margin-bottom: 8px;
+        }
+
+        .footer-brand-title {
+            color: #ffffff;
+
+            font-size: 23px;
+
+            margin-bottom: 10px;
+        }
+
+        .footer-tagline {
+            color: #f4b942 !important;
+        }
+
+        .footer-links {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: #f4b942;
+        }
+
+        .footer-contact-list {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 9px;
+        }
+
+        .footer-contact-list a {
+            color: #cbd5e1;
+
+            font-size: 14px;
+        }
+
+        .footer-contact-list a:hover {
+            color: #f4b942;
+        }
+
+        .footer-bottom {
+            margin-top: 45px;
+
+            padding: 20px;
+
+            border-top:
+                1px solid rgba(255, 255, 255, 0.10);
+
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+
+            color: #94a3b8;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width: 1050px) {
+
+            .navbar {
+                flex-wrap: wrap;
+            }
+
+            .nav-menu {
+                width: 100%;
+
+                order: 3;
+
+                display: flex;
+
+                justify-content: center;
+            }
+
+            .nav-actions {
+                margin-left: auto;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-contact-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 12px 15px;
+            }
+
+            .logo-container {
+                width: 100%;
+            }
+
+            .brand-tagline {
+                display: none;
+            }
+
+            .logo-icon img {
+                width: 54px;
+                height: 54px;
+            }
+
+            .brand-name-eagle,
+            .brand-name-writes {
+                font-size: 18px;
+            }
+
+            .nav-menu {
+                width: 100%;
+            }
+
+            .nav-list {
+                width: 100%;
+
+                justify-content: center;
+
+                flex-wrap: wrap;
+            }
+
+            .nav-link {
+                padding: 8px 9px;
+
+                font-size: 13px;
+            }
+
+            .nav-actions {
+                width: 100%;
+
+                justify-content: center;
+            }
+
+            .page-hero {
+                padding: 65px 20px;
+            }
+
+            .contact-section,
+            .quick-contact-section,
+            .cta-section {
+                padding: 60px 20px;
+            }
+
+            .contact-form-container {
+                padding: 24px 20px;
+            }
+
+            .quick-contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section .primary-button {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+
+            <!-- LOGO -->
+            <div class="logo-container">
+
+                <div class="logo-icon">
+
+                    <img
+                        src="Images/logo.milto.jpg"
+                        alt="EAGLE WRITES logo">
+
+                </div>
+
+
+                <div class="brand-text">
+
+                    <span class="brand-name-eagle">
+                        EAGLE
+                    </span>
+
+                    <span class="brand-name-writes">
+                        WRITES
+                    </span>
+
+                    <span class="brand-tagline">
+                        RESEARCH • ANALYTICS • CONSULTING
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <div class="nav-menu">
+
+                <ul class="nav-list">
+
+                    <li>
+                        <a
+                            href="index.html"
+                            class="nav-link">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="about.html"
+                            class="nav-link">
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="services.html"
+                            class="nav-link">
+                            Services
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="courses.html"
+                            class="nav-link">
+                            Courses
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="portfolio.html"
+                            class="nav-link">
+                            Portfolio
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="contact.html"
+                            class="nav-link active"
+                            aria-current="page">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- ACTION BUTTONS -->
+            <div class="nav-actions">
+
+                <a
+                    href="https://wa.me/254748513346"
+                    class="btn-whatsapp">
+
+                    WhatsApp
+
+                </a>
+
+
+                <a
+                    href="enroll.html"
+                    class="btn-get-started-header">
+
+                    Get Started
+
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
+
+    <section class="page-hero">
+
+        <div class="hero-container">
+
+            <div class="hero-badge">
+                CONTACT EAGLE WRITES
+            </div>
+
+
+            <h1>
+                Let's Work On
+                <span>Your Project</span>
+            </h1>
+
+
+            <p>
+                Have a research, writing, data analysis, or consulting
+                project? Get in touch with EAGLE WRITES today.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         CONTACT SECTION
+    ========================================================== -->
+
+    <section class="contact-section">
+
+        <div class="container">
+
+            <div class="contact-grid">
+
+
+                <!-- CONTACT INFORMATION -->
+                <div class="contact-information">
+
+                    <span class="section-label">
+                        GET IN TOUCH
+                    </span>
+
+
+                    <h2>
+                        We're Ready To Help
+                    </h2>
+
+
+                    <p>
+                        Contact us to discuss your project, ask questions,
+                        or request professional research and analytics
+                        support.
+                    </p>
+
+
+                    <!-- PHONE -->
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            📞
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Phone
+                            </h3>
+
+                            <a href="tel:+254748513346">
+                                +254 748 513 346
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            ✉️
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Email
+                            </h3>
+
+                            <a href="mailto:miltonarnold535@gmail.com">
+                                miltonarnold535@gmail.com
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- WHATSAPP -->
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            💬
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                WhatsApp
+                            </h3>
+
+                            <a href="https://wa.me/254748513346">
+                                Chat With Us on WhatsApp
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FOUNDER -->
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            👤
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Founder
+                            </h3>
+
+                            <p>
+                                Arnold Milton
+                            </p>
+
+                            <span>
+                                Founder & Lead Consultant
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CONTACT FORM -->
+                <div class="contact-form-container">
+
+                    <h2>
+                        Send Us a Message
+                    </h2>
+
+
+                    <p>
+                        Fill in the form below and tell us how we can help.
+                    </p>
+
+
+                    <form id="contact-form">
+
+
+                        <!-- NAME -->
+                        <div class="form-group">
+
+                            <label
+                                for="name"
+                                class="form-label">
+
+                                Full Name
+
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                class="form-input"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                required>
+
+                        </div>
+
+
+                        <!-- EMAIL -->
+                        <div class="form-group">
+
+                            <label
+                                for="email"
+                                class="form-label">
+
+                                Email Address
+
+                            </label>
+
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="form-input"
+                                placeholder="Enter your email address"
+                                autocomplete="email"
+                                required>
+
+                        </div>
+
+
+                        <!-- PHONE -->
+                        <div class="form-group">
+
+                            <label
+                                for="phone"
+                                class="form-label">
+
+                                Phone Number
+                            </label>
+
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                class="form-input"
+                                placeholder="Enter your phone number"
+                                autocomplete="tel">
+
+                        </div>
+
+
+                        <!-- SERVICE -->
+                        <div class="form-group">
+
+                            <label
+                                for="service"
+                                class="form-label">
+
+                                Service Required
+
+                            </label>
+
+
+                            <select
+                                id="service"
+                                name="service"
+                                class="form-select"
+                                required>
+
+                                <option value="">
+                                    Select a service
+                                </option>
+
+                                <option value="Research Writing">
+                                    Research Writing
+                                </option>
+
+                                <option value="Academic Writing">
+                                    Academic Writing
+                                </option>
+
+                                <option value="Data Analysis">
+                                    Data Analysis
+                                </option>
+
+                                <option value="Power BI Dashboards">
+                                    Power BI Dashboards
+                                </option>
+
+                                <option value="Article Writing">
+                                    Article Writing
+                                </option>
+
+                                <option value="Business & Financial Research">
+                                    Business & Financial Research
+                                </option>
+
+                                <option value="Consulting">
+                                    Consulting
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- MESSAGE -->
+                        <div class="form-group">
+
+                            <label
+                                for="message"
+                                class="form-label">
+
+                                Message
+
+                            </label>
+
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                class="form-textarea"
+                                rows="6"
+                                placeholder="Tell us about your project..."
+                                required></textarea>
+
+                        </div>
+
+
+                        <!-- SUBMIT -->
+                        <button
+                            type="submit"
+                            class="primary-button"
+                            id="contact-submit">
+
+                            Send Message
+
+                        </button>
+
+
+                        <!-- STATUS -->
+                        <p id="contact-message"></p>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         QUICK CONTACT
+    ========================================================== -->
+
+    <section class="quick-contact-section">
+
+        <div class="container">
+
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    QUICK CONTACT
+                </span>
+
+
+                <h2>
+                    Prefer Direct Communication?
+                </h2>
+
+
+                <p>
+                    Choose your preferred way to contact EAGLE WRITES.
+                </p>
+
+            </div>
+
+
+            <div class="quick-contact-grid">
+
+
+                <a
+                    href="https://wa.me/254748513346"
+                    class="quick-contact-card">
+
+                    <div class="service-icon">
+                        💬
+                    </div>
+
+
+                    <h3>
+                        WhatsApp
+                    </h3>
+
+
+                    <p>
+                        Chat with us directly on WhatsApp.
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="mailto:miltonarnold535@gmail.com"
+                    class="quick-contact-card">
+
+                    <div class="service-icon">
+                        ✉️
+                    </div>
+
+
+                    <h3>
+                        Email
+                    </h3>
+
+
+                    <p>
+                        Send us an email with your project details.
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="tel:+254748513346"
+                    class="quick-contact-card">
+
+                    <div class="service-icon">
+                        📞
+                    </div>
+
+
+                    <h3>
+                        Call Us
+                    </h3>
+
+
+                    <p>
+                        Speak directly with EAGLE WRITES.
+                    </p>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         CTA
+    ========================================================== -->
+
+    <section class="cta-section">
+
+        <div class="container">
+
+            <h2>
+                Ready To Get Started?
+            </h2>
+
+
+            <p>
+                Tell us what you need and let's discuss your project.
+            </p>
+
+
+            <a
+                href="enroll.html"
+                class="primary-button">
+
+                Start Enrollment
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+
+                <!-- BRAND -->
+                <div>
+
+                    <h3 class="footer-brand-title">
+                        EAGLE WRITES
+                    </h3>
+
+
+                    <p class="footer-tagline">
+                        RESEARCH • ANALYTICS • CONSULTING
+                    </p>
+
+
+                    <p>
+                        Founder: Arnold Milton
+                    </p>
+
+                </div>
+
+
+                <!-- QUICK LINKS -->
+                <div>
+
+                    <h3>
+                        Quick Links
+                    </h3>
+
+
+                    <div class="footer-links">
+
+                        <a href="index.html">
+                            Home
+                        </a>
+
+                        <a href="about.html">
+                            About
+                        </a>
+
+                        <a href="services.html">
+                            Services
+                        </a>
+
+                        <a href="courses.html">
+                            Courses
+                        </a>
+
+                        <a href="portfolio.html">
+                            Portfolio
+                        </a>
+
+                        <a href="contact.html">
+                            Contact
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONTACT -->
+                <div>
+
+                    <h3>
+                        Contact
+                    </h3>
+
+
+                    <div class="footer-contact-list">
+
+                        <a href="tel:+254748513346">
+                            +254 748 513 346
+                        </a>
+
+
+                        <a href="mailto:miltonarnold535@gmail.com">
+                            miltonarnold535@gmail.com
+                        </a>
+
+
+                        <a href="https://wa.me/254748513346">
+                            WhatsApp Us
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER BOTTOM -->
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 EAGLE WRITES. All Rights Reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         SUPABASE
+    ========================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <script>
+
+        /* =====================================================
+           SUPABASE CONFIGURATION
+        ====================================================== */
+
+        const SUPABASE_URL =
+            'https://ekkvghdnejvyjykagafr.supabase.co';
+
+
+        const SUPABASE_ANON_KEY =
+            'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
+
+
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_ANON_KEY
+            );
+
+
+        /* =====================================================
+           CONTACT FORM
+        ====================================================== */
+
+        const contactForm =
+            document.getElementById('contact-form');
+
+
+        const contactMessage =
+            document.getElementById('contact-message');
+
+
+        const contactSubmit =
+            document.getElementById('contact-submit');
+
+
+        contactForm.addEventListener(
+            'submit',
+            async function(event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document.getElementById('name')
+                        .value
+                        .trim();
+
+
+                const email =
+                    document.getElementById('email')
+                        .value
+                        .trim();
+
+
+                const phone =
+                    document.getElementById('phone')
+                        .value
+                        .trim();
+
+
+                const service =
+                    document.getElementById('service')
+                        .value;
+
+
+                const message =
+                    document.getElementById('message')
+                        .value
+                        .trim();
+
+
+                /* =================================================
+                   VALIDATION
+                ================================================= */
+
+                if (
+                    !name ||
+                    !email ||
+                    !service ||
+                    !message
+                ) {
+
+                    contactMessage.textContent =
+                        'Please complete all required fields.';
+
+                    contactMessage.style.color =
+                        '#b42318';
+
+                    return;
+
+                }
+
+
+                /* =================================================
+                   BUTTON STATE
+                ================================================= */
+
+                contactSubmit.disabled = true;
+
+                contactSubmit.textContent =
+                    'Sending...';
+
+
+                contactMessage.textContent =
+                    'Sending your message...';
+
+                contactMessage.style.color =
+                    '#174979';
+
+
+                try {
+
+                    /* =================================================
+                       INSERT CONTACT MESSAGE
+
+                       IMPORTANT:
+                       There is NO .select() here.
+
+                       This means the visitor only needs INSERT
+                       permission, not SELECT permission.
+                    ================================================= */
+
+                    const { error } =
+                        await supabaseClient
+                            .from('contact_messages')
+                            .insert([
+                                {
+                                    name: name,
+                                    email: email,
+                                    phone: phone,
+                                    service: service,
+                                    message: message
+                                }
+                            ]);
+
+
+                    /* =================================================
+                       HANDLE DATABASE ERROR
+                    ================================================= */
+
+                    if (error) {
+
+                        console.error(
+                            'Supabase contact error:',
+                            error
+                        );
+
+
+                        contactMessage.textContent =
+                            'Unable to send your message. Please try again.';
+
+                        contactMessage.style.color =
+                            '#b42318';
+
+                        return;
+
+                    }
+
+
+                    /* =================================================
+                       SUCCESS
+                    ================================================= */
+
+                    contactMessage.textContent =
+                        'Message sent successfully! We will get back to you soon.';
+
+                    contactMessage.style.color =
+                        '#087443';
+
+
+                    contactForm.reset();
+
+                }
+
+
+                catch (error) {
+
+                    console.error(
+                        'Unexpected contact error:',
+                        error
+                    );
+
+
+                    contactMessage.textContent =
+                        'Something went wrong. Please try again.';
+
+                    contactMessage.style.color =
+                        '#b42318';
+
+                }
+
+
+                finally {
+
+                    contactSubmit.disabled =
+                        false;
+
+                    contactSubmit.textContent =
+                        'Send Message';
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
+```
