@@ -1,2441 +1,2540 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-    <title>EAGLE WRITES — Admin Dashboard</title>
-
-
-    <style>
-
-        /* =====================================================
-           RESET
-        ====================================================== */
-
-        * {
-            box-sizing: border-box;
-        }
-
-
-        body {
-            margin: 0;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            background: #f4f6f8;
-
-            color: #172033;
-        }
-
-
-        button,
-        input,
-        select {
-            font-family: inherit;
-        }
-
-
-        /* =====================================================
-           HEADER
-        ====================================================== */
-
-        .admin-header {
-            background: #0b1f3a;
-
-            color: #ffffff;
-
-            padding: 22px 30px;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            gap: 20px;
-        }
-
-
-        .admin-brand {
-            font-size: 24px;
-
-            font-weight: 700;
-        }
-
-
-        .admin-subtitle {
-            font-size: 13px;
-
-            opacity: 0.8;
-
-            margin-top: 4px;
-        }
-
-
-        .auth-button {
-            padding: 10px 18px;
-
-            border: none;
-
-            border-radius: 8px;
-
-            background: #f4c430;
-
-            color: #061222;
-
-            font-weight: 700;
-
-            cursor: pointer;
-        }
-
-
-        .auth-button:hover {
-            opacity: 0.9;
-        }
-
-
-        /* =====================================================
-           MAIN
-        ====================================================== */
-
-        .admin-container {
-            max-width: 1400px;
-
-            margin: 30px auto;
-
-            padding: 0 20px;
-        }
-
-
-        .dashboard-title {
-            margin-bottom: 25px;
-        }
-
-
-        .dashboard-title h1 {
-            margin: 0 0 6px;
-
-            font-size: 28px;
-
-            color: #0b1f3a;
-        }
-
-
-        .dashboard-title p {
-            margin: 0;
-
-            color: #667085;
-        }
-
-
-        /* =====================================================
-           STATS
-        ====================================================== */
-
-        .stats {
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 18px;
-
-            margin-bottom: 30px;
-        }
-
-
-        .stat-card {
-            background: #ffffff;
-
-            padding: 22px;
-
-            border-radius: 12px;
-
-            box-shadow:
-                0 3px 12px rgba(0, 0, 0, 0.06);
-        }
-
-
-        .stat-label {
-            color: #667085;
-
-            font-size: 14px;
-
-            margin-bottom: 8px;
-        }
-
-
-        .stat-number {
-            font-size: 30px;
-
-            font-weight: 700;
-
-            color: #0b1f3a;
-        }
-
-
-        /* =====================================================
-           MESSAGES
-        ====================================================== */
-
-        .admin-message {
-            display: none;
-
-            margin-bottom: 20px;
-
-            padding: 14px 16px;
-
-            border-radius: 8px;
-
-            font-size: 14px;
-
-            font-weight: 600;
-        }
-
-
-        .admin-error {
-            background: #fee4e2;
-
-            color: #b42318;
-        }
-
-
-        .admin-success {
-            background: #d1fadf;
-
-            color: #067647;
-        }
-
-
-        /* =====================================================
-           TABS
-        ====================================================== */
-
-        .tabs {
-            display: flex;
-
-            gap: 10px;
-
-            margin-bottom: 20px;
-        }
-
-
-        .tab-button {
-            border: none;
-
-            padding: 12px 20px;
-
-            border-radius: 8px;
-
-            background: #e4e7ec;
-
-            color: #344054;
-
-            font-size: 14px;
-
-            font-weight: 700;
-
-            cursor: pointer;
-        }
-
-
-        .tab-button:hover {
-            background: #d8dde5;
-        }
-
-
-        .tab-button.active {
-            background: #0b1f3a;
-
-            color: #ffffff;
-        }
-
-
-        .tab-content {
-            display: none;
-        }
-
-
-        .tab-content.active {
-            display: block;
-        }
-
-
-        /* =====================================================
-           SECTION HEADER
-        ====================================================== */
-
-        .section-header {
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            gap: 20px;
-
-            margin-bottom: 18px;
-        }
-
-
-        .section-title h2 {
-            margin: 0 0 5px;
-
-            color: #0b1f3a;
-
-            font-size: 23px;
-        }
-
-
-        .section-title p {
-            margin: 0;
-
-            color: #667085;
-
-            font-size: 14px;
-        }
-
-
-        /* =====================================================
-           REFRESH BUTTON
-        ====================================================== */
-
-        .refresh-button {
-            border: none;
-
-            border-radius: 8px;
-
-            padding: 10px 16px;
-
-            background: #174979;
-
-            color: #ffffff;
-
-            font-size: 13px;
-
-            font-weight: 700;
-
-            cursor: pointer;
-        }
-
-
-        .refresh-button:hover {
-            background: #0b1f3a;
-        }
-
-
-        /* =====================================================
-           FILTERS
-        ====================================================== */
-
-        .filters {
-            display: flex;
-
-            gap: 12px;
-
-            margin-bottom: 20px;
-
-            flex-wrap: wrap;
-        }
-
-
-        .filters input,
-        .filters select {
-            padding: 12px 14px;
-
-            border: 1px solid #d0d5dd;
-
-            border-radius: 8px;
-
-            font-size: 14px;
-
-            background: #ffffff;
-
-            color: #172033;
-
-            outline: none;
-        }
-
-
-        .filters input {
-            flex: 1;
-
-            min-width: 280px;
-        }
-
-
-        .filters select {
-            min-width: 220px;
-        }
-
-
-        /* =====================================================
-           TABLE
-        ====================================================== */
-
-        .table-wrapper {
-            background: #ffffff;
-
-            border-radius: 12px;
-
-            box-shadow:
-                0 3px 12px rgba(0, 0, 0, 0.06);
-
-            overflow-x: auto;
-        }
-
-
-        table {
-            width: 100%;
-
-            border-collapse: collapse;
-
-            min-width: 950px;
-        }
-
-
-        th {
-            background: #0b1f3a;
-
-            color: #ffffff;
-
-            text-align: left;
-
-            padding: 15px;
-
-            font-size: 13px;
-        }
-
-
-        td {
-            padding: 14px 15px;
-
-            border-bottom:
-                1px solid #eaecf0;
-
-            font-size: 14px;
-
-            vertical-align: top;
-        }
-
-
-        tbody tr:hover {
-            background: #f9fafb;
-        }
-
-
-        /* =====================================================
-           STATUS
-        ====================================================== */
-
-        .status {
-            display: inline-block;
-
-            padding: 6px 10px;
-
-            border-radius: 20px;
-
-            font-size: 12px;
-
-            font-weight: 600;
-
-            text-transform: capitalize;
-        }
-
-
-        .status-pending {
-            background: #fff4cc;
-
-            color: #8a6500;
-        }
-
-
-        .status-approved {
-            background: #d1fadf;
-
-            color: #067647;
-        }
-
-
-        .status-rejected {
-            background: #fee4e2;
-
-            color: #b42318;
-        }
-
-
-        .status-select {
-            padding: 7px 10px;
-
-            border: 1px solid #d0d5dd;
-
-            border-radius: 7px;
-
-            background: #ffffff;
-
-            color: #172033;
-
-            cursor: pointer;
-        }
-
-
-        /* =====================================================
-           EMPTY / LOADING
-        ====================================================== */
-
-        .empty,
-        .loading {
-            text-align: center;
-
-            padding: 40px;
-
-            color: #667085;
-        }
-
-
-        /* =====================================================
-           CONTACT MESSAGES
-        ====================================================== */
-
-        .message-cell {
-            max-width: 420px;
-
-            white-space: normal;
-
-            line-height: 1.55;
-
-            color: #344054;
-        }
-
-
-        .service-badge {
-            display: inline-block;
-
-            padding: 5px 9px;
-
-            border-radius: 15px;
-
-            background: #eef4ff;
-
-            color: #175cd3;
-
-            font-size: 12px;
-
-            font-weight: 700;
-        }
-
-
-        .message-date {
-            color: #667085;
-
-            white-space: nowrap;
-        }
-
-
-        .contact-link {
-            color: #174979;
-
-            font-weight: 600;
-
-            text-decoration: none;
-        }
-
-
-        .contact-link:hover {
-            color: #c27d00;
-
-            text-decoration: underline;
-        }
-
-
-        /* =====================================================
-           RESPONSIVE
-        ====================================================== */
-
-        @media (max-width: 900px) {
-
-            .stats {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-        }
-
-
-        @media (max-width: 700px) {
-
-            .admin-header {
-                padding: 18px;
-
-                align-items: flex-start;
-
-                flex-direction: column;
-            }
-
-
-            .admin-container {
-                padding: 0 12px;
-            }
-
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-
-            .tabs {
-                flex-direction: column;
-            }
-
-
-            .tab-button {
-                width: 100%;
-
-                text-align: left;
-            }
-
-
-            .section-header {
-                align-items: flex-start;
-
-                flex-direction: column;
-            }
-
-
-            .refresh-button {
-                width: 100%;
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EAGLE WRITES — Admin Dashboard</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    color: #172033;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+.admin-header {
+    background: #0b1f3a;
+    color: #fff;
+    padding: 22px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.admin-brand {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.admin-subtitle {
+    font-size: 13px;
+    opacity: .8;
+    margin-top: 4px;
+}
+
+.auth-button,
+.primary-button {
+    padding: 11px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #f4c430;
+    color: #061222;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.auth-button:hover,
+.primary-button:hover {
+    opacity: .9;
+}
+
+.primary-button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.admin-container {
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.dashboard-title {
+    margin-bottom: 25px;
+}
+
+.dashboard-title h1 {
+    margin: 0 0 6px;
+    font-size: 28px;
+    color: #0b1f3a;
+}
+
+.dashboard-title p {
+    margin: 0;
+    color: #667085;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: #fff;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.06);
+}
+
+.stat-label {
+    color: #667085;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.stat-number {
+    font-size: 30px;
+    font-weight: 700;
+    color: #0b1f3a;
+}
+
+.admin-message {
+    display: none;
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.admin-error {
+    background: #fee4e2;
+    color: #b42318;
+}
+
+.admin-success {
+    background: #d1fadf;
+    color: #067647;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: #e4e7ec;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tab-button.active {
+    background: #0b1f3a;
+    color: #fff;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 18px;
+}
+
+.section-title h2 {
+    margin: 0 0 5px;
+    color: #0b1f3a;
+    font-size: 23px;
+}
+
+.section-title p {
+    margin: 0;
+    color: #667085;
+    font-size: 14px;
+}
+
+.refresh-button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    background: #174979;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.filters {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filters input,
+.filters select,
+.document-form input,
+.document-form textarea {
+    padding: 12px 14px;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #fff;
+    color: #172033;
+    outline: none;
+}
+
+.filters input {
+    flex: 1;
+    min-width: 280px;
+}
+
+.table-wrapper {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.06);
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+th {
+    background: #0b1f3a;
+    color: #fff;
+    text-align: left;
+    padding: 15px;
+    font-size: 13px;
+}
+
+td {
+    padding: 14px 15px;
+    border-bottom: 1px solid #eaecf0;
+    font-size: 14px;
+    vertical-align: top;
+}
+
+tbody tr:hover {
+    background: #f9fafb;
+}
+
+.status {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.status-pending {
+    background: #fff4cc;
+    color: #8a6500;
+}
+
+.status-approved {
+    background: #d1fadf;
+    color: #067647;
+}
+
+.status-rejected {
+    background: #fee4e2;
+    color: #b42318;
+}
+
+.status-select {
+    padding: 7px 10px;
+    border: 1px solid #d0d5dd;
+    border-radius: 7px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.empty,
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #667085;
+}
+
+.message-cell {
+    max-width: 420px;
+    line-height: 1.55;
+    color: #344054;
+}
+
+.service-badge {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 15px;
+    background: #eef4ff;
+    color: #175cd3;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.contact-link {
+    color: #174979;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.document-upload-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.06);
+    margin-bottom: 25px;
+}
+
+.document-upload-card h3 {
+    margin-top: 0;
+    color: #0b1f3a;
+}
+
+.document-form {
+    display: grid;
+    gap: 14px;
+}
+
+.document-form label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #344054;
+}
+
+.document-form input[type="text"],
+.document-form textarea {
+    width: 100%;
+}
+
+.document-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+}
+
+.document-form textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.upload-info {
+    background: #f4f6f8;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #667085;
+}
+
+.document-action {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.view-button,
+.delete-button {
+    border: none;
+    border-radius: 7px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.view-button {
+    background: #e8f1ff;
+    color: #175cd3;
+}
+
+.delete-button {
+    background: #fee4e2;
+    color: #b42318;
+}
+
+.login-screen {
+    position: fixed;
+    inset: 0;
+    background: #f4f6f8;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+    background: #fff;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 35px rgba(0,0,0,.12);
+}
+
+.login-card h1 {
+    margin: 0 0 8px;
+    color: #0b1f3a;
+}
+
+.login-card p {
+    margin: 0 0 25px;
+    color: #667085;
+}
+
+.login-field {
+    margin-bottom: 16px;
+}
+
+.login-field label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.login-field input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: #0b1f3a;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.forgot-button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    color: #174979;
+    cursor: pointer;
+}
+
+.login-error {
+    display: none;
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #fee4e2;
+    color: #b42318;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+@media (max-width: 900px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .admin-header {
+        padding: 18px;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .admin-container {
+        padding: 0 12px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .refresh-button {
+        width: 100%;
+    }
+
+    .login-card {
+        padding: 25px;
+    }
+}
+</style>
 </head>
-
 
 <body>
 
+<!-- LOGIN SCREEN -->
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+<div id="login-screen" class="login-screen">
+    <div class="login-card">
 
-    <header class="admin-header">
+        <h1>EAGLE WRITES</h1>
+        <p>Administrator Login</p>
 
-        <div>
+        <div id="login-error" class="login-error"></div>
 
-            <div class="admin-brand">
-                EAGLE WRITES
-            </div>
-
-            <div class="admin-subtitle">
-                Administration Dashboard
-            </div>
-
+        <div class="login-field">
+            <label for="login-email">Email</label>
+            <input
+                type="email"
+                id="login-email"
+                placeholder="Enter admin email"
+                autocomplete="username"
+            >
         </div>
 
+        <div class="login-field">
+            <label for="login-password">Password</label>
+            <input
+                type="password"
+                id="login-password"
+                placeholder="Enter password"
+                autocomplete="current-password"
+            >
+        </div>
 
         <button
-            id="auth-button"
-            class="auth-button"
-            onclick="handleAuthButton()">
-
+            class="login-button"
+            type="button"
+            onclick="loginAdmin()"
+        >
             Login
-
         </button>
 
-    </header>
+        <button
+            class="forgot-button"
+            type="button"
+            onclick="resetPassword()"
+        >
+            Forgot password?
+        </button>
+
+    </div>
+</div>
 
 
+<header class="admin-header">
 
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
+    <div>
+        <div class="admin-brand">EAGLE WRITES</div>
+        <div class="admin-subtitle">Administration Dashboard</div>
+    </div>
 
-    <main class="admin-container">
+    <button
+        id="auth-button"
+        class="auth-button"
+        onclick="logoutAdmin()"
+    >
+        Logout
+    </button>
+
+</header>
 
 
-        <div class="dashboard-title">
+<main class="admin-container">
 
-            <h1>
-                Admin Dashboard
-            </h1>
+    <div class="dashboard-title">
+        <h1>Admin Dashboard</h1>
+        <p>Manage your website, enrollments, messages and portfolio documents.</p>
+    </div>
 
-            <p>
-                Manage course enrollments and website contact messages.
-            </p>
 
+    <div class="stats">
+
+        <div class="stat-card">
+            <div class="stat-label">Total Enrollments</div>
+            <div class="stat-number" id="total-enrollments">0</div>
         </div>
 
-
-
-        <!-- =================================================
-             STATISTICS
-        ================================================== -->
-
-        <div class="stats">
-
-
-            <div class="stat-card">
-
-                <div class="stat-label">
-                    Total Enrollments
-                </div>
-
-                <div
-                    class="stat-number"
-                    id="total-enrollments">
-
-                    0
-
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-label">
-                    Pending Enrollments
-                </div>
-
-                <div
-                    class="stat-number"
-                    id="pending-enrollments">
-
-                    0
-
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-label">
-                    Approved Enrollments
-                </div>
-
-                <div
-                    class="stat-number"
-                    id="approved-enrollments">
-
-                    0
-
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-label">
-                    Contact Messages
-                </div>
-
-                <div
-                    class="stat-number"
-                    id="total-messages">
-
-                    0
-
-                </div>
-
-            </div>
-
+        <div class="stat-card">
+            <div class="stat-label">Pending Enrollments</div>
+            <div class="stat-number" id="pending-enrollments">0</div>
         </div>
 
-
-
-        <!-- ERROR -->
-
-        <div
-            id="admin-error"
-            class="admin-message admin-error">
+        <div class="stat-card">
+            <div class="stat-label">Approved Enrollments</div>
+            <div class="stat-number" id="approved-enrollments">0</div>
         </div>
 
-
-        <!-- SUCCESS -->
-
-        <div
-            id="admin-success"
-            class="admin-message admin-success">
+        <div class="stat-card">
+            <div class="stat-label">Contact Messages</div>
+            <div class="stat-number" id="total-messages">0</div>
         </div>
 
+    </div>
 
 
-        <!-- =================================================
-             TABS
-        ================================================== -->
+    <div id="admin-error" class="admin-message admin-error"></div>
+    <div id="admin-success" class="admin-message admin-success"></div>
 
-        <div class="tabs">
+
+    <div class="tabs">
+
+        <button
+            id="enrollments-tab-button"
+            class="tab-button active"
+            type="button"
+            onclick="showTab('enrollments')"
+        >
+            Course Enrollments
+        </button>
+
+        <button
+            id="messages-tab-button"
+            class="tab-button"
+            type="button"
+            onclick="showTab('messages')"
+        >
+            Contact Messages
+        </button>
+
+        <button
+            id="documents-tab-button"
+            class="tab-button"
+            type="button"
+            onclick="showTab('documents')"
+        >
+            Portfolio Documents
+        </button>
+
+    </div>
+
+
+    <!-- ENROLLMENTS -->
+
+    <section id="enrollments-tab" class="tab-content active">
+
+        <div class="section-header">
+
+            <div class="section-title">
+                <h2>Course Enrollments</h2>
+                <p>Manage student enrollment requests.</p>
+            </div>
 
             <button
-                id="enrollments-tab-button"
-                class="tab-button active"
                 type="button"
-                onclick="showTab('enrollments')">
-
-                Course Enrollments
-
-            </button>
-
-
-            <button
-                id="messages-tab-button"
-                class="tab-button"
-                type="button"
-                onclick="showTab('messages')">
-
-                Contact Messages
-
+                class="refresh-button"
+                onclick="loadEnrollments()"
+            >
+                Refresh Enrollments
             </button>
 
         </div>
 
+        <div class="filters">
+
+            <input
+                type="text"
+                id="search-enrollments"
+                placeholder="Search by student name or email..."
+                oninput="filterEnrollments()"
+            >
+
+            <select
+                id="course-filter"
+                onchange="filterEnrollments()"
+            >
+                <option value="all">All Courses</option>
+                <option value="Pitch and Article Writing">
+                    Pitch and Article Writing
+                </option>
+                <option value="Research Writing">
+                    Research Writing
+                </option>
+                <option value="Data Analysis">
+                    Data Analysis
+                </option>
+            </select>
+
+        </div>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Course</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="enrollments-body">
+                    <tr>
+                        <td colspan="7" class="loading">
+                            Loading enrollments...
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
 
 
-        <!-- =================================================
-             ENROLLMENTS TAB
-        ================================================== -->
+    <!-- CONTACT MESSAGES -->
 
-        <section
-            id="enrollments-tab"
-            class="tab-content active">
+    <section id="messages-tab" class="tab-content">
+
+        <div class="section-header">
+
+            <div class="section-title">
+                <h2>Contact Messages</h2>
+                <p>Messages submitted through the EAGLE WRITES contact form.</p>
+            </div>
+
+            <button
+                type="button"
+                class="refresh-button"
+                onclick="loadMessages()"
+            >
+                Refresh Messages
+            </button>
+
+        </div>
+
+        <div class="filters">
+
+            <input
+                type="text"
+                id="search-messages"
+                placeholder="Search by name, email, service or message..."
+                oninput="filterMessages()"
+            >
+
+        </div>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Service</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tbody id="messages-body">
+                    <tr>
+                        <td colspan="6" class="loading">
+                            Loading contact messages...
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
 
 
-            <div class="section-header">
+    <!-- PORTFOLIO DOCUMENTS -->
 
-                <div class="section-title">
+    <section id="documents-tab" class="tab-content">
 
-                    <h2>
-                        Course Enrollments
-                    </h2>
+        <div class="section-header">
 
-                    <p>
-                        Manage student enrollment requests.
-                    </p>
+            <div class="section-title">
+                <h2>Portfolio Documents</h2>
+                <p>
+                    Upload PDF and Word documents that visitors can access
+                    from your portfolio.
+                </p>
+            </div>
 
+            <button
+                type="button"
+                class="refresh-button"
+                onclick="loadDocuments()"
+            >
+                Refresh Documents
+            </button>
+
+        </div>
+
+
+        <div class="document-upload-card">
+
+            <h3>Upload New Document</h3>
+
+            <div class="document-form">
+
+                <div>
+                    <label for="document-title">
+                        Document Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="document-title"
+                        placeholder="e.g. Research Writing Sample"
+                    >
                 </div>
 
+
+                <div>
+                    <label for="document-description">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="document-description"
+                        placeholder="Brief description of the document..."
+                    ></textarea>
+                </div>
+
+
+                <div>
+                    <label for="document-file">
+                        Select PDF or Word Document
+                    </label>
+
+                    <input
+                        type="file"
+                        id="document-file"
+                        accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    >
+                </div>
+
+
+                <div class="upload-info">
+                    Maximum file size: 50 MB.
+                    Supported formats: PDF, DOC and DOCX.
+                </div>
+
+
                 <button
+                    id="upload-document-button"
                     type="button"
-                    class="refresh-button"
-                    onclick="loadEnrollments()">
-
-                    Refresh Enrollments
-
+                    class="primary-button"
+                    onclick="uploadDocument()"
+                >
+                    Upload Document
                 </button>
 
             </div>
 
+        </div>
 
-            <!-- FILTERS -->
 
-            <div class="filters">
+        <div class="table-wrapper">
 
-                <input
-                    type="text"
-                    id="search-enrollments"
-                    placeholder="Search by student name or email..."
-                    oninput="filterEnrollments()">
+            <table>
 
+                <thead>
+                    <tr>
+                        <th>Document</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Size</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
 
-                <select
-                    id="course-filter"
-                    onchange="filterEnrollments()">
+                <tbody id="documents-body">
+                    <tr>
+                        <td colspan="6" class="loading">
+                            Loading documents...
+                        </td>
+                    </tr>
+                </tbody>
 
-                    <option value="all">
-                        All Courses
-                    </option>
+            </table>
 
-                    <option value="Pitch and Article Writing">
-                        Pitch and Article Writing
-                    </option>
+        </div>
 
-                    <option value="Research Writing">
-                        Research Writing
-                    </option>
+    </section>
 
-                    <option value="Data Analysis">
-                        Data Analysis
-                    </option>
+</main>
 
-                </select>
 
-            </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
 
-            <div class="table-wrapper">
+const SUPABASE_URL =
+    'https://ekkvghdnejvyjykagafr.supabase.co';
 
-                <table>
+const SUPABASE_ANON_KEY =
+    'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
 
-                    <thead>
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+    );
 
-                        <tr>
+const STORAGE_BUCKET =
+    'portfolio-documents';
 
-                            <th>
-                                Student
-                            </th>
+const DOCUMENTS_TABLE =
+    'portfolio_documents';
 
-                            <th>
-                                Course
-                            </th>
+let allEnrollments = [];
+let allMessages = [];
+let allDocuments = [];
 
-                            <th>
-                                Email
-                            </th>
 
-                            <th>
-                                Phone
-                            </th>
+/* ================================
+   AUTH
+================================ */
 
-                            <th>
-                                Status
-                            </th>
+async function loginAdmin() {
 
-                            <th>
-                                Date
-                            </th>
+    const email =
+        document.getElementById('login-email').value.trim();
 
-                            <th>
-                                Action
-                            </th>
+    const password =
+        document.getElementById('login-password').value;
 
-                        </tr>
+    const errorBox =
+        document.getElementById('login-error');
 
-                    </thead>
+    errorBox.style.display = 'none';
 
+    if (!email || !password) {
 
-                    <tbody id="enrollments-body">
+        errorBox.textContent =
+            'Please enter your email and password.';
 
-                        <tr>
+        errorBox.style.display = 'block';
 
-                            <td
-                                colspan="7"
-                                class="loading">
+        return;
+    }
 
-                                Loading enrollments...
+    const {
+        error
+    } =
+        await supabaseClient.auth.signInWithPassword({
+            email,
+            password
+        });
 
-                            </td>
+    if (error) {
 
-                        </tr>
+        errorBox.textContent =
+            'Invalid email or password.';
 
-                    </tbody>
+        errorBox.style.display = 'block';
 
-                </table>
+        console.error(error);
 
-            </div>
+        return;
+    }
 
-        </section>
+    document.getElementById(
+        'login-screen'
+    ).style.display = 'none';
 
+    await loadAllAdminData();
+}
 
 
-        <!-- =================================================
-             CONTACT MESSAGES TAB
-        ================================================== -->
+async function resetPassword() {
 
-        <section
-            id="messages-tab"
-            class="tab-content">
+    const email =
+        document.getElementById('login-email').value.trim();
 
+    const errorBox =
+        document.getElementById('login-error');
 
-            <div class="section-header">
+    if (!email) {
 
-                <div class="section-title">
+        errorBox.textContent =
+            'Enter your admin email first.';
 
-                    <h2>
-                        Contact Messages
-                    </h2>
+        errorBox.style.display = 'block';
 
-                    <p>
-                        Messages submitted through the EAGLE WRITES contact form.
-                    </p>
+        return;
+    }
 
-                </div>
+    const {
+        error
+    } =
+        await supabaseClient.auth.resetPasswordForEmail(
+            email,
+            {
+                redirectTo:
+                    window.location.origin +
+                    '/reset-password.html'
+            }
+        );
 
+    if (error) {
 
-                <button
-                    type="button"
-                    class="refresh-button"
-                    onclick="loadMessages()">
+        errorBox.textContent =
+            error.message;
 
-                    Refresh Messages
+        errorBox.style.display = 'block';
 
-                </button>
+        return;
+    }
 
-            </div>
+    alert(
+        'Password reset email sent. Check your email.'
+    );
+}
 
 
-            <!-- MESSAGE SEARCH -->
+async function checkAdmin() {
 
-            <div class="filters">
+    const {
+        data: {
+            session
+        }
+    } =
+        await supabaseClient.auth.getSession();
 
-                <input
-                    type="text"
-                    id="search-messages"
-                    placeholder="Search by name, email, service or message..."
-                    oninput="filterMessages()">
+    if (session) {
 
-            </div>
+        document.getElementById(
+            'login-screen'
+        ).style.display = 'none';
 
+        await loadAllAdminData();
 
-            <!-- MESSAGE TABLE -->
+    } else {
 
-            <div class="table-wrapper">
+        document.getElementById(
+            'login-screen'
+        ).style.display = 'flex';
+    }
+}
 
-                <table>
 
-                    <thead>
+async function logoutAdmin() {
 
-                        <tr>
+    await supabaseClient.auth.signOut();
 
-                            <th>
-                                Name
-                            </th>
+    window.location.reload();
+}
 
-                            <th>
-                                Email
-                            </th>
 
-                            <th>
-                                Phone
-                            </th>
+/* ================================
+   LOAD EVERYTHING
+================================ */
 
-                            <th>
-                                Service
-                            </th>
+async function loadAllAdminData() {
 
-                            <th>
-                                Message
-                            </th>
+    clearAdminMessages();
 
-                            <th>
-                                Date
-                            </th>
+    await loadEnrollments();
 
-                        </tr>
+    await loadMessages();
 
-                    </thead>
+    await loadDocuments();
+}
 
 
-                    <tbody id="messages-body">
+/* ================================
+   DOCUMENT UPLOAD
+================================ */
 
-                        <tr>
+async function uploadDocument() {
 
-                            <td
-                                colspan="6"
-                                class="loading">
+    const title =
+        document
+            .getElementById('document-title')
+            .value
+            .trim();
 
-                                Loading contact messages...
+    const description =
+        document
+            .getElementById('document-description')
+            .value
+            .trim();
 
-                            </td>
+    const fileInput =
+        document.getElementById('document-file');
 
-                        </tr>
+    const file =
+        fileInput.files[0];
 
-                    </tbody>
+    const uploadButton =
+        document.getElementById(
+            'upload-document-button'
+        );
 
-                </table>
 
-            </div>
+    if (!file) {
 
-        </section>
+        showAdminError(
+            'Please select a PDF or Word document.'
+        );
 
-    </main>
+        return;
+    }
 
 
+    const allowedTypes = [
+        'application/pdf',
+        'application/msword',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    ];
 
-    <!-- =====================================================
-         SUPABASE
-    ====================================================== -->
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    const extension =
+        file.name
+            .split('.')
+            .pop()
+            .toLowerCase();
 
 
-    <script>
+    if (
+        !allowedTypes.includes(file.type) &&
+        !['pdf', 'doc', 'docx'].includes(extension)
+    ) {
 
-        /* =====================================================
-           SUPABASE CONFIGURATION
-        ====================================================== */
+        showAdminError(
+            'Only PDF, DOC and DOCX files are allowed.'
+        );
 
-        const SUPABASE_URL =
-            'https://ekkvghdnejvyjykagafr.supabase.co';
+        return;
+    }
 
 
-        const SUPABASE_ANON_KEY =
-            'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
+    if (file.size > 50 * 1024 * 1024) {
 
+        showAdminError(
+            'The file is larger than the 50 MB limit.'
+        );
 
-        const supabaseClient =
-            window.supabase.createClient(
-                SUPABASE_URL,
-                SUPABASE_ANON_KEY
+        return;
+    }
+
+
+    const safeName =
+        file.name
+            .replace(
+                /[^a-zA-Z0-9._-]/g,
+                '_'
             );
 
 
+    const uniqueName =
+        Date.now() +
+        '_' +
+        crypto.randomUUID() +
+        '_' +
+        safeName;
 
-        /* =====================================================
-           STORAGE
-        ====================================================== */
 
-        let allEnrollments = [];
+    const filePath =
+        uniqueName;
 
-        let allMessages = [];
 
+    try {
 
+        uploadButton.disabled = true;
 
-        /* =====================================================
-           AUTH BUTTON
-        ====================================================== */
+        uploadButton.textContent =
+            'Uploading...';
 
-        async function handleAuthButton() {
+        showAdminSuccess(
+            'Uploading document...'
+        );
 
-            const authButton =
-                document.getElementById(
-                    'auth-button'
-                );
 
+        /* Upload actual file to Supabase Storage */
 
-            const {
-                data: {
-                    session
-                },
-                error
-            } =
-                await supabaseClient.auth.getSession();
-
-
-            if (error) {
-
-                showAdminError(
-                    error.message
-                );
-
-                return;
-
-            }
-
-
-            if (session) {
-
-                await logoutAdmin();
-
-                return;
-
-            }
-
-
-            await checkAdmin();
-
-        }
-
-
-
-        /* =====================================================
-           ADMIN LOGIN
-        ====================================================== */
-
-        async function checkAdmin() {
-
-            const authButton =
-                document.getElementById(
-                    'auth-button'
-                );
-
-
-            const {
-                data: {
-                    session
-                }
-            } =
-                await supabaseClient.auth.getSession();
-
-
-            if (session) {
-
-                authButton.textContent =
-                    'Logout';
-
-
-                await loadAllAdminData();
-
-
-                return;
-
-            }
-
-
-            authButton.textContent =
-                'Login';
-
-
-            const email =
-                prompt(
-                    'Enter your admin email:'
-                );
-
-
-            if (!email) {
-
-                return;
-
-            }
-
-
-            const choice =
-                confirm(
-                    'Click OK to log in with your password.\n\n' +
-                    'Click Cancel if you forgot your password.'
-                );
-
-
-            /* =================================================
-               PASSWORD RESET
-            ================================================= */
-
-            if (!choice) {
-
-                const {
-                    error
-                } =
-                    await supabaseClient
-                        .auth
-                        .resetPasswordForEmail(
-                            email,
-                            {
-                                redirectTo:
-                                    window.location.origin +
-                                    '/reset-password.html'
-                            }
-                        );
-
-
-                if (error) {
-
-                    alert(
-                        'Unable to send password reset email: ' +
-                        error.message
-                    );
-
-                    return;
-
-                }
-
-
-                alert(
-                    'Password reset email sent. Check your email.'
-                );
-
-
-                return;
-
-            }
-
-
-            /* =================================================
-               PASSWORD LOGIN
-            ================================================= */
-
-            const password =
-                prompt(
-                    'Enter your admin password:'
-                );
-
-
-            if (!password) {
-
-                return;
-
-            }
-
-
-            const {
-                error
-            } =
-                await supabaseClient
-                    .auth
-                    .signInWithPassword({
-                        email: email.trim(),
-                        password: password
-                    });
-
-
-            if (error) {
-
-                alert(
-                    'Invalid admin email or password.'
-                );
-
-                console.error(
-                    'Login error:',
-                    error
-                );
-
-                return;
-
-            }
-
-
-            authButton.textContent =
-                'Logout';
-
-
-            await loadAllAdminData();
-
-        }
-
-
-
-        /* =====================================================
-           LOGOUT
-        ====================================================== */
-
-        async function logoutAdmin() {
-
-            const {
-                error
-            } =
-                await supabaseClient.auth.signOut();
-
-
-            if (error) {
-
-                alert(
-                    'Unable to log out: ' +
-                    error.message
-                );
-
-                return;
-
-            }
-
-
-            window.location.reload();
-
-        }
-
-
-
-        /* =====================================================
-           LOAD EVERYTHING
-        ====================================================== */
-
-        async function loadAllAdminData() {
-
-            clearAdminMessages();
-
-
-            await loadEnrollments();
-
-            await loadMessages();
-
-        }
-
-
-
-        /* =====================================================
-           LOAD ENROLLMENTS
-        ====================================================== */
-
-        async function loadEnrollments() {
-
-            const body =
-                document.getElementById(
-                    'enrollments-body'
-                );
-
-
-            body.innerHTML = `
-
-                <tr>
-
-                    <td
-                        colspan="7"
-                        class="loading">
-
-                        Loading enrollments...
-
-                    </td>
-
-                </tr>
-
-            `;
-
-
-            try {
-
-                const {
-                    data,
-                    error
-                } =
-                    await supabaseClient
-                        .from('enrollments')
-                        .select('*')
-                        .order(
-                            'created_at',
-                            {
-                                ascending: false
-                            }
-                        );
-
-
-                if (error) {
-
-                    throw error;
-
-                }
-
-
-                allEnrollments =
-                    data || [];
-
-
-                updateEnrollmentStatistics(
-                    allEnrollments
-                );
-
-
-                renderEnrollments(
-                    allEnrollments
-                );
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    'Failed to load enrollments:',
-                    error
-                );
-
-
-                showAdminError(
-                    'Unable to load enrollments: ' +
-                    error.message
-                );
-
-
-                body.innerHTML = `
-
-                    <tr>
-
-                        <td
-                            colspan="7"
-                            class="empty">
-
-                            Unable to load enrollments.
-
-                        </td>
-
-                    </tr>
-
-                `;
-
-            }
-
-        }
-
-
-
-        /* =====================================================
-           LOAD CONTACT MESSAGES
-        ====================================================== */
-
-        async function loadMessages() {
-
-            const body =
-                document.getElementById(
-                    'messages-body'
-                );
-
-
-            body.innerHTML = `
-
-                <tr>
-
-                    <td
-                        colspan="6"
-                        class="loading">
-
-                        Loading contact messages...
-
-                    </td>
-
-                </tr>
-
-            `;
-
-
-            try {
-
-                console.log(
-                    'Loading contact messages...'
-                );
-
-
-                const {
-                    data,
-                    error,
-                    count
-                } =
-                    await supabaseClient
-                        .from('contact_messages')
-                        .select(
-                            '*',
-                            {
-                                count: 'exact'
-                            }
-                        )
-                        .order(
-                            'created_at',
-                            {
-                                ascending: false
-                            }
-                        );
-
-
-                console.log(
-                    'Contact messages result:',
+        const {
+            error: uploadError
+        } =
+            await supabaseClient.storage
+                .from(STORAGE_BUCKET)
+                .upload(
+                    filePath,
+                    file,
                     {
-                        data,
-                        error,
-                        count
+                        cacheControl: '3600',
+                        upsert: false,
+                        contentType:
+                            file.type ||
+                            'application/octet-stream'
                     }
                 );
 
 
-                if (error) {
-
-                    throw error;
-
-                }
-
-
-                allMessages =
-                    data || [];
-
-
-                document.getElementById(
-                    'total-messages'
-                ).textContent =
-                    count !== null
-                        ? count
-                        : allMessages.length;
-
-
-                renderMessages(
-                    allMessages
-                );
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    'Failed to load contact messages:',
-                    error
-                );
-
-
-                document.getElementById(
-                    'total-messages'
-                ).textContent =
-                    '0';
-
-
-                body.innerHTML = `
-
-                    <tr>
-
-                        <td
-                            colspan="6"
-                            class="empty">
-
-                            Unable to load contact messages:
-                            ${escapeHtml(error.message)}
-
-                        </td>
-
-                    </tr>
-
-                `;
-
-
-                showAdminError(
-                    'Unable to load contact messages: ' +
-                    error.message
-                );
-
-            }
-
+        if (uploadError) {
+            throw uploadError;
         }
 
 
+        /* Get public URL */
 
-        /* =====================================================
-           RENDER ENROLLMENTS
-        ====================================================== */
-
-        function renderEnrollments(
-            enrollments
-        ) {
-
-            const body =
-                document.getElementById(
-                    'enrollments-body'
+        const {
+            data: publicUrlData
+        } =
+            supabaseClient.storage
+                .from(STORAGE_BUCKET)
+                .getPublicUrl(
+                    filePath
                 );
 
 
-            if (
-                !enrollments ||
-                enrollments.length === 0
-            ) {
+        const publicUrl =
+            publicUrlData.publicUrl;
 
-                body.innerHTML = `
 
+        /* Save document information in Supabase database */
+
+        const {
+            error: databaseError
+        } =
+            await supabaseClient
+                .from(DOCUMENTS_TABLE)
+                .insert({
+
+                    title:
+                        title ||
+                        file.name,
+
+                    description:
+                        description ||
+                        '',
+
+                    name:
+                        file.name,
+
+                    path:
+                        filePath,
+
+                    url:
+                        publicUrl,
+
+                    size:
+                        file.size,
+
+                    type:
+                        file.type ||
+                        'application/octet-stream'
+
+                });
+
+
+        /*
+         * If database insertion fails, remove the uploaded
+         * Storage file so we do not leave an orphaned file.
+         */
+
+        if (databaseError) {
+
+            await supabaseClient.storage
+                .from(STORAGE_BUCKET)
+                .remove([
+                    filePath
+                ]);
+
+            throw databaseError;
+        }
+
+
+        /* Clear form */
+
+        document.getElementById(
+            'document-title'
+        ).value = '';
+
+        document.getElementById(
+            'document-description'
+        ).value = '';
+
+        fileInput.value = '';
+
+
+        showAdminSuccess(
+            'Document uploaded successfully.'
+        );
+
+
+        await loadDocuments();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            'Document upload error:',
+            error
+        );
+
+        showAdminError(
+            'Unable to upload document: ' +
+            error.message
+        );
+
+    }
+
+    finally {
+
+        uploadButton.disabled = false;
+
+        uploadButton.textContent =
+            'Upload Document';
+    }
+}
+
+
+/* ================================
+   LOAD DOCUMENTS FROM SUPABASE
+================================ */
+
+async function loadDocuments() {
+
+    const body =
+        document.getElementById(
+            'documents-body'
+        );
+
+
+    body.innerHTML = `
+        <tr>
+            <td colspan="6" class="loading">
+                Loading documents...
+            </td>
+        </tr>
+    `;
+
+
+    try {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from(DOCUMENTS_TABLE)
+                .select('*')
+                .order(
+                    'created_at',
+                    {
+                        ascending: false
+                    }
+                );
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        allDocuments =
+            data || [];
+
+
+        renderDocuments(
+            allDocuments
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            'Load documents error:',
+            error
+        );
+
+        allDocuments = [];
+
+
+        body.innerHTML = `
+            <tr>
+                <td colspan="6" class="empty">
+                    Unable to load portfolio documents.
+                </td>
+            </tr>
+        `;
+
+
+        showAdminError(
+            'Unable to load portfolio documents: ' +
+            error.message
+        );
+    }
+}
+
+
+/* ================================
+   RENDER DOCUMENTS
+================================ */
+
+function renderDocuments(documents) {
+
+    const body =
+        document.getElementById(
+            'documents-body'
+        );
+
+
+    if (
+        !documents ||
+        documents.length === 0
+    ) {
+
+        body.innerHTML = `
+            <tr>
+                <td colspan="6" class="empty">
+                    No portfolio documents uploaded yet.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    body.innerHTML =
+        documents.map(
+            documentItem => {
+
+                const size =
+                    formatFileSize(
+                        documentItem.size
+                    );
+
+
+                const date =
+                    documentItem.created_at
+                        ? new Date(
+                            documentItem.created_at
+                        ).toLocaleString()
+                        : '—';
+
+
+                return `
                     <tr>
 
-                        <td
-                            colspan="7"
-                            class="empty">
+                        <td>
+                            <strong>
+                                ${escapeHtml(
+                                    documentItem.title ||
+                                    documentItem.name ||
+                                    'Untitled document'
+                                )}
+                            </strong>
 
-                            No enrollments yet.
+                            <br>
+
+                            <small>
+                                ${escapeHtml(
+                                    documentItem.name ||
+                                    ''
+                                )}
+                            </small>
+                        </td>
+
+
+                        <td>
+                            ${escapeHtml(
+                                documentItem.description ||
+                                '—'
+                            )}
+                        </td>
+
+
+                        <td>
+                            ${escapeHtml(
+                                documentItem.type ||
+                                'Document'
+                            )}
+                        </td>
+
+
+                        <td>
+                            ${escapeHtml(size)}
+                        </td>
+
+
+                        <td>
+                            ${escapeHtml(date)}
+                        </td>
+
+
+                        <td>
+
+                            <div class="document-action">
+
+                                <button
+                                    class="view-button"
+                                    type="button"
+                                    onclick="viewDocument(
+                                        '${escapeJs(
+                                            documentItem.url
+                                        )}'
+                                    )"
+                                >
+                                    View
+                                </button>
+
+
+                                <button
+                                    class="delete-button"
+                                    type="button"
+                                    onclick="deleteDocument(
+                                        '${escapeJs(
+                                            String(
+                                                documentItem.id
+                                            )
+                                        )}',
+                                        '${escapeJs(
+                                            documentItem.path
+                                        )}'
+                                    )"
+                                >
+                                    Delete
+                                </button>
+
+                            </div>
 
                         </td>
 
                     </tr>
-
                 `;
 
+            }
+        ).join('');
+}
 
-                return;
+
+/* ================================
+   VIEW DOCUMENT
+================================ */
+
+function viewDocument(url) {
+
+    if (!url) {
+
+        showAdminError(
+            'Document URL is not available.'
+        );
+
+        return;
+    }
+
+
+    window.open(
+        url,
+        '_blank',
+        'noopener,noreferrer'
+    );
+}
+
+
+/* ================================
+   DELETE DOCUMENT
+================================ */
+
+async function deleteDocument(
+    documentId,
+    filePath
+) {
+
+    const confirmed =
+        confirm(
+            'Are you sure you want to delete this document?'
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    try {
+
+        showAdminSuccess(
+            'Deleting document...'
+        );
+
+
+        /* Delete actual file from Storage */
+
+        const {
+            error: storageError
+        } =
+            await supabaseClient.storage
+                .from(STORAGE_BUCKET)
+                .remove([
+                    filePath
+                ]);
+
+
+        if (storageError) {
+            throw storageError;
+        }
+
+
+        /* Delete document information from database */
+
+        const {
+            error: databaseError
+        } =
+            await supabaseClient
+                .from(DOCUMENTS_TABLE)
+                .delete()
+                .eq(
+                    'id',
+                    documentId
+                );
+
+
+        if (databaseError) {
+            throw databaseError;
+        }
+
+
+        showAdminSuccess(
+            'Document deleted successfully.'
+        );
+
+
+        await loadDocuments();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            'Delete document error:',
+            error
+        );
+
+        showAdminError(
+            'Unable to delete document: ' +
+            error.message
+        );
+    }
+}
+
+
+/* ================================
+   ENROLLMENTS
+================================ */
+
+async function loadEnrollments() {
+
+    const body =
+        document.getElementById(
+            'enrollments-body'
+        );
+
+    try {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from('enrollments')
+                .select('*')
+                .order(
+                    'created_at',
+                    {
+                        ascending: false
+                    }
+                );
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        allEnrollments =
+            data || [];
+
+
+        updateEnrollmentStatistics(
+            allEnrollments
+        );
+
+
+        renderEnrollments(
+            allEnrollments
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        showAdminError(
+            'Unable to load enrollments: ' +
+            error.message
+        );
+
+
+        body.innerHTML = `
+            <tr>
+                <td colspan="7" class="empty">
+                    Unable to load enrollments.
+                </td>
+            </tr>
+        `;
+    }
+}
+
+
+function renderEnrollments(
+    enrollments
+) {
+
+    const body =
+        document.getElementById(
+            'enrollments-body'
+        );
+
+
+    if (
+        !enrollments ||
+        enrollments.length === 0
+    ) {
+
+        body.innerHTML = `
+            <tr>
+                <td colspan="7" class="empty">
+                    No enrollments yet.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    body.innerHTML =
+        enrollments.map(
+            enrollment => {
+
+                const date =
+                    enrollment.created_at
+                        ? new Date(
+                            enrollment.created_at
+                        ).toLocaleString()
+                        : '—';
+
+
+                const status =
+                    enrollment.status ||
+                    'pending';
+
+
+                return `
+                    <tr>
+
+                        <td>
+                            ${escapeHtml(
+                                enrollment.full_name ||
+                                '—'
+                            )}
+                        </td>
+
+                        <td>
+                            ${escapeHtml(
+                                enrollment.course_title ||
+                                '—'
+                            )}
+                        </td>
+
+                        <td>
+                            <a
+                                class="contact-link"
+                                href="mailto:${escapeAttribute(
+                                    enrollment.email || ''
+                                )}"
+                            >
+                                ${escapeHtml(
+                                    enrollment.email ||
+                                    '—'
+                                )}
+                            </a>
+                        </td>
+
+                        <td>
+                            ${escapeHtml(
+                                enrollment.phone ||
+                                '—'
+                            )}
+                        </td>
+
+                        <td>
+                            <span
+                                class="status status-${escapeHtml(
+                                    status
+                                )}"
+                            >
+                                ${escapeHtml(status)}
+                            </span>
+                        </td>
+
+                        <td>
+                            ${escapeHtml(date)}
+                        </td>
+
+                        <td>
+
+                            <select
+                                class="status-select"
+                                onchange="updateStatus(
+                                    '${escapeJs(
+                                        String(
+                                            enrollment.id
+                                        )
+                                    )}',
+                                    this.value
+                                )"
+                            >
+
+                                <option
+                                    value="pending"
+                                    ${status === 'pending'
+                                        ? 'selected'
+                                        : ''}
+                                >
+                                    Pending
+                                </option>
+
+                                <option
+                                    value="approved"
+                                    ${status === 'approved'
+                                        ? 'selected'
+                                        : ''}
+                                >
+                                    Approved
+                                </option>
+
+                                <option
+                                    value="rejected"
+                                    ${status === 'rejected'
+                                        ? 'selected'
+                                        : ''}
+                                >
+                                    Rejected
+                                </option>
+
+                            </select>
+
+                        </td>
+
+                    </tr>
+                `;
 
             }
+        ).join('');
+}
 
 
-            body.innerHTML =
-                enrollments
-                    .map(
-                        enrollment => {
+function filterEnrollments() {
 
-                            const date =
-                                enrollment.created_at
-                                    ? new Date(
-                                        enrollment.created_at
-                                    )
-                                        .toLocaleString()
-                                    : '—';
+    const search =
+        document
+            .getElementById(
+                'search-enrollments'
+            )
+            .value
+            .toLowerCase()
+            .trim();
 
 
-                            const status =
-                                enrollment.status ||
-                                'pending';
+    const course =
+        document
+            .getElementById(
+                'course-filter'
+            )
+            .value;
 
 
-                            return `
+    const filtered =
+        allEnrollments.filter(
+            enrollment => {
 
-                                <tr>
-
-                                    <td>
-
-                                        ${escapeHtml(
-                                            enrollment.full_name ||
-                                            '—'
-                                        )}
-
-                                    </td>
+                const name =
+                    (
+                        enrollment.full_name ||
+                        ''
+                    ).toLowerCase();
 
 
-                                    <td>
-
-                                        ${escapeHtml(
-                                            enrollment.course_title ||
-                                            '—'
-                                        )}
-
-                                    </td>
+                const email =
+                    (
+                        enrollment.email ||
+                        ''
+                    ).toLowerCase();
 
 
-                                    <td>
+                const courseTitle =
+                    enrollment.course_title ||
+                    '';
 
+
+                return (
+                    (
+                        name.includes(search) ||
+                        email.includes(search)
+                    ) &&
+                    (
+                        course === 'all' ||
+                        courseTitle === course
+                    )
+                );
+            }
+        );
+
+
+    renderEnrollments(
+        filtered
+    );
+}
+
+
+function updateEnrollmentStatistics(
+    enrollments
+) {
+
+    document.getElementById(
+        'total-enrollments'
+    ).textContent =
+        enrollments.length;
+
+
+    document.getElementById(
+        'pending-enrollments'
+    ).textContent =
+        enrollments.filter(
+            item =>
+                item.status === 'pending'
+        ).length;
+
+
+    document.getElementById(
+        'approved-enrollments'
+    ).textContent =
+        enrollments.filter(
+            item =>
+                item.status === 'approved'
+        ).length;
+}
+
+
+async function updateStatus(
+    enrollmentId,
+    newStatus
+) {
+
+    try {
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from('enrollments')
+                .update({
+                    status: newStatus
+                })
+                .eq(
+                    'id',
+                    enrollmentId
+                );
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        showAdminSuccess(
+            'Enrollment status updated.'
+        );
+
+
+        await loadEnrollments();
+
+    }
+
+    catch (error) {
+
+        showAdminError(
+            'Unable to update enrollment status: ' +
+            error.message
+        );
+    }
+}
+
+
+/* ================================
+   MESSAGES
+================================ */
+
+async function loadMessages() {
+
+    const body =
+        document.getElementById(
+            'messages-body'
+        );
+
+    try {
+
+        const {
+            data,
+            error,
+            count
+        } =
+            await supabaseClient
+                .from('contact_messages')
+                .select(
+                    '*',
+                    {
+                        count: 'exact'
+                    }
+                )
+                .order(
+                    'created_at',
+                    {
+                        ascending: false
+                    }
+                );
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        allMessages =
+            data || [];
+
+
+        document.getElementById(
+            'total-messages'
+        ).textContent =
+            count !== null
+                ? count
+                : allMessages.length;
+
+
+        renderMessages(
+            allMessages
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        showAdminError(
+            'Unable to load contact messages: ' +
+            error.message
+        );
+
+
+        body.innerHTML = `
+            <tr>
+                <td colspan="6" class="empty">
+                    Unable to load contact messages.
+                </td>
+            </tr>
+        `;
+    }
+}
+
+
+function renderMessages(
+    messages
+) {
+
+    const body =
+        document.getElementById(
+            'messages-body'
+        );
+
+
+    if (
+        !messages ||
+        messages.length === 0
+    ) {
+
+        body.innerHTML = `
+            <tr>
+                <td colspan="6" class="empty">
+                    No contact messages yet.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    body.innerHTML =
+        messages.map(
+            item => {
+
+                const date =
+                    item.created_at
+                        ? new Date(
+                            item.created_at
+                        ).toLocaleString()
+                        : '—';
+
+
+                return `
+                    <tr>
+
+                        <td>
+                            ${escapeHtml(
+                                item.name ||
+                                '—'
+                            )}
+                        </td>
+
+                        <td>
+
+                            ${
+                                item.email
+                                    ? `
                                         <a
                                             class="contact-link"
                                             href="mailto:${escapeAttribute(
-                                                enrollment.email || ''
-                                            )}">
-
+                                                item.email
+                                            )}"
+                                        >
                                             ${escapeHtml(
-                                                enrollment.email ||
-                                                '—'
+                                                item.email
                                             )}
-
                                         </a>
+                                    `
+                                    : '—'
+                            }
 
-                                    </td>
+                        </td>
 
+                        <td>
 
-                                    <td>
+                            ${
+                                item.phone
+                                    ? `
+                                        <a
+                                            class="contact-link"
+                                            href="tel:${escapeAttribute(
+                                                item.phone
+                                            )}"
+                                        >
+                                            ${escapeHtml(
+                                                item.phone
+                                            )}
+                                        </a>
+                                    `
+                                    : '—'
+                            }
 
-                                        ${escapeHtml(
-                                            enrollment.phone ||
-                                            '—'
-                                        )}
+                        </td>
 
-                                    </td>
+                        <td>
 
+                            <span class="service-badge">
 
-                                    <td>
+                                ${escapeHtml(
+                                    item.service ||
+                                    'General'
+                                )}
 
-                                        <span
-                                            class="status status-${escapeHtml(status)}">
+                            </span>
 
-                                            ${escapeHtml(status)}
+                        </td>
 
-                                        </span>
+                        <td class="message-cell">
 
-                                    </td>
+                            ${escapeHtml(
+                                item.message ||
+                                '—'
+                            )}
 
+                        </td>
 
-                                    <td>
+                        <td>
 
-                                        ${escapeHtml(date)}
-
-                                    </td>
-
-
-                                    <td>
-
-                                        <select
-                                            class="status-select"
-                                            onchange="updateStatus(
-                                                '${escapeJs(
-                                                    String(
-                                                        enrollment.id
-                                                    )
-                                                )}',
-                                                this.value
-                                            )">
-
-                                            <option
-                                                value="pending"
-                                                ${status === 'pending'
-                                                    ? 'selected'
-                                                    : ''}>
-
-                                                Pending
-
-                                            </option>
-
-
-                                            <option
-                                                value="approved"
-                                                ${status === 'approved'
-                                                    ? 'selected'
-                                                    : ''}>
-
-                                                Approved
-
-                                            </option>
-
-
-                                            <option
-                                                value="rejected"
-                                                ${status === 'rejected'
-                                                    ? 'selected'
-                                                    : ''}>
-
-                                                Rejected
-
-                                            </option>
-
-                                        </select>
-
-                                    </td>
-
-                                </tr>
-
-                            `;
-
-                        }
-                    )
-                    .join('');
-
-        }
-
-
-
-        /* =====================================================
-           RENDER CONTACT MESSAGES
-        ====================================================== */
-
-        function renderMessages(
-            messages
-        ) {
-
-            const body =
-                document.getElementById(
-                    'messages-body'
-                );
-
-
-            if (
-                !messages ||
-                messages.length === 0
-            ) {
-
-                body.innerHTML = `
-
-                    <tr>
-
-                        <td
-                            colspan="6"
-                            class="empty">
-
-                            No contact messages yet.
+                            ${escapeHtml(date)}
 
                         </td>
 
                     </tr>
-
                 `;
 
-
-                return;
-
             }
+        ).join('');
+}
 
 
-            body.innerHTML =
-                messages
-                    .map(
-                        item => {
+function filterMessages() {
 
-                            const date =
-                                item.created_at
-                                    ? new Date(
-                                        item.created_at
-                                    )
-                                        .toLocaleString()
-                                    : '—';
+    const search =
+        document
+            .getElementById(
+                'search-messages'
+            )
+            .value
+            .toLowerCase()
+            .trim();
 
 
-                            return `
+    const filtered =
+        allMessages.filter(
+            item => {
 
-                                <tr>
+                const name =
+                    (
+                        item.name ||
+                        ''
+                    ).toLowerCase();
 
-                                    <td>
 
-                                        ${escapeHtml(
-                                            item.name ||
-                                            '—'
-                                        )}
+                const email =
+                    (
+                        item.email ||
+                        ''
+                    ).toLowerCase();
 
-                                    </td>
 
+                const service =
+                    (
+                        item.service ||
+                        ''
+                    ).toLowerCase();
 
-                                    <td>
 
-                                        ${
-                                            item.email
+                const message =
+                    (
+                        item.message ||
+                        ''
+                    ).toLowerCase();
 
-                                            ?
 
-                                            `
-                                                <a
-                                                    class="contact-link"
-                                                    href="mailto:${escapeAttribute(
-                                                        item.email
-                                                    )}">
-
-                                                    ${escapeHtml(
-                                                        item.email
-                                                    )}
-
-                                                </a>
-                                            `
-
-                                            :
-
-                                            '—'
-                                        }
-
-                                    </td>
-
-
-                                    <td>
-
-                                        ${
-                                            item.phone
-
-                                            ?
-
-                                            `
-                                                <a
-                                                    class="contact-link"
-                                                    href="tel:${escapeAttribute(
-                                                        item.phone
-                                                    )}">
-
-                                                    ${escapeHtml(
-                                                        item.phone
-                                                    )}
-
-                                                </a>
-                                            `
-
-                                            :
-
-                                            '—'
-                                        }
-
-                                    </td>
-
-
-                                    <td>
-
-                                        <span
-                                            class="service-badge">
-
-                                            ${escapeHtml(
-                                                item.service ||
-                                                'General'
-                                            )}
-
-                                        </span>
-
-                                    </td>
-
-
-                                    <td class="message-cell">
-
-                                        ${escapeHtml(
-                                            item.message ||
-                                            '—'
-                                        )}
-
-                                    </td>
-
-
-                                    <td class="message-date">
-
-                                        ${escapeHtml(date)}
-
-                                    </td>
-
-                                </tr>
-
-                            `;
-
-                        }
-                    )
-                    .join('');
-
-        }
-
-
-
-        /* =====================================================
-           FILTER ENROLLMENTS
-        ====================================================== */
-
-        function filterEnrollments() {
-
-            const search =
-                document
-                    .getElementById(
-                        'search-enrollments'
-                    )
-                    .value
-                    .toLowerCase()
-                    .trim();
-
-
-            const course =
-                document
-                    .getElementById(
-                        'course-filter'
-                    )
-                    .value;
-
-
-            const filtered =
-                allEnrollments.filter(
-                    enrollment => {
-
-                        const name =
-                            (
-                                enrollment.full_name ||
-                                ''
-                            )
-                                .toLowerCase();
-
-
-                        const email =
-                            (
-                                enrollment.email ||
-                                ''
-                            )
-                                .toLowerCase();
-
-
-                        const courseTitle =
-                            enrollment.course_title ||
-                            '';
-
-
-                        const matchesSearch =
-                            name.includes(search) ||
-                            email.includes(search);
-
-
-                        const matchesCourse =
-                            course === 'all' ||
-                            courseTitle === course;
-
-
-                        return (
-                            matchesSearch &&
-                            matchesCourse
-                        );
-
-                    }
+                return (
+                    name.includes(search) ||
+                    email.includes(search) ||
+                    service.includes(search) ||
+                    message.includes(search)
                 );
-
-
-            renderEnrollments(
-                filtered
-            );
-
-        }
-
-
-
-        /* =====================================================
-           FILTER CONTACT MESSAGES
-        ====================================================== */
-
-        function filterMessages() {
-
-            const search =
-                document
-                    .getElementById(
-                        'search-messages'
-                    )
-                    .value
-                    .toLowerCase()
-                    .trim();
-
-
-            const filtered =
-                allMessages.filter(
-                    item => {
-
-                        const name =
-                            (
-                                item.name ||
-                                ''
-                            )
-                                .toLowerCase();
-
-
-                        const email =
-                            (
-                                item.email ||
-                                ''
-                            )
-                                .toLowerCase();
-
-
-                        const service =
-                            (
-                                item.service ||
-                                ''
-                            )
-                                .toLowerCase();
-
-
-                        const message =
-                            (
-                                item.message ||
-                                ''
-                            )
-                                .toLowerCase();
-
-
-                        return (
-                            name.includes(search) ||
-                            email.includes(search) ||
-                            service.includes(search) ||
-                            message.includes(search)
-                        );
-
-                    }
-                );
-
-
-            renderMessages(
-                filtered
-            );
-
-        }
-
-
-
-        /* =====================================================
-           ENROLLMENT STATISTICS
-        ====================================================== */
-
-        function updateEnrollmentStatistics(
-            enrollments
-        ) {
-
-            document.getElementById(
-                'total-enrollments'
-            ).textContent =
-                enrollments.length;
-
-
-            document.getElementById(
-                'pending-enrollments'
-            ).textContent =
-                enrollments.filter(
-                    item =>
-                        item.status === 'pending'
-                ).length;
-
-
-            document.getElementById(
-                'approved-enrollments'
-            ).textContent =
-                enrollments.filter(
-                    item =>
-                        item.status === 'approved'
-                ).length;
-
-        }
-
-
-
-        /* =====================================================
-           UPDATE ENROLLMENT STATUS
-        ====================================================== */
-
-        async function updateStatus(
-            enrollmentId,
-            newStatus
-        ) {
-
-            try {
-
-                const {
-                    error
-                } =
-                    await supabaseClient
-                        .from('enrollments')
-                        .update({
-                            status: newStatus
-                        })
-                        .eq(
-                            'id',
-                            enrollmentId
-                        );
-
-
-                if (error) {
-
-                    throw error;
-
-                }
-
-
-                showAdminSuccess(
-                    'Enrollment status updated.'
-                );
-
-
-                await loadEnrollments();
-
             }
+        );
 
-            catch (error) {
 
-                console.error(
-                    'Failed to update status:',
-                    error
+    renderMessages(
+        filtered
+    );
+}
+
+
+/* ================================
+   TABS
+================================ */
+
+async function showTab(
+    tabName
+) {
+
+    const tabs = [
+        'enrollments',
+        'messages',
+        'documents'
+    ];
+
+
+    tabs.forEach(
+        name => {
+
+            const tab =
+                document.getElementById(
+                    name + '-tab'
                 );
 
 
-                showAdminError(
-                    'Unable to update enrollment status: ' +
-                    error.message
+            const button =
+                document.getElementById(
+                    name + '-tab-button'
                 );
 
 
-                await loadEnrollments();
+            if (name === tabName) {
 
+                tab.classList.add(
+                    'active'
+                );
+
+                button.classList.add(
+                    'active'
+                );
+
+            } else {
+
+                tab.classList.remove(
+                    'active'
+                );
+
+                button.classList.remove(
+                    'active'
+                );
             }
-
         }
+    );
 
 
-
-        /* =====================================================
-           TABS
-        ====================================================== */
-
-        async function showTab(
-            tabName
-        ) {
-
-            const enrollmentsTab =
-                document.getElementById(
-                    'enrollments-tab'
-                );
+    if (tabName === 'messages') {
+        await loadMessages();
+    }
 
 
-            const messagesTab =
-                document.getElementById(
-                    'messages-tab'
-                );
+    if (tabName === 'documents') {
+        await loadDocuments();
+    }
+}
 
 
-            const enrollmentsButton =
-                document.getElementById(
-                    'enrollments-tab-button'
-                );
+/* ================================
+   HELPERS
+================================ */
+
+function clearAdminMessages() {
+
+    document.getElementById(
+        'admin-error'
+    ).style.display =
+        'none';
 
 
-            const messagesButton =
-                document.getElementById(
-                    'messages-tab-button'
-                );
+    document.getElementById(
+        'admin-success'
+    ).style.display =
+        'none';
+}
 
 
-            if (
-                tabName ===
-                'messages'
-            ) {
+function showAdminError(
+    message
+) {
 
-                enrollmentsTab.classList.remove(
-                    'active'
-                );
-
-                messagesTab.classList.add(
-                    'active'
-                );
+    const box =
+        document.getElementById(
+            'admin-error'
+        );
 
 
-                enrollmentsButton.classList.remove(
-                    'active'
-                );
-
-                messagesButton.classList.add(
-                    'active'
-                );
+    box.textContent =
+        message;
 
 
-                /*
-                 * Always reload from Supabase when the
-                 * Contact Messages tab is opened.
-                 */
-
-                await loadMessages();
-
-            }
-
-            else {
-
-                messagesTab.classList.remove(
-                    'active'
-                );
-
-                enrollmentsTab.classList.add(
-                    'active'
-                );
+    box.style.display =
+        'block';
+}
 
 
-                messagesButton.classList.remove(
-                    'active'
-                );
+function showAdminSuccess(
+    message
+) {
 
-                enrollmentsButton.classList.add(
-                    'active'
-                );
-
-            }
-
-        }
+    const box =
+        document.getElementById(
+            'admin-success'
+        );
 
 
-
-        /* =====================================================
-           MESSAGE HELPERS
-        ====================================================== */
-
-        function clearAdminMessages() {
-
-            document.getElementById(
-                'admin-error'
-            ).style.display =
-                'none';
+    box.textContent =
+        message;
 
 
-            document.getElementById(
-                'admin-success'
-            ).style.display =
-                'none';
-
-        }
+    box.style.display =
+        'block';
 
 
-        function showAdminError(
-            message
-        ) {
-
-            const box =
-                document.getElementById(
-                    'admin-error'
-                );
-
-
-            box.textContent =
-                message;
-
+    setTimeout(
+        () => {
 
             box.style.display =
-                'block';
+                'none';
 
-        }
-
-
-        function showAdminSuccess(
-            message
-        ) {
-
-            const box =
-                document.getElementById(
-                    'admin-success'
-                );
+        },
+        3500
+    );
+}
 
 
-            box.textContent =
-                message;
+function formatFileSize(
+    bytes
+) {
+
+    if (!bytes) {
+        return '0 Bytes';
+    }
 
 
-            box.style.display =
-                'block';
+    const units = [
+        'Bytes',
+        'KB',
+        'MB',
+        'GB'
+    ];
 
 
-            setTimeout(
-                function() {
-
-                    box.style.display =
-                        'none';
-
-                },
-                3500
-            );
-
-        }
+    const index =
+        Math.floor(
+            Math.log(bytes) /
+            Math.log(1024)
+        );
 
 
-
-        /* =====================================================
-           SECURITY HELPERS
-        ====================================================== */
-
-        function escapeHtml(
-            value
-        ) {
-
-            const div =
-                document.createElement(
-                    'div'
-                );
-
-
-            div.textContent =
-                value;
-
-
-            return div.innerHTML;
-
-        }
-
-
-        function escapeAttribute(
-            value
-        ) {
-
-            return String(value)
-
-                .replace(
-                    /&/g,
-                    '&amp;'
+    return (
+        parseFloat(
+            (
+                bytes /
+                Math.pow(
+                    1024,
+                    index
                 )
-
-                .replace(
-                    /"/g,
-                    '&quot;'
-                )
-
-                .replace(
-                    /'/g,
-                    '&#39;'
-                )
-
-                .replace(
-                    /</g,
-                    '&lt;'
-                )
-
-                .replace(
-                    />/g,
-                    '&gt;'
-                );
-
-        }
+            ).toFixed(2)
+        ) +
+        ' ' +
+        units[index]
+    );
+}
 
 
-        function escapeJs(
-            value
-        ) {
+function escapeHtml(
+    value
+) {
 
-            return String(value)
-
-                .replace(
-                    /\\/g,
-                    '\\\\'
-                )
-
-                .replace(
-                    /'/g,
-                    "\\'"
-                );
-
-        }
+    const div =
+        document.createElement(
+            'div'
+        );
 
 
+    div.textContent =
+        value == null
+            ? ''
+            : String(value);
 
-        /* =====================================================
-           START APPLICATION
-        ====================================================== */
 
-        checkAdmin();
+    return div.innerHTML;
+}
 
-    </script>
+
+function escapeAttribute(
+    value
+) {
+
+    return String(
+        value || ''
+    )
+        .replace(
+            /&/g,
+            '&amp;'
+        )
+        .replace(
+            /"/g,
+            '&quot;'
+        )
+        .replace(
+            /'/g,
+            '&#39;'
+        )
+        .replace(
+            /</g,
+            '&lt;'
+        )
+        .replace(
+            />/g,
+            '&gt;'
+        );
+}
+
+
+function escapeJs(
+    value
+) {
+
+    return String(
+        value || ''
+    )
+        .replace(
+            /\\/g,
+            '\\\\'
+        )
+        .replace(
+            /'/g,
+            "\\'"
+        );
+}
+
+
+/* ================================
+   START
+================================ */
+
+checkAdmin();
+
+</script>
 
 </body>
-
 </html>
 ```
