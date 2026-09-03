@@ -8,7 +8,6 @@ const router = Router();
 
 const supabaseUrl = process.env.SUPABASE_URL!;
 const supabaseAnonKey = process.env.SUPABASE_KEY!;
-const supabaseSecretKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
 // Client used to verify the logged-in user
 const authSupabase = createClient(
@@ -19,7 +18,6 @@ const authSupabase = createClient(
 // Server-only client used for database operations
 const adminSupabase = createClient(
     supabaseUrl,
-    supabaseSecretKey
 );
 
 /* ================================
