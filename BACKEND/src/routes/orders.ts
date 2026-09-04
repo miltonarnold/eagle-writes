@@ -15,9 +15,10 @@ const authSupabase = createClient(
     supabaseAnonKey
 );
 
-// Server-only client used for database operations
+// Server-side Supabase client used for order database operations
 const adminSupabase = createClient(
     supabaseUrl,
+    supabaseAnonKey
 );
 
 /* ================================

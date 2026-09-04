@@ -9,6 +9,7 @@ import ordersRouter from "./routes/orders";
 import messagesRouter from "./routes/messages";
 import paymentsRouter from "./routes/payments";
 import authRouter from "./routes/auth";
+import emailRouter from "./routes/email";
 
 dotenv.config();
 
@@ -104,6 +105,7 @@ app.use("/api/orders", ordersRouter);
 app.use("/api/messages", messagesRouter);
 app.use("/api/payments", paymentsRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/email", emailRouter);
 
 app.use((req, res) => {
     res.status(404).json({
@@ -123,5 +125,6 @@ app.listen(PORT, () => {
     console.log("MESSAGES API: /api/messages");
     console.log("PAYMENTS API: /api/payments");
     console.log("AUTH API: /api/auth");
+    console.log("EMAIL API: /api/email");
     console.log("=================================");
 });
