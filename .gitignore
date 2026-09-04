@@ -1,3 +1,5 @@
 BACKEND/.env
 BACKEND/node_modules/
 BACKEND/dist/
+.vercel
+.env*
