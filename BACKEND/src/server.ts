@@ -115,16 +115,4 @@ app.use((req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log("=================================");
-    console.log("EAGLE WRITES BACKEND");
-    console.log(`PORT: ${PORT}`);
-    console.log("SERVICES API: /api/services");
-    console.log("COURSES API: /api/courses");
-    console.log("ORDERS API: /api/orders");
-    console.log("MESSAGES API: /api/messages");
-    console.log("PAYMENTS API: /api/payments");
-    console.log("AUTH API: /api/auth");
-    console.log("EMAIL API: /api/email");
-    console.log("=================================");
-});
+export default app;
