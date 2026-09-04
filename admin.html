@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1978,6 +1979,11 @@ function updateEnrollmentStatistics(
 }
 
 
+/* ================================
+   UPDATE ENROLLMENT STATUS
+   AND SEND APPROVAL EMAIL
+================================ */
+
 async function updateStatus(
     enrollmentId,
     newStatus
@@ -1985,8 +1991,39 @@ async function updateStatus(
 
     try {
 
+        /*
+         * Get the applicant's information first.
+         * We need the email, name and course when
+         * sending the approval notification.
+         */
+
         const {
-            error
+            data: enrollment,
+            error: enrollmentError
+        } =
+            await supabaseClient
+                .from('enrollments')
+                .select(
+                    'full_name, email, course_title'
+                )
+                .eq(
+                    'id',
+                    enrollmentId
+                )
+                .single();
+
+
+        if (enrollmentError) {
+            throw enrollmentError;
+        }
+
+
+        /*
+         * Update the enrollment status.
+         */
+
+        const {
+            error: updateError
         } =
             await supabaseClient
                 .from('enrollments')
@@ -1999,13 +2036,141 @@ async function updateStatus(
                 );
 
 
-        if (error) {
-            throw error;
+        if (updateError) {
+            throw updateError;
         }
 
 
+        /*
+         * Send an email immediately when the
+         * applicant is approved.
+         */
+
+        if (
+            newStatus === 'approved' &&
+            enrollment.email
+        ) {
+
+            const emailResponse =
+                await fetch(
+                    'https://eagle-writes-backend.vercel.app/api/email/send',
+                    {
+                        method: 'POST',
+
+                        headers: {
+                            'Content-Type':
+                                'application/json'
+                        },
+
+                        body: JSON.stringify({
+
+                            to:
+                                enrollment.email,
+
+                            subject:
+                                'EAGLE WRITES Course Enrollment Approved',
+
+                            html:
+                                `
+                                <div style="font-family: Arial, Helvetica, sans-serif; line-height: 1.6; color: #172033;">
+
+                                    <h2 style="color: #0b1f3a;">
+                                        EAGLE WRITES
+                                    </h2>
+
+                                    <p>
+                                        Dear ${escapeHtml(
+                                            enrollment.full_name ||
+                                            'Applicant'
+                                        )},
+                                    </p>
+
+                                    <p>
+                                        We are pleased to inform you that
+                                        your enrollment application has been
+                                        <strong>approved</strong>.
+                                    </p>
+
+                                    <p>
+                                        <strong>Course:</strong>
+                                        ${escapeHtml(
+                                            enrollment.course_title ||
+                                            'Selected Course'
+                                        )}
+                                    </p>
+
+                                    <p>
+                                        Thank you for choosing EAGLE WRITES.
+                                        We look forward to having you with us.
+                                    </p>
+
+                                    <p>
+                                        Kind regards,<br>
+                                        <strong>EAGLE WRITES</strong>
+                                    </p>
+
+                                </div>
+                                `,
+
+                            text:
+                                `Dear ${
+                                    enrollment.full_name ||
+                                    'Applicant'
+                                },
+
+We are pleased to inform you that your enrollment application has been approved.
+
+Course: ${
+    enrollment.course_title ||
+    'Selected Course'
+}
+
+Thank you for choosing EAGLE WRITES.
+
+Kind regards,
+EAGLE WRITES`
+
+                        })
+                    }
+                );
+
+
+            /*
+             * Check whether the backend successfully
+             * sent the email.
+             */
+
+            if (!emailResponse.ok) {
+
+                const emailError =
+                    await emailResponse.text();
+
+                console.error(
+                    'Approval email failed:',
+                    emailError
+                );
+
+
+                showAdminSuccess(
+                    'Enrollment approved, but the notification email could not be sent.'
+                );
+
+
+                await loadEnrollments();
+
+                return;
+            }
+        }
+
+
+        /*
+         * Show the appropriate success message.
+         */
+
         showAdminSuccess(
-            'Enrollment status updated.'
+            newStatus === 'approved'
+                ? 'Enrollment approved and email sent.'
+                : 'Enrollment status updated.'
         );
 
 
@@ -2014,6 +2179,12 @@ async function updateStatus(
     }
 
     catch (error) {
+
+        console.error(
+            'Update enrollment status error:',
+            error
+        );
+
 
         showAdminError(
             'Unable to update enrollment status: ' +
