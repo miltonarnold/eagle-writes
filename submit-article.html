@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Submit your article to EAGLE WRITES for review and publication."
+    >
+
+    <meta
+        name="author"
+        content="EAGLE WRITES"
+    >
+
+    <title>Publish Your Article | EAGLE WRITES</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="icon"
+        type="image/jpeg"
+        href="Images/logo.milto.jpg"
+    >
+
+
+    <style>
+
+        .article-submit-page {
+            max-width: 950px;
+            margin: 60px auto;
+            padding: 0 20px 80px;
+        }
+
+
+        .article-submit-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+
+        .article-submit-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #0b1f3a;
+        }
+
+
+        .article-submit-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+            color: #667085;
+        }
+
+
+        .article-submit-notice {
+            background: #fff8e6;
+            border-left: 4px solid #f2b705;
+            padding: 18px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            color: #5f4700;
+        }
+
+
+        .article-submit-form {
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 14px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, .08);
+        }
+
+
+        .article-form-group {
+            margin-bottom: 22px;
+        }
+
+
+        .article-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: #0b1f3a;
+        }
+
+
+        .article-form-group input,
+        .article-form-group textarea,
+        .article-form-group select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px 14px;
+            border: 1px solid #d0d5dd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 15px;
+            background: #ffffff;
+        }
+
+
+        .article-form-group input:focus,
+        .article-form-group textarea:focus,
+        .article-form-group select:focus {
+            outline: none;
+            border-color: #175cd3;
+            box-shadow: 0 0 0 3px rgba(23, 92, 211, .1);
+        }
+
+
+        .article-form-group textarea {
+            min-height: 300px;
+            resize: vertical;
+            line-height: 1.7;
+        }
+
+
+        .article-form-help {
+            display: block;
+            margin-top: 6px;
+            font-size: 13px;
+            color: #667085;
+        }
+
+
+        .article-submit-button {
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 20px;
+            background: #f2b705;
+            color: #0b1f3a;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+
+        .article-submit-button:hover {
+            opacity: .92;
+        }
+
+
+        .article-submit-button:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+
+        .article-form-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+
+
+        .article-form-message.success {
+            display: block;
+            background: #ecfdf3;
+            color: #067647;
+        }
+
+
+        .article-form-message.error {
+            display: block;
+            background: #fef3f2;
+            color: #b42318;
+        }
+
+
+        .article-back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #175cd3;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+
+        .article-back-link:hover {
+            text-decoration: underline;
+        }
+
+
+        @media (max-width: 700px) {
+
+            .article-submit-page {
+                margin-top: 35px;
+            }
+
+
+            .article-submit-header h1 {
+                font-size: 32px;
+            }
+
+
+            .article-submit-form {
+                padding: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header
+        class="header"
+        id="header"
+    >
+
+        <nav
+            class="navbar"
+            id="navbar"
+        >
+
+
+            <a
+                href="index.html"
+                class="logo-container"
+            >
+
+                <div class="logo-icon">
+
+                    <img
+                        src="Images/logo.milto.jpg"
+                        alt="EAGLE WRITES logo"
+                    >
+
+                </div>
+
+
+                <div class="brand-text">
+
+                    <span class="brand-name-eagle">
+                        EAGLE
+                    </span>
+
+                    <span class="brand-name-writes">
+                        WRITES
+                    </span>
+
+                </div>
+
+
+                <div class="brand-tagline">
+                    RESEARCH • ANALYTICS • CONSULTING
+                </div>
+
+            </a>
+
+
+            <button
+                class="mobile-menu-toggle"
+                id="mobile-menu-toggle"
+                aria-label="Toggle navigation menu"
+                type="button"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <nav
+                class="nav-menu"
+                id="nav-menu"
+            >
+
+                <ul class="nav-list">
+
+                    <li>
+
+                        <a
+                            href="index.html"
+                            class="nav-link"
+                        >
+                            Home
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a
+                            href="about.html"
+                            class="nav-link"
+                        >
+                            About
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a
+                            href="get-started.html"
+                            class="nav-link"
+                        >
+                            Get Started
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+            <div class="nav-actions">
+
+                <a
+                    href="https://wa.me/254748513346"
+                    class="btn-whatsapp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    WhatsApp
+                </a>
+
+
+                <a
+                    href="get-started.html"
+                    class="btn-get-started-header"
+                >
+                    Get Started
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main>
+
+        <section class="article-submit-page">
+
+
+            <div class="article-submit-header">
+
+                <span class="section-label">
+                    EAGLE WRITES
+                </span>
+
+
+                <h1>
+                    Publish Your Article
+                </h1>
+
+
+                <p>
+                    Share your knowledge, research, ideas, and insights
+                    with the EAGLE WRITES audience.
+                </p>
+
+            </div>
+
+
+            <div class="article-submit-notice">
+
+                <strong>
+                    Important:
+                </strong>
+
+                Every article submitted through this page is reviewed
+                by the EAGLE WRITES administrator before it can be
+                published publicly.
+
+                Submitting an article does not guarantee publication.
+
+            </div>
+
+
+            <form
+                id="article-submit-form"
+                class="article-submit-form"
+            >
+
+
+                <!-- TITLE -->
+
+                <div class="article-form-group">
+
+                    <label for="article-title">
+                        Article Title *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="article-title"
+                        name="title"
+                        maxlength="200"
+                        placeholder="Enter the title of your article"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- AUTHOR -->
+
+                <div class="article-form-group">
+
+                    <label for="author-name">
+                        Author Name *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="author-name"
+                        name="author_name"
+                        maxlength="120"
+                        placeholder="Your name"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="article-form-group">
+
+                    <label for="author-email">
+                        Email Address *
+                    </label>
+
+                    <input
+                        type="email"
+                        id="author-email"
+                        name="author_email"
+                        maxlength="200"
+                        placeholder="your@email.com"
+                        required
+                    >
+
+                    <span class="article-form-help">
+                        Your email is used for submission communication
+                        and will not be displayed publicly on the article.
+                    </span>
+
+                </div>
+
+
+
+                <!-- CATEGORY -->
+
+                <div class="article-form-group">
+
+                    <label for="article-category">
+                        Category *
+                    </label>
+
+                    <select
+                        id="article-category"
+                        name="category"
+                        required
+                    >
+
+                        <option value="">
+                            Select a category
+                        </option>
+
+                        <option value="Research">
+                            Research
+                        </option>
+
+                        <option value="Academic">
+                            Academic
+                        </option>
+
+                        <option value="Business">
+                            Business
+                        </option>
+
+                        <option value="Finance">
+                            Finance
+                        </option>
+
+                        <option value="Technology">
+                            Technology
+                        </option>
+
+                        <option value="Data Analysis">
+                            Data Analysis
+                        </option>
+
+                        <option value="Education">
+                            Education
+                        </option>
+
+                        <option value="Consulting">
+                            Consulting
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- FEATURED IMAGE -->
+
+                <div class="article-form-group">
+
+                    <label for="featured-image">
+                        Featured Image URL
+                    </label>
+
+                    <input
+                        type="url"
+                        id="featured-image"
+                        name="featured_image"
+                        placeholder="https://example.com/image.jpg"
+                    >
+
+                    <span class="article-form-help">
+                        Optional. We will add image uploading later if needed.
+                    </span>
+
+                </div>
+
+
+
+                <!-- META DESCRIPTION -->
+
+                <div class="article-form-group">
+
+                    <label for="meta-description">
+                        SEO Meta Description
+                    </label>
+
+                    <textarea
+                        id="meta-description"
+                        name="meta_description"
+                        maxlength="160"
+                        style="min-height:120px;"
+                        placeholder="Briefly describe what your article is about..."
+                    ></textarea>
+
+                    <span class="article-form-help">
+                        Recommended: approximately 150–160 characters.
+                    </span>
+
+                </div>
+
+
+
+                <!-- CONTENT -->
+
+                <div class="article-form-group">
+
+                    <label for="article-content">
+                        Article Content *
+                    </label>
+
+                    <textarea
+                        id="article-content"
+                        name="content"
+                        placeholder="Paste or write your complete article here..."
+                        required
+                    ></textarea>
+
+                    <span class="article-form-help">
+                        Please submit your complete article. Articles are
+                        reviewed before publication.
+                    </span>
+
+                </div>
+
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    id="article-submit-button"
+                    class="article-submit-button"
+                >
+                    Submit Article for Review
+                </button>
+
+
+                <div
+                    id="article-form-message"
+                    class="article-form-message"
+                ></div>
+
+
+            </form>
+
+
+            <a
+                href="index.html"
+                class="article-back-link"
+            >
+                ← Back to EAGLE WRITES
+            </a>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer
+        class="footer"
+        id="footer"
+    >
+
+        <div class="footer-container">
+
+
+            <div class="footer-brand">
+
+                <h2 class="footer-title">
+                    EAGLE WRITES
+                </h2>
+
+                <p class="footer-tagline">
+                    RESEARCH • ANALYTICS • CONSULTING
+                </p>
+
+                <p class="footer-founder">
+                    Founded by Arnold Milton
+                </p>
+
+            </div>
+
+
+            <div class="footer-nav">
+
+                <h3 class="footer-nav-heading">
+                    Quick Links
+                </h3>
+
+                <ul class="footer-nav-list">
+
+                    <li>
+                        <a
+                            href="index.html"
+                            class="footer-link"
+                        >
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="about.html"
+                            class="footer-link"
+                        >
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="services.html"
+                            class="footer-link"
+                        >
+                            Services
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="courses.html"
+                            class="footer-link"
+                        >
+                            Courses
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="portfolio.html"
+                            class="footer-link"
+                        >
+                            Portfolio
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="contact.html"
+                            class="footer-link"
+                        >
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="footer-contact">
+
+                <h3 class="footer-contact-heading">
+                    Contact Us
+                </h3>
+
+                <ul class="footer-contact-list">
+
+                    <li>
+                        <a
+                            href="tel:+254748513346"
+                            class="footer-contact-link"
+                        >
+                            +254 748 513 346
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="mailto:miltonarnold535@gmail.com"
+                            class="footer-contact-link"
+                        >
+                            miltonarnold535@gmail.com
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://wa.me/254748513346"
+                            class="footer-contact-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            WhatsApp
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p class="footer-copyright">
+                © 2026 EAGLE WRITES. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- ================= SUPABASE ================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <script>
+
+        const SUPABASE_URL =
+            'https://ekkvghdnejvyjykagafr.supabase.co';
+
+
+        const SUPABASE_KEY =
+            'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
+
+
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+
+        /* =========================
+           CREATE SEO SLUG
+        ========================= */
+
+        function createArticleSlug(
+            title
+        ) {
+
+            const baseSlug =
+                String(title)
+                    .toLowerCase()
+                    .trim()
+                    .replace(
+                        /[^a-z0-9\s-]/g,
+                        ''
+                    )
+                    .replace(
+                        /\s+/g,
+                        '-'
+                    )
+                    .replace(
+                        /-+/g,
+                        '-'
+                    )
+                    .replace(
+                        /^-+|-+$/g,
+                        ''
+                    );
+
+            const uniquePart =
+                Date.now()
+                    .toString()
+                    .slice(-6);
+
+            return (
+                baseSlug +
+                '-' +
+                uniquePart
+            );
+        }
+
+
+
+        /* =========================
+           FORM SUBMISSION
+        ========================= */
+
+        const articleForm =
+            document.getElementById(
+                'article-submit-form'
+            );
+
+
+        articleForm.addEventListener(
+            'submit',
+            async function(event) {
+
+                event.preventDefault();
+
+
+                const submitButton =
+                    document.getElementById(
+                        'article-submit-button'
+                    );
+
+
+                const message =
+                    document.getElementById(
+                        'article-form-message'
+                    );
+
+
+                const title =
+                    document.getElementById(
+                        'article-title'
+                    ).value.trim();
+
+
+                const authorName =
+                    document.getElementById(
+                        'author-name'
+                    ).value.trim();
+
+
+                const authorEmail =
+                    document.getElementById(
+                        'author-email'
+                    ).value.trim();
+
+
+                const category =
+                    document.getElementById(
+                        'article-category'
+                    ).value;
+
+
+                const featuredImage =
+                    document.getElementById(
+                        'featured-image'
+                    ).value.trim();
+
+
+                const metaDescription =
+                    document.getElementById(
+                        'meta-description'
+                    ).value.trim();
+
+
+                const content =
+                    document.getElementById(
+                        'article-content'
+                    ).value.trim();
+
+
+                if (
+                    !title ||
+                    !authorName ||
+                    !authorEmail ||
+                    !category ||
+                    !content
+                ) {
+
+                    message.className =
+                        'article-form-message error';
+
+                    message.textContent =
+                        'Please complete all required fields.';
+
+                    return;
+                }
+
+
+                submitButton.disabled = true;
+
+                submitButton.textContent =
+                    'Submitting...';
+
+
+                message.className =
+                    'article-form-message';
+
+                message.textContent = '';
+
+
+
+                try {
+
+                    const slug =
+                        createArticleSlug(
+                            title
+                        );
+
+
+                    const {
+                        error
+                    } =
+                        await supabaseClient
+                            .from('articles')
+                            .insert({
+
+                                title:
+                                    title,
+
+                                slug:
+                                    slug,
+
+                                content:
+                                    content,
+
+                                author_name:
+                                    authorName,
+
+                                author_email:
+                                    authorEmail,
+
+                                category:
+                                    category,
+
+                                featured_image:
+                                    featuredImage ||
+                                    null,
+
+                                meta_description:
+                                    metaDescription ||
+                                    null,
+
+                                status:
+                                    'pending',
+
+                                approved_at:
+                                    null
+
+                            });
+
+
+                    if (error) {
+                        throw error;
+                    }
+
+
+                    message.className =
+                        'article-form-message success';
+
+                    message.textContent =
+                        'Your article has been submitted successfully. It is now pending review by EAGLE WRITES.';
+
+
+                    articleForm.reset();
+
+
+                } catch (error) {
+
+                    console.error(
+                        'Article submission error:',
+                        error
+                    );
+
+
+                    message.className =
+                        'article-form-message error';
+
+                    message.textContent =
+                        'We could not submit your article. Please try again.';
+
+
+                } finally {
+
+                    submitButton.disabled =
+                        false;
+
+                    submitButton.textContent =
+                        'Submit Article for Review';
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

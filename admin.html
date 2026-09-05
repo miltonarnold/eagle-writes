@@ -363,12 +363,7 @@ tbody tr:hover {
     color: #667085;
 }
 
-.document-action {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
+.document-action,
 .article-action {
     display: flex;
     gap: 8px;
@@ -621,31 +616,43 @@ tbody tr:hover {
 <!-- LOGIN SCREEN -->
 
 <div id="login-screen" class="login-screen">
+
     <div class="login-card">
 
         <h1>EAGLE WRITES</h1>
+
         <p>Administrator Login</p>
 
         <div id="login-error" class="login-error"></div>
 
         <div class="login-field">
-            <label for="login-email">Email</label>
+
+            <label for="login-email">
+                Email
+            </label>
+
             <input
                 type="email"
                 id="login-email"
                 placeholder="Enter admin email"
                 autocomplete="username"
             >
+
         </div>
 
         <div class="login-field">
-            <label for="login-password">Password</label>
+
+            <label for="login-password">
+                Password
+            </label>
+
             <input
                 type="password"
                 id="login-password"
                 placeholder="Enter password"
                 autocomplete="current-password"
             >
+
         </div>
 
         <button
@@ -665,14 +672,22 @@ tbody tr:hover {
         </button>
 
     </div>
+
 </div>
 
 
 <header class="admin-header">
 
     <div>
-        <div class="admin-brand">EAGLE WRITES</div>
-        <div class="admin-subtitle">Administration Dashboard</div>
+
+        <div class="admin-brand">
+            EAGLE WRITES
+        </div>
+
+        <div class="admin-subtitle">
+            Administration Dashboard
+        </div>
+
     </div>
 
     <button
@@ -689,53 +704,149 @@ tbody tr:hover {
 <main class="admin-container">
 
     <div class="dashboard-title">
-        <h1>Admin Dashboard</h1>
-        <p>Manage your website, enrollments, messages and portfolio documents.</p>
+
+        <h1>
+            Admin Dashboard
+        </h1>
+
+        <p>
+            Manage your website, enrollments, messages and portfolio documents.
+        </p>
+
     </div>
 
 
-   <div class="stats">
+    <!-- STATISTICS -->
 
-    <div class="stat-card">
-        <div class="stat-label">Total Enrollments</div>
-        <div class="stat-number" id="total-enrollments">0</div>
+    <div class="stats">
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Total Enrollments
+            </div>
+
+            <div
+                class="stat-number"
+                id="total-enrollments"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Pending Enrollments
+            </div>
+
+            <div
+                class="stat-number"
+                id="pending-enrollments"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Approved Enrollments
+            </div>
+
+            <div
+                class="stat-number"
+                id="approved-enrollments"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Contact Messages
+            </div>
+
+            <div
+                class="stat-number"
+                id="total-messages"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Total Articles
+            </div>
+
+            <div
+                class="stat-number"
+                id="total-articles"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Pending Articles
+            </div>
+
+            <div
+                class="stat-number"
+                id="pending-articles"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Approved Articles
+            </div>
+
+            <div
+                class="stat-number"
+                id="approved-articles"
+            >
+                0
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="stat-card">
-        <div class="stat-label">Pending Enrollments</div>
-        <div class="stat-number" id="pending-enrollments">0</div>
-    </div>
 
-    <div class="stat-card">
-        <div class="stat-label">Approved Enrollments</div>
-        <div class="stat-number" id="approved-enrollments">0</div>
-    </div>
+    <div
+        id="admin-error"
+        class="admin-message admin-error"
+    ></div>
 
-    <div class="stat-card">
-        <div class="stat-label">Contact Messages</div>
-        <div class="stat-number" id="total-messages">0</div>
-    </div>
 
-    <div class="stat-card">
-        <div class="stat-label">Total Articles</div>
-        <div class="stat-number" id="total-articles">0</div>
-    </div>
+    <div
+        id="admin-success"
+        class="admin-message admin-success"
+    ></div>
 
-    <div class="stat-card">
-        <div class="stat-label">Pending Articles</div>
-        <div class="stat-number" id="pending-articles">0</div>
-    </div>
 
-    <div class="stat-card">
-        <div class="stat-label">Approved Articles</div>
-        <div class="stat-number" id="approved-articles">0</div>
-    </div>
-
-</div>
-
-    <div id="admin-error" class="admin-message admin-error"></div>
-    <div id="admin-success" class="admin-message admin-success"></div>
-
+    <!-- TABS -->
 
     <div class="tabs">
 
@@ -748,6 +859,7 @@ tbody tr:hover {
             Course Enrollments
         </button>
 
+
         <button
             id="messages-tab-button"
             class="tab-button"
@@ -756,6 +868,7 @@ tbody tr:hover {
         >
             Contact Messages
         </button>
+
 
         <button
             id="documents-tab-button"
@@ -766,28 +879,40 @@ tbody tr:hover {
             Portfolio Documents
         </button>
 
-       <button
-    id="articles-tab-button"
-    class="tab-button"
-    type="button"
-    onclick="showTab('articles')"
->
-    Articles
-</button>
+
+        <button
+            id="articles-tab-button"
+            class="tab-button"
+            type="button"
+            onclick="showTab('articles')"
+        >
+            Articles
+        </button>
 
     </div>
 
 
     <!-- ENROLLMENTS -->
 
-    <section id="enrollments-tab" class="tab-content active">
+    <section
+        id="enrollments-tab"
+        class="tab-content active"
+    >
 
         <div class="section-header">
 
             <div class="section-title">
-                <h2>Course Enrollments</h2>
-                <p>Manage student enrollment requests.</p>
+
+                <h2>
+                    Course Enrollments
+                </h2>
+
+                <p>
+                    Manage student enrollment requests.
+                </p>
+
             </div>
+
 
             <button
                 type="button"
@@ -799,6 +924,7 @@ tbody tr:hover {
 
         </div>
 
+
         <div class="filters">
 
             <input
@@ -808,29 +934,39 @@ tbody tr:hover {
                 oninput="filterEnrollments()"
             >
 
+
             <select
                 id="course-filter"
                 onchange="filterEnrollments()"
             >
-                <option value="all">All Courses</option>
+
+                <option value="all">
+                    All Courses
+                </option>
+
                 <option value="Pitch and Article Writing">
                     Pitch and Article Writing
                 </option>
+
                 <option value="Research Writing">
                     Research Writing
                 </option>
+
                 <option value="Data Analysis">
                     Data Analysis
                 </option>
+
             </select>
 
         </div>
+
 
         <div class="table-wrapper">
 
             <table>
 
                 <thead>
+
                     <tr>
                         <th>Student</th>
                         <th>Course</th>
@@ -840,14 +976,23 @@ tbody tr:hover {
                         <th>Date</th>
                         <th>Action</th>
                     </tr>
+
                 </thead>
 
+
                 <tbody id="enrollments-body">
+
                     <tr>
-                        <td colspan="7" class="loading">
+
+                        <td
+                            colspan="7"
+                            class="loading"
+                        >
                             Loading enrollments...
                         </td>
+
                     </tr>
+
                 </tbody>
 
             </table>
@@ -859,14 +1004,25 @@ tbody tr:hover {
 
     <!-- CONTACT MESSAGES -->
 
-    <section id="messages-tab" class="tab-content">
+    <section
+        id="messages-tab"
+        class="tab-content"
+    >
 
         <div class="section-header">
 
             <div class="section-title">
-                <h2>Contact Messages</h2>
-                <p>Messages submitted through the EAGLE WRITES contact form.</p>
+
+                <h2>
+                    Contact Messages
+                </h2>
+
+                <p>
+                    Messages submitted through the EAGLE WRITES contact form.
+                </p>
+
             </div>
+
 
             <button
                 type="button"
@@ -877,6 +1033,7 @@ tbody tr:hover {
             </button>
 
         </div>
+
 
         <div class="filters">
 
@@ -889,11 +1046,13 @@ tbody tr:hover {
 
         </div>
 
+
         <div class="table-wrapper">
 
             <table>
 
                 <thead>
+
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
@@ -902,14 +1061,23 @@ tbody tr:hover {
                         <th>Message</th>
                         <th>Date</th>
                     </tr>
+
                 </thead>
 
+
                 <tbody id="messages-body">
+
                     <tr>
-                        <td colspan="6" class="loading">
+
+                        <td
+                            colspan="6"
+                            class="loading"
+                        >
                             Loading contact messages...
                         </td>
+
                     </tr>
+
                 </tbody>
 
             </table>
@@ -921,17 +1089,26 @@ tbody tr:hover {
 
     <!-- PORTFOLIO DOCUMENTS -->
 
-    <section id="documents-tab" class="tab-content">
+    <section
+        id="documents-tab"
+        class="tab-content"
+    >
 
         <div class="section-header">
 
             <div class="section-title">
-                <h2>Portfolio Documents</h2>
+
+                <h2>
+                    Portfolio Documents
+                </h2>
+
                 <p>
                     Upload PDF and Word documents that visitors can access
                     from your portfolio.
                 </p>
+
             </div>
+
 
             <button
                 type="button"
@@ -946,11 +1123,15 @@ tbody tr:hover {
 
         <div class="document-upload-card">
 
-            <h3>Upload New Document</h3>
+            <h3>
+                Upload New Document
+            </h3>
+
 
             <div class="document-form">
 
                 <div>
+
                     <label for="document-title">
                         Document Title
                     </label>
@@ -960,10 +1141,12 @@ tbody tr:hover {
                         id="document-title"
                         placeholder="e.g. Research Writing Sample"
                     >
+
                 </div>
 
 
                 <div>
+
                     <label for="document-description">
                         Description
                     </label>
@@ -972,10 +1155,12 @@ tbody tr:hover {
                         id="document-description"
                         placeholder="Brief description of the document..."
                     ></textarea>
+
                 </div>
 
 
                 <div>
+
                     <label for="document-file">
                         Select PDF or Word Document
                     </label>
@@ -985,12 +1170,15 @@ tbody tr:hover {
                         id="document-file"
                         accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                     >
+
                 </div>
 
 
                 <div class="upload-info">
+
                     Maximum file size: 50 MB.
                     Supported formats: PDF, DOC and DOCX.
+
                 </div>
 
 
@@ -1013,6 +1201,7 @@ tbody tr:hover {
             <table>
 
                 <thead>
+
                     <tr>
                         <th>Document</th>
                         <th>Description</th>
@@ -1021,14 +1210,23 @@ tbody tr:hover {
                         <th>Date</th>
                         <th>Action</th>
                     </tr>
+
                 </thead>
 
+
                 <tbody id="documents-body">
+
                     <tr>
-                        <td colspan="6" class="loading">
+
+                        <td
+                            colspan="6"
+                            class="loading"
+                        >
                             Loading documents...
                         </td>
+
                     </tr>
+
                 </tbody>
 
             </table>
@@ -1037,161 +1235,164 @@ tbody tr:hover {
 
     </section>
 
+
     <!-- ARTICLES -->
 
-<section id="articles-tab" class="tab-content">
+    <section
+        id="articles-tab"
+        class="tab-content"
+    >
 
-    <div class="section-header">
+        <div class="section-header">
 
-        <div class="section-title">
+            <div class="section-title">
 
-            <h2>Article Submissions</h2>
+                <h2>
+                    Article Submissions
+                </h2>
 
-            <p>
-                Review, approve or reject articles submitted by visitors.
-            </p>
+                <p>
+                    Review, approve or reject articles submitted by visitors.
+                </p>
 
-        </div>
+            </div>
 
-        <button
-            type="button"
-            class="refresh-button"
-            onclick="loadArticles()"
-        >
-            Refresh Articles
-        </button>
-
-    </div>
-
-
-    <div class="filters">
-
-        <input
-            type="text"
-            id="search-articles"
-            placeholder="Search title, author, email or category..."
-            oninput="filterArticles()"
-        >
-
-        <select
-            id="article-status-filter"
-            onchange="filterArticles()"
-        >
-
-            <option value="all">
-                All Statuses
-            </option>
-
-            <option value="pending">
-                Pending
-            </option>
-
-            <option value="approved">
-                Approved
-            </option>
-
-            <option value="rejected">
-                Rejected
-            </option>
-
-        </select>
-
-    </div>
-
-
-    <div class="table-wrapper">
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>Title</th>
-
-                    <th>Author</th>
-
-                    <th>Email</th>
-
-                    <th>Category</th>
-
-                    <th>Date</th>
-
-                    <th>Status</th>
-
-                    <th>Action</th>
-
-                </tr>
-
-            </thead>
-
-
-            <tbody id="articles-body">
-
-                <tr>
-
-                    <td
-                        colspan="7"
-                        class="loading"
-                    >
-                        Loading articles...
-                    </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-</section>
-
-<!-- ARTICLE REVIEW MODAL -->
-
-<div
-    id="article-modal"
-    class="article-modal"
->
-
-    <div class="article-modal-card">
-
-        <div class="article-modal-header">
-
-            <h2 id="article-modal-title">
-                Article Review
-            </h2>
 
             <button
                 type="button"
-                class="article-close-button"
-                onclick="closeArticleModal()"
+                class="refresh-button"
+                onclick="loadArticles()"
             >
-                Close
+                Refresh Articles
             </button>
 
         </div>
 
 
-        <div
-            id="article-modal-meta"
-            class="article-meta"
-        ></div>
+        <div class="filters">
+
+            <input
+                type="text"
+                id="search-articles"
+                placeholder="Search title, author, email or category..."
+                oninput="filterArticles()"
+            >
 
 
-        <div
-            id="article-modal-content"
-            class="article-full-content"
-        ></div>
+            <select
+                id="article-status-filter"
+                onchange="filterArticles()"
+            >
+
+                <option value="all">
+                    All Statuses
+                </option>
+
+                <option value="pending">
+                    Pending
+                </option>
+
+                <option value="approved">
+                    Approved
+                </option>
+
+                <option value="rejected">
+                    Rejected
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Email</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="articles-body">
+
+                    <tr>
+
+                        <td
+                            colspan="7"
+                            class="loading"
+                        >
+                            Loading articles...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ARTICLE REVIEW MODAL -->
+
+    <div
+        id="article-modal"
+        class="article-modal"
+    >
+
+        <div class="article-modal-card">
+
+            <div class="article-modal-header">
+
+                <h2 id="article-modal-title">
+                    Article Review
+                </h2>
+
+
+                <button
+                    type="button"
+                    class="article-close-button"
+                    onclick="closeArticleModal()"
+                >
+                    Close
+                </button>
+
+            </div>
+
+
+            <div
+                id="article-modal-meta"
+                class="article-meta"
+            ></div>
+
+
+            <div
+                id="article-modal-content"
+                class="article-full-content"
+            ></div>
+
+        </div>
 
     </div>
-
-</div>
 
 </main>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <script>
 
@@ -1201,21 +1402,26 @@ const SUPABASE_URL =
 const SUPABASE_ANON_KEY =
     'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
 
+
 const supabaseClient =
     window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_ANON_KEY
     );
 
+
 const STORAGE_BUCKET =
     'portfolio-documents';
+
 
 const DOCUMENTS_TABLE =
     'portfolio_documents';
 
+
 let allEnrollments = [];
 let allMessages = [];
 let allDocuments = [];
+let allArticles = [];
 
 
 /* ================================
@@ -1225,122 +1431,192 @@ let allDocuments = [];
 async function loginAdmin() {
 
     const email =
-        document.getElementById('login-email').value.trim();
+        document
+            .getElementById('login-email')
+            .value
+            .trim();
+
 
     const password =
-        document.getElementById('login-password').value;
+        document
+            .getElementById('login-password')
+            .value;
+
 
     const errorBox =
-        document.getElementById('login-error');
+        document.getElementById(
+            'login-error'
+        );
 
-    errorBox.style.display = 'none';
+
+    errorBox.style.display =
+        'none';
+
 
     if (!email || !password) {
 
         errorBox.textContent =
             'Please enter your email and password.';
 
-        errorBox.style.display = 'block';
+        errorBox.style.display =
+            'block';
 
         return;
     }
 
-    const {
-        error
-    } =
-        await supabaseClient.auth.signInWithPassword({
-            email,
-            password
-        });
 
-    if (error) {
+    try {
+
+        const {
+            error
+        } =
+            await supabaseClient.auth.signInWithPassword({
+                email,
+                password
+            });
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        document.getElementById(
+            'login-screen'
+        ).style.display =
+            'none';
+
+
+        await loadAllAdminData();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            'Login error:',
+            error
+        );
+
 
         errorBox.textContent =
             'Invalid email or password.';
 
-        errorBox.style.display = 'block';
-
-        console.error(error);
-
-        return;
+        errorBox.style.display =
+            'block';
     }
-
-    document.getElementById(
-        'login-screen'
-    ).style.display = 'none';
-
-    await loadAllAdminData();
 }
 
 
 async function resetPassword() {
 
     const email =
-        document.getElementById('login-email').value.trim();
+        document
+            .getElementById('login-email')
+            .value
+            .trim();
+
 
     const errorBox =
-        document.getElementById('login-error');
+        document.getElementById(
+            'login-error'
+        );
+
 
     if (!email) {
 
         errorBox.textContent =
             'Enter your admin email first.';
 
-        errorBox.style.display = 'block';
+        errorBox.style.display =
+            'block';
 
         return;
     }
 
-    const {
-        error
-    } =
-        await supabaseClient.auth.resetPasswordForEmail(
-            email,
-            {
-                redirectTo:
-                    window.location.origin +
-                    '/reset-password.html'
-            }
+
+    try {
+
+        const {
+            error
+        } =
+            await supabaseClient.auth.resetPasswordForEmail(
+                email,
+                {
+                    redirectTo:
+                        window.location.origin +
+                        '/reset-password.html'
+                }
+            );
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        alert(
+            'Password reset email sent. Check your email.'
         );
 
-    if (error) {
+    }
+
+    catch (error) {
 
         errorBox.textContent =
             error.message;
 
-        errorBox.style.display = 'block';
-
-        return;
+        errorBox.style.display =
+            'block';
     }
-
-    alert(
-        'Password reset email sent. Check your email.'
-    );
 }
 
 
 async function checkAdmin() {
 
-    const {
-        data: {
-            session
+    try {
+
+        const {
+            data: {
+                session
+            }
+        } =
+            await supabaseClient.auth.getSession();
+
+
+        if (session) {
+
+            document.getElementById(
+                'login-screen'
+            ).style.display =
+                'none';
+
+
+            await loadAllAdminData();
+
         }
-    } =
-        await supabaseClient.auth.getSession();
 
-    if (session) {
+        else {
+
+            document.getElementById(
+                'login-screen'
+            ).style.display =
+                'flex';
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            'Session check error:',
+            error
+        );
 
         document.getElementById(
             'login-screen'
-        ).style.display = 'none';
-
-        await loadAllAdminData();
-
-    } else {
-
-        document.getElementById(
-            'login-screen'
-        ).style.display = 'flex';
+        ).style.display =
+            'flex';
     }
 }
 
@@ -1383,17 +1659,23 @@ async function uploadDocument() {
             .value
             .trim();
 
+
     const description =
         document
             .getElementById('document-description')
             .value
             .trim();
 
+
     const fileInput =
-        document.getElementById('document-file');
+        document.getElementById(
+            'document-file'
+        );
+
 
     const file =
         fileInput.files[0];
+
 
     const uploadButton =
         document.getElementById(
@@ -1449,11 +1731,10 @@ async function uploadDocument() {
 
 
     const safeName =
-        file.name
-            .replace(
-                /[^a-zA-Z0-9._-]/g,
-                '_'
-            );
+        file.name.replace(
+            /[^a-zA-Z0-9._-]/g,
+            '_'
+        );
 
 
     const uniqueName =
@@ -1470,17 +1751,18 @@ async function uploadDocument() {
 
     try {
 
-        uploadButton.disabled = true;
+        uploadButton.disabled =
+            true;
+
 
         uploadButton.textContent =
             'Uploading...';
+
 
         showAdminSuccess(
             'Uploading document...'
         );
 
-
-        /* Upload actual file to Supabase Storage */
 
         const {
             error: uploadError
@@ -1505,8 +1787,6 @@ async function uploadDocument() {
         }
 
 
-        /* Get public URL */
-
         const {
             data: publicUrlData
         } =
@@ -1520,8 +1800,6 @@ async function uploadDocument() {
         const publicUrl =
             publicUrlData.publicUrl;
 
-
-        /* Save document information in Supabase database */
 
         const {
             error: databaseError
@@ -1557,11 +1835,6 @@ async function uploadDocument() {
                 });
 
 
-        /*
-         * If database insertion fails, remove the uploaded
-         * Storage file so we do not leave an orphaned file.
-         */
-
         if (databaseError) {
 
             await supabaseClient.storage
@@ -1574,15 +1847,15 @@ async function uploadDocument() {
         }
 
 
-        /* Clear form */
-
         document.getElementById(
             'document-title'
         ).value = '';
 
+
         document.getElementById(
             'document-description'
         ).value = '';
+
 
         fileInput.value = '';
 
@@ -1603,6 +1876,7 @@ async function uploadDocument() {
             error
         );
 
+
         showAdminError(
             'Unable to upload document: ' +
             error.message
@@ -1612,7 +1886,9 @@ async function uploadDocument() {
 
     finally {
 
-        uploadButton.disabled = false;
+        uploadButton.disabled =
+            false;
+
 
         uploadButton.textContent =
             'Upload Document';
@@ -1621,7 +1897,7 @@ async function uploadDocument() {
 
 
 /* ================================
-   LOAD DOCUMENTS FROM SUPABASE
+   LOAD DOCUMENTS
 ================================ */
 
 async function loadDocuments() {
@@ -1680,6 +1956,7 @@ async function loadDocuments() {
             error
         );
 
+
         allDocuments = [];
 
 
@@ -1704,7 +1981,9 @@ async function loadDocuments() {
    RENDER DOCUMENTS
 ================================ */
 
-function renderDocuments(documents) {
+function renderDocuments(
+    documents
+) {
 
     const body =
         document.getElementById(
@@ -1893,8 +2172,6 @@ async function deleteDocument(
         );
 
 
-        /* Delete actual file from Storage */
-
         const {
             error: storageError
         } =
@@ -1909,8 +2186,6 @@ async function deleteDocument(
             throw storageError;
         }
 
-
-        /* Delete document information from database */
 
         const {
             error: databaseError
@@ -1945,6 +2220,7 @@ async function deleteDocument(
             error
         );
 
+
         showAdminError(
             'Unable to delete document: ' +
             error.message
@@ -1963,6 +2239,7 @@ async function loadEnrollments() {
         document.getElementById(
             'enrollments-body'
         );
+
 
     try {
 
@@ -2003,7 +2280,11 @@ async function loadEnrollments() {
 
     catch (error) {
 
-        console.error(error);
+        console.error(
+            'Load enrollments error:',
+            error
+        );
+
 
         showAdminError(
             'Unable to load enrollments: ' +
@@ -2084,6 +2365,7 @@ function renderEnrollments(
                         </td>
 
                         <td>
+
                             <a
                                 class="contact-link"
                                 href="mailto:${escapeAttribute(
@@ -2095,6 +2377,7 @@ function renderEnrollments(
                                     '—'
                                 )}
                             </a>
+
                         </td>
 
                         <td>
@@ -2105,6 +2388,7 @@ function renderEnrollments(
                         </td>
 
                         <td>
+
                             <span
                                 class="status status-${escapeHtml(
                                     status
@@ -2112,6 +2396,7 @@ function renderEnrollments(
                             >
                                 ${escapeHtml(status)}
                             </span>
+
                         </td>
 
                         <td>
@@ -2265,7 +2550,6 @@ function updateEnrollmentStatistics(
 
 /* ================================
    UPDATE ENROLLMENT STATUS
-   AND SEND APPROVAL EMAIL
 ================================ */
 
 async function updateStatus(
@@ -2274,12 +2558,6 @@ async function updateStatus(
 ) {
 
     try {
-
-        /*
-         * Get the applicant's information first.
-         * We need the email, name and course when
-         * sending the approval notification.
-         */
 
         const {
             data: enrollment,
@@ -2302,10 +2580,6 @@ async function updateStatus(
         }
 
 
-        /*
-         * Update the enrollment status.
-         */
-
         const {
             error: updateError
         } =
@@ -2324,11 +2598,6 @@ async function updateStatus(
             throw updateError;
         }
 
-
-        /*
-         * Send an email immediately when the
-         * applicant is approved.
-         */
 
         if (
             newStatus === 'approved' &&
@@ -2419,15 +2688,11 @@ EAGLE WRITES`
                 );
 
 
-            /*
-             * Check whether the backend successfully
-             * sent the email.
-             */
-
             if (!emailResponse.ok) {
 
                 const emailError =
                     await emailResponse.text();
+
 
                 console.error(
                     'Approval email failed:',
@@ -2446,10 +2711,6 @@ EAGLE WRITES`
             }
         }
 
-
-        /*
-         * Show the appropriate success message.
-         */
 
         showAdminSuccess(
             newStatus === 'approved'
@@ -2488,6 +2749,7 @@ async function loadMessages() {
         document.getElementById(
             'messages-body'
         );
+
 
     try {
 
@@ -2537,7 +2799,11 @@ async function loadMessages() {
 
     catch (error) {
 
-        console.error(error);
+        console.error(
+            'Load messages error:',
+            error
+        );
+
 
         showAdminError(
             'Unable to load contact messages: ' +
@@ -2751,12 +3017,12 @@ async function showTab(
     tabName
 ) {
 
-const tabs = [
-    'enrollments',
-    'messages',
-    'documents',
-    'articles'
-];
+    const tabs = [
+        'enrollments',
+        'messages',
+        'documents',
+        'articles'
+    ];
 
 
     tabs.forEach(
@@ -2784,7 +3050,9 @@ const tabs = [
                     'active'
                 );
 
-            } else {
+            }
+
+            else {
 
                 tab.classList.remove(
                     'active'
@@ -2809,13 +3077,13 @@ const tabs = [
 
 
     if (tabName === 'articles') {
-    await loadArticles();
-   }
+        await loadArticles();
+    }
 }
 
 
 /* ================================
-   HELPERS
+   GENERAL HELPERS
 ================================ */
 
 function clearAdminMessages() {
@@ -2989,12 +3257,13 @@ function escapeJs(
         );
 }
 
-let allArticles = [];
+
+/* ================================
+   ARTICLES
+================================ */
 
 
-/* =========================
-   LOAD ARTICLES
-========================= */
+/* LOAD ARTICLES */
 
 async function loadArticles() {
 
@@ -3003,9 +3272,11 @@ async function loadArticles() {
             'articles-body'
         );
 
+
     if (!tbody) {
         return;
     }
+
 
     tbody.innerHTML = `
         <tr>
@@ -3015,58 +3286,87 @@ async function loadArticles() {
         </tr>
     `;
 
+
     try {
+
+        /*
+         * IMPORTANT:
+         * Use supabaseClient, not supabase.
+         */
 
         const {
             data,
             error
-        } = await supabase
-            .from('articles')
-            .select('*')
-            .order(
-                'created_at',
-                {
-                    ascending: false
-                }
-            );
+        } =
+            await supabaseClient
+                .from('articles')
+                .select('*')
+                .order(
+                    'created_at',
+                    {
+                        ascending: false
+                    }
+                );
+
 
         if (error) {
             throw error;
         }
 
-        allArticles = data || [];
+
+        allArticles =
+            data || [];
+
 
         updateArticleStats();
 
+
         filterArticles();
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         console.error(
             'Error loading articles:',
             error
         );
 
+
+        allArticles = [];
+
+
+        updateArticleStats();
+
+
         tbody.innerHTML = `
             <tr>
-                <td colspan="7" style="color:#b42318;">
+                <td
+                    colspan="7"
+                    style="color:#b42318; padding:25px;"
+                >
                     Failed to load articles.
                     ${escapeHtml(error.message)}
                 </td>
             </tr>
         `;
+
+
+        showAdminError(
+            'Unable to load articles: ' +
+            error.message
+        );
     }
 }
 
 
-/* =========================
-   ARTICLE STATISTICS
-========================= */
+/* ARTICLE STATISTICS */
 
 function updateArticleStats() {
 
     const total =
         allArticles.length;
+
 
     const pending =
         allArticles.filter(
@@ -3074,47 +3374,55 @@ function updateArticleStats() {
                 article.status === 'pending'
         ).length;
 
+
     const approved =
         allArticles.filter(
             article =>
                 article.status === 'approved'
         ).length;
 
+
     const totalElement =
         document.getElementById(
             'total-articles'
         );
+
 
     const pendingElement =
         document.getElementById(
             'pending-articles'
         );
 
+
     const approvedElement =
         document.getElementById(
             'approved-articles'
         );
 
+
     if (totalElement) {
+
         totalElement.textContent =
             total;
     }
 
+
     if (pendingElement) {
+
         pendingElement.textContent =
             pending;
     }
 
+
     if (approvedElement) {
+
         approvedElement.textContent =
             approved;
     }
 }
 
 
-/* =========================
-   FILTER ARTICLES
-========================= */
+/* FILTER ARTICLES */
 
 function filterArticles() {
 
@@ -3123,10 +3431,12 @@ function filterArticles() {
             'search-articles'
         );
 
+
     const statusFilter =
         document.getElementById(
             'article-status-filter'
         );
+
 
     const search =
         searchInput
@@ -3135,10 +3445,12 @@ function filterArticles() {
                 .toLowerCase()
             : '';
 
+
     const selectedStatus =
         statusFilter
             ? statusFilter.value
             : 'all';
+
 
     const filtered =
         allArticles.filter(
@@ -3146,22 +3458,35 @@ function filterArticles() {
 
                 const matchesSearch =
                     !search ||
-                    String(article.title || '')
+                    String(
+                        article.title || ''
+                    )
                         .toLowerCase()
                         .includes(search) ||
-                    String(article.author_name || '')
+
+                    String(
+                        article.author_name || ''
+                    )
                         .toLowerCase()
                         .includes(search) ||
-                    String(article.author_email || '')
+
+                    String(
+                        article.author_email || ''
+                    )
                         .toLowerCase()
                         .includes(search) ||
-                    String(article.category || '')
+
+                    String(
+                        article.category || ''
+                    )
                         .toLowerCase()
                         .includes(search);
+
 
                 const matchesStatus =
                     selectedStatus === 'all' ||
                     article.status === selectedStatus;
+
 
                 return (
                     matchesSearch &&
@@ -3170,13 +3495,14 @@ function filterArticles() {
             }
         );
 
-    renderArticles(filtered);
+
+    renderArticles(
+        filtered
+    );
 }
 
 
-/* =========================
-   RENDER ARTICLES
-========================= */
+/* RENDER ARTICLES */
 
 function renderArticles(
     articles
@@ -3187,15 +3513,20 @@ function renderArticles(
             'articles-body'
         );
 
+
     if (!tbody) {
         return;
     }
+
 
     if (!articles.length) {
 
         tbody.innerHTML = `
             <tr>
-                <td colspan="7" class="loading">
+                <td
+                    colspan="7"
+                    class="loading"
+                >
                     No articles found.
                 </td>
             </tr>
@@ -3204,12 +3535,15 @@ function renderArticles(
         return;
     }
 
+
     tbody.innerHTML =
         articles.map(
             article => {
 
                 const status =
-                    article.status || 'pending';
+                    article.status ||
+                    'pending';
+
 
                 const date =
                     article.created_at
@@ -3218,44 +3552,63 @@ function renderArticles(
                         ).toLocaleString()
                         : '—';
 
+
                 return `
                     <tr>
 
                         <td>
+
                             <strong>
                                 ${escapeHtml(
-                                    article.title || 'Untitled'
+                                    article.title ||
+                                    'Untitled'
                                 )}
                             </strong>
+
                         </td>
+
 
                         <td>
                             ${escapeHtml(
-                                article.author_name || '—'
+                                article.author_name ||
+                                '—'
                             )}
                         </td>
 
-                        <td>
-                            ${escapeHtml(
-                                article.author_email || '—'
-                            )}
-                        </td>
 
                         <td>
                             ${escapeHtml(
-                                article.category || '—'
+                                article.author_email ||
+                                '—'
                             )}
                         </td>
+
+
+                        <td>
+                            ${escapeHtml(
+                                article.category ||
+                                '—'
+                            )}
+                        </td>
+
 
                         <td>
                             ${escapeHtml(date)}
                         </td>
 
+
                         <td>
-                            ${escapeHtml(
-                                status
-                            )}
+
+                            <span
+                                class="status status-${escapeHtml(
+                                    status
+                                )}"
+                            >
+                                ${escapeHtml(status)}
+                            </span>
+
                         </td>
+
 
                         <td>
 
@@ -3264,10 +3617,17 @@ function renderArticles(
                                 <button
                                     type="button"
                                     class="article-review-button"
-                                    onclick="reviewArticle('${article.id}')"
+                                    onclick="reviewArticle(
+                                        '${escapeJs(
+                                            String(
+                                                article.id
+                                            )
+                                        )}'
+                                    )"
                                 >
                                     Review
                                 </button>
+
 
                                 ${
                                     status !== 'approved'
@@ -3275,7 +3635,13 @@ function renderArticles(
                                         <button
                                             type="button"
                                             class="article-approve-button"
-                                            onclick="approveArticle('${article.id}')"
+                                            onclick="approveArticle(
+                                                '${escapeJs(
+                                                    String(
+                                                        article.id
+                                                    )
+                                                )}'
+                                            )"
                                         >
                                             Approve
                                         </button>
@@ -3283,13 +3649,20 @@ function renderArticles(
                                     : ''
                                 }
 
+
                                 ${
                                     status !== 'rejected'
                                     ? `
                                         <button
                                             type="button"
                                             class="article-reject-button"
-                                            onclick="rejectArticle('${article.id}')"
+                                            onclick="rejectArticle(
+                                                '${escapeJs(
+                                                    String(
+                                                        article.id
+                                                    )
+                                                )}'
+                                            )"
                                         >
                                             Reject
                                         </button>
@@ -3297,10 +3670,17 @@ function renderArticles(
                                     : ''
                                 }
 
+
                                 <button
                                     type="button"
                                     class="article-delete-button"
-                                    onclick="deleteArticle('${article.id}')"
+                                    onclick="deleteArticle(
+                                        '${escapeJs(
+                                            String(
+                                                article.id
+                                            )
+                                        )}'
+                                    )"
                                 >
                                     Delete
                                 </button>
@@ -3311,15 +3691,13 @@ function renderArticles(
 
                     </tr>
                 `;
+
             }
-        )
-        .join('');
+        ).join('');
 }
 
 
-/* =========================
-   REVIEW ARTICLE
-========================= */
+/* REVIEW ARTICLE */
 
 function reviewArticle(
     articleId
@@ -3332,33 +3710,58 @@ function reviewArticle(
                 String(articleId)
         );
 
+
     if (!article) {
-        alert('Article not found.');
+
+        alert(
+            'Article not found.'
+        );
+
         return;
     }
+
 
     document.getElementById(
         'article-modal-title'
     ).textContent =
-        article.title || 'Article Review';
+        article.title ||
+        'Article Review';
+
 
     document.getElementById(
         'article-modal-meta'
     ).innerHTML = `
+
         <strong>Author:</strong>
-        ${escapeHtml(article.author_name || '—')}
+        ${escapeHtml(
+            article.author_name ||
+            '—'
+        )}
+
         <br>
 
         <strong>Email:</strong>
-        ${escapeHtml(article.author_email || '—')}
+        ${escapeHtml(
+            article.author_email ||
+            '—'
+        )}
+
         <br>
 
         <strong>Category:</strong>
-        ${escapeHtml(article.category || '—')}
+        ${escapeHtml(
+            article.category ||
+            '—'
+        )}
+
         <br>
 
         <strong>Status:</strong>
-        ${escapeHtml(article.status || 'pending')}
+        ${escapeHtml(
+            article.status ||
+            'pending'
+        )}
+
         <br>
 
         <strong>Date:</strong>
@@ -3369,12 +3772,16 @@ function reviewArticle(
                 ).toLocaleString()
                 : '—'
         )}
+
     `;
+
 
     document.getElementById(
         'article-modal-content'
     ).textContent =
-        article.content || '';
+        article.content ||
+        '';
+
 
     document.getElementById(
         'article-modal'
@@ -3384,9 +3791,7 @@ function reviewArticle(
 }
 
 
-/* =========================
-   CLOSE ARTICLE MODAL
-========================= */
+/* CLOSE ARTICLE MODAL */
 
 function closeArticleModal() {
 
@@ -3395,7 +3800,9 @@ function closeArticleModal() {
             'article-modal'
         );
 
+
     if (modal) {
+
         modal.classList.remove(
             'active'
         );
@@ -3403,9 +3810,7 @@ function closeArticleModal() {
 }
 
 
-/* =========================
-   APPROVE ARTICLE
-========================= */
+/* APPROVE ARTICLE */
 
 async function approveArticle(
     articleId
@@ -3418,56 +3823,81 @@ async function approveArticle(
                 String(articleId)
         );
 
+
     if (!article) {
-        alert('Article not found.');
+
+        alert(
+            'Article not found.'
+        );
+
         return;
     }
+
 
     const confirmed =
         confirm(
             `Approve "${article.title}"?`
         );
 
+
     if (!confirmed) {
         return;
     }
 
+
     try {
+
+        /*
+         * IMPORTANT:
+         * Use supabaseClient, not supabase.
+         */
 
         const {
             error
-        } = await supabase
-            .from('articles')
-            .update({
-                status: 'approved',
-                approved_at:
-                    new Date().toISOString(),
-                updated_at:
-                    new Date().toISOString()
-            })
-            .eq(
-                'id',
-                articleId
-            );
+        } =
+            await supabaseClient
+                .from('articles')
+                .update({
+
+                    status:
+                        'approved',
+
+                    approved_at:
+                        new Date().toISOString(),
+
+                    updated_at:
+                        new Date().toISOString()
+
+                })
+                .eq(
+                    'id',
+                    articleId
+                );
+
 
         if (error) {
             throw error;
         }
 
-        alert(
+
+        showAdminSuccess(
             'Article approved successfully.'
         );
 
+
         await loadArticles();
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         console.error(
             'Error approving article:',
             error
         );
 
-        alert(
+
+        showAdminError(
             'Failed to approve article: ' +
             error.message
         );
@@ -3475,9 +3905,7 @@ async function approveArticle(
 }
 
 
-/* =========================
-   REJECT ARTICLE
-========================= */
+/* REJECT ARTICLE */
 
 async function rejectArticle(
     articleId
@@ -3490,55 +3918,81 @@ async function rejectArticle(
                 String(articleId)
         );
 
+
     if (!article) {
-        alert('Article not found.');
+
+        alert(
+            'Article not found.'
+        );
+
         return;
     }
+
 
     const confirmed =
         confirm(
             `Reject "${article.title}"?`
         );
 
+
     if (!confirmed) {
         return;
     }
 
+
     try {
+
+        /*
+         * IMPORTANT:
+         * Use supabaseClient, not supabase.
+         */
 
         const {
             error
-        } = await supabase
-            .from('articles')
-            .update({
-                status: 'rejected',
-                approved_at: null,
-                updated_at:
-                    new Date().toISOString()
-            })
-            .eq(
-                'id',
-                articleId
-            );
+        } =
+            await supabaseClient
+                .from('articles')
+                .update({
+
+                    status:
+                        'rejected',
+
+                    approved_at:
+                        null,
+
+                    updated_at:
+                        new Date().toISOString()
+
+                })
+                .eq(
+                    'id',
+                    articleId
+                );
+
 
         if (error) {
             throw error;
         }
 
-        alert(
+
+        showAdminSuccess(
             'Article rejected.'
         );
 
+
         await loadArticles();
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         console.error(
             'Error rejecting article:',
             error
         );
 
-        alert(
+
+        showAdminError(
             'Failed to reject article: ' +
             error.message
         );
@@ -3546,9 +4000,7 @@ async function rejectArticle(
 }
 
 
-/* =========================
-   DELETE ARTICLE
-========================= */
+/* DELETE ARTICLE */
 
 async function deleteArticle(
     articleId
@@ -3561,87 +4013,76 @@ async function deleteArticle(
                 String(articleId)
         );
 
+
     if (!article) {
-        alert('Article not found.');
+
+        alert(
+            'Article not found.'
+        );
+
         return;
     }
+
 
     const confirmed =
         confirm(
             `Delete "${article.title}" permanently?`
         );
 
+
     if (!confirmed) {
         return;
     }
 
+
     try {
+
+        /*
+         * IMPORTANT:
+         * Use supabaseClient, not supabase.
+         */
 
         const {
             error
-        } = await supabase
-            .from('articles')
-            .delete()
-            .eq(
-                'id',
-                articleId
-            );
+        } =
+            await supabaseClient
+                .from('articles')
+                .delete()
+                .eq(
+                    'id',
+                    articleId
+                );
+
 
         if (error) {
             throw error;
         }
 
-        alert(
+
+        showAdminSuccess(
             'Article deleted successfully.'
         );
 
+
         await loadArticles();
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         console.error(
             'Error deleting article:',
             error
         );
 
-        alert(
+
+        showAdminError(
             'Failed to delete article: ' +
             error.message
         );
     }
 }
 
-
-/* =========================
-   HTML ESCAPE HELPER
-========================= */
-
-function escapeHtml(
-    value
-) {
-
-    return String(value)
-        .replace(
-            /&/g,
-            '&amp;'
-        )
-        .replace(
-            /</g,
-            '&lt;'
-        )
-        .replace(
-            />/g,
-            '&gt;'
-        )
-        .replace(
-            /"/g,
-            '&quot;'
-        )
-        .replace(
-            /'/g,
-            '&#039;'
-        );
-}
 
 /* ================================
    START
@@ -3653,4 +4094,3 @@ checkAdmin();
 
 </body>
 </html>
-```
