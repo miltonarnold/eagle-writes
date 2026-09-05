@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +25,149 @@
 
     <!-- EAGLE WRITES Logo Favicon -->
     <link rel="icon" type="image/jpeg" href="Images/logo.milto.jpg">
+
+    <!-- ================= ARTICLE SECTION STYLES ================= -->
+
+    <style>
+
+        .latest-articles-home {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .latest-articles-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .latest-articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .article-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .article-card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            background: #eeeeee;
+        }
+
+        .article-card-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .article-card-category {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            opacity: 0.75;
+        }
+
+        .article-card-title {
+            font-size: 22px;
+            line-height: 1.35;
+            margin: 0 0 12px;
+        }
+
+        .article-card-title a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .article-card-excerpt {
+            font-size: 15px;
+            line-height: 1.7;
+            margin: 0 0 18px;
+            opacity: 0.8;
+        }
+
+        .article-card-meta {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        .article-read-more {
+            margin-top: auto;
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 12px 18px;
+            border-radius: 6px;
+            text-align: center;
+            background: #f2c94c;
+            color: #111111;
+            transition: opacity 0.2s ease;
+        }
+
+        .article-read-more:hover {
+            opacity: 0.85;
+        }
+
+        .articles-loading,
+        .articles-empty,
+        .articles-error {
+            text-align: center;
+            padding: 30px 15px;
+            font-size: 16px;
+        }
+
+        .articles-error {
+            display: none;
+        }
+
+        .latest-articles-cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+
+            .latest-articles-home {
+                padding: 60px 15px;
+            }
+
+            .article-card-image {
+                height: 200px;
+            }
+
+            .article-card-content {
+                padding: 20px;
+            }
+
+            .article-card-title {
+                font-size: 20px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -550,6 +694,98 @@
 
 
 
+        <!-- ================= LATEST ARTICLES ================= -->
+
+        <section
+            class="latest-articles-home"
+            id="latest-articles"
+        >
+
+            <div class="latest-articles-container">
+
+
+                <div class="section-header">
+
+                    <span class="section-label">
+                        EAGLE WRITES ARTICLES
+                    </span>
+
+                    <h2 class="section-heading">
+                        Latest Articles
+                    </h2>
+
+                    <p class="section-subheading">
+                        Explore research, insights, analysis, and ideas
+                        published by EAGLE WRITES contributors.
+                    </p>
+
+                </div>
+
+
+                <!-- LOADING MESSAGE -->
+
+                <div
+                    id="articles-loading"
+                    class="articles-loading"
+                >
+                    Loading latest articles...
+                </div>
+
+
+                <!-- EMPTY MESSAGE -->
+
+                <div
+                    id="articles-empty"
+                    class="articles-empty"
+                    style="display:none;"
+                >
+                    No articles have been published yet.
+                </div>
+
+
+                <!-- ERROR MESSAGE -->
+
+                <div
+                    id="articles-error"
+                    class="articles-error"
+                >
+                    Articles could not be loaded at this time.
+                </div>
+
+
+                <!-- ARTICLE CARDS -->
+
+                <div
+                    id="latest-articles-grid"
+                    class="latest-articles-grid"
+                >
+                </div>
+
+
+                <!-- VIEW ARTICLES BUTTON -->
+
+                <div
+                    class="latest-articles-cta"
+                    id="latest-articles-cta"
+                    style="display:none;"
+                >
+
+                    <a
+                        href="#latest-articles"
+                        class="btn btn-primary"
+                    >
+                        View Latest Articles
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
         <!-- ================= GET STARTED CTA ================= -->
 
         <section class="home-cta">
@@ -843,7 +1079,276 @@
 
 
 
-    <!-- ================= JAVASCRIPT ================= -->
+    <!-- ================= SUPABASE ================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <script>
+
+        const SUPABASE_URL =
+            'https://ekkvghdnejvyjykagafr.supabase.co';
+
+        const SUPABASE_KEY =
+            'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
+
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        async function loadLatestArticles() {
+
+            const loading =
+                document.getElementById('articles-loading');
+
+            const empty =
+                document.getElementById('articles-empty');
+
+            const error =
+                document.getElementById('articles-error');
+
+            const grid =
+                document.getElementById('latest-articles-grid');
+
+            const cta =
+                document.getElementById('latest-articles-cta');
+
+
+            try {
+
+                const { data, error: fetchError } =
+                    await supabaseClient
+                        .from('articles')
+                        .select(`
+                            id,
+                            title,
+                            slug,
+                            content,
+                            author_name,
+                            category,
+                            featured_image,
+                            meta_description,
+                            created_at
+                        `)
+                        .eq('status', 'approved')
+                        .order('created_at', {
+                            ascending: false
+                        })
+                        .limit(6);
+
+
+                if (fetchError) {
+
+                    console.error(
+                        'Article loading error:',
+                        fetchError
+                    );
+
+                    loading.style.display = 'none';
+                    error.style.display = 'block';
+
+                    return;
+                }
+
+
+                loading.style.display = 'none';
+
+
+                if (!data || data.length === 0) {
+
+                    empty.style.display = 'block';
+
+                    return;
+                }
+
+
+                grid.innerHTML = '';
+
+
+                data.forEach(article => {
+
+                    const card =
+                        document.createElement('article');
+
+                    card.className = 'article-card';
+
+
+                    const image =
+                        document.createElement('img');
+
+                    image.className =
+                        'article-card-image';
+
+                    image.alt =
+                        article.title || 'EAGLE WRITES article';
+
+                    image.loading = 'lazy';
+
+
+                    if (article.featured_image) {
+
+                        image.src =
+                            article.featured_image;
+
+                    } else {
+
+                        image.src =
+                            'Images/logo.milto.jpg';
+
+                    }
+
+
+                    const content =
+                        document.createElement('div');
+
+                    content.className =
+                        'article-card-content';
+
+
+                    const category =
+                        document.createElement('div');
+
+                    category.className =
+                        'article-card-category';
+
+                    category.textContent =
+                        article.category ||
+                        'Research & Insights';
+
+
+                    const title =
+                        document.createElement('h3');
+
+                    title.className =
+                        'article-card-title';
+
+
+                    const titleLink =
+                        document.createElement('a');
+
+                    titleLink.href =
+                        'article.html?slug=' +
+                        encodeURIComponent(article.slug);
+
+                    titleLink.textContent =
+                        article.title;
+
+
+                    title.appendChild(titleLink);
+
+
+                    const excerpt =
+                        document.createElement('p');
+
+                    excerpt.className =
+                        'article-card-excerpt';
+
+
+                    const description =
+                        article.meta_description ||
+                        article.content ||
+                        'Read this article from EAGLE WRITES.';
+
+
+                    excerpt.textContent =
+                        description.length > 150
+                            ? description.substring(0, 150) + '...'
+                            : description;
+
+
+                    const meta =
+                        document.createElement('div');
+
+                    meta.className =
+                        'article-card-meta';
+
+
+                    const author =
+                        article.author_name ||
+                        'EAGLE WRITES';
+
+
+                    const date =
+                        article.created_at
+                            ? new Date(
+                                article.created_at
+                            ).toLocaleDateString(
+                                'en-GB',
+                                {
+                                    day: 'numeric',
+                                    month: 'long',
+                                    year: 'numeric'
+                                }
+                            )
+                            : '';
+
+
+                    meta.textContent =
+                        'By ' +
+                        author +
+                        (date ? ' • ' + date : '');
+
+
+                    const readMore =
+                        document.createElement('a');
+
+                    readMore.className =
+                        'article-read-more';
+
+                    readMore.href =
+                        'article.html?slug=' +
+                        encodeURIComponent(article.slug);
+
+                    readMore.textContent =
+                        'Read Article';
+
+
+                    content.appendChild(category);
+                    content.appendChild(title);
+                    content.appendChild(excerpt);
+                    content.appendChild(meta);
+                    content.appendChild(readMore);
+
+
+                    card.appendChild(image);
+                    card.appendChild(content);
+
+
+                    grid.appendChild(card);
+
+                });
+
+
+                cta.style.display = 'block';
+
+
+            } catch (err) {
+
+                console.error(
+                    'Unexpected article error:',
+                    err
+                );
+
+                loading.style.display = 'none';
+                error.style.display = 'block';
+
+            }
+
+        }
+
+
+        document.addEventListener(
+            'DOMContentLoaded',
+            loadLatestArticles
+        );
+
+    </script>
+
+
+    <!-- ================= EXISTING SITE JAVASCRIPT ================= -->
 
     <script src="script.js"></script>
 
@@ -851,3 +1356,4 @@
 </body>
 
 </html>
+```
