@@ -1391,23 +1391,75 @@ tbody tr:hover {
 </main>
 
 
+<!-- SUPABASE JAVASCRIPT LIBRARY -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <script>
 
+/* =========================================================
+   SUPABASE INITIALIZATION
+   ========================================================= */
+
 const SUPABASE_URL =
     'https://ekkvghdnejvyjykagafr.supabase.co';
 
-const SUPABASE_ANON_KEY =
+const SUPABASE_PUBLISHABLE_KEY =
     'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
 
 
-const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_ANON_KEY
+/*
+ * Keep the Supabase library separate from the actual client.
+ * This prevents accidental conflicts with a global variable
+ * named "supabase".
+ */
+
+const supabaseLibrary =
+    window.supabase;
+
+
+if (
+    !supabaseLibrary ||
+    typeof supabaseLibrary.createClient !== 'function'
+) {
+
+    console.error(
+        'Supabase library failed to load.'
     );
+
+    throw new Error(
+        'Supabase library failed to load. Please check the Supabase CDN script.'
+    );
+}
+
+
+const supabaseClient =
+    supabaseLibrary.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+/*
+ * Verify that the object created above is actually
+ * the Supabase client before any database operation.
+ */
+
+if (
+    !supabaseClient ||
+    typeof supabaseClient.from !== 'function'
+) {
+
+    console.error(
+        'Supabase client was not initialized correctly.',
+        supabaseClient
+    );
+
+    throw new Error(
+        'Supabase client initialization failed.'
+    );
+}
 
 
 const STORAGE_BUCKET =
@@ -1424,9 +1476,9 @@ let allDocuments = [];
 let allArticles = [];
 
 
-/* ================================
+/* =========================================================
    AUTH
-================================ */
+   ========================================================= */
 
 async function loginAdmin() {
 
@@ -1629,9 +1681,9 @@ async function logoutAdmin() {
 }
 
 
-/* ================================
+/* =========================================================
    LOAD EVERYTHING
-================================ */
+   ========================================================= */
 
 async function loadAllAdminData() {
 
@@ -1647,9 +1699,9 @@ async function loadAllAdminData() {
 }
 
 
-/* ================================
+/* =========================================================
    DOCUMENT UPLOAD
-================================ */
+   ========================================================= */
 
 async function uploadDocument() {
 
@@ -1896,9 +1948,9 @@ async function uploadDocument() {
 }
 
 
-/* ================================
+/* =========================================================
    LOAD DOCUMENTS
-================================ */
+   ========================================================= */
 
 async function loadDocuments() {
 
@@ -1977,9 +2029,9 @@ async function loadDocuments() {
 }
 
 
-/* ================================
+/* =========================================================
    RENDER DOCUMENTS
-================================ */
+   ========================================================= */
 
 function renderDocuments(
     documents
@@ -2121,9 +2173,9 @@ function renderDocuments(
 }
 
 
-/* ================================
+/* =========================================================
    VIEW DOCUMENT
-================================ */
+   ========================================================= */
 
 function viewDocument(url) {
 
@@ -2145,9 +2197,9 @@ function viewDocument(url) {
 }
 
 
-/* ================================
+/* =========================================================
    DELETE DOCUMENT
-================================ */
+   ========================================================= */
 
 async function deleteDocument(
     documentId,
@@ -2229,9 +2281,9 @@ async function deleteDocument(
 }
 
 
-/* ================================
+/* =========================================================
    ENROLLMENTS
-================================ */
+   ========================================================= */
 
 async function loadEnrollments() {
 
@@ -2548,9 +2600,9 @@ function updateEnrollmentStatistics(
 }
 
 
-/* ================================
+/* =========================================================
    UPDATE ENROLLMENT STATUS
-================================ */
+   ========================================================= */
 
 async function updateStatus(
     enrollmentId,
@@ -2739,9 +2791,9 @@ EAGLE WRITES`
 }
 
 
-/* ================================
+/* =========================================================
    MESSAGES
-================================ */
+   ========================================================= */
 
 async function loadMessages() {
 
@@ -3009,9 +3061,9 @@ function filterMessages() {
 }
 
 
-/* ================================
+/* =========================================================
    TABS
-================================ */
+   ========================================================= */
 
 async function showTab(
     tabName
@@ -3082,9 +3134,9 @@ async function showTab(
 }
 
 
-/* ================================
+/* =========================================================
    GENERAL HELPERS
-================================ */
+   ========================================================= */
 
 function clearAdminMessages() {
 
@@ -3258,9 +3310,9 @@ function escapeJs(
 }
 
 
-/* ================================
+/* =========================================================
    ARTICLES
-================================ */
+   ========================================================= */
 
 
 /* LOAD ARTICLES */
@@ -3291,7 +3343,7 @@ async function loadArticles() {
 
         /*
          * IMPORTANT:
-         * Use supabaseClient, not supabase.
+         * Always use the initialized client.
          */
 
         const {
@@ -3847,11 +3899,6 @@ async function approveArticle(
 
     try {
 
-        /*
-         * IMPORTANT:
-         * Use supabaseClient, not supabase.
-         */
-
         const {
             error
         } =
@@ -3941,11 +3988,6 @@ async function rejectArticle(
 
 
     try {
-
-        /*
-         * IMPORTANT:
-         * Use supabaseClient, not supabase.
-         */
 
         const {
             error
@@ -4037,11 +4079,6 @@ async function deleteArticle(
 
     try {
 
-        /*
-         * IMPORTANT:
-         * Use supabaseClient, not supabase.
-         */
-
         const {
             error
         } =
@@ -4084,9 +4121,9 @@ async function deleteArticle(
 }
 
 
-/* ================================
+/* =========================================================
    START
-================================ */
+   ========================================================= */
 
 checkAdmin();
 
