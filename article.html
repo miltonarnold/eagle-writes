@@ -1,247 +1,763 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" id="page-description"
-    content="Read published research, analysis, and professional insights from EAGLE WRITES.">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<meta name="author" content="EAGLE WRITES">
+    <meta
+        name="description"
+        id="page-description"
+        content="Read published research, analysis, and professional insights from EAGLE WRITES."
+    >
 
-<title>Article | EAGLE WRITES</title>
+    <meta
+        name="author"
+        content="EAGLE WRITES"
+    >
 
-<link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/jpeg" href="Images/logo.milto.jpg">
+    <title>Article | EAGLE WRITES</title>
 
-<style>
-    .single-article-page {
-        padding: 80px 20px;
-        background: #f8f9fa;
-        min-height: 70vh;
-    }
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
-    .single-article-container {
-        max-width: 900px;
-        margin: 0 auto;
-    }
+    <link
+        rel="icon"
+        type="image/jpeg"
+        href="Images/logo.milto.jpg"
+    >
 
-    .article-header {
-        text-align: center;
-        margin-bottom: 40px;
-    }
+    <style>
 
-    .article-category {
-        display: inline-block;
-        margin-bottom: 15px;
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        opacity: 0.7;
-    }
+        /* =====================================================
+           ARTICLE PAGE
+        ===================================================== */
 
-    .article-title {
-        font-size: 44px;
-        line-height: 1.2;
-        margin: 0 0 20px;
-    }
-
-    .article-meta {
-        font-size: 14px;
-        opacity: 0.7;
-    }
-
-    .article-featured-image {
-        width: 100%;
-        max-height: 500px;
-        object-fit: cover;
-        display: block;
-        border-radius: 12px;
-        margin-bottom: 45px;
-        background: #eeeeee;
-    }
-
-    .article-content {
-        background: #ffffff;
-        padding: 45px;
-        border-radius: 12px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        font-size: 17px;
-        line-height: 1.85;
-        color: #222222;
-        overflow-wrap: anywhere;
-    }
-
-    .article-content h1,
-    .article-content h2,
-    .article-content h3,
-    .article-content h4 {
-        line-height: 1.35;
-        margin-top: 30px;
-        margin-bottom: 15px;
-    }
-
-    .article-content p {
-        margin: 0 0 20px;
-    }
-
-    .article-content ul,
-    .article-content ol {
-        margin: 0 0 20px;
-        padding-left: 30px;
-    }
-
-    .article-content blockquote {
-        margin: 25px 0;
-        padding: 15px 20px;
-        border-left: 4px solid #f2c94c;
-        background: #f8f9fa;
-    }
-
-    .article-content img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-    }
-
-    .article-content a {
-        color: #0b1f3a;
-        text-decoration: underline;
-    }
-
-    .article-actions {
-        text-align: center;
-        margin-top: 40px;
-    }
-
-    .article-actions a {
-        display: inline-block;
-        margin: 5px;
-    }
-
-    .article-loading,
-    .article-error {
-        text-align: center;
-        padding: 60px 20px;
-        font-size: 17px;
-    }
-
-    .article-error {
-        display: none;
-    }
-
-    #article-wrapper {
-        display: none;
-    }
-
-    @media (max-width: 700px) {
         .single-article-page {
-            padding: 60px 15px;
+            padding: 80px 20px;
+            background: #f8f9fa;
+            min-height: 70vh;
+        }
+
+        .single-article-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .article-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .article-category {
+            display: inline-block;
+            margin-bottom: 15px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.7;
         }
 
         .article-title {
-            font-size: 32px;
+            font-size: 44px;
+            line-height: 1.2;
+            margin: 0 0 20px;
         }
 
-        .article-content {
-            padding: 25px 20px;
-            font-size: 16px;
+        .article-meta {
+            font-size: 14px;
+            opacity: 0.7;
         }
 
         .article-featured-image {
-            max-height: 350px;
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            display: block;
+            border-radius: 12px;
+            margin-bottom: 45px;
+            background: #eeeeee;
         }
-    }
-</style>
+
+        .article-content {
+            background: #ffffff;
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            font-size: 17px;
+            line-height: 1.85;
+            color: #222222;
+            overflow-wrap: anywhere;
+        }
+
+        .article-content h1,
+        .article-content h2,
+        .article-content h3,
+        .article-content h4 {
+            line-height: 1.35;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .article-content p {
+            margin: 0 0 20px;
+        }
+
+        .article-content ul,
+        .article-content ol {
+            margin: 0 0 20px;
+            padding-left: 30px;
+        }
+
+        .article-content blockquote {
+            margin: 25px 0;
+            padding: 15px 20px;
+            border-left: 4px solid #f2c94c;
+            background: #f8f9fa;
+        }
+
+        .article-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .article-content a {
+            color: #0b1f3a;
+            text-decoration: underline;
+        }
+
+
+        /* =====================================================
+           ARTICLE ACTIONS
+        ===================================================== */
+
+        .article-actions {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .article-actions a {
+            display: inline-block;
+            margin: 5px;
+        }
+
+
+        /* =====================================================
+           ARTICLE REACTIONS
+        ===================================================== */
+
+        .article-reactions-section {
+            margin-top: 35px;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .article-reactions-title {
+            text-align: center;
+            margin: 0 0 18px;
+            font-size: 20px;
+        }
+
+        .reaction-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .reaction-button {
+            border: 1px solid #dddddd;
+            background: #ffffff;
+            border-radius: 999px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .reaction-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .reaction-button.active {
+            border-color: #0b1f3a;
+            background: #eef3f8;
+            font-weight: 700;
+        }
+
+        .reaction-count {
+            font-size: 13px;
+            opacity: 0.75;
+        }
+
+        .reaction-label {
+            font-size: 13px;
+        }
+
+        .reaction-status {
+            text-align: center;
+            min-height: 20px;
+            margin-top: 10px;
+            font-size: 13px;
+            opacity: 0.7;
+        }
+
+
+        /* =====================================================
+           COMMENTS SECTION
+        ===================================================== */
+
+        .comments-section {
+            margin-top: 45px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .comments-heading {
+            margin: 0 0 8px;
+            font-size: 28px;
+        }
+
+        .comments-subheading {
+            margin: 0 0 25px;
+            font-size: 14px;
+            opacity: 0.65;
+        }
+
+
+        /* =====================================================
+           COMMENT FORM
+        ===================================================== */
+
+        .comment-form {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .comment-form-title {
+            margin: 0 0 15px;
+            font-size: 19px;
+        }
+
+        .comment-input {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #d9d9d9;
+            border-radius: 8px;
+            padding: 13px 14px;
+            font-family: inherit;
+            font-size: 15px;
+            resize: vertical;
+            min-height: 110px;
+            background: #ffffff;
+            outline: none;
+        }
+
+        .comment-input:focus {
+            border-color: #0b1f3a;
+            box-shadow: 0 0 0 3px rgba(11, 31, 58, 0.08);
+        }
+
+        .comment-form-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            align-items: center;
+        }
+
+        .comment-name-input {
+            flex: 1;
+            box-sizing: border-box;
+            border: 1px solid #d9d9d9;
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-family: inherit;
+            font-size: 15px;
+            background: #ffffff;
+            outline: none;
+        }
+
+        .comment-name-input:focus {
+            border-color: #0b1f3a;
+        }
+
+        .comment-submit-button {
+            border: none;
+            background: #0b1f3a;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .comment-submit-button:hover {
+            opacity: 0.92;
+        }
+
+        .comment-submit-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .comment-form-message {
+            margin-top: 10px;
+            font-size: 13px;
+            min-height: 18px;
+        }
+
+
+        /* =====================================================
+           COMMENTS LIST
+        ===================================================== */
+
+        .comments-list {
+            margin-top: 10px;
+        }
+
+        .comments-empty {
+            text-align: center;
+            padding: 35px 15px;
+            opacity: 0.65;
+            font-size: 15px;
+        }
+
+        .comment-item {
+            position: relative;
+            margin-top: 18px;
+        }
+
+        .comment-box {
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            padding: 18px;
+            background: #ffffff;
+        }
+
+        .comment-author {
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .comment-date {
+            font-size: 12px;
+            opacity: 0.55;
+            margin-left: 8px;
+        }
+
+        .comment-text {
+            margin-top: 9px;
+            font-size: 15px;
+            line-height: 1.65;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        .comment-controls {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            flex-wrap: wrap;
+        }
+
+        .comment-control-button {
+            border: 1px solid #e1e1e1;
+            background: #ffffff;
+            border-radius: 999px;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 12px;
+        }
+
+        .comment-control-button:hover {
+            background: #f6f6f6;
+        }
+
+        .comment-control-button.active {
+            border-color: #0b1f3a;
+            background: #eef3f8;
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           REACTION PICKER
+        ===================================================== */
+
+        .reaction-picker {
+            display: none;
+            margin-top: 8px;
+            padding: 8px;
+            background: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .reaction-picker.show {
+            display: flex;
+        }
+
+        .picker-reaction {
+            border: 1px solid transparent;
+            background: #f7f7f7;
+            border-radius: 8px;
+            padding: 6px 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .picker-reaction:hover {
+            background: #eeeeee;
+        }
+
+
+        /* =====================================================
+           REPLY FORM
+        ===================================================== */
+
+        .reply-form {
+            display: none;
+            margin-top: 12px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 9px;
+        }
+
+        .reply-form.show {
+            display: block;
+        }
+
+        .reply-form textarea {
+            width: 100%;
+            box-sizing: border-box;
+            min-height: 85px;
+            resize: vertical;
+            border: 1px solid #d8d8d8;
+            border-radius: 8px;
+            padding: 10px;
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .reply-form textarea:focus {
+            border-color: #0b1f3a;
+        }
+
+        .reply-form-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .reply-name-input {
+            flex: 1;
+            border: 1px solid #d8d8d8;
+            border-radius: 8px;
+            padding: 9px 10px;
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .reply-submit {
+            border: none;
+            background: #0b1f3a;
+            color: #ffffff;
+            border-radius: 8px;
+            padding: 9px 15px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 700;
+        }
+
+        .reply-cancel {
+            border: 1px solid #d8d8d8;
+            background: #ffffff;
+            color: #222222;
+            border-radius: 8px;
+            padding: 9px 15px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           NESTED REPLIES
+        ===================================================== */
+
+        .comment-children {
+            margin-left: 30px;
+            padding-left: 18px;
+            border-left: 2px solid #eeeeee;
+        }
+
+
+        /* =====================================================
+           LOADING / ERROR
+        ===================================================== */
+
+        .article-loading,
+        .article-error {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 17px;
+        }
+
+        .article-error {
+            display: none;
+        }
+
+        #article-wrapper {
+            display: none;
+        }
+
+        .comments-loading {
+            text-align: center;
+            padding: 30px 10px;
+            opacity: 0.65;
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            .single-article-page {
+                padding: 60px 15px;
+            }
+
+            .article-title {
+                font-size: 32px;
+            }
+
+            .article-content {
+                padding: 25px 20px;
+                font-size: 16px;
+            }
+
+            .article-featured-image {
+                max-height: 350px;
+            }
+
+            .article-reactions-section {
+                padding: 20px 15px;
+            }
+
+            .comments-section {
+                padding: 22px 15px;
+            }
+
+            .comment-form {
+                padding: 18px 14px;
+            }
+
+            .comment-form-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .comment-submit-button {
+                width: 100%;
+            }
+
+            .reply-form-row {
+                flex-direction: column;
+            }
+
+            .reply-submit,
+            .reply-cancel {
+                width: 100%;
+            }
+
+            .comment-children {
+                margin-left: 12px;
+                padding-left: 10px;
+            }
+
+            .reaction-button {
+                padding: 7px 9px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
+
 <body>
 
+
 <header class="header" id="header">
+
     <nav class="navbar" id="navbar">
 
-    <a href="index.html" class="logo-container">
-        <div class="logo-icon">
-            <img src="Images/logo.milto.jpg" alt="EAGLE WRITES logo">
+        <a
+            href="index.html"
+            class="logo-container"
+        >
+
+            <div class="logo-icon">
+
+                <img
+                    src="Images/logo.milto.jpg"
+                    alt="EAGLE WRITES logo"
+                >
+
+            </div>
+
+            <div class="brand-text">
+
+                <span class="brand-name-eagle">
+                    EAGLE
+                </span>
+
+                <span class="brand-name-writes">
+                    WRITES
+                </span>
+
+            </div>
+
+            <div class="brand-tagline">
+                RESEARCH • ANALYTICS • CONSULTING
+            </div>
+
+        </a>
+
+
+        <button
+            class="mobile-menu-toggle"
+            id="mobile-menu-toggle"
+            aria-label="Toggle navigation menu"
+            type="button"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <nav
+            class="nav-menu"
+            id="nav-menu"
+        >
+
+            <ul class="nav-list">
+
+                <li>
+                    <a
+                        href="index.html"
+                        class="nav-link"
+                    >
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="about.html"
+                        class="nav-link"
+                    >
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="get-started.html"
+                        class="nav-link"
+                    >
+                        Get Started
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <a
+                href="submit-article.html"
+                class="btn btn-primary"
+            >
+                Publish Your Article
+            </a>
+
+
+            <a
+                href="https://wa.me/254748513346"
+                class="btn-whatsapp"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <span class="icon-whatsapp"></span>
+
+                WhatsApp
+
+            </a>
+
+
+            <a
+                href="get-started.html"
+                class="btn-get-started-header"
+            >
+                Get Started
+            </a>
+
         </div>
 
-        <div class="brand-text">
-            <span class="brand-name-eagle">EAGLE</span>
-            <span class="brand-name-writes">WRITES</span>
-        </div>
-
-        <div class="brand-tagline">
-            RESEARCH • ANALYTICS • CONSULTING
-        </div>
-    </a>
-
-    <button
-        class="mobile-menu-toggle"
-        id="mobile-menu-toggle"
-        aria-label="Toggle navigation menu"
-        type="button"
-    >
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-
-    <nav class="nav-menu" id="nav-menu">
-        <ul class="nav-list">
-            <li>
-                <a href="index.html" class="nav-link">Home</a>
-            </li>
-
-            <li>
-                <a href="about.html" class="nav-link">About</a>
-            </li>
-
-            <li>
-                <a href="get-started.html" class="nav-link">Get Started</a>
-            </li>
-        </ul>
     </nav>
 
-    <div class="nav-actions">
-
-        <a
-            href="submit-article.html"
-            class="btn btn-primary"
-        >
-            Publish Your Article
-        </a>
-
-        <a
-            href="https://wa.me/254748513346"
-            class="btn-whatsapp"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <span class="icon-whatsapp"></span>
-            WhatsApp
-        </a>
-
-        <a
-            href="get-started.html"
-            class="btn-get-started-header"
-        >
-            Get Started
-        </a>
-
-    </div>
-
-</nav>
-
 </header>
+
+
 
 <main>
 
 <section class="single-article-page">
 
     <div class="single-article-container">
+
+
+        <!-- =================================================
+             LOADING
+        ================================================== -->
 
         <div
             id="article-loading"
@@ -250,50 +766,77 @@
             Loading article...
         </div>
 
+
+        <!-- =================================================
+             ERROR
+        ================================================== -->
+
         <div
             id="article-error"
             class="article-error"
         >
-            <h2>Article Not Found</h2>
+
+            <h2>
+                Article Not Found
+            </h2>
+
             <p>
                 The article you're looking for could not be found
                 or is no longer available.
             </p>
 
+
             <div class="article-actions">
-                <a href="articles.html" class="btn btn-primary">
+
+                <a
+                    href="articles.html"
+                    class="btn btn-primary"
+                >
                     View All Articles
                 </a>
 
-                <a href="index.html" class="btn btn-primary">
+                <a
+                    href="index.html"
+                    class="btn btn-primary"
+                >
                     Back to Home
                 </a>
+
             </div>
+
         </div>
 
+
+
+        <!-- =================================================
+             ARTICLE
+        ================================================== -->
+
         <div id="article-wrapper">
+
 
             <header class="article-header">
 
                 <div
                     id="article-category"
                     class="article-category"
-                >
-                </div>
+                ></div>
+
 
                 <h1
                     id="article-title"
                     class="article-title"
-                >
-                </h1>
+                ></h1>
+
 
                 <div
                     id="article-meta"
                     class="article-meta"
-                >
-                </div>
+                ></div>
 
             </header>
+
+
 
             <img
                 id="article-image"
@@ -302,11 +845,140 @@
                 style="display:none;"
             >
 
+
+
             <article
                 id="article-content"
                 class="article-content"
+            ></article>
+
+
+
+            <!-- =================================================
+                 ARTICLE REACTIONS
+            ================================================== -->
+
+            <section
+                class="article-reactions-section"
+                aria-label="Article reactions"
             >
-            </article>
+
+                <h2 class="article-reactions-title">
+                    What do you think about this article?
+                </h2>
+
+
+                <div
+                    id="article-reaction-buttons"
+                    class="reaction-buttons"
+                ></div>
+
+
+                <div
+                    id="article-reaction-status"
+                    class="reaction-status"
+                ></div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 COMMENTS
+            ================================================== -->
+
+            <section
+                class="comments-section"
+                id="comments-section"
+            >
+
+                <h2 class="comments-heading">
+                    Comments
+                </h2>
+
+
+                <p class="comments-subheading">
+                    Share your thoughts, ask questions, or join the discussion.
+                    Comments appear immediately.
+                </p>
+
+
+
+                <!-- NEW COMMENT FORM -->
+
+                <form
+                    id="comment-form"
+                    class="comment-form"
+                >
+
+                    <h3 class="comment-form-title">
+                        Leave a comment
+                    </h3>
+
+
+                    <textarea
+                        id="comment-input"
+                        class="comment-input"
+                        maxlength="5000"
+                        placeholder="Write your comment..."
+                        required
+                    ></textarea>
+
+
+                    <div class="comment-form-row">
+
+                        <input
+                            id="comment-name"
+                            class="comment-name-input"
+                            type="text"
+                            maxlength="100"
+                            placeholder="Your name"
+                            required
+                        >
+
+
+                        <button
+                            type="submit"
+                            id="comment-submit"
+                            class="comment-submit-button"
+                        >
+                            Post Comment
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="comment-form-message"
+                        class="comment-form-message"
+                    ></div>
+
+                </form>
+
+
+
+                <!-- COMMENTS LIST -->
+
+                <div
+                    id="comments-loading"
+                    class="comments-loading"
+                >
+                    Loading comments...
+                </div>
+
+
+                <div
+                    id="comments-list"
+                    class="comments-list"
+                ></div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ARTICLE NAVIGATION
+            ================================================== -->
 
             <div class="article-actions">
 
@@ -317,6 +989,7 @@
                     ← All Articles
                 </a>
 
+
                 <a
                     href="submit-article.html"
                     class="btn btn-primary"
@@ -326,6 +999,7 @@
 
             </div>
 
+
         </div>
 
     </div>
@@ -334,136 +1008,191 @@
 
 </main>
 
-<footer class="footer" id="footer">
 
-<div class="footer-container">
 
-    <div class="footer-brand">
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
-        <h2 class="footer-title">
-            EAGLE WRITES
-        </h2>
+<footer
+    class="footer"
+    id="footer"
+>
 
-        <p class="footer-tagline">
-            RESEARCH • ANALYTICS • CONSULTING
+    <div class="footer-container">
+
+
+        <div class="footer-brand">
+
+            <h2 class="footer-title">
+                EAGLE WRITES
+            </h2>
+
+            <p class="footer-tagline">
+                RESEARCH • ANALYTICS • CONSULTING
+            </p>
+
+            <p class="footer-founder">
+                Founded by Arnold Milton
+            </p>
+
+        </div>
+
+
+
+        <div class="footer-nav">
+
+            <h3 class="footer-nav-heading">
+                Quick Links
+            </h3>
+
+
+            <ul class="footer-nav-list">
+
+                <li>
+                    <a
+                        href="index.html"
+                        class="footer-link"
+                    >
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="about.html"
+                        class="footer-link"
+                    >
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="services.html"
+                        class="footer-link"
+                    >
+                        Services
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="courses.html"
+                        class="footer-link"
+                    >
+                        Courses
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="portfolio.html"
+                        class="footer-link"
+                    >
+                        Portfolio
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="contact.html"
+                        class="footer-link"
+                    >
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+        <div class="footer-contact">
+
+            <h3 class="footer-contact-heading">
+                Contact Us
+            </h3>
+
+
+            <ul class="footer-contact-list">
+
+                <li>
+
+                    <a
+                        href="tel:+254748513346"
+                        class="footer-contact-link"
+                    >
+                        +254 748 513 346
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="mailto:miltonarnold535@gmail.com"
+                        class="footer-contact-link"
+                    >
+                        miltonarnold535@gmail.com
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="https://wa.me/254748513346"
+                        class="footer-contact-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        WhatsApp
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p class="footer-copyright">
+            © 2026 EAGLE WRITES. All Rights Reserved.
         </p>
 
-        <p class="footer-founder">
-            Founded by Arnold Milton
-        </p>
-
     </div>
-
-    <div class="footer-nav">
-
-        <h3 class="footer-nav-heading">
-            Quick Links
-        </h3>
-
-        <ul class="footer-nav-list">
-
-            <li>
-                <a href="index.html" class="footer-link">
-                    Home
-                </a>
-            </li>
-
-            <li>
-                <a href="about.html" class="footer-link">
-                    About
-                </a>
-            </li>
-
-            <li>
-                <a href="services.html" class="footer-link">
-                    Services
-                </a>
-            </li>
-
-            <li>
-                <a href="courses.html" class="footer-link">
-                    Courses
-                </a>
-            </li>
-
-            <li>
-                <a href="portfolio.html" class="footer-link">
-                    Portfolio
-                </a>
-            </li>
-
-            <li>
-                <a href="contact.html" class="footer-link">
-                    Contact
-                </a>
-            </li>
-
-        </ul>
-
-    </div>
-
-    <div class="footer-contact">
-
-        <h3 class="footer-contact-heading">
-            Contact Us
-        </h3>
-
-        <ul class="footer-contact-list">
-
-            <li>
-                <a
-                    href="tel:+254748513346"
-                    class="footer-contact-link"
-                >
-                    +254 748 513 346
-                </a>
-            </li>
-
-            <li>
-                <a
-                    href="mailto:miltonarnold535@gmail.com"
-                    class="footer-contact-link"
-                >
-                    miltonarnold535@gmail.com
-                </a>
-            </li>
-
-            <li>
-                <a
-                    href="https://wa.me/254748513346"
-                    class="footer-contact-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    WhatsApp
-                </a>
-            </li>
-
-        </ul>
-
-    </div>
-
-</div>
-
-<div class="footer-bottom">
-
-    <p class="footer-copyright">
-        © 2026 EAGLE WRITES. All Rights Reserved.
-    </p>
-
-</div>
 
 </footer>
 
+
+
+<!-- =========================================================
+     SUPABASE
+========================================================= -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
 <script>
+
+    /* =========================================================
+       SUPABASE CONFIGURATION
+    ========================================================= */
 
     const SUPABASE_URL =
         'https://ekkvghdnejvyjykagafr.supabase.co';
 
     const SUPABASE_KEY =
         'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
+
 
     const supabaseClient =
         window.supabase.createClient(
@@ -479,6 +1208,154 @@
         );
 
 
+
+    /* =========================================================
+       REACTION DEFINITIONS
+    ========================================================= */
+
+    const REACTIONS = {
+
+        like: {
+            emoji: '👍',
+            label: 'Like'
+        },
+
+        love: {
+            emoji: '❤️',
+            label: 'Love'
+        },
+
+        funny: {
+            emoji: '😂',
+            label: 'Funny'
+        },
+
+        wow: {
+            emoji: '😮',
+            label: 'Wow'
+        },
+
+        sad: {
+            emoji: '😢',
+            label: 'Sad'
+        },
+
+        angry: {
+            emoji: '😡',
+            label: 'Angry'
+        },
+
+        insightful: {
+            emoji: '💡',
+            label: 'Insightful'
+        },
+
+        applause: {
+            emoji: '👏',
+            label: 'Applause'
+        },
+
+        dislike: {
+            emoji: '👎',
+            label: 'Dislike'
+        }
+
+    };
+
+
+
+    /* =========================================================
+       GLOBAL ARTICLE STATE
+    ========================================================= */
+
+    let currentArticle = null;
+
+    let allComments = [];
+
+    let allCommentReactions = [];
+
+    let currentArticleReactions = [];
+
+
+
+    /* =========================================================
+       VISITOR ID
+       ========================================================= */
+
+    function getVisitorId() {
+
+        const storageKey =
+            'eagle_writes_visitor_id';
+
+        let visitorId =
+            localStorage.getItem(storageKey);
+
+
+        if (!visitorId) {
+
+            if (
+                window.crypto &&
+                typeof window.crypto.randomUUID === 'function'
+            ) {
+
+                visitorId =
+                    window.crypto.randomUUID();
+
+            } else {
+
+                visitorId =
+                    'visitor-' +
+                    Date.now() +
+                    '-' +
+                    Math.random()
+                        .toString(36)
+                        .substring(2);
+
+            }
+
+
+            localStorage.setItem(
+                storageKey,
+                visitorId
+            );
+
+        }
+
+
+        return visitorId;
+
+    }
+
+
+
+    /* =========================================================
+       REMEMBER DISPLAY NAME
+    ========================================================= */
+
+    function getSavedName() {
+
+        return localStorage.getItem(
+            'eagle_writes_display_name'
+        ) || '';
+
+    }
+
+
+    function saveDisplayName(name) {
+
+        localStorage.setItem(
+            'eagle_writes_display_name',
+            name.trim()
+        );
+
+    }
+
+
+
+    /* =========================================================
+       ARTICLE SLUG
+    ========================================================= */
+
     function getArticleSlug() {
 
         const params =
@@ -491,6 +1368,11 @@
     }
 
 
+
+    /* =========================================================
+       STRIP HTML FOR META DESCRIPTION
+    ========================================================= */
+
     function stripHtml(html) {
 
         const temporary =
@@ -499,12 +1381,44 @@
         temporary.innerHTML =
             html || '';
 
-        return temporary.textContent ||
+        return (
+            temporary.textContent ||
             temporary.innerText ||
-            '';
+            ''
+        );
 
     }
 
+
+
+    /* =========================================================
+       FORMAT DATE
+    ========================================================= */
+
+    function formatDate(dateString) {
+
+        if (!dateString) {
+            return '';
+        }
+
+        return new Date(
+            dateString
+        ).toLocaleDateString(
+            'en-GB',
+            {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            }
+        );
+
+    }
+
+
+
+    /* =========================================================
+       LOAD ARTICLE
+    ========================================================= */
 
     async function loadArticle() {
 
@@ -529,16 +1443,23 @@
 
         if (!slug) {
 
-            loading.style.display = 'none';
-            errorBox.style.display = 'block';
+            loading.style.display =
+                'none';
+
+            errorBox.style.display =
+                'block';
 
             return;
+
         }
 
 
         try {
 
-            const { data, error } =
+            const {
+                data,
+                error
+            } =
                 await supabaseClient
                     .from('articles')
                     .select(`
@@ -564,20 +1485,32 @@
                     error
                 );
 
-                loading.style.display = 'none';
-                errorBox.style.display = 'block';
+                loading.style.display =
+                    'none';
+
+                errorBox.style.display =
+                    'block';
 
                 return;
+
             }
 
 
             if (!data) {
 
-                loading.style.display = 'none';
-                errorBox.style.display = 'block';
+                loading.style.display =
+                    'none';
+
+                errorBox.style.display =
+                    'block';
 
                 return;
+
             }
+
+
+            currentArticle =
+                data;
 
 
             document.title =
@@ -587,12 +1520,18 @@
 
             const description =
                 data.meta_description ||
-                stripHtml(data.content)
-                    .substring(0, 155);
+                stripHtml(
+                    data.content
+                ).substring(
+                    0,
+                    155
+                );
 
 
             document
-                .getElementById('page-description')
+                .getElementById(
+                    'page-description'
+                )
                 .setAttribute(
                     'content',
                     description
@@ -600,14 +1539,18 @@
 
 
             document
-                .getElementById('article-category')
+                .getElementById(
+                    'article-category'
+                )
                 .textContent =
                     data.category ||
                     'Research & Insights';
 
 
             document
-                .getElementById('article-title')
+                .getElementById(
+                    'article-title'
+                )
                 .textContent =
                     data.title;
 
@@ -618,22 +1561,15 @@
 
 
             const date =
-                data.created_at
-                    ? new Date(
-                        data.created_at
-                    ).toLocaleDateString(
-                        'en-GB',
-                        {
-                            day: 'numeric',
-                            month: 'long',
-                            year: 'numeric'
-                        }
-                    )
-                    : '';
+                formatDate(
+                    data.created_at
+                );
 
 
             document
-                .getElementById('article-meta')
+                .getElementById(
+                    'article-meta'
+                )
                 .textContent =
                     'By ' +
                     author +
@@ -661,6 +1597,11 @@
                 image.style.display =
                     'block';
 
+            } else {
+
+                image.style.display =
+                    'none';
+
             }
 
 
@@ -678,6 +1619,15 @@
             wrapper.style.display =
                 'block';
 
+
+            /*
+             * Load article interactions
+             * after the article itself exists.
+             */
+
+            await loadArticleInteractions(
+                data.id
+            );
 
         } catch (err) {
 
@@ -697,14 +1647,1632 @@
     }
 
 
+
+    /* =========================================================
+       LOAD ARTICLE INTERACTIONS
+    ========================================================= */
+
+    async function loadArticleInteractions(
+        articleId
+    ) {
+
+        await Promise.all([
+            loadArticleReactions(articleId),
+            loadComments(articleId)
+        ]);
+
+    }
+
+
+
+    /* =========================================================
+       ARTICLE REACTIONS
+    ========================================================= */
+
+    async function loadArticleReactions(
+        articleId
+    ) {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from('article_reactions')
+                .select(`
+                    id,
+                    visitor_id,
+                    reaction
+                `)
+                .eq(
+                    'article_id',
+                    articleId
+                );
+
+
+        if (error) {
+
+            console.error(
+                'Article reactions error:',
+                error
+            );
+
+            return;
+
+        }
+
+
+        currentArticleReactions =
+            data || [];
+
+
+        renderArticleReactions();
+
+    }
+
+
+
+    /* =========================================================
+       RENDER ARTICLE REACTIONS
+    ========================================================= */
+
+    function renderArticleReactions() {
+
+        const container =
+            document.getElementById(
+                'article-reaction-buttons'
+            );
+
+
+        container.innerHTML = '';
+
+
+        const visitorId =
+            getVisitorId();
+
+
+        const myReaction =
+            currentArticleReactions.find(
+                item =>
+                    item.visitor_id ===
+                    visitorId
+            );
+
+
+        Object.entries(
+            REACTIONS
+        ).forEach(
+            ([
+                reactionKey,
+                reactionInfo
+            ]) => {
+
+                const count =
+                    currentArticleReactions.filter(
+                        item =>
+                            item.reaction ===
+                            reactionKey
+                    ).length;
+
+
+                const button =
+                    document.createElement(
+                        'button'
+                    );
+
+
+                button.type =
+                    'button';
+
+
+                button.className =
+                    'reaction-button' +
+                    (
+                        myReaction &&
+                        myReaction.reaction ===
+                            reactionKey
+                            ? ' active'
+                            : ''
+                    );
+
+
+                button.title =
+                    reactionInfo.label;
+
+
+                button.innerHTML =
+                    `
+                        <span>
+                            ${reactionInfo.emoji}
+                        </span>
+
+                        <span class="reaction-label">
+                            ${reactionInfo.label}
+                        </span>
+
+                        <span class="reaction-count">
+                            ${count}
+                        </span>
+                    `;
+
+
+                button.addEventListener(
+                    'click',
+                    () =>
+                        reactToArticle(
+                            reactionKey
+                        )
+                );
+
+
+                container.appendChild(
+                    button
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =========================================================
+       REACT TO ARTICLE
+    ========================================================= */
+
+    async function reactToArticle(
+        reaction
+    ) {
+
+        if (!currentArticle) {
+            return;
+        }
+
+
+        const visitorId =
+            getVisitorId();
+
+
+        const status =
+            document.getElementById(
+                'article-reaction-status'
+            );
+
+
+        status.textContent =
+            'Saving reaction...';
+
+
+        try {
+
+            const existing =
+                currentArticleReactions.find(
+                    item =>
+                        item.visitor_id ===
+                        visitorId
+                );
+
+
+            if (
+                existing &&
+                existing.reaction ===
+                    reaction
+            ) {
+
+                const {
+                    error
+                } =
+                    await supabaseClient
+                        .from(
+                            'article_reactions'
+                        )
+                        .delete()
+                        .eq(
+                            'id',
+                            existing.id
+                        );
+
+
+                if (error) {
+                    throw error;
+                }
+
+            } else if (existing) {
+
+                const {
+                    error
+                } =
+                    await supabaseClient
+                        .from(
+                            'article_reactions'
+                        )
+                        .update({
+                            reaction:
+                                reaction
+                        })
+                        .eq(
+                            'id',
+                            existing.id
+                        );
+
+
+                if (error) {
+                    throw error;
+                }
+
+            } else {
+
+                const {
+                    error
+                } =
+                    await supabaseClient
+                        .from(
+                            'article_reactions'
+                        )
+                        .insert({
+                            article_id:
+                                currentArticle.id,
+
+                            visitor_id:
+                                visitorId,
+
+                            reaction:
+                                reaction
+                        });
+
+
+                if (error) {
+                    throw error;
+                }
+
+            }
+
+
+            await loadArticleReactions(
+                currentArticle.id
+            );
+
+
+            status.textContent =
+                '';
+
+        } catch (error) {
+
+            console.error(
+                'Article reaction error:',
+                error
+            );
+
+            status.textContent =
+                'Unable to save your reaction. Please try again.';
+
+        }
+
+    }
+
+
+
+    /* =========================================================
+       LOAD COMMENTS
+    ========================================================= */
+
+    async function loadComments(
+        articleId
+    ) {
+
+        const loading =
+            document.getElementById(
+                'comments-loading'
+            );
+
+
+        loading.style.display =
+            'block';
+
+
+        try {
+
+            const {
+                data: comments,
+                error: commentsError
+            } =
+                await supabaseClient
+                    .from(
+                        'article_comments'
+                    )
+                    .select(`
+                        id,
+                        article_id,
+                        parent_id,
+                        visitor_id,
+                        display_name,
+                        comment_text,
+                        created_at
+                    `)
+                    .eq(
+                        'article_id',
+                        articleId
+                    )
+                    .order(
+                        'created_at',
+                        {
+                            ascending: true
+                        }
+                    );
+
+
+            if (commentsError) {
+                throw commentsError;
+            }
+
+
+            allComments =
+                comments || [];
+
+
+            const commentIds =
+                allComments.map(
+                    comment =>
+                        comment.id
+                );
+
+
+            if (
+                commentIds.length > 0
+            ) {
+
+                const {
+                    data: reactions,
+                    error: reactionsError
+                } =
+                    await supabaseClient
+                        .from(
+                            'comment_reactions'
+                        )
+                        .select(`
+                            id,
+                            comment_id,
+                            visitor_id,
+                            reaction
+                        `)
+                        .in(
+                            'comment_id',
+                            commentIds
+                        );
+
+
+                if (reactionsError) {
+                    throw reactionsError;
+                }
+
+
+                allCommentReactions =
+                    reactions || [];
+
+            } else {
+
+                allCommentReactions =
+                    [];
+
+            }
+
+
+            renderComments();
+
+        } catch (error) {
+
+            console.error(
+                'Comments loading error:',
+                error
+            );
+
+
+            document
+                .getElementById(
+                    'comments-list'
+                )
+                .innerHTML =
+                    `
+                        <div class="comments-empty">
+                            Comments could not be loaded.
+                            Please refresh the page and try again.
+                        </div>
+                    `;
+
+        } finally {
+
+            loading.style.display =
+                'none';
+
+        }
+
+    }
+
+
+
+    /* =========================================================
+       RENDER COMMENTS
+       UNLIMITED RECURSION
+    ========================================================= */
+
+    function renderComments() {
+
+        const container =
+            document.getElementById(
+                'comments-list'
+            );
+
+
+        container.innerHTML = '';
+
+
+        if (
+            allComments.length === 0
+        ) {
+
+            container.innerHTML =
+                `
+                    <div class="comments-empty">
+                        No comments yet. Be the first to start the discussion.
+                    </div>
+                `;
+
+            return;
+
+        }
+
+
+        /*
+         * Only top-level comments are selected here.
+         *
+         * Every child is rendered recursively.
+         *
+         * There is NO depth limit.
+         */
+
+        const topLevelComments =
+            allComments.filter(
+                comment =>
+                    !comment.parent_id
+            );
+
+
+        topLevelComments.forEach(
+            comment => {
+
+                const element =
+                    createCommentElement(
+                        comment
+                    );
+
+                container.appendChild(
+                    element
+                );
+
+            }
+        );
+
+    }
+
+
+
+    /* =========================================================
+       CREATE COMMENT ELEMENT
+       ========================================================= */
+
+    function createCommentElement(
+        comment
+    ) {
+
+        const wrapper =
+            document.createElement(
+                'div'
+            );
+
+
+        wrapper.className =
+            'comment-item';
+
+
+        wrapper.dataset.commentId =
+            comment.id;
+
+
+        const box =
+            document.createElement(
+                'div'
+            );
+
+
+        box.className =
+            'comment-box';
+
+
+        const header =
+            document.createElement(
+                'div'
+            );
+
+
+        const author =
+            document.createElement(
+                'span'
+            );
+
+
+        author.className =
+            'comment-author';
+
+
+        author.textContent =
+            comment.display_name;
+
+
+        const date =
+            document.createElement(
+                'span'
+            );
+
+
+        date.className =
+            'comment-date';
+
+
+        date.textContent =
+            formatDate(
+                comment.created_at
+            );
+
+
+        header.appendChild(
+            author
+        );
+
+
+        header.appendChild(
+            date
+        );
+
+
+        const text =
+            document.createElement(
+                'div'
+            );
+
+
+        text.className =
+            'comment-text';
+
+
+        /*
+         * textContent is deliberately used here
+         * instead of innerHTML.
+         *
+         * This prevents commenters from injecting
+         * HTML or JavaScript into the page.
+         */
+
+        text.textContent =
+            comment.comment_text;
+
+
+        const controls =
+            document.createElement(
+                'div'
+            );
+
+
+        controls.className =
+            'comment-controls';
+
+
+        /* REACT BUTTON */
+
+        const reactButton =
+            document.createElement(
+                'button'
+            );
+
+
+        reactButton.type =
+            'button';
+
+
+        reactButton.className =
+            'comment-control-button';
+
+
+        reactButton.textContent =
+            'React';
+
+
+        controls.appendChild(
+            reactButton
+        );
+
+
+        /* SHOW REACTION COUNTS */
+
+        const reactionSummary =
+            createReactionSummary(
+                comment.id
+            );
+
+
+        controls.appendChild(
+            reactionSummary
+        );
+
+
+        /* REPLY BUTTON */
+
+        const replyButton =
+            document.createElement(
+                'button'
+            );
+
+
+        replyButton.type =
+            'button';
+
+
+        replyButton.className =
+            'comment-control-button';
+
+
+        replyButton.textContent =
+            'Reply';
+
+
+        controls.appendChild(
+            replyButton
+        );
+
+
+        /* REACTION PICKER */
+
+        const picker =
+            createReactionPicker(
+                comment.id
+            );
+
+
+        reactButton.addEventListener(
+            'click',
+            () => {
+
+                picker.classList.toggle(
+                    'show'
+                );
+
+            }
+        );
+
+
+        /* REPLY FORM */
+
+        const replyForm =
+            createReplyForm(
+                comment.id
+            );
+
+
+        replyButton.addEventListener(
+            'click',
+            () => {
+
+                replyForm.classList.toggle(
+                    'show'
+                );
+
+            }
+        );
+
+
+        box.appendChild(
+            header
+        );
+
+        box.appendChild(
+            text
+        );
+
+        box.appendChild(
+            controls
+        );
+
+        box.appendChild(
+            picker
+        );
+
+        box.appendChild(
+            replyForm
+        );
+
+
+        wrapper.appendChild(
+            box
+        );
+
+
+        /*
+         * CHILDREN
+         *
+         * This function calls itself.
+         *
+         * Therefore replies can continue
+         * indefinitely.
+         */
+
+        const children =
+            allComments.filter(
+                child =>
+                    child.parent_id ===
+                    comment.id
+            );
+
+
+        if (
+            children.length > 0
+        ) {
+
+            const childrenContainer =
+                document.createElement(
+                    'div'
+                );
+
+
+            childrenContainer.className =
+                'comment-children';
+
+
+            children.forEach(
+                child => {
+
+                    childrenContainer.appendChild(
+                        createCommentElement(
+                            child
+                        )
+                    );
+
+                }
+            );
+
+
+            wrapper.appendChild(
+                childrenContainer
+            );
+
+        }
+
+
+        return wrapper;
+
+    }
+
+
+
+    /* =========================================================
+       CREATE REACTION SUMMARY
+    ========================================================= */
+
+    function createReactionSummary(
+        commentId
+    ) {
+
+        const container =
+            document.createElement(
+                'span'
+            );
+
+
+        const reactions =
+            allCommentReactions.filter(
+                item =>
+                    item.comment_id ===
+                    commentId
+            );
+
+
+        const grouped = {};
+
+
+        reactions.forEach(
+            item => {
+
+                grouped[item.reaction] =
+                    (
+                        grouped[item.reaction] ||
+                        0
+                    ) + 1;
+
+            }
+        );
+
+
+        Object.keys(
+            REACTIONS
+        ).forEach(
+            reactionKey => {
+
+                const count =
+                    grouped[
+                        reactionKey
+                    ] || 0;
+
+
+                if (
+                    count === 0
+                ) {
+                    return;
+                }
+
+
+                const reaction =
+                    REACTIONS[
+                        reactionKey
+                    ];
+
+
+                const button =
+                    document.createElement(
+                        'button'
+                    );
+
+
+                button.type =
+                    'button';
+
+
+                button.className =
+                    'comment-control-button';
+
+
+                const visitorId =
+                    getVisitorId();
+
+
+                const mine =
+                    reactions.find(
+                        item =>
+                            item.visitor_id ===
+                            visitorId &&
+                            item.reaction ===
+                            reactionKey
+                    );
+
+
+                if (mine) {
+
+                    button.classList.add(
+                        'active'
+                    );
+
+                }
+
+
+                button.textContent =
+                    reaction.emoji +
+                    ' ' +
+                    count;
+
+
+                button.title =
+                    reaction.label;
+
+
+                button.addEventListener(
+                    'click',
+                    () =>
+                        reactToComment(
+                            commentId,
+                            reactionKey
+                        )
+                );
+
+
+                container.appendChild(
+                    button
+                );
+
+            }
+        );
+
+
+        return container;
+
+    }
+
+
+
+    /* =========================================================
+       CREATE REACTION PICKER
+    ========================================================= */
+
+    function createReactionPicker(
+        commentId
+    ) {
+
+        const picker =
+            document.createElement(
+                'div'
+            );
+
+
+        picker.className =
+            'reaction-picker';
+
+
+        Object.entries(
+            REACTIONS
+        ).forEach(
+            ([
+                reactionKey,
+                reactionInfo
+            ]) => {
+
+                const button =
+                    document.createElement(
+                        'button'
+                    );
+
+
+                button.type =
+                    'button';
+
+
+                button.className =
+                    'picker-reaction';
+
+
+                button.title =
+                    reactionInfo.label;
+
+
+                button.textContent =
+                    reactionInfo.emoji;
+
+
+                button.addEventListener(
+                    'click',
+                    async () => {
+
+                        await reactToComment(
+                            commentId,
+                            reactionKey
+                        );
+
+                        picker.classList.remove(
+                            'show'
+                        );
+
+                    }
+                );
+
+
+                picker.appendChild(
+                    button
+                );
+
+            }
+        );
+
+
+        return picker;
+
+    }
+
+
+
+    /* =========================================================
+       REACT TO COMMENT / REPLY
+    ========================================================= */
+
+    async function reactToComment(
+        commentId,
+        reaction
+    ) {
+
+        const visitorId =
+            getVisitorId();
+
+
+        try {
+
+            const existing =
+                allCommentReactions.find(
+                    item =>
+                        item.comment_id ===
+                            commentId &&
+                        item.visitor_id ===
+                            visitorId
+                );
+
+
+            if (
+                existing &&
+                existing.reaction ===
+                    reaction
+            ) {
+
+                const {
+                    error
+                } =
+                    await supabaseClient
+                        .from(
+                            'comment_reactions'
+                        )
+                        .delete()
+                        .eq(
+                            'id',
+                            existing.id
+                        );
+
+
+                if (error) {
+                    throw error;
+                }
+
+            } else if (existing) {
+
+                const {
+                    error
+                } =
+                    await supabaseClient
+                        .from(
+                            'comment_reactions'
+                        )
+                        .update({
+                            reaction:
+                                reaction
+                        })
+                        .eq(
+                            'id',
+                            existing.id
+                        );
+
+
+                if (error) {
+                    throw error;
+                }
+
+            } else {
+
+                const {
+                    error
+                } =
+                    await supabaseClient
+                        .from(
+                            'comment_reactions'
+                        )
+                        .insert({
+                            comment_id:
+                                commentId,
+
+                            visitor_id:
+                                visitorId,
+
+                            reaction:
+                                reaction
+                        });
+
+
+                if (error) {
+                    throw error;
+                }
+
+            }
+
+
+            await loadComments(
+                currentArticle.id
+            );
+
+        } catch (error) {
+
+            console.error(
+                'Comment reaction error:',
+                error
+            );
+
+            alert(
+                'Unable to save your reaction. Please try again.'
+            );
+
+        }
+
+    }
+
+
+
+    /* =========================================================
+       CREATE REPLY FORM
+    ========================================================= */
+
+    function createReplyForm(
+        parentId
+    ) {
+
+        const form =
+            document.createElement(
+                'form'
+            );
+
+
+        form.className =
+            'reply-form';
+
+
+        const textarea =
+            document.createElement(
+                'textarea'
+            );
+
+
+        textarea.placeholder =
+            'Write your reply...';
+
+
+        textarea.maxLength =
+            5000;
+
+
+        textarea.required =
+            true;
+
+
+        const row =
+            document.createElement(
+                'div'
+            );
+
+
+        row.className =
+            'reply-form-row';
+
+
+        const nameInput =
+            document.createElement(
+                'input'
+            );
+
+
+        nameInput.type =
+            'text';
+
+
+        nameInput.className =
+            'reply-name-input';
+
+
+        nameInput.maxLength =
+            100;
+
+
+        nameInput.placeholder =
+            'Your name';
+
+
+        nameInput.value =
+            getSavedName();
+
+
+        const submit =
+            document.createElement(
+                'button'
+            );
+
+
+        submit.type =
+            'submit';
+
+
+        submit.className =
+            'reply-submit';
+
+
+        submit.textContent =
+            'Post Reply';
+
+
+        const cancel =
+            document.createElement(
+                'button'
+            );
+
+
+        cancel.type =
+            'button';
+
+
+        cancel.className =
+            'reply-cancel';
+
+
+        cancel.textContent =
+            'Cancel';
+
+
+        row.appendChild(
+            nameInput
+        );
+
+        row.appendChild(
+            submit
+        );
+
+        row.appendChild(
+            cancel
+        );
+
+
+        form.appendChild(
+            textarea
+        );
+
+        form.appendChild(
+            row
+        );
+
+
+        cancel.addEventListener(
+            'click',
+            () => {
+
+                form.classList.remove(
+                    'show'
+                );
+
+                textarea.value =
+                    '';
+
+            }
+        );
+
+
+        form.addEventListener(
+            'submit',
+            async event => {
+
+                event.preventDefault();
+
+
+                const text =
+                    textarea.value.trim();
+
+
+                const name =
+                    nameInput.value.trim();
+
+
+                if (!text) {
+
+                    alert(
+                        'Please write a reply.'
+                    );
+
+                    return;
+
+                }
+
+
+                if (!name) {
+
+                    alert(
+                        'Please enter your name.'
+                    );
+
+                    return;
+
+                }
+
+
+                if (!currentArticle) {
+                    return;
+                }
+
+
+                submit.disabled =
+                    true;
+
+                submit.textContent =
+                    'Posting...';
+
+
+                try {
+
+                    saveDisplayName(
+                        name
+                    );
+
+
+                    const {
+                        error
+                    } =
+                        await supabaseClient
+                            .from(
+                                'article_comments'
+                            )
+                            .insert({
+
+                                article_id:
+                                    currentArticle.id,
+
+                                parent_id:
+                                    parentId,
+
+                                visitor_id:
+                                    getVisitorId(),
+
+                                display_name:
+                                    name,
+
+                                comment_text:
+                                    text
+
+                            });
+
+
+                    if (error) {
+                        throw error;
+                    }
+
+
+                    textarea.value =
+                        '';
+
+
+                    form.classList.remove(
+                        'show'
+                    );
+
+
+                    await loadComments(
+                        currentArticle.id
+                    );
+
+                } catch (error) {
+
+                    console.error(
+                        'Reply error:',
+                        error
+                    );
+
+
+                    alert(
+                        'Unable to post your reply. Please try again.'
+                    );
+
+                } finally {
+
+                    submit.disabled =
+                        false;
+
+                    submit.textContent =
+                        'Post Reply';
+
+                }
+
+            }
+        );
+
+
+        return form;
+
+    }
+
+
+
+    /* =========================================================
+       MAIN COMMENT FORM
+    ========================================================= */
+
+    function setupCommentForm() {
+
+        const form =
+            document.getElementById(
+                'comment-form'
+            );
+
+
+        const textarea =
+            document.getElementById(
+                'comment-input'
+            );
+
+
+        const nameInput =
+            document.getElementById(
+                'comment-name'
+            );
+
+
+        const submit =
+            document.getElementById(
+                'comment-submit'
+            );
+
+
+        const message =
+            document.getElementById(
+                'comment-form-message'
+            );
+
+
+        nameInput.value =
+            getSavedName();
+
+
+        form.addEventListener(
+            'submit',
+            async event => {
+
+                event.preventDefault();
+
+
+                if (!currentArticle) {
+
+                    message.textContent =
+                        'The article is still loading. Please try again.';
+
+                    return;
+
+                }
+
+
+                const text =
+                    textarea.value.trim();
+
+
+                const name =
+                    nameInput.value.trim();
+
+
+                if (!text) {
+
+                    message.textContent =
+                        'Please write a comment.';
+
+                    return;
+
+                }
+
+
+                if (!name) {
+
+                    message.textContent =
+                        'Please enter your name.';
+
+                    return;
+
+                }
+
+
+                submit.disabled =
+                    true;
+
+                submit.textContent =
+                    'Posting...';
+
+                message.textContent =
+                    '';
+
+
+                try {
+
+                    saveDisplayName(
+                        name
+                    );
+
+
+                    const {
+                        error
+                    } =
+                        await supabaseClient
+                            .from(
+                                'article_comments'
+                            )
+                            .insert({
+
+                                article_id:
+                                    currentArticle.id,
+
+                                parent_id:
+                                    null,
+
+                                visitor_id:
+                                    getVisitorId(),
+
+                                display_name:
+                                    name,
+
+                                comment_text:
+                                    text
+
+                            });
+
+
+                    if (error) {
+                        throw error;
+                    }
+
+
+                    textarea.value =
+                        '';
+
+
+                    message.textContent =
+                        'Comment posted successfully.';
+
+
+                    await loadComments(
+                        currentArticle.id
+                    );
+
+
+                    setTimeout(
+                        () => {
+
+                            message.textContent =
+                                '';
+
+                        },
+                        3000
+                    );
+
+                } catch (error) {
+
+                    console.error(
+                        'Comment posting error:',
+                        error
+                    );
+
+
+                    message.textContent =
+                        'Unable to post your comment. Please try again.';
+
+                } finally {
+
+                    submit.disabled =
+                        false;
+
+                    submit.textContent =
+                        'Post Comment';
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* =========================================================
+       START
+    ========================================================= */
+
     document.addEventListener(
         'DOMContentLoaded',
-        loadArticle
+        () => {
+
+            setupCommentForm();
+
+            loadArticle();
+
+        }
     );
 
 </script>
 
+
+<!-- =========================================================
+     EXISTING SITE JAVASCRIPT
+========================================================= -->
+
 <script src="script.js"></script>
 
+
 </body>
+
 </html>
