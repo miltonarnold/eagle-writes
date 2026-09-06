@@ -1,1461 +1,1607 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
 
-```
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<meta
-    name="description"
-    content="Submit your article to EAGLE WRITES for review and publication."
->
+    <meta
+        name="description"
+        content="Submit your article to EAGLE WRITES for review and publication."
+    >
 
-<meta
-    name="author"
-    content="EAGLE WRITES"
->
+    <meta
+        name="author"
+        content="EAGLE WRITES"
+    >
 
-<title>Publish Your Article | EAGLE WRITES</title>
+    <title>Publish Your Article | EAGLE WRITES</title>
 
-<link
-    rel="stylesheet"
-    href="style.css"
->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
-<link
-    rel="icon"
-    type="image/jpeg"
-    href="Images/logo.milto.jpg"
->
+    <link
+        rel="icon"
+        type="image/jpeg"
+        href="Images/logo.milto.jpg"
+    >
 
 
-<style>
+    <style>
 
-    .article-submit-page {
-        max-width: 950px;
-        margin: 60px auto;
-        padding: 0 20px 80px;
-    }
-
-
-    .article-submit-header {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-
-
-    .article-submit-header h1 {
-        font-size: 42px;
-        margin-bottom: 15px;
-        color: #0b1f3a;
-    }
-
-
-    .article-submit-header p {
-        max-width: 700px;
-        margin: 0 auto;
-        line-height: 1.7;
-        color: #667085;
-    }
-
-
-    .article-submit-notice {
-        background: #fff8e6;
-        border-left: 4px solid #f2b705;
-        padding: 18px 20px;
-        border-radius: 8px;
-        margin-bottom: 30px;
-        line-height: 1.7;
-        color: #5f4700;
-    }
-
-
-    .article-submit-form {
-        background: #ffffff;
-        padding: 35px;
-        border-radius: 14px;
-        box-shadow: 0 10px 35px rgba(0, 0, 0, .08);
-    }
-
-
-    .article-form-group {
-        margin-bottom: 22px;
-    }
-
-
-    .article-form-group label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: 700;
-        color: #0b1f3a;
-    }
-
-
-    .article-form-group input,
-    .article-form-group textarea,
-    .article-form-group select {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 13px 14px;
-        border: 1px solid #d0d5dd;
-        border-radius: 8px;
-        font-family: inherit;
-        font-size: 15px;
-        background: #ffffff;
-    }
-
-
-    .article-form-group input:focus,
-    .article-form-group textarea:focus,
-    .article-form-group select:focus {
-        outline: none;
-        border-color: #175cd3;
-        box-shadow: 0 0 0 3px rgba(23, 92, 211, .1);
-    }
-
-
-    .article-form-group textarea {
-        min-height: 300px;
-        resize: vertical;
-        line-height: 1.7;
-    }
-
-
-    .article-form-help {
-        display: block;
-        margin-top: 6px;
-        font-size: 13px;
-        color: #667085;
-    }
-
-
-    /* =========================
-       FEATURED IMAGE UPLOAD
-    ========================= */
-
-    .article-image-upload-box {
-        border: 2px dashed #d0d5dd;
-        border-radius: 10px;
-        padding: 22px;
-        background: #f9fafb;
-        text-align: center;
-        transition: .2s ease;
-    }
-
-
-    .article-image-upload-box:hover {
-        border-color: #175cd3;
-        background: #f8fbff;
-    }
-
-
-    .article-image-upload-box input[type="file"] {
-        width: 100%;
-        padding: 10px;
-        border: none;
-        background: transparent;
-        cursor: pointer;
-    }
-
-
-    .article-image-upload-box input[type="file"]:focus {
-        outline: none;
-        box-shadow: none;
-    }
-
-
-    .article-image-preview {
-        display: none;
-        margin-top: 18px;
-    }
-
-
-    .article-image-preview img {
-        display: block;
-        width: 100%;
-        max-width: 500px;
-        max-height: 320px;
-        object-fit: cover;
-        margin: 0 auto;
-        border-radius: 10px;
-        border: 1px solid #d0d5dd;
-    }
-
-
-    .article-image-preview-name {
-        margin-top: 10px;
-        font-size: 13px;
-        color: #475467;
-        word-break: break-word;
-    }
-
-
-    .article-upload-status {
-        display: none;
-        margin-top: 12px;
-        font-size: 14px;
-        font-weight: 600;
-    }
-
-
-    .article-upload-status.uploading {
-        display: block;
-        color: #175cd3;
-    }
-
-
-    .article-upload-status.success {
-        display: block;
-        color: #067647;
-    }
-
-
-    .article-upload-status.error {
-        display: block;
-        color: #b42318;
-    }
-
-
-    .article-submit-button {
-        width: 100%;
-        border: none;
-        border-radius: 8px;
-        padding: 15px 20px;
-        background: #f2b705;
-        color: #0b1f3a;
-        font-size: 16px;
-        font-weight: 800;
-        cursor: pointer;
-    }
-
-
-    .article-submit-button:hover {
-        opacity: .92;
-    }
-
-
-    .article-submit-button:disabled {
-        opacity: .6;
-        cursor: not-allowed;
-    }
-
-
-    .article-form-message {
-        display: none;
-        margin-top: 20px;
-        padding: 15px;
-        border-radius: 8px;
-        line-height: 1.6;
-    }
-
-
-    .article-form-message.success {
-        display: block;
-        background: #ecfdf3;
-        color: #067647;
-    }
-
-
-    .article-form-message.error {
-        display: block;
-        background: #fef3f2;
-        color: #b42318;
-    }
-
-
-    .article-back-link {
-        display: inline-block;
-        margin-top: 25px;
-        color: #175cd3;
-        font-weight: 700;
-        text-decoration: none;
-    }
-
-
-    .article-back-link:hover {
-        text-decoration: underline;
-    }
-
-
-    @media (max-width: 700px) {
+        /* =========================
+           ARTICLE SUBMISSION PAGE
+        ========================= */
 
         .article-submit-page {
-            margin-top: 35px;
+            max-width: 950px;
+            margin: 60px auto;
+            padding: 0 20px 80px;
+        }
+
+
+        .article-submit-header {
+            text-align: center;
+            margin-bottom: 40px;
         }
 
 
         .article-submit-header h1 {
-            font-size: 32px;
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #0b1f3a;
+        }
+
+
+        .article-submit-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+            color: #667085;
+        }
+
+
+        .article-submit-notice {
+            background: #fff8e6;
+            border-left: 4px solid #f2b705;
+            padding: 18px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            color: #5f4700;
         }
 
 
         .article-submit-form {
-            padding: 22px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 14px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, .08);
         }
 
-    }
 
-</style>
-```
+        .article-form-group {
+            margin-bottom: 22px;
+        }
+
+
+        .article-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: #0b1f3a;
+        }
+
+
+        .article-form-group input,
+        .article-form-group select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px 14px;
+            border: 1px solid #d0d5dd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 15px;
+            background: #ffffff;
+        }
+
+
+        .article-form-group input:focus,
+        .article-form-group select:focus {
+            outline: none;
+            border-color: #175cd3;
+            box-shadow: 0 0 0 3px rgba(23, 92, 211, .1);
+        }
+
+
+        .article-form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px 14px;
+            border: 1px solid #d0d5dd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 15px;
+            background: #ffffff;
+            resize: vertical;
+            line-height: 1.7;
+        }
+
+
+        .article-form-group textarea:focus {
+            outline: none;
+            border-color: #175cd3;
+            box-shadow: 0 0 0 3px rgba(23, 92, 211, .1);
+        }
+
+
+        .article-form-help {
+            display: block;
+            margin-top: 6px;
+            font-size: 13px;
+            color: #667085;
+        }
+
+
+        /* =========================
+           SEO CHARACTER COUNTER
+        ========================= */
+
+        .seo-description-counter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6px;
+            font-size: 13px;
+            color: #667085;
+        }
+
+
+        .seo-description-counter.warning {
+            color: #b54708;
+            font-weight: 700;
+        }
+
+
+        .seo-description-counter.good {
+            color: #067647;
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           FEATURED IMAGE UPLOAD
+        ========================= */
+
+        .article-image-upload-box {
+            border: 2px dashed #d0d5dd;
+            border-radius: 10px;
+            padding: 22px;
+            background: #f9fafb;
+            text-align: center;
+            transition: .2s ease;
+        }
+
+
+        .article-image-upload-box:hover {
+            border-color: #175cd3;
+            background: #f8fbff;
+        }
+
+
+        .article-image-upload-box input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+        }
+
+
+        .article-image-upload-box input[type="file"]:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+
+        .article-image-preview {
+            display: none;
+            margin-top: 18px;
+        }
+
+
+        .article-image-preview img {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            max-height: 320px;
+            object-fit: cover;
+            margin: 0 auto;
+            border-radius: 10px;
+            border: 1px solid #d0d5dd;
+        }
+
+
+        .article-image-preview-name {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #475467;
+            word-break: break-word;
+        }
+
+
+        .article-upload-status {
+            display: none;
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+
+        .article-upload-status.uploading {
+            display: block;
+            color: #175cd3;
+        }
+
+
+        .article-upload-status.success {
+            display: block;
+            color: #067647;
+        }
+
+
+        .article-upload-status.error {
+            display: block;
+            color: #b42318;
+        }
+
+
+        /* =========================
+           ARTICLE EDITOR
+        ========================= */
+
+        .article-editor-wrapper {
+            border: 1px solid #d0d5dd;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+
+        .article-editor-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+            padding: 10px;
+            background: #f9fafb;
+            border-bottom: 1px solid #d0d5dd;
+        }
+
+
+        .editor-toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+
+        .editor-toolbar-divider {
+            width: 1px;
+            height: 28px;
+            background: #d0d5dd;
+            margin: 0 3px;
+        }
+
+
+        .editor-tool-button {
+            min-width: 36px;
+            height: 36px;
+            padding: 0 9px;
+            border: 1px solid #d0d5dd;
+            border-radius: 6px;
+            background: #ffffff;
+            color: #0b1f3a;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .15s ease;
+        }
+
+
+        .editor-tool-button:hover {
+            background: #eef4ff;
+            border-color: #175cd3;
+        }
+
+
+        .editor-tool-button:active,
+        .editor-tool-button.active {
+            background: #e0ecff;
+            border-color: #175cd3;
+        }
+
+
+        .editor-tool-select {
+            height: 36px;
+            padding: 0 8px;
+            border: 1px solid #d0d5dd;
+            border-radius: 6px;
+            background: #ffffff;
+            color: #0b1f3a;
+            font-family: inherit;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+
+        .editor-tool-select:focus {
+            outline: none;
+            border-color: #175cd3;
+        }
+
+
+        .editor-color-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+
+        .editor-color-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .editor-color-indicator {
+            display: block;
+            width: 20px;
+            height: 4px;
+            margin: 2px auto 0;
+            background: #000000;
+            border-radius: 2px;
+        }
+
+
+        #editor-text-color {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+
+        .article-editor {
+            min-height: 400px;
+            padding: 18px;
+            font-family: inherit;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #1d2939;
+            background: #ffffff;
+            outline: none;
+            overflow-wrap: break-word;
+        }
+
+
+        .article-editor:focus {
+            box-shadow: inset 0 0 0 2px rgba(23, 92, 211, .12);
+        }
+
+
+        .article-editor:empty::before {
+            content: attr(data-placeholder);
+            color: #98a2b3;
+            pointer-events: none;
+        }
+
+
+        .article-editor h2 {
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #0b1f3a;
+        }
+
+
+        .article-editor h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #0b1f3a;
+        }
+
+
+        .article-editor p {
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+
+
+        .article-editor ul,
+        .article-editor ol {
+            margin-bottom: 16px;
+            padding-left: 30px;
+        }
+
+
+        .article-editor blockquote {
+            margin: 20px 0;
+            padding: 12px 18px;
+            border-left: 4px solid #f2b705;
+            background: #fff8e6;
+        }
+
+
+        /* =========================
+           EDITOR INFORMATION
+        ========================= */
+
+        .article-editor-info {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            padding: 8px 12px;
+            background: #f9fafb;
+            border-top: 1px solid #eaecf0;
+            font-size: 12px;
+            color: #667085;
+        }
+
+
+        /* =========================
+           SUBMIT BUTTON
+        ========================= */
+
+        .article-submit-button {
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 20px;
+            background: #f2b705;
+            color: #0b1f3a;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+
+        .article-submit-button:hover {
+            opacity: .92;
+        }
+
+
+        .article-submit-button:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+
+        .article-form-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+
+
+        .article-form-message.success {
+            display: block;
+            background: #ecfdf3;
+            color: #067647;
+        }
+
+
+        .article-form-message.error {
+            display: block;
+            background: #fef3f2;
+            color: #b42318;
+        }
+
+
+        .article-back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #175cd3;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+
+        .article-back-link:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .article-submit-page {
+                margin-top: 35px;
+            }
+
+
+            .article-submit-header h1 {
+                font-size: 32px;
+            }
+
+
+            .article-submit-form {
+                padding: 22px;
+            }
+
+
+            .article-editor-toolbar {
+                gap: 5px;
+                padding: 8px;
+            }
+
+
+            .editor-tool-button {
+                min-width: 34px;
+                height: 34px;
+                padding: 0 7px;
+            }
+
+
+            .editor-tool-select {
+                height: 34px;
+                max-width: 120px;
+            }
+
+
+            .editor-toolbar-divider {
+                display: none;
+            }
+
+
+            .article-editor {
+                min-height: 350px;
+                padding: 14px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
+
 <body>
 
-```
-<!-- ================= HEADER ================= -->
 
-<header
-    class="header"
-    id="header"
->
+    <!-- ================= HEADER ================= -->
 
-    <nav
-        class="navbar"
-        id="navbar"
+    <header
+        class="header"
+        id="header"
     >
 
-
-        <a
-            href="index.html"
-            class="logo-container"
-        >
-
-            <div class="logo-icon">
-
-                <img
-                    src="Images/logo.milto.jpg"
-                    alt="EAGLE WRITES logo"
-                >
-
-            </div>
-
-
-            <div class="brand-text">
-
-                <span class="brand-name-eagle">
-                    EAGLE
-                </span>
-
-                <span class="brand-name-writes">
-                    WRITES
-                </span>
-
-            </div>
-
-
-            <div class="brand-tagline">
-                RESEARCH • ANALYTICS • CONSULTING
-            </div>
-
-        </a>
-
-
-        <button
-            class="mobile-menu-toggle"
-            id="mobile-menu-toggle"
-            aria-label="Toggle navigation menu"
-            type="button"
-        >
-
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </button>
-
-
         <nav
-            class="nav-menu"
-            id="nav-menu"
+            class="navbar"
+            id="navbar"
         >
 
-            <ul class="nav-list">
+            <a
+                href="index.html"
+                class="logo-container"
+            >
 
-                <li>
+                <div class="logo-icon">
 
-                    <a
-                        href="index.html"
-                        class="nav-link"
+                    <img
+                        src="Images/logo.milto.jpg"
+                        alt="EAGLE WRITES logo"
                     >
-                        Home
-                    </a>
 
-                </li>
+                </div>
 
 
-                <li>
+                <div class="brand-text">
 
-                    <a
-                        href="about.html"
-                        class="nav-link"
-                    >
-                        About
-                    </a>
+                    <span class="brand-name-eagle">
+                        EAGLE
+                    </span>
 
-                </li>
+                    <span class="brand-name-writes">
+                        WRITES
+                    </span>
+
+                </div>
 
 
-                <li>
+                <div class="brand-tagline">
+                    RESEARCH • ANALYTICS • CONSULTING
+                </div>
 
-                    <a
-                        href="get-started.html"
-                        class="nav-link"
-                    >
-                        Get Started
-                    </a>
+            </a>
 
-                </li>
 
-            </ul>
+            <button
+                class="mobile-menu-toggle"
+                id="mobile-menu-toggle"
+                aria-label="Toggle navigation menu"
+                type="button"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <nav
+                class="nav-menu"
+                id="nav-menu"
+            >
+
+                <ul class="nav-list">
+
+                    <li>
+
+                        <a
+                            href="index.html"
+                            class="nav-link"
+                        >
+                            Home
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a
+                            href="about.html"
+                            class="nav-link"
+                        >
+                            About
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a
+                            href="get-started.html"
+                            class="nav-link"
+                        >
+                            Get Started
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+            <div class="nav-actions">
+
+                <a
+                    href="https://wa.me/254748513346"
+                    class="btn-whatsapp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    WhatsApp
+                </a>
+
+
+                <a
+                    href="get-started.html"
+                    class="btn-get-started-header"
+                >
+                    Get Started
+                </a>
+
+            </div>
 
         </nav>
 
-
-        <div class="nav-actions">
-
-            <a
-                href="https://wa.me/254748513346"
-                class="btn-whatsapp"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                WhatsApp
-            </a>
-
-
-            <a
-                href="get-started.html"
-                class="btn-get-started-header"
-            >
-                Get Started
-            </a>
-
-        </div>
-
-    </nav>
-
-</header>
+    </header>
 
 
 
-<!-- ================= MAIN ================= -->
+    <!-- ================= MAIN ================= -->
 
-<main>
+    <main>
 
-    <section class="article-submit-page">
-
-
-        <div class="article-submit-header">
-
-            <span class="section-label">
-                EAGLE WRITES
-            </span>
+        <section class="article-submit-page">
 
 
-            <h1>
-                Publish Your Article
-            </h1>
+            <div class="article-submit-header">
 
-
-            <p>
-                Share your knowledge, research, ideas, and insights
-                with the EAGLE WRITES audience.
-            </p>
-
-        </div>
-
-
-        <div class="article-submit-notice">
-
-            <strong>
-                Important:
-            </strong>
-
-            Every article submitted through this page is reviewed
-            by the EAGLE WRITES administrator before it can be
-            published publicly.
-
-            Submitting an article does not guarantee publication.
-
-        </div>
-
-
-        <form
-            id="article-submit-form"
-            class="article-submit-form"
-        >
-
-
-            <!-- TITLE -->
-
-            <div class="article-form-group">
-
-                <label for="article-title">
-                    Article Title *
-                </label>
-
-                <input
-                    type="text"
-                    id="article-title"
-                    name="title"
-                    maxlength="200"
-                    placeholder="Enter the title of your article"
-                    required
-                >
-
-            </div>
-
-
-
-            <!-- AUTHOR -->
-
-            <div class="article-form-group">
-
-                <label for="author-name">
-                    Author Name *
-                </label>
-
-                <input
-                    type="text"
-                    id="author-name"
-                    name="author_name"
-                    maxlength="120"
-                    placeholder="Your name"
-                    required
-                >
-
-            </div>
-
-
-
-            <!-- EMAIL -->
-
-            <div class="article-form-group">
-
-                <label for="author-email">
-                    Email Address *
-                </label>
-
-                <input
-                    type="email"
-                    id="author-email"
-                    name="author_email"
-                    maxlength="200"
-                    placeholder="your@email.com"
-                    required
-                >
-
-                <span class="article-form-help">
-                    Your email is used for submission communication
-                    and will not be displayed publicly on the article.
+                <span class="section-label">
+                    EAGLE WRITES
                 </span>
 
-            </div>
+
+                <h1>
+                    Publish Your Article
+                </h1>
 
 
-
-            <!-- CATEGORY -->
-
-            <div class="article-form-group">
-
-                <label for="article-category">
-                    Category *
-                </label>
-
-                <select
-                    id="article-category"
-                    name="category"
-                    required
-                >
-
-                    <option value="">
-                        Select a category
-                    </option>
-
-                    <option value="Research">
-                        Research
-                    </option>
-
-                    <option value="Academic">
-                        Academic
-                    </option>
-
-                    <option value="Business">
-                        Business
-                    </option>
-
-                    <option value="Finance">
-                        Finance
-                    </option>
-
-                    <option value="Technology">
-                        Technology
-                    </option>
-
-                    <option value="Data Analysis">
-                        Data Analysis
-                    </option>
-
-                    <option value="Education">
-                        Education
-                    </option>
-
-                    <option value="Consulting">
-                        Consulting
-                    </option>
-
-                    <option value="Other">
-                        Other
-                    </option>
-
-                </select>
+                <p>
+                    Share your knowledge, research, ideas, and insights
+                    with the EAGLE WRITES audience.
+                </p>
 
             </div>
 
 
+            <div class="article-submit-notice">
 
-            <!-- FEATURED IMAGE -->
+                <strong>
+                    Important:
+                </strong>
 
-            <div class="article-form-group">
+                Every article submitted through this page is reviewed
+                by the EAGLE WRITES administrator before it can be
+                published publicly.
 
-                <label for="featured-image-file">
-                    Featured Image
-                </label>
+                Submitting an article does not guarantee publication.
 
-                <div class="article-image-upload-box">
+            </div>
+
+
+            <form
+                id="article-submit-form"
+                class="article-submit-form"
+            >
+
+
+                <!-- ================= TITLE ================= -->
+
+                <div class="article-form-group">
+
+                    <label for="article-title">
+                        Article Title *
+                    </label>
 
                     <input
-                        type="file"
-                        id="featured-image-file"
-                        name="featured_image_file"
-                        accept="image/jpeg,image/png,image/webp,image/gif"
+                        type="text"
+                        id="article-title"
+                        name="title"
+                        maxlength="200"
+                        placeholder="Enter the title of your article"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- ================= AUTHOR ================= -->
+
+                <div class="article-form-group">
+
+                    <label for="author-name">
+                        Author Name *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="author-name"
+                        name="author_name"
+                        maxlength="120"
+                        placeholder="Your name"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- ================= EMAIL ================= -->
+
+                <div class="article-form-group">
+
+                    <label for="author-email">
+                        Email Address *
+                    </label>
+
+                    <input
+                        type="email"
+                        id="author-email"
+                        name="author_email"
+                        maxlength="200"
+                        placeholder="your@email.com"
+                        required
                     >
 
                     <span class="article-form-help">
-                        Optional. Upload a JPG, PNG, WEBP, or GIF image.
-                        Maximum file size: 5 MB.
+                        Your email is used for submission communication
+                        and will not be displayed publicly on the article.
                     </span>
 
+                </div>
 
-                    <div
-                        id="article-image-preview"
-                        class="article-image-preview"
+
+
+                <!-- ================= CATEGORY ================= -->
+
+                <div class="article-form-group">
+
+                    <label for="article-category">
+                        Category *
+                    </label>
+
+                    <select
+                        id="article-category"
+                        name="category"
+                        required
                     >
 
-                        <img
-                            id="article-image-preview-img"
-                            src=""
-                            alt="Featured image preview"
+                        <option value="">
+                            Select a category
+                        </option>
+
+                        <option value="Research">
+                            Research
+                        </option>
+
+                        <option value="Academic">
+                            Academic
+                        </option>
+
+                        <option value="Business">
+                            Business
+                        </option>
+
+                        <option value="Finance">
+                            Finance
+                        </option>
+
+                        <option value="Technology">
+                            Technology
+                        </option>
+
+                        <option value="Data Analysis">
+                            Data Analysis
+                        </option>
+
+                        <option value="Education">
+                            Education
+                        </option>
+
+                        <option value="Consulting">
+                            Consulting
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- ================= FEATURED IMAGE ================= -->
+
+                <div class="article-form-group">
+
+                    <label for="featured-image-file">
+                        Featured Image
+                    </label>
+
+                    <div class="article-image-upload-box">
+
+                        <input
+                            type="file"
+                            id="featured-image-file"
+                            name="featured_image_file"
+                            accept="image/jpeg,image/png,image/webp,image/gif"
                         >
 
+                        <span class="article-form-help">
+                            Optional. Upload a JPG, PNG, WEBP, or GIF image.
+                            Maximum file size: 5 MB.
+                        </span>
+
+
                         <div
-                            id="article-image-preview-name"
-                            class="article-image-preview-name"
+                            id="article-image-preview"
+                            class="article-image-preview"
+                        >
+
+                            <img
+                                id="article-image-preview-img"
+                                src=""
+                                alt="Featured image preview"
+                            >
+
+                            <div
+                                id="article-image-preview-name"
+                                class="article-image-preview-name"
+                            ></div>
+
+                        </div>
+
+
+                        <div
+                            id="article-upload-status"
+                            class="article-upload-status"
                         ></div>
 
                     </div>
 
+                </div>
+
+
+
+                <!-- ================= SEO DESCRIPTION ================= -->
+
+                <div class="article-form-group">
+
+                    <label for="meta-description">
+                        SEO Meta Description
+                    </label>
+
+                    <textarea
+                        id="meta-description"
+                        name="meta_description"
+                        maxlength="300"
+                        style="min-height:120px;"
+                        placeholder="Briefly describe what your article is about..."
+                    ></textarea>
 
                     <div
-                        id="article-upload-status"
-                        class="article-upload-status"
-                    ></div>
+                        id="seo-description-counter"
+                        class="seo-description-counter"
+                    >
+
+                        <span>
+                            Recommended for SEO: approximately 150–160 characters.
+                        </span>
+
+                        <span id="seo-character-count">
+                            0 / 300
+                        </span>
+
+                    </div>
 
                 </div>
 
-            </div>
+
+
+                <!-- ================= ARTICLE CONTENT ================= -->
+
+                <div class="article-form-group">
+
+                    <label for="article-editor">
+                        Article Content *
+                    </label>
+
+
+                    <div class="article-editor-wrapper">
+
+
+                        <!-- ================= TOOLBAR ================= -->
+
+                        <div
+                            class="article-editor-toolbar"
+                            role="toolbar"
+                            aria-label="Article formatting tools"
+                        >
+
+
+                            <!-- TEXT STYLE -->
+
+                            <div class="editor-toolbar-group">
+
+                                <button
+                                    type="button"
+                                    class="editor-tool-button"
+                                    data-command="bold"
+                                    title="Bold"
+                                    aria-label="Bold"
+                                >
+                                    <strong>B</strong>
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="editor-tool-button"
+                                    data-command="italic"
+                                    title="Italic"
+                                    aria-label="Italic"
+                                >
+                                    <em>I</em>
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="editor-tool-button"
+                                    data-command="underline"
+                                    title="Underline"
+                                    aria-label="Underline"
+                                >
+                                    <u>U</u>
+                                </button>
+
+                            </div>
+
+
+                            <div class="editor-toolbar-divider"></div>
+
+
+                            <!-- HEADINGS -->
+
+                            <div class="editor-toolbar-group">
+
+                                <select
+                                    id="editor-format"
+                                    class="editor-tool-select"
+                                    title="Text format"
+                                    aria-label="Text format"
+                                >
+
+                                    <option value="p">
+                                        Paragraph
+                                    </option>
+
+                                    <option value="h2">
+                                        Heading 2
+                                    </option>
+
+                                    <option value="h3">
+                                        Heading 3
+                                    </option>
+
+                                    <option value="blockquote">
+                                        Quote
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="editor-toolbar-divider"></div>
+
+
+                            <!-- TEXT COLOR -->
+
+                            <div class="editor-toolbar-group">
+
+                                <div class="editor-color-wrapper">
+
+                                    <button
+                                        type="button"
+                                        id="editor-color-button"
+                                        class="editor-tool-button editor-color-button"
+                                        title="Change text colour"
+                                        aria-label="Change text colour"
+                                    >
+
+                                        A
+
+                                        <span
+                                            id="editor-color-indicator"
+                                            class="editor-color-indicator"
+                                        ></span>
+
+                                    </button>
+
+                                    <input
+                                        type="color"
+                                        id="editor-text-color"
+                                        value="#000000"
+                                        aria-label="Choose text colour"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="editor-toolbar-divider"></div>
+
+
+                            <!-- LISTS -->
+
+                            <div class="editor-toolbar-group">
+
+                                <button
+                                    type="button"
+                                    class="editor-tool-button"
+                                    data-command="insertUnorderedList"
+                                    title="Bulleted list"
+                                    aria-label="Bulleted list"
+                                >
+                                    •
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="editor-tool-button"
+                                    data-command="insertOrderedList"
+                                    title="Numbered list"
+                                    aria-label="Numbered list"
+                                >
+                                    1.
+                                </button>
+
+                            </div>
+
+
+                            <div class="editor-toolbar-divider"></div>
+
+
+                            <!-- ALIGNMENT -->
+
+                            <div class="editor-toolbar-group">
+
+                                <button
+                                    type="button"
+                                    class="editor-tool-button"
+                                    data-command="justifyLeft"
+                                    title="Align left"
+                                    aria-label="Align left"
+                                >
+                                    ≡
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="editor-tool-button"
+                                    data-command="justifyCenter"
+                                    title="Center text"
+                                    aria-label="Center text"
+                                >
+                                    ≡
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="editor-tool-button"
+                                    data-command="justifyRight"
+                                    title="Align right"
+                                    aria-label="Align right"
+                                >
+                                    ≡
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="editor-tool-button"
+                                    data-command="justifyFull"
+                                    title="Justify text"
+                                    aria-label="Justify text"
+                                >
+                                    ☰
+                                </button>
+
+                            </div>
+
+
+                            <div class="editor-toolbar-divider"></div>
+
+
+                            <!-- UNDO / REDO -->
+
+                            <div class="editor-toolbar-group">
+
+                                <button
+                                    type="button"
+                                    class="editor-tool-button"
+                                    data-command="undo"
+                                    title="Undo"
+                                    aria-label="Undo"
+                                >
+                                    ↶
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="editor-tool-button"
+                                    data-command="redo"
+                                    title="Redo"
+                                    aria-label="Redo"
+                                >
+                                    ↷
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ================= EDITOR ================= -->
+
+                        <div
+                            id="article-editor"
+                            class="article-editor"
+                            contenteditable="true"
+                            role="textbox"
+                            aria-multiline="true"
+                            data-placeholder="Paste or write your complete article here..."
+                        ></div>
+
+
+                        <!-- ================= EDITOR INFORMATION ================= -->
+
+                        <div class="article-editor-info">
+
+                            <span>
+                                Use the toolbar above to format your article.
+                            </span>
+
+                            <span id="article-word-count">
+                                0 words
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <span class="article-form-help">
+                        You can paste or write your article and use the
+                        formatting tools to style the text before submitting.
+                    </span>
+
+                </div>
 
 
 
-            <!-- META DESCRIPTION -->
+                <!-- ================= SUBMIT ================= -->
 
-            <div class="article-form-group">
-
-                <label for="meta-description">
-                    SEO Meta Description
-                </label>
-
-                <textarea
-                    id="meta-description"
-                    name="meta_description"
-                    maxlength="160"
-                    style="min-height:120px;"
-                    placeholder="Briefly describe what your article is about..."
-                ></textarea>
-
-                <span class="article-form-help">
-                    Recommended: approximately 150–160 characters.
-                </span>
-
-            </div>
+                <button
+                    type="submit"
+                    id="article-submit-button"
+                    class="article-submit-button"
+                >
+                    Submit Article for Review
+                </button>
 
 
-
-            <!-- CONTENT -->
-
-            <div class="article-form-group">
-
-                <label for="article-content">
-                    Article Content *
-                </label>
-
-                <textarea
-                    id="article-content"
-                    name="content"
-                    placeholder="Paste or write your complete article here..."
-                    required
-                ></textarea>
-
-                <span class="article-form-help">
-                    Please submit your complete article. Articles are
-                    reviewed before publication.
-                </span>
-
-            </div>
+                <div
+                    id="article-form-message"
+                    class="article-form-message"
+                ></div>
 
 
+            </form>
 
-            <!-- SUBMIT -->
 
-            <button
-                type="submit"
-                id="article-submit-button"
-                class="article-submit-button"
+            <a
+                href="index.html"
+                class="article-back-link"
             >
-                Submit Article for Review
-            </button>
+                ← Back to EAGLE WRITES
+            </a>
 
 
-            <div
-                id="article-form-message"
-                class="article-form-message"
-            ></div>
+        </section>
 
-
-        </form>
-
-
-        <a
-            href="index.html"
-            class="article-back-link"
-        >
-            ← Back to EAGLE WRITES
-        </a>
-
-
-    </section>
-
-</main>
+    </main>
 
 
 
-<!-- ================= FOOTER ================= -->
+    <!-- ================= FOOTER ================= -->
 
-<footer
-    class="footer"
-    id="footer"
->
+    <footer
+        class="footer"
+        id="footer"
+    >
 
-    <div class="footer-container">
+        <div class="footer-container">
 
 
-        <div class="footer-brand">
+            <div class="footer-brand">
 
-            <h2 class="footer-title">
-                EAGLE WRITES
-            </h2>
+                <h2 class="footer-title">
+                    EAGLE WRITES
+                </h2>
 
-            <p class="footer-tagline">
-                RESEARCH • ANALYTICS • CONSULTING
+                <p class="footer-tagline">
+                    RESEARCH • ANALYTICS • CONSULTING
+                </p>
+
+                <p class="footer-founder">
+                    Founded by Arnold Milton
+                </p>
+
+            </div>
+
+
+            <div class="footer-nav">
+
+                <h3 class="footer-nav-heading">
+                    Quick Links
+                </h3>
+
+                <ul class="footer-nav-list">
+
+                    <li>
+                        <a
+                            href="index.html"
+                            class="footer-link"
+                        >
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="about.html"
+                            class="footer-link"
+                        >
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="services.html"
+                            class="footer-link"
+                        >
+                            Services
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="courses.html"
+                            class="footer-link"
+                        >
+                            Courses
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="portfolio.html"
+                            class="footer-link"
+                        >
+                            Portfolio
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="contact.html"
+                            class="footer-link"
+                        >
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="footer-contact">
+
+                <h3 class="footer-contact-heading">
+                    Contact Us
+                </h3>
+
+                <ul class="footer-contact-list">
+
+                    <li>
+
+                        <a
+                            href="tel:+254748513346"
+                            class="footer-contact-link"
+                        >
+                            +254 748 513 346
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a
+                            href="mailto:miltonarnold535@gmail.com"
+                            class="footer-contact-link"
+                        >
+                            miltonarnold535@gmail.com
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a
+                            href="https://wa.me/254748513346"
+                            class="footer-contact-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            WhatsApp
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p class="footer-copyright">
+                © 2026 EAGLE WRITES. All Rights Reserved.
             </p>
 
-            <p class="footer-founder">
-                Founded by Arnold Milton
-            </p>
-
         </div>
 
+    </footer>
 
-        <div class="footer-nav">
 
-            <h3 class="footer-nav-heading">
-                Quick Links
-            </h3>
 
-            <ul class="footer-nav-list">
+    <!-- ================= SUPABASE ================= -->
 
-                <li>
-                    <a
-                        href="index.html"
-                        class="footer-link"
-                    >
-                        Home
-                    </a>
-                </li>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-                <li>
-                    <a
-                        href="about.html"
-                        class="footer-link"
-                    >
-                        About
-                    </a>
-                </li>
 
-                <li>
-                    <a
-                        href="services.html"
-                        class="footer-link"
-                    >
-                        Services
-                    </a>
-                </li>
+    <script>
 
-                <li>
-                    <a
-                        href="courses.html"
-                        class="footer-link"
-                    >
-                        Courses
-                    </a>
-                </li>
+        /* =========================
+           SUPABASE CONFIGURATION
+        ========================= */
 
-                <li>
-                    <a
-                        href="portfolio.html"
-                        class="footer-link"
-                    >
-                        Portfolio
-                    </a>
-                </li>
+        const SUPABASE_URL =
+            'https://ekkvghdnejvyjykagafr.supabase.co';
 
-                <li>
-                    <a
-                        href="contact.html"
-                        class="footer-link"
-                    >
-                        Contact
-                    </a>
-                </li>
 
-            </ul>
+        const SUPABASE_KEY =
+            'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
 
-        </div>
 
+        /*
+         * This is a PUBLIC article submission page.
+         *
+         * It does not need a Supabase login session.
+         *
+         * Disabling session persistence prevents an existing
+         * EAGLE WRITES administrator session in the browser
+         * from being reused on this public submission page.
+         */
 
-        <div class="footer-contact">
-
-            <h3 class="footer-contact-heading">
-                Contact Us
-            </h3>
-
-            <ul class="footer-contact-list">
-
-                <li>
-                    <a
-                        href="tel:+254748513346"
-                        class="footer-contact-link"
-                    >
-                        +254 748 513 346
-                    </a>
-                </li>
-
-                <li>
-                    <a
-                        href="mailto:miltonarnold535@gmail.com"
-                        class="footer-contact-link"
-                    >
-                        miltonarnold535@gmail.com
-                    </a>
-                </li>
-
-                <li>
-                    <a
-                        href="https://wa.me/254748513346"
-                        class="footer-contact-link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        WhatsApp
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
-
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <p class="footer-copyright">
-            © 2026 EAGLE WRITES. All Rights Reserved.
-        </p>
-
-    </div>
-
-</footer>
-
-
-
-<!-- ================= SUPABASE ================= -->
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-
-<script>
-
-    const SUPABASE_URL =
-        'https://ekkvghdnejvyjykagafr.supabase.co';
-
-
-    const SUPABASE_KEY =
-        'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
-
-
-    const supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
-
-
-
-    /* =========================
-       CREATE SEO SLUG
-    ========================= */
-
-    function createArticleSlug(title) {
-
-        const baseSlug =
-            String(title)
-                .toLowerCase()
-                .trim()
-                .replace(
-                    /[^a-z0-9\s-]/g,
-                    ''
-                )
-                .replace(
-                    /\s+/g,
-                    '-'
-                )
-                .replace(
-                    /-+/g,
-                    '-'
-                )
-                .replace(
-                    /^-+|-+$/g,
-                    ''
-                );
-
-        const uniquePart =
-            Date.now()
-                .toString()
-                .slice(-6);
-
-        return (
-            baseSlug +
-            '-' +
-            uniquePart
-        );
-    }
-
-
-
-    /* =========================
-       IMAGE ELEMENTS
-    ========================= */
-
-    const imageFileInput =
-        document.getElementById(
-            'featured-image-file'
-        );
-
-
-    const imagePreview =
-        document.getElementById(
-            'article-image-preview'
-        );
-
-
-    const imagePreviewImg =
-        document.getElementById(
-            'article-image-preview-img'
-        );
-
-
-    const imagePreviewName =
-        document.getElementById(
-            'article-image-preview-name'
-        );
-
-
-    const uploadStatus =
-        document.getElementById(
-            'article-upload-status'
-        );
-
-
-
-    /* =========================
-       IMAGE PREVIEW
-    ========================= */
-
-    imageFileInput.addEventListener(
-        'change',
-        function() {
-
-            const file =
-                imageFileInput.files[0];
-
-
-            uploadStatus.className =
-                'article-upload-status';
-
-            uploadStatus.textContent =
-                '';
-
-
-            imagePreview.style.display =
-                'none';
-
-
-            imagePreviewImg.src =
-                '';
-
-
-            imagePreviewName.textContent =
-                '';
-
-
-            if (!file) {
-                return;
-            }
-
-
-            const allowedTypes = [
-                'image/jpeg',
-                'image/png',
-                'image/webp',
-                'image/gif'
-            ];
-
-
-            if (
-                !allowedTypes.includes(
-                    file.type
-                )
-            ) {
-
-                imageFileInput.value = '';
-
-
-                uploadStatus.className =
-                    'article-upload-status error';
-
-                uploadStatus.textContent =
-                    'Please select a JPG, PNG, WEBP, or GIF image.';
-
-                return;
-            }
-
-
-            const maxSize =
-                5 * 1024 * 1024;
-
-
-            if (
-                file.size > maxSize
-            ) {
-
-                imageFileInput.value = '';
-
-
-                uploadStatus.className =
-                    'article-upload-status error';
-
-                uploadStatus.textContent =
-                    'The image is too large. Maximum file size is 5 MB.';
-
-                return;
-            }
-
-
-            const objectUrl =
-                URL.createObjectURL(file);
-
-
-            imagePreviewImg.src =
-                objectUrl;
-
-
-            imagePreviewName.textContent =
-                file.name;
-
-
-            imagePreview.style.display =
-                'block';
-
-        }
-    );
-
-
-
-    /* =========================
-       UPLOAD FEATURED IMAGE
-    ========================= */
-
-    async function uploadFeaturedImage(
-        file,
-        slug
-    ) {
-
-        if (!file) {
-            return null;
-        }
-
-
-        uploadStatus.className =
-            'article-upload-status uploading';
-
-        uploadStatus.textContent =
-            'Uploading featured image...';
-
-
-        const fileExtension =
-            file.name
-                .split('.')
-                .pop()
-                .toLowerCase();
-
-
-        const safeExtension =
-            fileExtension === 'jpeg'
-                ? 'jpg'
-                : fileExtension;
-
-
-        const fileName =
-            slug +
-            '-' +
-            Date.now() +
-            '.' +
-            safeExtension;
-
-
-        const filePath =
-            'article-images/' +
-            fileName;
-
-
-        const {
-            error: uploadError
-        } =
-            await supabaseClient
-                .storage
-                .from('portfolio-documents')
-                .upload(
-                    filePath,
-                    file,
-                    {
-                        cacheControl: '3600',
-                        upsert: false,
-                        contentType: file.type
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY,
+                {
+                    auth: {
+                        persistSession: false,
+                        autoRefreshToken: false,
+                        detectSessionInUrl: false
                     }
-                );
-
-
-        if (uploadError) {
-            throw uploadError;
-        }
-
-
-        const {
-            data: publicUrlData
-        } =
-            supabaseClient
-                .storage
-                .from('portfolio-documents')
-                .getPublicUrl(
-                    filePath
-                );
-
-
-        const publicUrl =
-            publicUrlData &&
-            publicUrlData.publicUrl
-                ? publicUrlData.publicUrl
-                : null;
-
-
-        if (!publicUrl) {
-
-            throw new Error(
-                'Could not create the public image URL.'
+                }
             );
 
-        }
 
 
-        uploadStatus.className =
-            'article-upload-status success';
+        /* =========================
+           CREATE SEO SLUG
+        ========================= */
 
-        uploadStatus.textContent =
-            'Featured image uploaded successfully.';
+        function createArticleSlug(title) {
 
-
-        return publicUrl;
-    }
-
-
-
-    /* =========================
-       FORM SUBMISSION
-    ========================= */
-
-    const articleForm =
-        document.getElementById(
-            'article-submit-form'
-        );
-
-
-    articleForm.addEventListener(
-        'submit',
-        async function(event) {
-
-            event.preventDefault();
-
-
-            const submitButton =
-                document.getElementById(
-                    'article-submit-button'
-                );
-
-
-            const message =
-                document.getElementById(
-                    'article-form-message'
-                );
-
-
-            const title =
-                document.getElementById(
-                    'article-title'
-                ).value.trim();
-
-
-            const authorName =
-                document.getElementById(
-                    'author-name'
-                ).value.trim();
-
-
-            const authorEmail =
-                document.getElementById(
-                    'author-email'
-                ).value.trim();
-
-
-            const category =
-                document.getElementById(
-                    'article-category'
-                ).value;
-
-
-            const metaDescription =
-                document.getElementById(
-                    'meta-description'
-                ).value.trim();
-
-
-            const content =
-                document.getElementById(
-                    'article-content'
-                ).value.trim();
-
-
-            const imageFile =
-                imageFileInput.files[0] ||
-                null;
-
-
-            if (
-                !title ||
-                !authorName ||
-                !authorEmail ||
-                !category ||
-                !content
-            ) {
-
-                message.className =
-                    'article-form-message error';
-
-                message.textContent =
-                    'Please complete all required fields.';
-
-                return;
-            }
-
-
-            if (imageFile) {
-
-                const allowedTypes = [
-                    'image/jpeg',
-                    'image/png',
-                    'image/webp',
-                    'image/gif'
-                ];
-
-
-                if (
-                    !allowedTypes.includes(
-                        imageFile.type
+            const baseSlug =
+                String(title)
+                    .toLowerCase()
+                    .trim()
+                    .replace(
+                        /[^a-z0-9\s-]/g,
+                        ''
                     )
-                ) {
-
-                    message.className =
-                        'article-form-message error';
-
-                    message.textContent =
-                        'Please select a JPG, PNG, WEBP, or GIF image.';
-
-                    return;
-                }
-
-
-                const maxSize =
-                    5 * 1024 * 1024;
-
-
-                if (
-                    imageFile.size > maxSize
-                ) {
-
-                    message.className =
-                        'article-form-message error';
-
-                    message.textContent =
-                        'The selected image is larger than 5 MB.';
-
-                    return;
-                }
-
-            }
-
-
-            submitButton.disabled =
-                true;
-
-
-            submitButton.textContent =
-                'Submitting...';
-
-
-            message.className =
-                'article-form-message';
-
-            message.textContent =
-                '';
-
-
-            try {
-
-                const slug =
-                    createArticleSlug(
-                        title
+                    .replace(
+                        /\s+/g,
+                        '-'
+                    )
+                    .replace(
+                        /-+/g,
+                        '-'
+                    )
+                    .replace(
+                        /^-+|-+$/g,
+                        ''
                     );
 
 
-                let featuredImage =
-                    null;
+            const uniquePart =
+                Date.now()
+                    .toString()
+                    .slice(-6);
 
 
-                /*
-                 * Upload image first, if one
-                 * was selected.
-                 */
-
-                if (imageFile) {
-
-                    featuredImage =
-                        await uploadFeaturedImage(
-                            imageFile,
-                            slug
-                        );
-
-                }
+            return (
+                baseSlug +
+                '-' +
+                uniquePart
+            );
+        }
 
 
-                /*
-                 * Insert article into
-                 * Supabase database.
-                 */
 
-                const {
-                    error
-                } =
-                    await supabaseClient
-                        .from('articles')
-                        .insert({
+        /* =========================
+           IMAGE ELEMENTS
+        ========================= */
 
-                            title:
-                                title,
-
-                            slug:
-                                slug,
-
-                            content:
-                                content,
-
-                            author_name:
-                                authorName,
-
-                            author_email:
-                                authorEmail,
-
-                            category:
-                                category,
-
-                            featured_image:
-                                featuredImage,
-
-                            meta_description:
-                                metaDescription ||
-                                null,
-
-                            status:
-                                'pending',
-
-                            approved_at:
-                                null
-
-                        });
+        const imageFileInput =
+            document.getElementById(
+                'featured-image-file'
+            );
 
 
-                if (error) {
-                    throw error;
-                }
+        const imagePreview =
+            document.getElementById(
+                'article-image-preview'
+            );
 
 
-                message.className =
-                    'article-form-message success';
+        const imagePreviewImg =
+            document.getElementById(
+                'article-image-preview-img'
+            );
 
 
-                message.textContent =
-                    'Your article has been submitted successfully. It is now pending review by EAGLE WRITES.';
+        const imagePreviewName =
+            document.getElementById(
+                'article-image-preview-name'
+            );
 
 
-                articleForm.reset();
+        const uploadStatus =
+            document.getElementById(
+                'article-upload-status'
+            );
+
+
+
+        /* =========================
+           IMAGE PREVIEW
+        ========================= */
+
+        imageFileInput.addEventListener(
+            'change',
+            function() {
+
+                const file =
+                    imageFileInput.files[0];
+
+
+                uploadStatus.className =
+                    'article-upload-status';
+
+
+                uploadStatus.textContent =
+                    '';
 
 
                 imagePreview.style.display =
@@ -1470,69 +1616,1038 @@
                     '';
 
 
-                uploadStatus.className =
-                    'article-upload-status';
-
-
-                uploadStatus.textContent =
-                    '';
-
-
-            } catch (error) {
-
-                console.error(
-                    'Article submission error:',
-                    error
-                );
-
-
-                message.className =
-                    'article-form-message error';
-
-
-                /*
-                 * Give a more useful message
-                 * for storage permission errors.
-                 */
-
-                if (
-                    error &&
-                    (
-                        error.statusCode === 403 ||
-                        error.status === 403
-                    )
-                ) {
-
-                    message.textContent =
-                        'The article could not be submitted because image upload permission is not yet configured. Please contact the site administrator.';
-
-                } else {
-
-                    message.textContent =
-                        'We could not submit your article. Please try again.';
-
+                if (!file) {
+                    return;
                 }
 
 
-            } finally {
+                const allowedTypes = [
+                    'image/jpeg',
+                    'image/png',
+                    'image/webp',
+                    'image/gif'
+                ];
 
-                submitButton.disabled =
-                    false;
+
+                if (
+                    !allowedTypes.includes(
+                        file.type
+                    )
+                ) {
+
+                    imageFileInput.value = '';
 
 
-                submitButton.textContent =
-                    'Submit Article for Review';
+                    uploadStatus.className =
+                        'article-upload-status error';
+
+
+                    uploadStatus.textContent =
+                        'Please select a JPG, PNG, WEBP, or GIF image.';
+
+
+                    return;
+                }
+
+
+                const maxSize =
+                    5 * 1024 * 1024;
+
+
+                if (
+                    file.size > maxSize
+                ) {
+
+                    imageFileInput.value = '';
+
+
+                    uploadStatus.className =
+                        'article-upload-status error';
+
+
+                    uploadStatus.textContent =
+                        'The image is too large. Maximum file size is 5 MB.';
+
+
+                    return;
+                }
+
+
+                const objectUrl =
+                    URL.createObjectURL(file);
+
+
+                imagePreviewImg.src =
+                    objectUrl;
+
+
+                imagePreviewName.textContent =
+                    file.name;
+
+
+                imagePreview.style.display =
+                    'block';
+
+            }
+        );
+
+
+
+        /* =========================
+           UPLOAD FEATURED IMAGE
+        ========================= */
+
+        async function uploadFeaturedImage(
+            file,
+            slug
+        ) {
+
+            if (!file) {
+                return null;
+            }
+
+
+            uploadStatus.className =
+                'article-upload-status uploading';
+
+
+            uploadStatus.textContent =
+                'Uploading featured image...';
+
+
+            const fileExtension =
+                file.name
+                    .split('.')
+                    .pop()
+                    .toLowerCase();
+
+
+            const safeExtension =
+                fileExtension === 'jpeg'
+                    ? 'jpg'
+                    : fileExtension;
+
+
+            const fileName =
+                slug +
+                '-' +
+                Date.now() +
+                '.' +
+                safeExtension;
+
+
+            const filePath =
+                'article-images/' +
+                fileName;
+
+
+            const {
+                error: uploadError
+            } =
+                await supabaseClient
+                    .storage
+                    .from('portfolio-documents')
+                    .upload(
+                        filePath,
+                        file,
+                        {
+                            cacheControl: '3600',
+                            upsert: false,
+                            contentType: file.type
+                        }
+                    );
+
+
+            if (uploadError) {
+
+                console.error(
+                    'Featured image upload error:',
+                    uploadError
+                );
+
+                throw uploadError;
+            }
+
+
+            const {
+                data: publicUrlData
+            } =
+                supabaseClient
+                    .storage
+                    .from('portfolio-documents')
+                    .getPublicUrl(
+                        filePath
+                    );
+
+
+            const publicUrl =
+                publicUrlData &&
+                publicUrlData.publicUrl
+                    ? publicUrlData.publicUrl
+                    : null;
+
+
+            if (!publicUrl) {
+
+                throw new Error(
+                    'Could not create the public image URL.'
+                );
+
+            }
+
+
+            uploadStatus.className =
+                'article-upload-status success';
+
+
+            uploadStatus.textContent =
+                'Featured image uploaded successfully.';
+
+
+            return publicUrl;
+        }
+
+
+
+        /* =========================
+           ARTICLE EDITOR
+        ========================= */
+
+        const articleEditor =
+            document.getElementById(
+                'article-editor'
+            );
+
+
+        const editorToolbarButtons =
+            document.querySelectorAll(
+                '.editor-tool-button[data-command]'
+            );
+
+
+        let savedEditorRange =
+            null;
+
+
+
+        /* =========================
+           SAVE EDITOR SELECTION
+        ========================= */
+
+        function saveEditorSelection() {
+
+            const selection =
+                window.getSelection();
+
+
+            if (
+                !selection ||
+                selection.rangeCount === 0
+            ) {
+                return;
+            }
+
+
+            const range =
+                selection.getRangeAt(0);
+
+
+            if (
+                articleEditor.contains(
+                    range.commonAncestorContainer
+                )
+            ) {
+
+                savedEditorRange =
+                    range.cloneRange();
 
             }
 
         }
-    );
-
-</script>
 
 
-<script src="script.js"></script>
-```
+
+        /* =========================
+           RESTORE EDITOR SELECTION
+        ========================= */
+
+        function restoreEditorSelection() {
+
+            if (!savedEditorRange) {
+                return;
+            }
+
+
+            const selection =
+                window.getSelection();
+
+
+            selection.removeAllRanges();
+
+
+            selection.addRange(
+                savedEditorRange
+            );
+
+        }
+
+
+
+        articleEditor.addEventListener(
+            'mouseup',
+            saveEditorSelection
+        );
+
+
+        articleEditor.addEventListener(
+            'keyup',
+            saveEditorSelection
+        );
+
+
+        articleEditor.addEventListener(
+            'focus',
+            saveEditorSelection
+        );
+
+
+
+        /* =========================
+           EXECUTE EDITOR COMMAND
+        ========================= */
+
+        function executeEditorCommand(
+            command,
+            value = null
+        ) {
+
+            articleEditor.focus();
+
+
+            restoreEditorSelection();
+
+
+            document.execCommand(
+                command,
+                false,
+                value
+            );
+
+
+            saveEditorSelection();
+
+
+            updateEditorWordCount();
+
+        }
+
+
+
+        /* =========================
+           TOOLBAR BUTTONS
+        ========================= */
+
+        editorToolbarButtons.forEach(
+            function(button) {
+
+                button.addEventListener(
+                    'mousedown',
+                    function(event) {
+
+                        /*
+                         * Prevent the toolbar click from
+                         * removing the current selection.
+                         */
+
+                        event.preventDefault();
+
+                        saveEditorSelection();
+
+                    }
+                );
+
+
+                button.addEventListener(
+                    'click',
+                    function() {
+
+                        const command =
+                            button.dataset.command;
+
+
+                        executeEditorCommand(
+                            command
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+
+        /* =========================
+           TEXT FORMAT
+        ========================= */
+
+        const editorFormat =
+            document.getElementById(
+                'editor-format'
+            );
+
+
+        editorFormat.addEventListener(
+            'mousedown',
+            function() {
+
+                saveEditorSelection();
+
+            }
+        );
+
+
+        editorFormat.addEventListener(
+            'change',
+            function() {
+
+                const format =
+                    editorFormat.value;
+
+
+                executeEditorCommand(
+                    'formatBlock',
+                    '<' + format + '>'
+                );
+
+            }
+        );
+
+
+
+        /* =========================
+           TEXT COLOR
+        ========================= */
+
+        const editorColorButton =
+            document.getElementById(
+                'editor-color-button'
+            );
+
+
+        const editorTextColor =
+            document.getElementById(
+                'editor-text-color'
+            );
+
+
+        const editorColorIndicator =
+            document.getElementById(
+                'editor-color-indicator'
+            );
+
+
+        editorColorButton.addEventListener(
+            'mousedown',
+            function(event) {
+
+                event.preventDefault();
+
+                saveEditorSelection();
+
+                editorTextColor.click();
+
+            }
+        );
+
+
+        editorTextColor.addEventListener(
+            'input',
+            function() {
+
+                const selectedColor =
+                    editorTextColor.value;
+
+
+                editorColorIndicator.style.background =
+                    selectedColor;
+
+
+                executeEditorCommand(
+                    'foreColor',
+                    selectedColor
+                );
+
+            }
+        );
+
+
+
+        /* =========================
+           WORD COUNT
+        ========================= */
+
+        const articleWordCount =
+            document.getElementById(
+                'article-word-count'
+            );
+
+
+        function updateEditorWordCount() {
+
+            const text =
+                articleEditor.innerText
+                    .replace(
+                        /\s+/g,
+                        ' '
+                    )
+                    .trim();
+
+
+            if (!text) {
+
+                articleWordCount.textContent =
+                    '0 words';
+
+                return;
+            }
+
+
+            const words =
+                text.split(' ').length;
+
+
+            articleWordCount.textContent =
+                words +
+                (
+                    words === 1
+                        ? ' word'
+                        : ' words'
+                );
+
+        }
+
+
+        articleEditor.addEventListener(
+            'input',
+            updateEditorWordCount
+        );
+
+
+
+        /* =========================
+           SEO CHARACTER COUNTER
+        ========================= */
+
+        const metaDescription =
+            document.getElementById(
+                'meta-description'
+            );
+
+
+        const seoCharacterCount =
+            document.getElementById(
+                'seo-character-count'
+            );
+
+
+        const seoDescriptionCounter =
+            document.getElementById(
+                'seo-description-counter'
+            );
+
+
+        function updateSEOCharacterCount() {
+
+            const count =
+                metaDescription.value.length;
+
+
+            seoCharacterCount.textContent =
+                count +
+                ' / 300';
+
+
+            seoDescriptionCounter.classList.remove(
+                'warning',
+                'good'
+            );
+
+
+            if (
+                count >= 150 &&
+                count <= 160
+            ) {
+
+                seoDescriptionCounter.classList.add(
+                    'good'
+                );
+
+            } else if (
+                count > 160
+            ) {
+
+                seoDescriptionCounter.classList.add(
+                    'warning'
+                );
+
+            }
+
+        }
+
+
+        metaDescription.addEventListener(
+            'input',
+            updateSEOCharacterCount
+        );
+
+
+        updateSEOCharacterCount();
+
+
+
+        /* =========================
+           FORM SUBMISSION
+        ========================= */
+
+        const articleForm =
+            document.getElementById(
+                'article-submit-form'
+            );
+
+
+        articleForm.addEventListener(
+            'submit',
+            async function(event) {
+
+                event.preventDefault();
+
+
+                const submitButton =
+                    document.getElementById(
+                        'article-submit-button'
+                    );
+
+
+                const message =
+                    document.getElementById(
+                        'article-form-message'
+                    );
+
+
+                const title =
+                    document.getElementById(
+                        'article-title'
+                    ).value.trim();
+
+
+                const authorName =
+                    document.getElementById(
+                        'author-name'
+                    ).value.trim();
+
+
+                const authorEmail =
+                    document.getElementById(
+                        'author-email'
+                    ).value.trim();
+
+
+                const category =
+                    document.getElementById(
+                        'article-category'
+                    ).value;
+
+
+                const metaDescriptionValue =
+                    metaDescription.value.trim();
+
+
+                /*
+                 * IMPORTANT:
+                 * Get the formatted HTML from the
+                 * contenteditable editor.
+                 */
+
+                const content =
+                    articleEditor.innerHTML.trim();
+
+
+                const plainTextContent =
+                    articleEditor.innerText
+                        .replace(
+                            /\s+/g,
+                            ' '
+                        )
+                        .trim();
+
+
+                const imageFile =
+                    imageFileInput.files[0] ||
+                    null;
+
+
+
+                /* =========================
+                   BASIC VALIDATION
+                ========================= */
+
+                if (
+                    !title ||
+                    !authorName ||
+                    !authorEmail ||
+                    !category ||
+                    !plainTextContent
+                ) {
+
+                    message.className =
+                        'article-form-message error';
+
+
+                    message.textContent =
+                        'Please complete all required fields.';
+
+
+                    return;
+                }
+
+
+
+                /* =========================
+                   IMAGE VALIDATION
+                ========================= */
+
+                if (imageFile) {
+
+                    const allowedTypes = [
+                        'image/jpeg',
+                        'image/png',
+                        'image/webp',
+                        'image/gif'
+                    ];
+
+
+                    if (
+                        !allowedTypes.includes(
+                            imageFile.type
+                        )
+                    ) {
+
+                        message.className =
+                            'article-form-message error';
+
+
+                        message.textContent =
+                            'Please select a JPG, PNG, WEBP, or GIF image.';
+
+
+                        return;
+                    }
+
+
+                    const maxSize =
+                        5 * 1024 * 1024;
+
+
+                    if (
+                        imageFile.size > maxSize
+                    ) {
+
+                        message.className =
+                            'article-form-message error';
+
+
+                        message.textContent =
+                            'The selected image is larger than 5 MB.';
+
+
+                        return;
+                    }
+
+                }
+
+
+
+                /* =========================
+                   START SUBMISSION
+                ========================= */
+
+                submitButton.disabled =
+                    true;
+
+
+                submitButton.textContent =
+                    'Submitting...';
+
+
+                message.className =
+                    'article-form-message';
+
+
+                message.textContent =
+                    '';
+
+
+
+                try {
+
+                    /* =========================
+                       CREATE SLUG
+                    ========================= */
+
+                    const slug =
+                        createArticleSlug(
+                            title
+                        );
+
+
+                    let featuredImage =
+                        null;
+
+
+
+                    /* =========================
+                       UPLOAD IMAGE
+                    ========================= */
+
+                    if (imageFile) {
+
+                        featuredImage =
+                            await uploadFeaturedImage(
+                                imageFile,
+                                slug
+                            );
+
+                    }
+
+
+
+                    /* =========================
+                       INSERT ARTICLE
+                    ========================= */
+
+                    const {
+                        error
+                    } =
+                        await supabaseClient
+                            .from('articles')
+                            .insert({
+
+                                title:
+                                    title,
+
+                                slug:
+                                    slug,
+
+                                content:
+                                    content,
+
+                                author_name:
+                                    authorName,
+
+                                author_email:
+                                    authorEmail,
+
+                                category:
+                                    category,
+
+                                featured_image:
+                                    featuredImage,
+
+                                meta_description:
+                                    metaDescriptionValue ||
+                                    null,
+
+                                status:
+                                    'pending',
+
+                                approved_at:
+                                    null
+
+                            });
+
+
+                    if (error) {
+
+                        console.error(
+                            'Supabase article insert error:',
+                            error
+                        );
+
+
+                        throw error;
+
+                    }
+
+
+
+                    /* =========================
+                       SUCCESS
+                    ========================= */
+
+                    message.className =
+                        'article-form-message success';
+
+
+                    message.textContent =
+                        'Your article has been submitted successfully. It is now pending review by EAGLE WRITES.';
+
+
+                    articleForm.reset();
+
+
+                    articleEditor.innerHTML =
+                        '';
+
+
+                    savedEditorRange =
+                        null;
+
+
+                    imagePreview.style.display =
+                        'none';
+
+
+                    imagePreviewImg.src =
+                        '';
+
+
+                    imagePreviewName.textContent =
+                        '';
+
+
+                    uploadStatus.className =
+                        'article-upload-status';
+
+
+                    uploadStatus.textContent =
+                        '';
+
+
+                    updateEditorWordCount();
+
+
+                    updateSEOCharacterCount();
+
+
+                } catch (error) {
+
+                    console.error(
+                        'Article submission error:',
+                        error
+                    );
+
+
+                    message.className =
+                        'article-form-message error';
+
+
+
+                    /* =========================
+                       STORAGE ERROR
+                    ========================= */
+
+                    if (
+                        error &&
+                        (
+                            error.statusCode === 403 ||
+                            error.status === 403
+                        ) &&
+                        (
+                            error.message &&
+                            (
+                                error.message
+                                    .toLowerCase()
+                                    .includes(
+                                        'storage'
+                                    ) ||
+                                error.message
+                                    .toLowerCase()
+                                    .includes(
+                                        'object'
+                                    )
+                            )
+                        )
+                    ) {
+
+                        message.textContent =
+                            'The featured image could not be uploaded. Please check the image upload permission or try submitting without an image.';
+
+                    }
+
+
+
+                    /* =========================
+                       DATABASE RLS ERROR
+                    ========================= */
+
+                    else if (
+                        error &&
+                        (
+                            error.code === '42501' ||
+                            (
+                                error.message &&
+                                error.message
+                                    .toLowerCase()
+                                    .includes(
+                                        'row-level security'
+                                    )
+                            )
+                        )
+                    ) {
+
+                        message.textContent =
+                            'The article could not be submitted because the database submission permission was denied. Please contact the site administrator.';
+
+                    }
+
+
+
+                    /* =========================
+                       DUPLICATE ERROR
+                    ========================= */
+
+                    else if (
+                        error &&
+                        error.code === '23505'
+                    ) {
+
+                        message.textContent =
+                            'This article could not be submitted because a duplicate article record was detected. Please try again.';
+
+                    }
+
+
+
+                    /* =========================
+                       GENERAL ERROR
+                    ========================= */
+
+                    else {
+
+                        message.textContent =
+                            'We could not submit your article. Please try again.';
+
+                    }
+
+                } finally {
+
+                    submitButton.disabled =
+                        false;
+
+
+                    submitButton.textContent =
+                        'Submit Article for Review';
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+    <script src="script.js"></script>
 
 </body>
 
