@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-```
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Portfolio | EAGLE WRITES</title>
 
@@ -52,7 +49,7 @@
 
     /* =========================
        HEADER
-    ========================= */
+    ========================== */
 
     .header {
         background: #0b1f3a;
@@ -606,7 +603,6 @@
     ========================== */
 
     @media (max-width: 1050px) {
-
         .portfolio-grid,
         .documents-grid {
             grid-template-columns: repeat(2, 1fr);
@@ -626,7 +622,6 @@
     }
 
     @media (max-width: 850px) {
-
         .menu-toggle {
             display: block;
         }
@@ -670,7 +665,6 @@
     }
 
     @media (max-width: 650px) {
-
         section {
             padding: 60px 0;
         }
@@ -753,7 +747,8 @@
             class="menu-toggle"
             id="menuToggle"
             aria-label="Open navigation menu"
-            type="button">
+            type="button"
+        >
             ☰
         </button>
 
@@ -772,13 +767,15 @@
                 href="https://wa.me/254748513346"
                 class="whatsapp-btn"
                 target="_blank"
-                rel="noopener noreferrer">
+                rel="noopener noreferrer"
+            >
                 WhatsApp
             </a>
 
             <a
                 href="contact.html"
-                class="start-btn">
+                class="start-btn"
+            >
                 Get Started
             </a>
 
@@ -786,7 +783,6 @@
 
     </div>
 </header>
-
 
 <!-- =========================
      HERO
@@ -806,7 +802,6 @@
 
     </div>
 </section>
-
 
 <!-- =========================
      EXISTING PORTFOLIO
@@ -830,10 +825,7 @@
 
         </div>
 
-
         <div class="portfolio-grid">
-
-            <!-- PROJECT 1 -->
 
             <article class="portfolio-card">
 
@@ -863,9 +855,6 @@
 
             </article>
 
-
-            <!-- PROJECT 2 -->
-
             <article class="portfolio-card">
 
                 <div class="portfolio-number">
@@ -893,9 +882,6 @@
                 </div>
 
             </article>
-
-
-            <!-- PROJECT 3 -->
 
             <article class="portfolio-card">
 
@@ -925,9 +911,6 @@
 
             </article>
 
-
-            <!-- PROJECT 4 -->
-
             <article class="portfolio-card">
 
                 <div class="portfolio-number">
@@ -956,9 +939,6 @@
 
             </article>
 
-
-            <!-- PROJECT 5 -->
-
             <article class="portfolio-card">
 
                 <div class="portfolio-number">
@@ -986,9 +966,6 @@
                 </div>
 
             </article>
-
-
-            <!-- PROJECT 6 -->
 
             <article class="portfolio-card">
 
@@ -1019,10 +996,8 @@
             </article>
 
         </div>
-
     </div>
 </section>
-
 
 <!-- =========================
      PORTFOLIO DOCUMENTS
@@ -1049,23 +1024,21 @@
 
         </div>
 
-
         <div
             id="documentsStatus"
-            class="documents-status">
+            class="documents-status"
+        >
             Loading portfolio documents...
         </div>
 
-
         <div
             id="documentsGrid"
-            class="documents-grid">
-        </div>
+            class="documents-grid"
+        ></div>
 
     </div>
 
 </section>
-
 
 <!-- =========================
      CAPABILITIES
@@ -1092,7 +1065,6 @@
 
         </div>
 
-
         <div class="benefits-grid">
 
             <article class="benefit-card">
@@ -1112,7 +1084,6 @@
 
             </article>
 
-
             <article class="benefit-card">
 
                 <div class="benefit-icon">
@@ -1130,7 +1101,6 @@
 
             </article>
 
-
             <article class="benefit-card">
 
                 <div class="benefit-icon">
@@ -1147,7 +1117,6 @@
                 </p>
 
             </article>
-
 
             <article class="benefit-card">
 
@@ -1172,7 +1141,6 @@
 
 </section>
 
-
 <!-- =========================
      CTA
 ========================== -->
@@ -1194,13 +1162,15 @@
 
             <a
                 href="contact.html"
-                class="cta-primary">
+                class="cta-primary"
+            >
                 Discuss Your Project
             </a>
 
             <a
                 href="contact.html"
-                class="cta-secondary">
+                class="cta-secondary"
+            >
                 Get Started
             </a>
 
@@ -1209,7 +1179,6 @@
     </div>
 
 </section>
-
 
 <!-- =========================
      FOOTER
@@ -1220,8 +1189,6 @@
     <div class="container">
 
         <div class="footer-grid">
-
-            <!-- BRAND -->
 
             <div>
 
@@ -1238,9 +1205,6 @@
                 </p>
 
             </div>
-
-
-            <!-- QUICK LINKS -->
 
             <div>
 
@@ -1274,9 +1238,6 @@
 
             </div>
 
-
-            <!-- CONTACT -->
-
             <div>
 
                 <h3>
@@ -1294,14 +1255,14 @@
                 <a
                     href="https://wa.me/254748513346"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                >
                     WhatsApp Us
                 </a>
 
             </div>
 
         </div>
-
 
         <div class="footer-bottom">
 
@@ -1314,7 +1275,6 @@
     </div>
 
 </footer>
-
 
 <!-- =========================
      JAVASCRIPT
@@ -1332,18 +1292,14 @@
     const mainNav =
         document.getElementById("mainNav");
 
-
     if (menuToggle && mainNav) {
 
         menuToggle.addEventListener(
             "click",
             function () {
-
                 mainNav.classList.toggle("active");
-
             }
         );
-
 
         document
             .querySelectorAll(".nav-link")
@@ -1352,16 +1308,13 @@
                 link.addEventListener(
                     "click",
                     function () {
-
                         mainNav.classList.remove("active");
-
                     }
                 );
 
             });
 
     }
-
 
     /* =========================
        SUPABASE CONFIGURATION
@@ -1376,13 +1329,11 @@
     const DOCUMENTS_TABLE =
         "portfolio_documents";
 
-
     const supabaseClient =
         window.supabase.createClient(
             SUPABASE_URL,
             SUPABASE_ANON_KEY
         );
-
 
     /* =========================
        SECURITY
@@ -1394,19 +1345,16 @@
             .replace(/[&<>"']/g, function (character) {
 
                 return {
-
                     "&": "&amp;",
                     "<": "&lt;",
                     ">": "&gt;",
                     '"': "&quot;",
                     "'": "&#039;"
-
                 }[character];
 
             });
 
     }
-
 
     /* =========================
        FILE SIZE
@@ -1426,20 +1374,15 @@
         ];
 
         let size = Number(bytes);
-
         let unitIndex = 0;
-
 
         while (
             size >= 1024 &&
             unitIndex < units.length - 1
         ) {
-
             size = size / 1024;
             unitIndex++;
-
         }
-
 
         return (
             size.toFixed(
@@ -1450,7 +1393,6 @@
         );
 
     }
-
 
     /* =========================
        FILE TYPE
@@ -1464,33 +1406,25 @@
                 .pop()
                 .toLowerCase();
 
-
         if (
             extension === "pdf" ||
             type === "application/pdf"
         ) {
-
             return "PDF";
-
         }
-
 
         if (
             extension === "doc" ||
             extension === "docx"
         ) {
-
             return "WORD";
-
         }
-
 
         return extension
             ? extension.toUpperCase()
             : "DOCUMENT";
 
     }
-
 
     /* =========================
        LOAD DOCUMENTS
@@ -1508,11 +1442,9 @@
                 "documentsGrid"
             );
 
-
         if (!status || !grid) {
             return;
         }
-
 
         status.className =
             "documents-status";
@@ -1521,7 +1453,6 @@
             "Loading portfolio documents...";
 
         grid.innerHTML = "";
-
 
         try {
 
@@ -1538,11 +1469,9 @@
                         }
                     );
 
-
             if (error) {
                 throw error;
             }
-
 
             /* NO DOCUMENTS */
 
@@ -1554,9 +1483,7 @@
                 status.textContent = "";
 
                 grid.innerHTML = `
-
                     <div class="documents-empty">
-
                         <h3>
                             No documents available yet
                         </h3>
@@ -1565,15 +1492,12 @@
                             Portfolio documents will appear here
                             when they are uploaded.
                         </p>
-
                     </div>
-
                 `;
 
                 return;
 
             }
-
 
             /* DOCUMENT COUNT */
 
@@ -1587,7 +1511,6 @@
                 )
                 + " available";
 
-
             /* DOCUMENT CARDS */
 
             grid.innerHTML =
@@ -1600,13 +1523,11 @@
                             "Portfolio Document"
                         );
 
-
                     const description =
                         escapeHtml(
                             doc.description ||
                             "View this EAGLE WRITES portfolio document."
                         );
-
 
                     const fileType =
                         getFileType(
@@ -1614,29 +1535,25 @@
                             doc.name
                         );
 
-
                     const fileSize =
                         formatFileSize(
                             doc.size
                         );
-
 
                     const url =
                         escapeHtml(
                             doc.url || "#"
                         );
 
-
                     return `
-
                         <article class="document-card">
 
                             <div
                                 class="document-icon"
-                                aria-hidden="true">
+                                aria-hidden="true"
+                            >
                                 📄
                             </div>
-
 
                             <div class="document-content">
 
@@ -1644,16 +1561,13 @@
                                     ${fileType} DOCUMENT
                                 </span>
 
-
                                 <h3>
                                     ${title}
                                 </h3>
 
-
                                 <p class="document-description">
                                     ${description}
                                 </p>
-
 
                                 <div class="document-meta">
 
@@ -1667,22 +1581,22 @@
 
                                 </div>
 
-
                                 <div class="document-actions">
 
                                     <a
                                         href="${url}"
                                         class="document-button"
                                         target="_blank"
-                                        rel="noopener noreferrer">
+                                        rel="noopener noreferrer"
+                                    >
                                         View Document
                                     </a>
-
 
                                     <a
                                         href="${url}"
                                         class="document-button secondary"
-                                        download>
+                                        download
+                                    >
                                         Download
                                     </a>
 
@@ -1691,13 +1605,11 @@
                             </div>
 
                         </article>
-
                     `;
 
                 }).join("");
 
         }
-
 
         catch (error) {
 
@@ -1706,21 +1618,17 @@
                 error
             );
 
-
             status.className =
                 "documents-status documents-error";
 
-
             status.textContent =
                 "We could not load the portfolio documents right now. Please try again later.";
-
 
             grid.innerHTML = "";
 
         }
 
     }
-
 
     /* =========================
        START
@@ -1729,14 +1637,10 @@
     document.addEventListener(
         "DOMContentLoaded",
         function () {
-
             loadPortfolioDocuments();
-
         }
     );
 
 </script>
-```
-
 </body>
 </html>
