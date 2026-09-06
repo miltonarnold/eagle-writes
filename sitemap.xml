@@ -2,7 +2,6 @@
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-```
 <url>
     <loc>https://eagle-writes.vercel.app/</loc>
 </url>
@@ -34,6 +33,5 @@
 <url>
     <loc>https://eagle-writes.vercel.app/article.html</loc>
 </url>
-```
 
 </urlset>
