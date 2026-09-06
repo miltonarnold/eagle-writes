@@ -1,112 +1,661 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Portfolio | EAGLE WRITES</title>
+<title>Portfolio | EAGLE WRITES</title>
 
-    <meta
-        name="description"
-        content="Explore EAGLE WRITES research, data analysis, financial research, and consulting projects."
-    >
+<meta
+    name="description"
+    content="Explore EAGLE WRITES research, data analysis, financial research, and consulting projects."
+>
 
-    <!-- SUPABASE -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #ffffff;
+        color: #1f2937;
+        line-height: 1.6;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .header {
+        background: #0b1f3a;
+        border-bottom: 1px solid #0b1f3a;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .header-inner {
+        min-height: 82px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 25px;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+    }
+
+    .brand img {
+        width: 52px;
+        height: 52px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .brand-text h1 {
+        color: #ffffff;
+        font-size: 21px;
+        letter-spacing: 1px;
+        line-height: 1.1;
+    }
+
+    .brand-text span {
+        color: #ffffff;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+    }
+
+    .nav {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .nav-link {
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 700;
+        transition: 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        color: #f4b942;
+    }
+
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .whatsapp-btn,
+    .start-btn {
+        padding: 11px 17px;
+        border-radius: 7px;
+        font-size: 12px;
+        font-weight: 800;
+        transition: 0.2s ease;
+    }
+
+    .whatsapp-btn {
+        background: #ffffff;
+        color: #0b1f3a;
+    }
+
+    .whatsapp-btn:hover {
+        background: #f4b942;
+        color: #0b1f3a;
+    }
+
+    .start-btn {
+        background: #f4b942;
+        color: #0b1f3a;
+    }
+
+    .start-btn:hover {
+        background: #ffffff;
+        color: #0b1f3a;
+    }
+
+    .menu-toggle {
+        display: none;
+        border: none;
+        background: #f4b942;
+        color: #0b1f3a;
+        padding: 9px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+        background: #f3f6fa;
+        padding: 90px 0;
+        text-align: center;
+    }
+
+    .hero-label,
+    .section-label {
+        display: inline-block;
+        color: #f4b942;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 2px;
+        margin-bottom: 12px;
+    }
+
+    .hero h2 {
+        color: #0b1f3a;
+        font-size: 46px;
+        line-height: 1.15;
+        margin-bottom: 18px;
+    }
+
+    .hero p {
+        max-width: 720px;
+        margin: auto;
+        color: #606b7b;
+        font-size: 17px;
+    }
+
+    /* =========================
+       GENERAL SECTIONS
+    ========================== */
+
+    section {
+        padding: 80px 0;
+    }
+
+    .section-heading {
+        text-align: center;
+        margin-bottom: 45px;
+    }
+
+    .section-heading h2 {
+        color: #0b1f3a;
+        font-size: 34px;
+        line-height: 1.2;
+        margin-bottom: 12px;
+    }
+
+    .section-heading p {
+        max-width: 720px;
+        margin: auto;
+        color: #606b7b;
+        font-size: 15px;
+    }
+
+    /* =========================
+       PORTFOLIO
+    ========================== */
+
+    .portfolio-section {
+        background: #ffffff;
+    }
+
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .portfolio-card {
+        background: #ffffff;
+        border: 1px solid #e1e7ef;
+        border-radius: 15px;
+        padding: 28px;
+        box-shadow: 0 8px 25px rgba(11, 31, 58, 0.06);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .portfolio-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 15px 32px rgba(11, 31, 58, 0.12);
+    }
+
+    .portfolio-number {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: #fff6dc;
+        color: #0b1f3a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 900;
+        margin-bottom: 20px;
+    }
+
+    .portfolio-card h3 {
+        color: #0b1f3a;
+        font-size: 20px;
+        line-height: 1.35;
+        margin-bottom: 12px;
+    }
+
+    .portfolio-card p {
+        color: #606b7b;
+        font-size: 14px;
+        margin-bottom: 18px;
+    }
+
+    .portfolio-category {
+        display: inline-block;
+        color: #f4b942;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.7px;
+        margin-bottom: 12px;
+    }
+
+    .portfolio-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+    }
+
+    .portfolio-tags span {
+        background: #eef2f7;
+        color: #344054;
+        padding: 5px 9px;
+        border-radius: 20px;
+        font-size: 10px;
+        font-weight: 800;
+    }
+
+    /* =========================
+       DOCUMENTS
+    ========================== */
+
+    .documents-section {
+        background: #f3f6fa;
+    }
+
+    .documents-section .section-heading {
+        margin-bottom: 35px;
+    }
+
+    .documents-status {
+        text-align: center;
+        color: #606b7b;
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+
+    .documents-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+
+    .document-card {
+        background: #ffffff;
+        border: 1px solid #e1e7ef;
+        border-radius: 16px;
+        padding: 26px;
+        box-shadow: 0 8px 25px rgba(11, 31, 58, 0.06);
+        display: flex;
+        gap: 18px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .document-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 32px rgba(11, 31, 58, 0.11);
+    }
+
+    .document-icon {
+        width: 58px;
+        height: 58px;
+        min-width: 58px;
+        border-radius: 14px;
+        background: #fff6dc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 27px;
+    }
+
+    .document-content {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .document-content h3 {
+        color: #0b1f3a;
+        font-size: 19px;
+        line-height: 1.35;
+        margin-bottom: 10px;
+        word-break: break-word;
+    }
+
+    .document-description {
+        color: #606b7b;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .document-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    .document-meta span {
+        background: #eef2f7;
+        color: #344054;
+        padding: 5px 9px;
+        border-radius: 20px;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+    }
+
+    .document-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+    }
+
+    .document-button {
+        display: inline-block;
+        background: #f4b942;
+        color: #0b1f3a;
+        padding: 10px 13px;
+        border-radius: 7px;
+        font-size: 12px;
+        font-weight: 800;
+        transition: 0.2s ease;
+        cursor: pointer;
+    }
+
+    .document-button:hover {
+        background: #0b1f3a;
+        color: #ffffff;
+    }
+
+    .document-button.secondary {
+        background: #0b1f3a;
+        color: #ffffff;
+    }
+
+    .document-button.secondary:hover {
+        background: #f4b942;
+        color: #0b1f3a;
+    }
+
+    .documents-empty {
+        grid-column: 1 / -1;
+        text-align: center;
+        background: #ffffff;
+        border: 1px dashed #cbd5e1;
+        border-radius: 16px;
+        padding: 45px 25px;
+        color: #606b7b;
+    }
+
+    .documents-empty h3 {
+        color: #0b1f3a;
+        margin-bottom: 8px;
+    }
+
+    .documents-error {
+        color: #b42318;
+    }
+
+    /* =========================
+       CAPABILITIES
+    ========================== */
+
+    .capabilities-section {
+        background: #ffffff;
+    }
+
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
+    }
+
+    .benefit-card {
+        background: #f8fafc;
+        border: 1px solid #e5eaf0;
+        border-radius: 14px;
+        padding: 25px;
+        text-align: center;
+    }
+
+    .benefit-icon {
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+
+    .benefit-card h3 {
+        color: #0b1f3a;
+        font-size: 17px;
+        margin-bottom: 8px;
+    }
+
+    .benefit-card p {
+        color: #606b7b;
+        font-size: 13px;
+    }
+
+    /* =========================
+       CTA
+    ========================== */
+
+    .cta {
+        background: #0b1f3a;
+        color: #ffffff;
+        text-align: center;
+    }
+
+    .cta h2 {
+        font-size: 35px;
+        margin-bottom: 12px;
+    }
+
+    .cta p {
+        color: #d9e1eb;
+        max-width: 680px;
+        margin: 0 auto 28px;
+        font-size: 15px;
+    }
+
+    .cta-buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .cta-primary,
+    .cta-secondary {
+        display: inline-block;
+        padding: 13px 20px;
+        border-radius: 7px;
+        font-size: 13px;
+        font-weight: 800;
+        transition: 0.2s ease;
+    }
+
+    .cta-primary {
+        background: #f4b942;
+        color: #0b1f3a;
+    }
+
+    .cta-primary:hover {
+        background: #ffffff;
+    }
+
+    .cta-secondary {
+        border: 1px solid #ffffff;
+        color: #ffffff;
+    }
+
+    .cta-secondary:hover {
+        background: #ffffff;
+        color: #0b1f3a;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    .footer {
+        background: #071629;
+        color: #d9e1eb;
+        padding: 60px 0 20px;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr 1fr;
+        gap: 45px;
+    }
+
+    .footer h3 {
+        color: #ffffff;
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+
+    .footer p {
+        color: #aeb8c7;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .footer-grid > div:nth-child(2) a {
+        display: block;
+        color: #aeb8c7;
+        margin-bottom: 8px;
+        font-size: 14px;
+        transition: 0.2s ease;
+    }
+
+    .footer-grid > div:nth-child(2) a:hover {
+        color: #f4b942;
+    }
+
+    .footer-grid > div:nth-child(3) a {
+        color: #f4b942;
+        font-size: 14px;
+        transition: 0.2s ease;
+    }
+
+    .footer-grid > div:nth-child(3) a:hover {
+        color: #ffffff;
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 40px;
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    .footer-bottom p {
+        margin: 0;
+        font-size: 13px;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 1050px) {
+
+        .portfolio-grid,
+        .documents-grid {
+            grid-template-columns: repeat(2, 1fr);
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #ffffff;
-            color: #1f2937;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        .header {
-            background: #ffffff;
-            border-bottom: 1px solid #e7ebf0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-inner {
-            min-height: 82px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 25px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
-        }
-
-        .brand img {
-            width: 52px;
-            height: 52px;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .brand-text h1 {
-            color: #0b1f3a;
-            font-size: 21px;
-            letter-spacing: 1px;
-            line-height: 1.1;
-        }
-
-        .brand-text span {
-            color: #7b8491;
-            font-size: 9px;
-            font-weight: 700;
-            letter-spacing: 1.2px;
+        .benefits-grid {
+            grid-template-columns: repeat(2, 1fr);
         }
 
         .nav {
+            gap: 14px;
+        }
+
+        .header-actions {
+            display: none;
+        }
+    }
+
+    @media (max-width: 850px) {
+
+        .menu-toggle {
+            display: block;
+        }
+
+        .header-inner {
+            position: relative;
+        }
+
+        .nav {
+            position: absolute;
+            top: 82px;
+            left: 0;
+            right: 0;
+            background: #0b1f3a;
+            border-bottom: 1px solid #0b1f3a;
+            display: none;
+            flex-direction: column;
+            align-items: stretch;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(11, 31, 58, 0.18);
+        }
+
+        .nav.active {
             display: flex;
-            align-items: center;
-            gap: 24px;
         }
 
         .nav-link {
-            color: #26364a;
-            font-size: 14px;
-            font-weight: 700;
-            transition: 0.2s ease;
+            color: #ffffff;
+            padding: 10px 0;
         }
 
         .nav-link:hover,
@@ -114,1617 +663,1080 @@
             color: #f4b942;
         }
 
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
         }
+    }
 
-        .whatsapp-btn,
-        .start-btn {
-            padding: 11px 17px;
-            border-radius: 7px;
-            font-size: 12px;
-            font-weight: 800;
-            transition: 0.2s ease;
+    @media (max-width: 650px) {
+
+        section {
+            padding: 60px 0;
         }
-
-        .whatsapp-btn {
-            background: #0b1f3a;
-            color: #ffffff;
-        }
-
-        .whatsapp-btn:hover {
-            background: #f4b942;
-            color: #0b1f3a;
-        }
-
-        .start-btn {
-            background: #f4b942;
-            color: #0b1f3a;
-        }
-
-        .start-btn:hover {
-            background: #0b1f3a;
-            color: #ffffff;
-        }
-
-        .menu-toggle {
-            display: none;
-            border: none;
-            background: #0b1f3a;
-            color: #ffffff;
-            padding: 9px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 20px;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
 
         .hero {
-            background: #f3f6fa;
-            padding: 90px 0;
-            text-align: center;
-        }
-
-        .hero-label,
-        .section-label {
-            display: inline-block;
-            color: #f4b942;
-            font-size: 12px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
+            padding: 65px 0;
         }
 
         .hero h2 {
-            color: #0b1f3a;
-            font-size: 46px;
-            line-height: 1.15;
-            margin-bottom: 18px;
+            font-size: 34px;
         }
 
         .hero p {
-            max-width: 720px;
-            margin: auto;
-            color: #606b7b;
-            font-size: 17px;
-        }
-
-        /* =========================
-           GENERAL SECTIONS
-        ========================= */
-
-        section {
-            padding: 80px 0;
-        }
-
-        .section-heading {
-            text-align: center;
-            margin-bottom: 45px;
+            font-size: 15px;
         }
 
         .section-heading h2 {
-            color: #0b1f3a;
-            font-size: 34px;
-            line-height: 1.2;
-            margin-bottom: 12px;
+            font-size: 28px;
         }
 
-        .section-heading p {
-            max-width: 720px;
-            margin: auto;
-            color: #606b7b;
-            font-size: 15px;
-        }
-
-        /* =========================
-           PORTFOLIO
-        ========================= */
-
-        .portfolio-section {
-            background: #ffffff;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .portfolio-card {
-            background: #ffffff;
-            border: 1px solid #e1e7ef;
-            border-radius: 15px;
-            padding: 28px;
-            box-shadow: 0 8px 25px rgba(11, 31, 58, 0.06);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 32px rgba(11, 31, 58, 0.12);
-        }
-
-        .portfolio-number {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: #fff6dc;
-            color: #0b1f3a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 900;
-            margin-bottom: 20px;
-        }
-
-        .portfolio-card h3 {
-            color: #0b1f3a;
-            font-size: 20px;
-            line-height: 1.35;
-            margin-bottom: 12px;
-        }
-
-        .portfolio-card p {
-            color: #606b7b;
-            font-size: 14px;
-            margin-bottom: 18px;
-        }
-
-        .portfolio-category {
-            display: inline-block;
-            color: #f4b942;
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: 0.7px;
-            margin-bottom: 12px;
-        }
-
-        .portfolio-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-        }
-
-        .portfolio-tags span {
-            background: #eef2f7;
-            color: #344054;
-            padding: 5px 9px;
-            border-radius: 20px;
-            font-size: 10px;
-            font-weight: 800;
-        }
-
-        /* =========================
-           DOCUMENTS
-        ========================= */
-
-        .documents-section {
-            background: #f3f6fa;
-        }
-
-        .documents-section .section-heading {
-            margin-bottom: 35px;
-        }
-
-        .documents-status {
-            text-align: center;
-            color: #606b7b;
-            font-size: 14px;
-            margin-bottom: 30px;
-        }
-
-        .documents-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+        .portfolio-grid,
+        .documents-grid,
+        .benefits-grid {
+            grid-template-columns: 1fr;
         }
 
         .document-card {
-            background: #ffffff;
-            border: 1px solid #e1e7ef;
-            border-radius: 16px;
-            padding: 26px;
-            box-shadow: 0 8px 25px rgba(11, 31, 58, 0.06);
-            display: flex;
-            gap: 18px;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .document-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 32px rgba(11, 31, 58, 0.11);
-        }
-
-        .document-icon {
-            width: 58px;
-            height: 58px;
-            min-width: 58px;
-            border-radius: 14px;
-            background: #fff6dc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 27px;
-        }
-
-        .document-content {
-            min-width: 0;
-            flex: 1;
-        }
-
-        .document-content h3 {
-            color: #0b1f3a;
-            font-size: 19px;
-            line-height: 1.35;
-            margin-bottom: 10px;
-            word-break: break-word;
-        }
-
-        .document-description {
-            color: #606b7b;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .document-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 18px;
-        }
-
-        .document-meta span {
-            background: #eef2f7;
-            color: #344054;
-            padding: 5px 9px;
-            border-radius: 20px;
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
+            flex-direction: column;
         }
 
         .document-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 9px;
+            flex-direction: column;
         }
 
         .document-button {
-            display: inline-block;
-            background: #f4b942;
-            color: #0b1f3a;
-            padding: 10px 13px;
-            border-radius: 7px;
-            font-size: 12px;
-            font-weight: 800;
-            transition: 0.2s ease;
-            cursor: pointer;
-        }
-
-        .document-button:hover {
-            background: #0b1f3a;
-            color: #ffffff;
-        }
-
-        .document-button.secondary {
-            background: #0b1f3a;
-            color: #ffffff;
-        }
-
-        .document-button.secondary:hover {
-            background: #f4b942;
-            color: #0b1f3a;
-        }
-
-        .documents-empty {
-            grid-column: 1 / -1;
             text-align: center;
-            background: #ffffff;
-            border: 1px dashed #cbd5e1;
-            border-radius: 16px;
-            padding: 45px 25px;
-            color: #606b7b;
-        }
-
-        .documents-empty h3 {
-            color: #0b1f3a;
-            margin-bottom: 8px;
-        }
-
-        .documents-error {
-            color: #b42318;
-        }
-
-        /* =========================
-           CAPABILITIES
-        ========================= */
-
-        .capabilities-section {
-            background: #ffffff;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 22px;
-        }
-
-        .benefit-card {
-            background: #f8fafc;
-            border: 1px solid #e5eaf0;
-            border-radius: 14px;
-            padding: 25px;
-            text-align: center;
-        }
-
-        .benefit-icon {
-            font-size: 28px;
-            margin-bottom: 12px;
-        }
-
-        .benefit-card h3 {
-            color: #0b1f3a;
-            font-size: 17px;
-            margin-bottom: 8px;
-        }
-
-        .benefit-card p {
-            color: #606b7b;
-            font-size: 13px;
-        }
-
-        /* =========================
-           CTA
-        ========================= */
-
-        .cta {
-            background: #0b1f3a;
-            color: #ffffff;
-            text-align: center;
+            width: 100%;
         }
 
         .cta h2 {
-            font-size: 35px;
-            margin-bottom: 12px;
+            font-size: 28px;
         }
 
-        .cta p {
-            color: #d9e1eb;
-            max-width: 680px;
-            margin: 0 auto 28px;
-            font-size: 15px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .cta-primary,
-        .cta-secondary {
-            display: inline-block;
-            padding: 13px 20px;
-            border-radius: 7px;
-            font-size: 13px;
-            font-weight: 800;
-            transition: 0.2s ease;
-        }
-
-        .cta-primary {
-            background: #f4b942;
-            color: #0b1f3a;
-        }
-
-        .cta-primary:hover {
-            background: #ffffff;
-        }
-
-        .cta-secondary {
-            border: 1px solid #ffffff;
-            color: #ffffff;
-        }
-
-        .cta-secondary:hover {
-            background: #ffffff;
-            color: #0b1f3a;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        .footer {
-            background: #071629;
-            color: #d9e1eb;
-            padding: 60px 0 20px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.3fr 1fr 1fr;
-            gap: 45px;
-        }
-
-        .footer h3 {
-            color: #ffffff;
-            margin-bottom: 15px;
+        .brand-text h1 {
             font-size: 18px;
         }
 
-        .footer p {
-            color: #aeb8c7;
-            font-size: 14px;
-            margin-bottom: 8px;
+        .brand-text span {
+            font-size: 8px;
         }
+    }
+</style>
+```
 
-        .footer-grid > div:nth-child(2) a {
-            display: block;
-            color: #aeb8c7;
-            margin-bottom: 8px;
-            font-size: 14px;
-            transition: 0.2s ease;
-        }
-
-        .footer-grid > div:nth-child(2) a:hover {
-            color: #f4b942;
-        }
-
-        .footer-grid > div:nth-child(3) a {
-            color: #f4b942;
-            font-size: 14px;
-            transition: 0.2s ease;
-        }
-
-        .footer-grid > div:nth-child(3) a:hover {
-            color: #ffffff;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 40px;
-            padding-top: 20px;
-            text-align: center;
-        }
-
-        .footer-bottom p {
-            margin: 0;
-            font-size: 13px;
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 1050px) {
-
-            .portfolio-grid,
-            .documents-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .benefits-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .nav {
-                gap: 14px;
-            }
-
-            .header-actions {
-                display: none;
-            }
-        }
-
-        @media (max-width: 850px) {
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .header-inner {
-                position: relative;
-            }
-
-            .nav {
-                position: absolute;
-                top: 82px;
-                left: 0;
-                right: 0;
-                background: #ffffff;
-                border-bottom: 1px solid #e7ebf0;
-                display: none;
-                flex-direction: column;
-                align-items: stretch;
-                padding: 20px;
-                box-shadow: 0 10px 25px rgba(11, 31, 58, 0.08);
-            }
-
-            .nav.active {
-                display: flex;
-            }
-
-            .nav-link {
-                padding: 10px 0;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-        }
-
-        @media (max-width: 650px) {
-
-            section {
-                padding: 60px 0;
-            }
-
-            .hero {
-                padding: 65px 0;
-            }
-
-            .hero h2 {
-                font-size: 34px;
-            }
-
-            .hero p {
-                font-size: 15px;
-            }
-
-            .section-heading h2 {
-                font-size: 28px;
-            }
-
-            .portfolio-grid,
-            .documents-grid,
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .document-card {
-                flex-direction: column;
-            }
-
-            .document-actions {
-                flex-direction: column;
-            }
-
-            .document-button {
-                text-align: center;
-                width: 100%;
-            }
-
-            .cta h2 {
-                font-size: 28px;
-            }
-
-            .brand-text h1 {
-                font-size: 18px;
-            }
-
-            .brand-text span {
-                font-size: 8px;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+```
+<!-- =========================
+     HEADER
+========================== -->
 
-    <header class="header">
-        <div class="container header-inner">
+<header class="header">
+    <div class="container header-inner">
 
-            <a href="index.html" class="brand">
-                <img
-                    src="Images/logo.milto.jpg"
-                    alt="EAGLE WRITES Logo"
-                >
+        <a href="index.html" class="brand">
+            <img
+                src="Images/logo.milto.jpg"
+                alt="EAGLE WRITES Logo"
+            >
 
-                <div class="brand-text">
-                    <h1>EAGLE WRITES</h1>
-                    <span>RESEARCH • ANALYTICS • CONSULTING</span>
-                </div>
+            <div class="brand-text">
+                <h1>EAGLE WRITES</h1>
+                <span>RESEARCH • ANALYTICS • CONSULTING</span>
+            </div>
+        </a>
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open navigation menu"
+            type="button">
+            ☰
+        </button>
+
+        <nav class="nav" id="mainNav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="courses.html" class="nav-link">Courses</a>
+            <a href="portfolio.html" class="nav-link active">Portfolio</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+
+            <a
+                href="https://wa.me/254748513346"
+                class="whatsapp-btn"
+                target="_blank"
+                rel="noopener noreferrer">
+                WhatsApp
             </a>
 
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                aria-label="Open navigation menu"
-                type="button">
-                ☰
-            </button>
-
-            <nav class="nav" id="mainNav">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="courses.html" class="nav-link">Courses</a>
-                <a href="portfolio.html" class="nav-link active">Portfolio</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-            </nav>
-
-            <div class="header-actions">
-
-                <a
-                    href="https://wa.me/254748513346"
-                    class="whatsapp-btn"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    WhatsApp
-                </a>
-
-                <a
-                    href="contact.html"
-                    class="start-btn">
-                    Get Started
-                </a>
-
-            </div>
+            <a
+                href="contact.html"
+                class="start-btn">
+                Get Started
+            </a>
 
         </div>
-    </header>
+
+    </div>
+</header>
 
 
-    <!-- =========================
-         HERO
-    ========================== -->
+<!-- =========================
+     HERO
+========================== -->
 
-    <section class="hero">
-        <div class="container">
+<section class="hero">
+    <div class="container">
 
-            <span class="hero-label">OUR PORTFOLIO</span>
+        <span class="hero-label">OUR PORTFOLIO</span>
 
-            <h2>Research, Analysis &amp; Consulting Projects</h2>
+        <h2>Research, Analysis &amp; Consulting Projects</h2>
+
+        <p>
+            Explore examples of research and analytical work across
+            finance, business, data analysis, and academic research.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- =========================
+     EXISTING PORTFOLIO
+========================== -->
+
+<section class="portfolio-section">
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                SELECTED PROJECTS
+            </span>
+
+            <h2>Our Work</h2>
 
             <p>
-                Explore examples of research and analytical work across
-                finance, business, data analysis, and academic research.
+                A selection of research, accounting, analytics,
+                business, and consulting projects.
             </p>
 
         </div>
-    </section>
 
 
-    <!-- =========================
-         EXISTING PORTFOLIO
-    ========================== -->
+        <div class="portfolio-grid">
 
-    <section class="portfolio-section">
-        <div class="container">
+            <!-- PROJECT 1 -->
 
-            <div class="section-heading">
+            <article class="portfolio-card">
 
-                <span class="section-label">
-                    SELECTED PROJECTS
+                <div class="portfolio-number">
+                    01
+                </div>
+
+                <span class="portfolio-category">
+                    RESEARCH
                 </span>
 
-                <h2>Our Work</h2>
+                <h3>
+                    Financial Literacy and Savings Behavior
+                </h3>
 
                 <p>
-                    A selection of research, accounting, analytics,
-                    business, and consulting projects.
+                    Research examining the relationship between
+                    financial literacy and savings behavior using
+                    quantitative research and regression analysis.
                 </p>
 
-            </div>
+                <div class="portfolio-tags">
+                    <span>Financial Literacy</span>
+                    <span>Research</span>
+                    <span>Regression</span>
+                </div>
+
+            </article>
 
 
-            <div class="portfolio-grid">
+            <!-- PROJECT 2 -->
 
-                <!-- PROJECT 1 -->
+            <article class="portfolio-card">
 
-                <article class="portfolio-card">
+                <div class="portfolio-number">
+                    02
+                </div>
 
-                    <div class="portfolio-number">
-                        01
-                    </div>
-
-                    <span class="portfolio-category">
-                        RESEARCH
-                    </span>
-
-                    <h3>
-                        Financial Literacy and Savings Behavior
-                    </h3>
-
-                    <p>
-                        Research examining the relationship between
-                        financial literacy and savings behavior using
-                        quantitative research and regression analysis.
-                    </p>
-
-                    <div class="portfolio-tags">
-                        <span>Financial Literacy</span>
-                        <span>Research</span>
-                        <span>Regression</span>
-                    </div>
-
-                </article>
-
-
-                <!-- PROJECT 2 -->
-
-                <article class="portfolio-card">
-
-                    <div class="portfolio-number">
-                        02
-                    </div>
-
-                    <span class="portfolio-category">
-                        TECHNOLOGY
-                    </span>
-
-                    <h3>
-                        Blockchain Integration in Accounting Systems
-                    </h3>
-
-                    <p>
-                        Analysis of blockchain technology and its
-                        potential application in accounting systems,
-                        transparency, security, and financial reporting.
-                    </p>
-
-                    <div class="portfolio-tags">
-                        <span>Blockchain</span>
-                        <span>Accounting</span>
-                        <span>Technology</span>
-                    </div>
-
-                </article>
-
-
-                <!-- PROJECT 3 -->
-
-                <article class="portfolio-card">
-
-                    <div class="portfolio-number">
-                        03
-                    </div>
-
-                    <span class="portfolio-category">
-                        FORENSIC ACCOUNTING
-                    </span>
-
-                    <h3>
-                        Forensic Accounting Research
-                    </h3>
-
-                    <p>
-                        Research focused on forensic accounting,
-                        fraud detection, investigation procedures,
-                        and strengthening audit controls.
-                    </p>
-
-                    <div class="portfolio-tags">
-                        <span>Forensic Accounting</span>
-                        <span>Fraud</span>
-                        <span>Audit</span>
-                    </div>
-
-                </article>
-
-
-                <!-- PROJECT 4 -->
-
-                <article class="portfolio-card">
-
-                    <div class="portfolio-number">
-                        04
-                    </div>
-
-                    <span class="portfolio-category">
-                        OPERATIONS
-                    </span>
-
-                    <h3>
-                        Inventory Control Analysis
-                    </h3>
-
-                    <p>
-                        Analysis of inventory management practices,
-                        stock control, operational efficiency,
-                        and methods for reducing inventory-related costs.
-                    </p>
-
-                    <div class="portfolio-tags">
-                        <span>Inventory</span>
-                        <span>Operations</span>
-                        <span>Analysis</span>
-                    </div>
-
-                </article>
-
-
-                <!-- PROJECT 5 -->
-
-                <article class="portfolio-card">
-
-                    <div class="portfolio-number">
-                        05
-                    </div>
-
-                    <span class="portfolio-category">
-                        DATA ANALYTICS
-                    </span>
-
-                    <h3>
-                        Data Analysis &amp; Visualization
-                    </h3>
-
-                    <p>
-                        Data cleaning, statistical analysis, reporting,
-                        dashboard development, and visualization using
-                        modern analytical tools.
-                    </p>
-
-                    <div class="portfolio-tags">
-                        <span>Excel</span>
-                        <span>SPSS</span>
-                        <span>Power BI</span>
-                    </div>
-
-                </article>
-
-
-                <!-- PROJECT 6 -->
-
-                <article class="portfolio-card">
-
-                    <div class="portfolio-number">
-                        06
-                    </div>
-
-                    <span class="portfolio-category">
-                        CONSULTING
-                    </span>
-
-                    <h3>
-                        Business Research &amp; Consulting
-                    </h3>
-
-                    <p>
-                        Business research and consulting support focused
-                        on strategic decision-making, market research,
-                        business analysis, and practical solutions.
-                    </p>
-
-                    <div class="portfolio-tags">
-                        <span>Business Research</span>
-                        <span>Consulting</span>
-                        <span>Strategy</span>
-                    </div>
-
-                </article>
-
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- =========================
-         PORTFOLIO DOCUMENTS
-    ========================== -->
-
-    <section class="documents-section" id="documents">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <span class="section-label">
-                    PORTFOLIO DOCUMENTS
+                <span class="portfolio-category">
+                    TECHNOLOGY
                 </span>
 
-                <h2>
-                    Research Documents &amp; Reports
-                </h2>
+                <h3>
+                    Blockchain Integration in Accounting Systems
+                </h3>
 
                 <p>
-                    Explore selected research reports, analyses,
-                    and professional documents prepared by EAGLE WRITES.
+                    Analysis of blockchain technology and its
+                    potential application in accounting systems,
+                    transparency, security, and financial reporting.
                 </p>
 
-            </div>
+                <div class="portfolio-tags">
+                    <span>Blockchain</span>
+                    <span>Accounting</span>
+                    <span>Technology</span>
+                </div>
+
+            </article>
 
 
-            <div
-                id="documentsStatus"
-                class="documents-status">
-                Loading portfolio documents...
-            </div>
+            <!-- PROJECT 3 -->
+
+            <article class="portfolio-card">
+
+                <div class="portfolio-number">
+                    03
+                </div>
+
+                <span class="portfolio-category">
+                    FORENSIC ACCOUNTING
+                </span>
+
+                <h3>
+                    Forensic Accounting Research
+                </h3>
+
+                <p>
+                    Research focused on forensic accounting,
+                    fraud detection, investigation procedures,
+                    and strengthening audit controls.
+                </p>
+
+                <div class="portfolio-tags">
+                    <span>Forensic Accounting</span>
+                    <span>Fraud</span>
+                    <span>Audit</span>
+                </div>
+
+            </article>
 
 
-            <div
-                id="documentsGrid"
-                class="documents-grid">
-            </div>
+            <!-- PROJECT 4 -->
+
+            <article class="portfolio-card">
+
+                <div class="portfolio-number">
+                    04
+                </div>
+
+                <span class="portfolio-category">
+                    OPERATIONS
+                </span>
+
+                <h3>
+                    Inventory Control Analysis
+                </h3>
+
+                <p>
+                    Analysis of inventory management practices,
+                    stock control, operational efficiency,
+                    and methods for reducing inventory-related costs.
+                </p>
+
+                <div class="portfolio-tags">
+                    <span>Inventory</span>
+                    <span>Operations</span>
+                    <span>Analysis</span>
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 5 -->
+
+            <article class="portfolio-card">
+
+                <div class="portfolio-number">
+                    05
+                </div>
+
+                <span class="portfolio-category">
+                    DATA ANALYTICS
+                </span>
+
+                <h3>
+                    Data Analysis &amp; Visualization
+                </h3>
+
+                <p>
+                    Data cleaning, statistical analysis, reporting,
+                    dashboard development, and visualization using
+                    modern analytical tools.
+                </p>
+
+                <div class="portfolio-tags">
+                    <span>Excel</span>
+                    <span>SPSS</span>
+                    <span>Power BI</span>
+                </div>
+
+            </article>
+
+
+            <!-- PROJECT 6 -->
+
+            <article class="portfolio-card">
+
+                <div class="portfolio-number">
+                    06
+                </div>
+
+                <span class="portfolio-category">
+                    CONSULTING
+                </span>
+
+                <h3>
+                    Business Research &amp; Consulting
+                </h3>
+
+                <p>
+                    Business research and consulting support focused
+                    on strategic decision-making, market research,
+                    business analysis, and practical solutions.
+                </p>
+
+                <div class="portfolio-tags">
+                    <span>Business Research</span>
+                    <span>Consulting</span>
+                    <span>Strategy</span>
+                </div>
+
+            </article>
 
         </div>
 
-    </section>
+    </div>
+</section>
 
 
-    <!-- =========================
-         CAPABILITIES
-    ========================== -->
+<!-- =========================
+     PORTFOLIO DOCUMENTS
+========================== -->
 
-    <section class="capabilities-section">
+<section class="documents-section" id="documents">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="section-heading">
+        <div class="section-heading">
 
-                <span class="section-label">
-                    OUR CAPABILITIES
-                </span>
-
-                <h2>
-                    What We Bring to Every Project
-                </h2>
-
-                <p>
-                    We combine research expertise, analytical thinking,
-                    clear communication, and practical solutions.
-                </p>
-
-            </div>
-
-
-            <div class="benefits-grid">
-
-                <article class="benefit-card">
-
-                    <div class="benefit-icon">
-                        🔎
-                    </div>
-
-                    <h3>
-                        Research Expertise
-                    </h3>
-
-                    <p>
-                        Strong research methods and evidence-based
-                        approaches for academic and business projects.
-                    </p>
-
-                </article>
-
-
-                <article class="benefit-card">
-
-                    <div class="benefit-icon">
-                        📊
-                    </div>
-
-                    <h3>
-                        Analytical Thinking
-                    </h3>
-
-                    <p>
-                        We turn complex data and information into
-                        meaningful findings and insights.
-                    </p>
-
-                </article>
-
-
-                <article class="benefit-card">
-
-                    <div class="benefit-icon">
-                        📝
-                    </div>
-
-                    <h3>
-                        Clear Presentation
-                    </h3>
-
-                    <p>
-                        Professional reports and presentations that
-                        communicate findings clearly and effectively.
-                    </p>
-
-                </article>
-
-
-                <article class="benefit-card">
-
-                    <div class="benefit-icon">
-                        💡
-                    </div>
-
-                    <h3>
-                        Practical Solutions
-                    </h3>
-
-                    <p>
-                        Actionable recommendations designed to support
-                        better decisions and measurable results.
-                    </p>
-
-                </article>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         CTA
-    ========================== -->
-
-    <section class="cta">
-
-        <div class="container">
+            <span class="section-label">
+                PORTFOLIO DOCUMENTS
+            </span>
 
             <h2>
-                Have a Project in Mind?
+                Research Documents &amp; Reports
             </h2>
 
             <p>
-                Let EAGLE WRITES provide the research, writing,
-                analysis, or consulting support you need.
+                Explore selected research reports, analyses,
+                and professional documents prepared by EAGLE WRITES.
             </p>
-
-            <div class="cta-buttons">
-
-                <a
-                    href="contact.html"
-                    class="cta-primary">
-                    Discuss Your Project
-                </a>
-
-                <a
-                    href="contact.html"
-                    class="cta-secondary">
-                    Get Started
-                </a>
-
-            </div>
 
         </div>
 
-    </section>
+
+        <div
+            id="documentsStatus"
+            class="documents-status">
+            Loading portfolio documents...
+        </div>
 
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+        <div
+            id="documentsGrid"
+            class="documents-grid">
+        </div>
 
-    <footer class="footer">
+    </div>
 
-        <div class="container">
+</section>
 
-            <div class="footer-grid">
 
-                <!-- BRAND -->
+<!-- =========================
+     CAPABILITIES
+========================== -->
 
-                <div>
+<section class="capabilities-section">
 
-                    <h3>
-                        EAGLE WRITES
-                    </h3>
+    <div class="container">
 
-                    <p>
-                        RESEARCH • ANALYTICS • CONSULTING
-                    </p>
+        <div class="section-heading">
 
-                    <p>
-                        Founder: Arnold Milton
-                    </p>
+            <span class="section-label">
+                OUR CAPABILITIES
+            </span>
 
+            <h2>
+                What We Bring to Every Project
+            </h2>
+
+            <p>
+                We combine research expertise, analytical thinking,
+                clear communication, and practical solutions.
+            </p>
+
+        </div>
+
+
+        <div class="benefits-grid">
+
+            <article class="benefit-card">
+
+                <div class="benefit-icon">
+                    🔎
                 </div>
 
-
-                <!-- QUICK LINKS -->
-
-                <div>
-
-                    <h3>
-                        Quick Links
-                    </h3>
-
-                    <a href="index.html">
-                        Home
-                    </a>
-
-                    <a href="about.html">
-                        About
-                    </a>
-
-                    <a href="services.html">
-                        Services
-                    </a>
-
-                    <a href="courses.html">
-                        Courses
-                    </a>
-
-                    <a href="portfolio.html">
-                        Portfolio
-                    </a>
-
-                    <a href="contact.html">
-                        Contact
-                    </a>
-
-                </div>
-
-
-                <!-- CONTACT -->
-
-                <div>
-
-                    <h3>
-                        Contact
-                    </h3>
-
-                    <p>
-                        +254 748 513 346
-                    </p>
-
-                    <p>
-                        miltonarnold535@gmail.com
-                    </p>
-
-                    <a
-                        href="https://wa.me/254748513346"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        WhatsApp Us
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="footer-bottom">
+                <h3>
+                    Research Expertise
+                </h3>
 
                 <p>
-                    © 2026 EAGLE WRITES. All Rights Reserved.
+                    Strong research methods and evidence-based
+                    approaches for academic and business projects.
+                </p>
+
+            </article>
+
+
+            <article class="benefit-card">
+
+                <div class="benefit-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Analytical Thinking
+                </h3>
+
+                <p>
+                    We turn complex data and information into
+                    meaningful findings and insights.
+                </p>
+
+            </article>
+
+
+            <article class="benefit-card">
+
+                <div class="benefit-icon">
+                    📝
+                </div>
+
+                <h3>
+                    Clear Presentation
+                </h3>
+
+                <p>
+                    Professional reports and presentations that
+                    communicate findings clearly and effectively.
+                </p>
+
+            </article>
+
+
+            <article class="benefit-card">
+
+                <div class="benefit-icon">
+                    💡
+                </div>
+
+                <h3>
+                    Practical Solutions
+                </h3>
+
+                <p>
+                    Actionable recommendations designed to support
+                    better decisions and measurable results.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================== -->
+
+<section class="cta">
+
+    <div class="container">
+
+        <h2>
+            Have a Project in Mind?
+        </h2>
+
+        <p>
+            Let EAGLE WRITES provide the research, writing,
+            analysis, or consulting support you need.
+        </p>
+
+        <div class="cta-buttons">
+
+            <a
+                href="contact.html"
+                class="cta-primary">
+                Discuss Your Project
+            </a>
+
+            <a
+                href="contact.html"
+                class="cta-secondary">
+                Get Started
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <!-- BRAND -->
+
+            <div>
+
+                <h3>
+                    EAGLE WRITES
+                </h3>
+
+                <p>
+                    RESEARCH • ANALYTICS • CONSULTING
+                </p>
+
+                <p>
+                    Founder: Arnold Milton
                 </p>
 
             </div>
 
+
+            <!-- QUICK LINKS -->
+
+            <div>
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="services.html">
+                    Services
+                </a>
+
+                <a href="courses.html">
+                    Courses
+                </a>
+
+                <a href="portfolio.html">
+                    Portfolio
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <!-- CONTACT -->
+
+            <div>
+
+                <h3>
+                    Contact
+                </h3>
+
+                <p>
+                    +254 748 513 346
+                </p>
+
+                <p>
+                    miltonarnold535@gmail.com
+                </p>
+
+                <a
+                    href="https://wa.me/254748513346"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    WhatsApp Us
+                </a>
+
+            </div>
+
         </div>
 
-    </footer>
 
+        <div class="footer-bottom">
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
+            <p>
+                © 2026 EAGLE WRITES. All Rights Reserved.
+            </p>
 
-    <script>
+        </div>
 
-        /* =========================
-           MOBILE MENU
-        ========================== */
+    </div>
 
-        const menuToggle =
-            document.getElementById("menuToggle");
+</footer>
 
-        const mainNav =
-            document.getElementById("mainNav");
 
+<!-- =========================
+     JAVASCRIPT
+========================== -->
 
-        if (menuToggle && mainNav) {
+<script>
 
-            menuToggle.addEventListener(
-                "click",
-                function () {
+    /* =========================
+       MOBILE MENU
+    ========================== */
 
-                    mainNav.classList.toggle("active");
+    const menuToggle =
+        document.getElementById("menuToggle");
 
-                }
-            );
+    const mainNav =
+        document.getElementById("mainNav");
 
 
-            document
-                .querySelectorAll(".nav-link")
-                .forEach(function (link) {
+    if (menuToggle && mainNav) {
 
-                    link.addEventListener(
-                        "click",
-                        function () {
-
-                            mainNav.classList.remove("active");
-
-                        }
-                    );
-
-                });
-
-        }
-
-
-        /* =========================
-           SUPABASE CONFIGURATION
-        ========================== */
-
-        const SUPABASE_URL =
-            "https://ekkvghdnejvyjykagafr.supabase.co";
-
-        const SUPABASE_ANON_KEY =
-            "sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h";
-
-        const DOCUMENTS_TABLE =
-            "portfolio_documents";
-
-
-        const supabaseClient =
-            window.supabase.createClient(
-                SUPABASE_URL,
-                SUPABASE_ANON_KEY
-            );
-
-
-        /* =========================
-           SECURITY
-        ========================== */
-
-        function escapeHtml(value) {
-
-            return String(value ?? "")
-                .replace(/[&<>"']/g, function (character) {
-
-                    return {
-
-                        "&": "&amp;",
-                        "<": "&lt;",
-                        ">": "&gt;",
-                        '"': "&quot;",
-                        "'": "&#039;"
-
-                    }[character];
-
-                });
-
-        }
-
-
-        /* =========================
-           FILE SIZE
-        ========================== */
-
-        function formatFileSize(bytes) {
-
-            if (!bytes || Number(bytes) <= 0) {
-                return "File";
-            }
-
-            const units = [
-                "Bytes",
-                "KB",
-                "MB",
-                "GB"
-            ];
-
-            let size = Number(bytes);
-
-            let unitIndex = 0;
-
-
-            while (
-                size >= 1024 &&
-                unitIndex < units.length - 1
-            ) {
-
-                size = size / 1024;
-                unitIndex++;
-
-            }
-
-
-            return (
-                size.toFixed(
-                    unitIndex === 0 ? 0 : 1
-                )
-                + " "
-                + units[unitIndex]
-            );
-
-        }
-
-
-        /* =========================
-           FILE TYPE
-        ========================== */
-
-        function getFileType(type, name) {
-
-            const extension =
-                String(name || "")
-                    .split(".")
-                    .pop()
-                    .toLowerCase();
-
-
-            if (
-                extension === "pdf" ||
-                type === "application/pdf"
-            ) {
-
-                return "PDF";
-
-            }
-
-
-            if (
-                extension === "doc" ||
-                extension === "docx"
-            ) {
-
-                return "WORD";
-
-            }
-
-
-            return extension
-                ? extension.toUpperCase()
-                : "DOCUMENT";
-
-        }
-
-
-        /* =========================
-           LOAD DOCUMENTS
-        ========================== */
-
-        async function loadPortfolioDocuments() {
-
-            const status =
-                document.getElementById(
-                    "documentsStatus"
-                );
-
-            const grid =
-                document.getElementById(
-                    "documentsGrid"
-                );
-
-
-            if (!status || !grid) {
-                return;
-            }
-
-
-            status.className =
-                "documents-status";
-
-            status.textContent =
-                "Loading portfolio documents...";
-
-            grid.innerHTML = "";
-
-
-            try {
-
-                const { data, error } =
-                    await supabaseClient
-                        .from(DOCUMENTS_TABLE)
-                        .select(
-                            "id,title,description,name,url,size,type,created_at"
-                        )
-                        .order(
-                            "created_at",
-                            {
-                                ascending: false
-                            }
-                        );
-
-
-                if (error) {
-                    throw error;
-                }
-
-
-                /* NO DOCUMENTS */
-
-                if (
-                    !data ||
-                    data.length === 0
-                ) {
-
-                    status.textContent = "";
-
-                    grid.innerHTML = `
-
-                        <div class="documents-empty">
-
-                            <h3>
-                                No documents available yet
-                            </h3>
-
-                            <p>
-                                Portfolio documents will appear here
-                                when they are uploaded.
-                            </p>
-
-                        </div>
-
-                    `;
-
-                    return;
-
-                }
-
-
-                /* DOCUMENT COUNT */
-
-                status.textContent =
-                    data.length
-                    + " document"
-                    + (
-                        data.length === 1
-                            ? ""
-                            : "s"
-                    )
-                    + " available";
-
-
-                /* DOCUMENT CARDS */
-
-                grid.innerHTML =
-                    data.map(function (doc) {
-
-                        const title =
-                            escapeHtml(
-                                doc.title ||
-                                doc.name ||
-                                "Portfolio Document"
-                            );
-
-
-                        const description =
-                            escapeHtml(
-                                doc.description ||
-                                "View this EAGLE WRITES portfolio document."
-                            );
-
-
-                        const fileType =
-                            getFileType(
-                                doc.type,
-                                doc.name
-                            );
-
-
-                        const fileSize =
-                            formatFileSize(
-                                doc.size
-                            );
-
-
-                        const url =
-                            escapeHtml(
-                                doc.url || "#"
-                            );
-
-
-                        return `
-
-                            <article class="document-card">
-
-                                <div
-                                    class="document-icon"
-                                    aria-hidden="true">
-                                    📄
-                                </div>
-
-
-                                <div class="document-content">
-
-                                    <span class="portfolio-category">
-                                        ${fileType} DOCUMENT
-                                    </span>
-
-
-                                    <h3>
-                                        ${title}
-                                    </h3>
-
-
-                                    <p class="document-description">
-                                        ${description}
-                                    </p>
-
-
-                                    <div class="document-meta">
-
-                                        <span>
-                                            ${fileType}
-                                        </span>
-
-                                        <span>
-                                            ${fileSize}
-                                        </span>
-
-                                    </div>
-
-
-                                    <div class="document-actions">
-
-                                        <a
-                                            href="${url}"
-                                            class="document-button"
-                                            target="_blank"
-                                            rel="noopener noreferrer">
-                                            View Document
-                                        </a>
-
-
-                                        <a
-                                            href="${url}"
-                                            class="document-button secondary"
-                                            download>
-                                            Download
-                                        </a>
-
-                                    </div>
-
-                                </div>
-
-                            </article>
-
-                        `;
-
-                    }).join("");
-
-            }
-
-
-            catch (error) {
-
-                console.error(
-                    "Error loading portfolio documents:",
-                    error
-                );
-
-
-                status.className =
-                    "documents-status documents-error";
-
-
-                status.textContent =
-                    "We could not load the portfolio documents right now. Please try again later.";
-
-
-                grid.innerHTML = "";
-
-            }
-
-        }
-
-
-        /* =========================
-           START
-        ========================== */
-
-        document.addEventListener(
-            "DOMContentLoaded",
+        menuToggle.addEventListener(
+            "click",
             function () {
 
-                loadPortfolioDocuments();
+                mainNav.classList.toggle("active");
 
             }
         );
 
-    </script>
+
+        document
+            .querySelectorAll(".nav-link")
+            .forEach(function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        mainNav.classList.remove("active");
+
+                    }
+                );
+
+            });
+
+    }
+
+
+    /* =========================
+       SUPABASE CONFIGURATION
+    ========================== */
+
+    const SUPABASE_URL =
+        "https://ekkvghdnejvyjykagafr.supabase.co";
+
+    const SUPABASE_ANON_KEY =
+        "sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h";
+
+    const DOCUMENTS_TABLE =
+        "portfolio_documents";
+
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_ANON_KEY
+        );
+
+
+    /* =========================
+       SECURITY
+    ========================== */
+
+    function escapeHtml(value) {
+
+        return String(value ?? "")
+            .replace(/[&<>"']/g, function (character) {
+
+                return {
+
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#039;"
+
+                }[character];
+
+            });
+
+    }
+
+
+    /* =========================
+       FILE SIZE
+    ========================== */
+
+    function formatFileSize(bytes) {
+
+        if (!bytes || Number(bytes) <= 0) {
+            return "File";
+        }
+
+        const units = [
+            "Bytes",
+            "KB",
+            "MB",
+            "GB"
+        ];
+
+        let size = Number(bytes);
+
+        let unitIndex = 0;
+
+
+        while (
+            size >= 1024 &&
+            unitIndex < units.length - 1
+        ) {
+
+            size = size / 1024;
+            unitIndex++;
+
+        }
+
+
+        return (
+            size.toFixed(
+                unitIndex === 0 ? 0 : 1
+            )
+            + " "
+            + units[unitIndex]
+        );
+
+    }
+
+
+    /* =========================
+       FILE TYPE
+    ========================== */
+
+    function getFileType(type, name) {
+
+        const extension =
+            String(name || "")
+                .split(".")
+                .pop()
+                .toLowerCase();
+
+
+        if (
+            extension === "pdf" ||
+            type === "application/pdf"
+        ) {
+
+            return "PDF";
+
+        }
+
+
+        if (
+            extension === "doc" ||
+            extension === "docx"
+        ) {
+
+            return "WORD";
+
+        }
+
+
+        return extension
+            ? extension.toUpperCase()
+            : "DOCUMENT";
+
+    }
+
+
+    /* =========================
+       LOAD DOCUMENTS
+    ========================== */
+
+    async function loadPortfolioDocuments() {
+
+        const status =
+            document.getElementById(
+                "documentsStatus"
+            );
+
+        const grid =
+            document.getElementById(
+                "documentsGrid"
+            );
+
+
+        if (!status || !grid) {
+            return;
+        }
+
+
+        status.className =
+            "documents-status";
+
+        status.textContent =
+            "Loading portfolio documents...";
+
+        grid.innerHTML = "";
+
+
+        try {
+
+            const { data, error } =
+                await supabaseClient
+                    .from(DOCUMENTS_TABLE)
+                    .select(
+                        "id,title,description,name,url,size,type,created_at"
+                    )
+                    .order(
+                        "created_at",
+                        {
+                            ascending: false
+                        }
+                    );
+
+
+            if (error) {
+                throw error;
+            }
+
+
+            /* NO DOCUMENTS */
+
+            if (
+                !data ||
+                data.length === 0
+            ) {
+
+                status.textContent = "";
+
+                grid.innerHTML = `
+
+                    <div class="documents-empty">
+
+                        <h3>
+                            No documents available yet
+                        </h3>
+
+                        <p>
+                            Portfolio documents will appear here
+                            when they are uploaded.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            /* DOCUMENT COUNT */
+
+            status.textContent =
+                data.length
+                + " document"
+                + (
+                    data.length === 1
+                        ? ""
+                        : "s"
+                )
+                + " available";
+
+
+            /* DOCUMENT CARDS */
+
+            grid.innerHTML =
+                data.map(function (doc) {
+
+                    const title =
+                        escapeHtml(
+                            doc.title ||
+                            doc.name ||
+                            "Portfolio Document"
+                        );
+
+
+                    const description =
+                        escapeHtml(
+                            doc.description ||
+                            "View this EAGLE WRITES portfolio document."
+                        );
+
+
+                    const fileType =
+                        getFileType(
+                            doc.type,
+                            doc.name
+                        );
+
+
+                    const fileSize =
+                        formatFileSize(
+                            doc.size
+                        );
+
+
+                    const url =
+                        escapeHtml(
+                            doc.url || "#"
+                        );
+
+
+                    return `
+
+                        <article class="document-card">
+
+                            <div
+                                class="document-icon"
+                                aria-hidden="true">
+                                📄
+                            </div>
+
+
+                            <div class="document-content">
+
+                                <span class="portfolio-category">
+                                    ${fileType} DOCUMENT
+                                </span>
+
+
+                                <h3>
+                                    ${title}
+                                </h3>
+
+
+                                <p class="document-description">
+                                    ${description}
+                                </p>
+
+
+                                <div class="document-meta">
+
+                                    <span>
+                                        ${fileType}
+                                    </span>
+
+                                    <span>
+                                        ${fileSize}
+                                    </span>
+
+                                </div>
+
+
+                                <div class="document-actions">
+
+                                    <a
+                                        href="${url}"
+                                        class="document-button"
+                                        target="_blank"
+                                        rel="noopener noreferrer">
+                                        View Document
+                                    </a>
+
+
+                                    <a
+                                        href="${url}"
+                                        class="document-button secondary"
+                                        download>
+                                        Download
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    `;
+
+                }).join("");
+
+        }
+
+
+        catch (error) {
+
+            console.error(
+                "Error loading portfolio documents:",
+                error
+            );
+
+
+            status.className =
+                "documents-status documents-error";
+
+
+            status.textContent =
+                "We could not load the portfolio documents right now. Please try again later.";
+
+
+            grid.innerHTML = "";
+
+        }
+
+    }
+
+
+    /* =========================
+       START
+    ========================== */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            loadPortfolioDocuments();
+
+        }
+    );
+
+</script>
+```
 
 </body>
 </html>

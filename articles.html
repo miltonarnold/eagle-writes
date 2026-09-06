@@ -10,42 +10,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <meta name="description"
-    content="EAGLE WRITES - Professional research writing, academic support, data analysis, and consulting services by Arnold Milton.">
+    content="Explore all published EAGLE WRITES articles, including research, academic insights, data analysis, business research, and professional perspectives.">
 
 <meta name="keywords"
-    content="research writing, academic writing, data analysis, SPSS, Excel, Power BI, consulting">
+    content="EAGLE WRITES articles, research articles, academic research, data analysis, business research, professional insights">
 
 <meta name="author" content="EAGLE WRITES">
 
-<title>EAGLE WRITES | Research • Analytics • Consulting</title>
+<title>All Articles | EAGLE WRITES</title>
 
 <link rel="stylesheet" href="style.css">
 
-<meta name="google-site-verification"
-    content="xbtYx-6wWIwOYe3yG89UqUT-kiqWt2GXplE6HCmbkBk">
-
-<!-- EAGLE WRITES Logo Favicon -->
 <link rel="icon" type="image/jpeg" href="Images/logo.milto.jpg">
 
-<!-- ================= ARTICLE SECTION STYLES ================= -->
+
+<!-- ================= ARTICLE ARCHIVE STYLES ================= -->
 
 <style>
 
-    .latest-articles-home {
+    .articles-page {
         padding: 80px 20px;
         background: #f8f9fa;
+        min-height: 70vh;
     }
 
-    .latest-articles-container {
+    .articles-page-container {
         max-width: 1200px;
         margin: 0 auto;
     }
 
-    .latest-articles-grid {
+    .articles-page-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .articles-page-header .section-label {
+        display: inline-block;
+        margin-bottom: 12px;
+    }
+
+    .articles-page-header .section-heading {
+        margin-bottom: 15px;
+    }
+
+    .articles-page-header .section-subheading {
+        margin-bottom: 0;
+    }
+
+    .articles-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 30px;
-        margin-top: 40px;
+        margin-top: 50px;
     }
 
     .article-card {
@@ -53,7 +70,9 @@
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
         display: flex;
         flex-direction: column;
         height: 100%;
@@ -100,6 +119,10 @@
         color: inherit;
     }
 
+    .article-card-title a:hover {
+        opacity: 0.75;
+    }
+
     .article-card-excerpt {
         font-size: 15px;
         line-height: 1.7;
@@ -135,7 +158,7 @@
     .articles-empty,
     .articles-error {
         text-align: center;
-        padding: 30px 15px;
+        padding: 40px 15px;
         font-size: 16px;
     }
 
@@ -143,14 +166,18 @@
         display: none;
     }
 
-    .latest-articles-cta {
+    .articles-page-actions {
         text-align: center;
-        margin-top: 40px;
+        margin-top: 50px;
+    }
+
+    .articles-page-actions a {
+        margin: 5px;
     }
 
     @media (max-width: 600px) {
 
-        .latest-articles-home {
+        .articles-page {
             padding: 60px 15px;
         }
 
@@ -217,7 +244,6 @@
         </a>
 
 
-
         <!-- MOBILE MENU -->
 
         <button
@@ -234,19 +260,17 @@
         </button>
 
 
-
         <!-- NAVIGATION -->
 
         <nav class="nav-menu" id="nav-menu">
 
             <ul class="nav-list">
 
-
                 <li>
 
                     <a
                         href="index.html"
-                        class="nav-link active"
+                        class="nav-link"
                     >
                         Home
                     </a>
@@ -277,19 +301,15 @@
 
                 </li>
 
-
             </ul>
 
         </nav>
-
 
 
         <!-- ACTION BUTTONS -->
 
         <div class="nav-actions">
 
-
-            <!-- PUBLISH ARTICLE -->
 
             <a
                 href="submit-article.html"
@@ -298,8 +318,6 @@
                 Publish Your Article
             </a>
 
-
-            <!-- WHATSAPP -->
 
             <a
                 href="https://wa.me/254748513346"
@@ -316,15 +334,12 @@
             </a>
 
 
-            <!-- GET STARTED -->
-
             <a
                 href="get-started.html"
                 class="btn-get-started-header"
             >
                 Get Started
             </a>
-
 
         </div>
 
@@ -340,372 +355,22 @@
 <main>
 
 
-    <!-- ================= HERO ================= -->
+    <section class="articles-page">
 
-    <section class="hero" id="home">
+        <div class="articles-page-container">
 
-        <div class="hero-container">
 
+            <!-- PAGE HEADER -->
 
-            <div class="hero-badge">
-
-                <span class="badge-text">
-
-                    RESEARCH • WRITE • ANALYZE • SUCCEED
-
-                </span>
-
-            </div>
-
-
-
-            <h1 class="hero-heading">
-
-                Turn Your Ideas Into
-
-                <span class="hero-highlight">
-                    Powerful Research
-                </span>
-
-            </h1>
-
-
-
-            <p class="hero-description">
-
-                EAGLE WRITES provides professional research writing,
-                academic support, data analysis, and consulting
-                services for researchers, students, professionals,
-                and businesses.
-
-            </p>
-
-
-
-            <div class="hero-buttons">
-
-
-                <a
-                    href="get-started.html"
-                    class="btn btn-primary"
-                >
-                    Get Started
-                </a>
-
-
-                <a
-                    href="#services"
-                    class="btn btn-primary explore-services-btn"
-                >
-                    Explore Our Services
-                </a>
-
-
-            </div>
-
-
-
-            <p class="hero-credibility">
-
-                Professional • Reliable • Results-Driven
-
-            </p>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= BRIEF ABOUT ================= -->
-
-    <section class="about-home">
-
-        <div class="about-home-container">
-
-
-            <div class="section-header">
-
-                <span class="section-label">
-
-                    ABOUT EAGLE WRITES
-
-                </span>
-
-
-                <h2 class="section-heading">
-
-                    Research Excellence With Purpose
-
-                </h2>
-
-            </div>
-
-
-
-            <div class="about-home-content">
-
-
-                <p>
-
-                    EAGLE WRITES helps individuals and organizations
-                    turn ideas, information, and data into clear,
-                    credible, and useful results.
-
-                </p>
-
-
-                <p>
-
-                    Founded by <strong>Arnold Milton</strong>,
-                    EAGLE WRITES focuses on research writing,
-                    analytics, academic support, and professional
-                    consulting.
-
-                </p>
-
-
-            </div>
-
-
-
-            <div class="about-home-button">
-
-                <a
-                    href="about.html"
-                    class="btn btn-primary"
-                >
-                    Learn More About Us
-                </a>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= SERVICES ================= -->
-
-    <section
-        class="services-home"
-        id="services"
-    >
-
-        <div class="services-home-container">
-
-
-            <div class="section-header">
-
-
-                <span class="section-label">
-
-                    WHAT WE DO
-
-                </span>
-
-
-                <h2 class="section-heading">
-
-                    Our Services
-
-                </h2>
-
-
-                <p class="section-subheading">
-
-                    Professional support across research,
-                    analytics, writing, and consulting.
-
-                </p>
-
-
-            </div>
-
-
-
-            <div class="services-name-grid">
-
-
-                <a
-                    href="services.html"
-                    class="service-name-card"
-                >
-
-                    <span class="service-number">
-                        01
-                    </span>
-
-                    <span class="service-name">
-                        Research Writing
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="services.html"
-                    class="service-name-card"
-                >
-
-                    <span class="service-number">
-                        02
-                    </span>
-
-                    <span class="service-name">
-                        Academic Writing
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="services.html"
-                    class="service-name-card"
-                >
-
-                    <span class="service-number">
-                        03
-                    </span>
-
-                    <span class="service-name">
-                        Data Analysis
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="services.html"
-                    class="service-name-card"
-                >
-
-                    <span class="service-number">
-                        04
-                    </span>
-
-                    <span class="service-name">
-                        Power BI Dashboards
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="services.html"
-                    class="service-name-card"
-                >
-
-                    <span class="service-number">
-                        05
-                    </span>
-
-                    <span class="service-name">
-                        Article Writing
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="services.html"
-                    class="service-name-card"
-                >
-
-                    <span class="service-number">
-                        06
-                    </span>
-
-                    <span class="service-name">
-                        Business &amp; Financial Research
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="services.html"
-                    class="service-name-card"
-                >
-
-                    <span class="service-number">
-                        07
-                    </span>
-
-                    <span class="service-name">
-                        Statistical Analysis
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="services.html"
-                    class="service-name-card"
-                >
-
-                    <span class="service-number">
-                        08
-                    </span>
-
-                    <span class="service-name">
-                        Consulting
-                    </span>
-
-                </a>
-
-
-            </div>
-
-
-
-            <div class="services-home-cta">
-
-                <a
-                    href="get-started.html"
-                    class="btn btn-primary"
-                >
-                    Explore Your Options
-                </a>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= LATEST ARTICLES ================= -->
-
-    <section
-        class="latest-articles-home"
-        id="latest-articles"
-    >
-
-        <div class="latest-articles-container">
-
-
-            <div class="section-header">
+            <div class="articles-page-header">
 
                 <span class="section-label">
                     EAGLE WRITES ARTICLES
                 </span>
 
-                <h2 class="section-heading">
-                    Latest Articles
-                </h2>
+                <h1 class="section-heading">
+                    All Articles
+                </h1>
 
                 <p class="section-subheading">
                     Explore research, insights, analysis, and ideas
@@ -715,17 +380,17 @@
             </div>
 
 
-            <!-- LOADING MESSAGE -->
+            <!-- LOADING -->
 
             <div
                 id="articles-loading"
                 class="articles-loading"
             >
-                Loading latest articles...
+                Loading articles...
             </div>
 
 
-            <!-- EMPTY MESSAGE -->
+            <!-- EMPTY -->
 
             <div
                 id="articles-empty"
@@ -736,7 +401,7 @@
             </div>
 
 
-            <!-- ERROR MESSAGE -->
+            <!-- ERROR -->
 
             <div
                 id="articles-error"
@@ -746,76 +411,24 @@
             </div>
 
 
-            <!-- LATEST 6 ARTICLE CARDS -->
+            <!-- ARTICLES -->
 
             <div
-                id="latest-articles-grid"
-                class="latest-articles-grid"
+                id="articles-grid"
+                class="articles-grid"
             >
             </div>
 
 
-            <!-- VIEW ALL ARTICLES BUTTON -->
+            <!-- PAGE ACTIONS -->
 
-            <div
-                class="latest-articles-cta"
-                id="latest-articles-cta"
-                style="display:none;"
-            >
+            <div class="articles-page-actions">
 
                 <a
-                    href="articles.html"
+                    href="index.html"
                     class="btn btn-primary"
                 >
-                    View All Articles
-                </a>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= GET STARTED CTA ================= -->
-
-    <section class="home-cta">
-
-        <div class="home-cta-container">
-
-
-            <span class="section-label">
-
-                READY TO BEGIN?
-
-            </span>
-
-
-            <h2>
-
-                Let's Work On Your Next Project
-
-            </h2>
-
-
-            <p>
-
-                Access our services, courses, portfolio,
-                and contact options from one place.
-
-            </p>
-
-
-            <div class="home-cta-buttons">
-
-
-                <a
-                    href="get-started.html"
-                    class="btn btn-primary"
-                >
-                    Get Started
+                    Back to Home
                 </a>
 
 
@@ -825,17 +438,6 @@
                 >
                     Publish Your Article
                 </a>
-
-
-                <a
-                    href="https://wa.me/254748513346"
-                    class="btn btn-secondary"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    WhatsApp Us
-                </a>
-
 
             </div>
 
@@ -856,142 +458,106 @@
     id="footer"
 >
 
-
     <div class="footer-container">
 
 
+        <!-- BRAND -->
+
         <div class="footer-brand">
 
-
             <h2 class="footer-title">
-
                 EAGLE WRITES
-
             </h2>
 
-
             <p class="footer-tagline">
-
                 RESEARCH • ANALYTICS • CONSULTING
-
             </p>
-
 
             <p class="footer-founder">
-
                 Founded by Arnold Milton
-
             </p>
-
 
         </div>
 
 
+        <!-- QUICK LINKS -->
 
         <div class="footer-nav">
 
-
             <h3 class="footer-nav-heading">
-
                 Quick Links
-
             </h3>
-
 
             <ul class="footer-nav-list">
 
-
                 <li>
-
                     <a
                         href="index.html"
                         class="footer-link"
                     >
                         Home
                     </a>
-
                 </li>
 
-
                 <li>
-
                     <a
                         href="about.html"
                         class="footer-link"
                     >
                         About
                     </a>
-
                 </li>
 
-
                 <li>
-
                     <a
                         href="services.html"
                         class="footer-link"
                     >
                         Services
                     </a>
-
                 </li>
 
-
                 <li>
-
                     <a
                         href="courses.html"
                         class="footer-link"
                     >
                         Courses
                     </a>
-
                 </li>
 
-
                 <li>
-
                     <a
                         href="portfolio.html"
                         class="footer-link"
                     >
                         Portfolio
                     </a>
-
                 </li>
 
-
                 <li>
-
                     <a
                         href="contact.html"
                         class="footer-link"
                     >
                         Contact
                     </a>
-
                 </li>
 
-
             </ul>
-
 
         </div>
 
 
+        <!-- CONTACT -->
 
         <div class="footer-contact">
 
-
             <h3 class="footer-contact-heading">
-
                 Contact Us
-
             </h3>
 
-
             <ul class="footer-contact-list">
-
 
                 <li>
 
@@ -1004,7 +570,6 @@
 
                 </li>
 
-
                 <li>
 
                     <a
@@ -1015,7 +580,6 @@
                     </a>
 
                 </li>
-
 
                 <li>
 
@@ -1030,9 +594,7 @@
 
                 </li>
 
-
             </ul>
-
 
         </div>
 
@@ -1040,19 +602,15 @@
     </div>
 
 
+    <!-- FOOTER BOTTOM -->
 
     <div class="footer-bottom">
 
-
         <p class="footer-copyright">
-
             © 2026 EAGLE WRITES. All Rights Reserved.
-
         </p>
 
-
     </div>
-
 
 </footer>
 
@@ -1071,29 +629,42 @@
     const SUPABASE_KEY =
         'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
 
+
     const supabaseClient =
         window.supabase.createClient(
             SUPABASE_URL,
-            SUPABASE_KEY
+            SUPABASE_KEY,
+            {
+                auth: {
+                    persistSession: false,
+                    autoRefreshToken: false,
+                    detectSessionInUrl: false
+                }
+            }
         );
 
 
-    async function loadLatestArticles() {
+    async function loadAllArticles() {
 
         const loading =
-            document.getElementById('articles-loading');
+            document.getElementById(
+                'articles-loading'
+            );
 
         const empty =
-            document.getElementById('articles-empty');
+            document.getElementById(
+                'articles-empty'
+            );
 
         const error =
-            document.getElementById('articles-error');
+            document.getElementById(
+                'articles-error'
+            );
 
         const grid =
-            document.getElementById('latest-articles-grid');
-
-        const cta =
-            document.getElementById('latest-articles-cta');
+            document.getElementById(
+                'articles-grid'
+            );
 
 
         try {
@@ -1115,8 +686,7 @@
                     .eq('status', 'approved')
                     .order('created_at', {
                         ascending: false
-                    })
-                    .limit(6);
+                    });
 
 
             if (fetchError) {
@@ -1127,6 +697,7 @@
                 );
 
                 loading.style.display = 'none';
+
                 error.style.display = 'block';
 
                 return;
@@ -1150,21 +721,30 @@
             data.forEach(article => {
 
                 const card =
-                    document.createElement('article');
+                    document.createElement(
+                        'article'
+                    );
 
-                card.className = 'article-card';
+                card.className =
+                    'article-card';
 
+
+                /* ================= IMAGE ================= */
 
                 const image =
-                    document.createElement('img');
+                    document.createElement(
+                        'img'
+                    );
 
                 image.className =
                     'article-card-image';
 
                 image.alt =
-                    article.title || 'EAGLE WRITES article';
+                    article.title ||
+                    'EAGLE WRITES article';
 
-                image.loading = 'lazy';
+                image.loading =
+                    'lazy';
 
 
                 if (article.featured_image) {
@@ -1180,15 +760,23 @@
                 }
 
 
+                /* ================= CONTENT ================= */
+
                 const content =
-                    document.createElement('div');
+                    document.createElement(
+                        'div'
+                    );
 
                 content.className =
                     'article-card-content';
 
 
+                /* ================= CATEGORY ================= */
+
                 const category =
-                    document.createElement('div');
+                    document.createElement(
+                        'div'
+                    );
 
                 category.className =
                     'article-card-category';
@@ -1198,29 +786,44 @@
                     'Research & Insights';
 
 
+                /* ================= TITLE ================= */
+
                 const title =
-                    document.createElement('h3');
+                    document.createElement(
+                        'h2'
+                    );
 
                 title.className =
                     'article-card-title';
 
 
                 const titleLink =
-                    document.createElement('a');
+                    document.createElement(
+                        'a'
+                    );
 
                 titleLink.href =
                     'article.html?slug=' +
-                    encodeURIComponent(article.slug);
+                    encodeURIComponent(
+                        article.slug
+                    );
 
                 titleLink.textContent =
-                    article.title;
+                    article.title ||
+                    'Untitled Article';
 
 
-                title.appendChild(titleLink);
+                title.appendChild(
+                    titleLink
+                );
 
+
+                /* ================= EXCERPT ================= */
 
                 const excerpt =
-                    document.createElement('p');
+                    document.createElement(
+                        'p'
+                    );
 
                 excerpt.className =
                     'article-card-excerpt';
@@ -1232,14 +835,39 @@
                     'Read this article from EAGLE WRITES.';
 
 
-                excerpt.textContent =
-                    description.length > 150
-                        ? description.substring(0, 150) + '...'
-                        : description;
+                /*
+                 * Remove HTML tags from article content
+                 * when it is used as a fallback excerpt.
+                 */
 
+                const cleanDescription =
+                    description
+                        .replace(
+                            /<[^>]*>/g,
+                            ' '
+                        )
+                        .replace(
+                            /\s+/g,
+                            ' '
+                        )
+                        .trim();
+
+
+                excerpt.textContent =
+                    cleanDescription.length > 180
+                        ? cleanDescription.substring(
+                            0,
+                            180
+                        ) + '...'
+                        : cleanDescription;
+
+
+                /* ================= META ================= */
 
                 const meta =
-                    document.createElement('div');
+                    document.createElement(
+                        'div'
+                    );
 
                 meta.className =
                     'article-card-meta';
@@ -1268,44 +896,70 @@
                 meta.textContent =
                     'By ' +
                     author +
-                    (date ? ' • ' + date : '');
+                    (
+                        date
+                            ? ' • ' + date
+                            : ''
+                    );
 
+
+                /* ================= READ BUTTON ================= */
 
                 const readMore =
-                    document.createElement('a');
+                    document.createElement(
+                        'a'
+                    );
 
                 readMore.className =
                     'article-read-more';
 
                 readMore.href =
                     'article.html?slug=' +
-                    encodeURIComponent(article.slug);
+                    encodeURIComponent(
+                        article.slug
+                    );
 
                 readMore.textContent =
                     'Read Article';
 
 
-                content.appendChild(category);
-                content.appendChild(title);
-                content.appendChild(excerpt);
-                content.appendChild(meta);
-                content.appendChild(readMore);
+                /* ================= BUILD CARD ================= */
+
+                content.appendChild(
+                    category
+                );
+
+                content.appendChild(
+                    title
+                );
+
+                content.appendChild(
+                    excerpt
+                );
+
+                content.appendChild(
+                    meta
+                );
+
+                content.appendChild(
+                    readMore
+                );
 
 
-                card.appendChild(image);
-                card.appendChild(content);
+                card.appendChild(
+                    image
+                );
+
+                card.appendChild(
+                    content
+                );
 
 
-                grid.appendChild(card);
+                grid.appendChild(
+                    card
+                );
 
             });
-
-
-            /*
-             * Always show the archive button once
-             * approved articles are available.
-             */
-            cta.style.display = 'block';
 
 
         } catch (err) {
@@ -1315,8 +969,11 @@
                 err
             );
 
-            loading.style.display = 'none';
-            error.style.display = 'block';
+            loading.style.display =
+                'none';
+
+            error.style.display =
+                'block';
 
         }
 
@@ -1325,7 +982,7 @@
 
     document.addEventListener(
         'DOMContentLoaded',
-        loadLatestArticles
+        loadAllArticles
     );
 
 </script>
