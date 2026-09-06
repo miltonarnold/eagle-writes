@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" id="page-description"
+    content="Read published research, analysis, and professional insights from EAGLE WRITES.">
+
+<meta name="author" content="EAGLE WRITES">
+
+<title>Article | EAGLE WRITES</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/jpeg" href="Images/logo.milto.jpg">
+
+<style>
+    .single-article-page {
+        padding: 80px 20px;
+        background: #f8f9fa;
+        min-height: 70vh;
+    }
+
+    .single-article-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .article-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .article-category {
+        display: inline-block;
+        margin-bottom: 15px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        opacity: 0.7;
+    }
+
+    .article-title {
+        font-size: 44px;
+        line-height: 1.2;
+        margin: 0 0 20px;
+    }
+
+    .article-meta {
+        font-size: 14px;
+        opacity: 0.7;
+    }
+
+    .article-featured-image {
+        width: 100%;
+        max-height: 500px;
+        object-fit: cover;
+        display: block;
+        border-radius: 12px;
+        margin-bottom: 45px;
+        background: #eeeeee;
+    }
+
+    .article-content {
+        background: #ffffff;
+        padding: 45px;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        font-size: 17px;
+        line-height: 1.85;
+        color: #222222;
+        overflow-wrap: anywhere;
+    }
+
+    .article-content h1,
+    .article-content h2,
+    .article-content h3,
+    .article-content h4 {
+        line-height: 1.35;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+
+    .article-content p {
+        margin: 0 0 20px;
+    }
+
+    .article-content ul,
+    .article-content ol {
+        margin: 0 0 20px;
+        padding-left: 30px;
+    }
+
+    .article-content blockquote {
+        margin: 25px 0;
+        padding: 15px 20px;
+        border-left: 4px solid #f2c94c;
+        background: #f8f9fa;
+    }
+
+    .article-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .article-content a {
+        color: #0b1f3a;
+        text-decoration: underline;
+    }
+
+    .article-actions {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .article-actions a {
+        display: inline-block;
+        margin: 5px;
+    }
+
+    .article-loading,
+    .article-error {
+        text-align: center;
+        padding: 60px 20px;
+        font-size: 17px;
+    }
+
+    .article-error {
+        display: none;
+    }
+
+    #article-wrapper {
+        display: none;
+    }
+
+    @media (max-width: 700px) {
+        .single-article-page {
+            padding: 60px 15px;
+        }
+
+        .article-title {
+            font-size: 32px;
+        }
+
+        .article-content {
+            padding: 25px 20px;
+            font-size: 16px;
+        }
+
+        .article-featured-image {
+            max-height: 350px;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<header class="header" id="header">
+    <nav class="navbar" id="navbar">
+
+    <a href="index.html" class="logo-container">
+        <div class="logo-icon">
+            <img src="Images/logo.milto.jpg" alt="EAGLE WRITES logo">
+        </div>
+
+        <div class="brand-text">
+            <span class="brand-name-eagle">EAGLE</span>
+            <span class="brand-name-writes">WRITES</span>
+        </div>
+
+        <div class="brand-tagline">
+            RESEARCH • ANALYTICS • CONSULTING
+        </div>
+    </a>
+
+    <button
+        class="mobile-menu-toggle"
+        id="mobile-menu-toggle"
+        aria-label="Toggle navigation menu"
+        type="button"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-list">
+            <li>
+                <a href="index.html" class="nav-link">Home</a>
+            </li>
+
+            <li>
+                <a href="about.html" class="nav-link">About</a>
+            </li>
+
+            <li>
+                <a href="get-started.html" class="nav-link">Get Started</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="nav-actions">
+
+        <a
+            href="submit-article.html"
+            class="btn btn-primary"
+        >
+            Publish Your Article
+        </a>
+
+        <a
+            href="https://wa.me/254748513346"
+            class="btn-whatsapp"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <span class="icon-whatsapp"></span>
+            WhatsApp
+        </a>
+
+        <a
+            href="get-started.html"
+            class="btn-get-started-header"
+        >
+            Get Started
+        </a>
+
+    </div>
+
+</nav>
+
+</header>
+
+<main>
+
+<section class="single-article-page">
+
+    <div class="single-article-container">
+
+        <div
+            id="article-loading"
+            class="article-loading"
+        >
+            Loading article...
+        </div>
+
+        <div
+            id="article-error"
+            class="article-error"
+        >
+            <h2>Article Not Found</h2>
+            <p>
+                The article you're looking for could not be found
+                or is no longer available.
+            </p>
+
+            <div class="article-actions">
+                <a href="articles.html" class="btn btn-primary">
+                    View All Articles
+                </a>
+
+                <a href="index.html" class="btn btn-primary">
+                    Back to Home
+                </a>
+            </div>
+        </div>
+
+        <div id="article-wrapper">
+
+            <header class="article-header">
+
+                <div
+                    id="article-category"
+                    class="article-category"
+                >
+                </div>
+
+                <h1
+                    id="article-title"
+                    class="article-title"
+                >
+                </h1>
+
+                <div
+                    id="article-meta"
+                    class="article-meta"
+                >
+                </div>
+
+            </header>
+
+            <img
+                id="article-image"
+                class="article-featured-image"
+                alt=""
+                style="display:none;"
+            >
+
+            <article
+                id="article-content"
+                class="article-content"
+            >
+            </article>
+
+            <div class="article-actions">
+
+                <a
+                    href="articles.html"
+                    class="btn btn-primary"
+                >
+                    ← All Articles
+                </a>
+
+                <a
+                    href="submit-article.html"
+                    class="btn btn-primary"
+                >
+                    Publish Your Article
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer class="footer" id="footer">
+
+<div class="footer-container">
+
+    <div class="footer-brand">
+
+        <h2 class="footer-title">
+            EAGLE WRITES
+        </h2>
+
+        <p class="footer-tagline">
+            RESEARCH • ANALYTICS • CONSULTING
+        </p>
+
+        <p class="footer-founder">
+            Founded by Arnold Milton
+        </p>
+
+    </div>
+
+    <div class="footer-nav">
+
+        <h3 class="footer-nav-heading">
+            Quick Links
+        </h3>
+
+        <ul class="footer-nav-list">
+
+            <li>
+                <a href="index.html" class="footer-link">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="about.html" class="footer-link">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="services.html" class="footer-link">
+                    Services
+                </a>
+            </li>
+
+            <li>
+                <a href="courses.html" class="footer-link">
+                    Courses
+                </a>
+            </li>
+
+            <li>
+                <a href="portfolio.html" class="footer-link">
+                    Portfolio
+                </a>
+            </li>
+
+            <li>
+                <a href="contact.html" class="footer-link">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="footer-contact">
+
+        <h3 class="footer-contact-heading">
+            Contact Us
+        </h3>
+
+        <ul class="footer-contact-list">
+
+            <li>
+                <a
+                    href="tel:+254748513346"
+                    class="footer-contact-link"
+                >
+                    +254 748 513 346
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="mailto:miltonarnold535@gmail.com"
+                    class="footer-contact-link"
+                >
+                    miltonarnold535@gmail.com
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="https://wa.me/254748513346"
+                    class="footer-contact-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    WhatsApp
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<div class="footer-bottom">
+
+    <p class="footer-copyright">
+        © 2026 EAGLE WRITES. All Rights Reserved.
+    </p>
+
+</div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+    const SUPABASE_URL =
+        'https://ekkvghdnejvyjykagafr.supabase.co';
+
+    const SUPABASE_KEY =
+        'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY,
+            {
+                auth: {
+                    persistSession: false,
+                    autoRefreshToken: false,
+                    detectSessionInUrl: false
+                }
+            }
+        );
+
+
+    function getArticleSlug() {
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        return params.get('slug');
+
+    }
+
+
+    function stripHtml(html) {
+
+        const temporary =
+            document.createElement('div');
+
+        temporary.innerHTML =
+            html || '';
+
+        return temporary.textContent ||
+            temporary.innerText ||
+            '';
+
+    }
+
+
+    async function loadArticle() {
+
+        const loading =
+            document.getElementById(
+                'article-loading'
+            );
+
+        const errorBox =
+            document.getElementById(
+                'article-error'
+            );
+
+        const wrapper =
+            document.getElementById(
+                'article-wrapper'
+            );
+
+        const slug =
+            getArticleSlug();
+
+
+        if (!slug) {
+
+            loading.style.display = 'none';
+            errorBox.style.display = 'block';
+
+            return;
+        }
+
+
+        try {
+
+            const { data, error } =
+                await supabaseClient
+                    .from('articles')
+                    .select(`
+                        id,
+                        title,
+                        slug,
+                        content,
+                        author_name,
+                        category,
+                        featured_image,
+                        meta_description,
+                        created_at
+                    `)
+                    .eq('slug', slug)
+                    .eq('status', 'approved')
+                    .maybeSingle();
+
+
+            if (error) {
+
+                console.error(
+                    'Article loading error:',
+                    error
+                );
+
+                loading.style.display = 'none';
+                errorBox.style.display = 'block';
+
+                return;
+            }
+
+
+            if (!data) {
+
+                loading.style.display = 'none';
+                errorBox.style.display = 'block';
+
+                return;
+            }
+
+
+            document.title =
+                data.title +
+                ' | EAGLE WRITES';
+
+
+            const description =
+                data.meta_description ||
+                stripHtml(data.content)
+                    .substring(0, 155);
+
+
+            document
+                .getElementById('page-description')
+                .setAttribute(
+                    'content',
+                    description
+                );
+
+
+            document
+                .getElementById('article-category')
+                .textContent =
+                    data.category ||
+                    'Research & Insights';
+
+
+            document
+                .getElementById('article-title')
+                .textContent =
+                    data.title;
+
+
+            const author =
+                data.author_name ||
+                'EAGLE WRITES';
+
+
+            const date =
+                data.created_at
+                    ? new Date(
+                        data.created_at
+                    ).toLocaleDateString(
+                        'en-GB',
+                        {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        }
+                    )
+                    : '';
+
+
+            document
+                .getElementById('article-meta')
+                .textContent =
+                    'By ' +
+                    author +
+                    (
+                        date
+                            ? ' • ' + date
+                            : ''
+                    );
+
+
+            const image =
+                document.getElementById(
+                    'article-image'
+                );
+
+
+            if (data.featured_image) {
+
+                image.src =
+                    data.featured_image;
+
+                image.alt =
+                    data.title;
+
+                image.style.display =
+                    'block';
+
+            }
+
+
+            document
+                .getElementById(
+                    'article-content'
+                )
+                .innerHTML =
+                    data.content;
+
+
+            loading.style.display =
+                'none';
+
+            wrapper.style.display =
+                'block';
+
+
+        } catch (err) {
+
+            console.error(
+                'Unexpected article error:',
+                err
+            );
+
+            loading.style.display =
+                'none';
+
+            errorBox.style.display =
+                'block';
+
+        }
+
+    }
+
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        loadArticle
+    );
+
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
