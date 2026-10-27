@@ -2204,3 +2204,107 @@
 </html>
 
 
+
+<style id="eagle-home-mobile-fix">
+@media (max-width: 600px) {
+    html, body {
+        max-width: 100%;
+        overflow-x: clip;
+    }
+
+    .header, .navbar {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .navbar {
+        gap: 8px;
+        padding: 10px 14px;
+    }
+
+    .logo-container {
+        min-width: 0;
+        max-width: calc(100% - 55px);
+    }
+
+    .logo-icon img {
+        max-width: 42px;
+        height: auto;
+    }
+
+    .brand-tagline {
+        font-size: 9px;
+        letter-spacing: 0.02em;
+        overflow-wrap: anywhere;
+    }
+
+    .hero, .hero-container, main > section {
+        box-sizing: border-box;
+        max-width: 100%;
+    }
+
+    .hero {
+        padding: 48px 16px 32px;
+    }
+
+    .hero-container {
+        width: 100%;
+        margin-inline: auto;
+    }
+
+    .hero-heading {
+        font-size: clamp(28px, 8vw, 40px);
+        line-height: 1.15;
+        overflow-wrap: anywhere;
+    }
+
+    .hero-description {
+        font-size: 15px;
+        line-height: 1.65;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .hero-buttons a, .hero-buttons .btn {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        justify-content: center;
+        white-space: normal;
+    }
+
+    .services-name-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    img, video, iframe {
+        max-width: 100%;
+    }
+
+    input, select, textarea, button {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 380px) {
+    .navbar {
+        padding-inline: 10px;
+    }
+
+    .services-name-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding-inline: 12px;
+    }
+}
+</style>
