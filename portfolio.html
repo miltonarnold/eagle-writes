@@ -248,6 +248,15 @@
         box-shadow: 0 15px 32px rgba(11, 31, 58, 0.12);
     }
 
+    .portfolio-card-image {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 22px;
+        background: #f3f6fa;
+    }
     .portfolio-number {
         width: 42px;
         height: 42px;
@@ -319,9 +328,15 @@
     }
 
     .documents-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 22px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 8px 2px 18px;
+        align-items: stretch;
+        scroll-snap-type: x proximity;
     }
 
     .document-card {
@@ -331,6 +346,7 @@
         padding: 26px;
         box-shadow: 0 8px 25px rgba(11, 31, 58, 0.06);
         display: flex;
+        flex-direction: column;
         gap: 18px;
         transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
@@ -339,20 +355,18 @@
         transform: translateY(-5px);
         box-shadow: 0 15px 32px rgba(11, 31, 58, 0.11);
     }
-
     .document-icon {
-        width: 58px;
-        height: 58px;
-        min-width: 58px;
-        border-radius: 14px;
-        background: #fff6dc;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 27px;
+        display: block;
+        width: 104px;
+        height: 84px;
+        min-width: 104px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 12px;
+        background: #f3f6fa;
+        flex-shrink: 0;
     }
-
-    .document-content {
+.document-content {
         min-width: 0;
         flex: 1;
     }
@@ -716,6 +730,230 @@
             font-size: 8px;
         }
     }
+
+
+    /* Uploaded documents: horizontal row, no pictures or card boxes */
+    .documents-grid .document-card {
+        display: block;
+        flex: 0 0 240px;
+        width: 240px;
+        min-width: 0;
+        margin: 0;
+        padding: 12px 8px;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        transform: none;
+        scroll-snap-align: start;
+    }
+
+    .documents-grid .document-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .documents-grid .document-icon,
+    .documents-grid .document-preview-image,
+    .documents-grid .document-card img {
+        display: none !important;
+    }
+
+    .documents-grid .document-content {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .documents-grid .document-content h3 {
+        overflow-wrap: anywhere;
+    }
+
+    .documents-grid .document-actions {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .documents-grid .document-button {
+        max-width: 100%;
+    }
+
+    @media (max-width: 520px) {
+        .documents-grid .document-card {
+            flex-basis: 200px;
+            width: 200px;
+        }
+    }
+
+
+/* Google Scholar-style uploaded document results */
+#documentsGrid.documents-grid {
+    display: block !important;
+    grid-template-columns: none !important;
+    gap: 0 !important;
+    overflow: visible !important;
+}
+
+#documentsGrid .document-card {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    padding: 18px 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+#documentsGrid .document-icon,
+#documentsGrid .document-preview-image,
+#documentsGrid .document-card img {
+    display: none !important;
+}
+
+#documentsGrid .document-content {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#documentsGrid .document-content h3,
+#documentsGrid .document-content h4,
+#documentsGrid .document-card h3,
+#documentsGrid .document-card h4 {
+    margin: 0 0 7px !important;
+    color: #1a0dab !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 1.45 !important;
+}
+
+#documentsGrid .document-content p {
+    margin: 5px 0 !important;
+    color: #4d5156 !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+}
+
+#documentsGrid .document-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 16px !important;
+    margin-top: 8px !important;
+}
+
+#documentsGrid .document-actions a,
+#documentsGrid .document-button {
+    display: inline !important;
+    width: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: #1a73e8 !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+}
+
+#documentsGrid .document-actions a:hover,
+#documentsGrid .document-button:hover {
+    text-decoration: underline !important;
+}
+
+/* OUR CAPABILITIES: image-led layout without card boxes */
+.capabilities-section {
+    padding: 70px 6%;
+}
+.capabilities-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.capabilities-heading {
+    max-width: 760px;
+    margin-bottom: 36px;
+}
+.capabilities-heading h2 {
+    margin: 10px 0;
+}
+.capabilities-heading p,
+.capability-item p {
+    line-height: 1.7;
+}
+.capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+}
+.capability-item {
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+.capability-item img {
+    display: block;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 18px;
+}
+.capability-item h3 {
+    margin: 0 0 10px;
+    color: #0b1f3a;
+    font-size: 20px;
+}
+.capability-item p {
+    margin: 0;
+    color: #4b5563;
+    font-size: 15px;
+}
+@media (max-width: 900px) {
+    .capabilities-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media (max-width: 560px) {
+    .capabilities-section {
+        padding: 45px 5%;
+    }
+    .capabilities-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .capability-item img {
+        height: 220px;
+    }
+}
+
+/* Selected Projects: hide numbering and decorative icons only */
+.portfolio-number,
+.portfolio-card-number,
+.portfolio-item-number,
+.project-number,
+.project-count,
+.project-icon,
+.portfolio-icon,
+.portfolio-card-icon,
+.portfolio-card .number,
+.portfolio-card .icon,
+.portfolio-item .number,
+.portfolio-item .icon {
+    display: none !important;
+}
 </style>
 
 </head>
@@ -747,7 +985,7 @@
             aria-label="Open navigation menu"
             type="button"
         >
-            ☰
+            â˜°
         </button>
 
         <nav class="nav" id="mainNav">
@@ -826,6 +1064,7 @@
         <div class="portfolio-grid">
 
             <article class="portfolio-card">
+                <img class="portfolio-card-image" src="Images/service-research-writing.jpg" alt="Portfolio project 1" loading="lazy">
 
                 <div class="portfolio-number">
                     01
@@ -854,6 +1093,7 @@
             </article>
 
             <article class="portfolio-card">
+                <img class="portfolio-card-image" src="Images/service-business-research.jpg" alt="Portfolio project 2" loading="lazy">
 
                 <div class="portfolio-number">
                     02
@@ -882,6 +1122,7 @@
             </article>
 
             <article class="portfolio-card">
+                <img class="portfolio-card-image" src="Images/service-academic-writing.jpg" alt="Portfolio project 3" loading="lazy">
 
                 <div class="portfolio-number">
                     03
@@ -910,6 +1151,7 @@
             </article>
 
             <article class="portfolio-card">
+                <img class="portfolio-card-image" src="Images/service-business-research.jpg" alt="Portfolio project 4" loading="lazy">
 
                 <div class="portfolio-number">
                     04
@@ -938,6 +1180,7 @@
             </article>
 
             <article class="portfolio-card">
+                <img class="portfolio-card-image" src="Images/service-power-bi.jpg" alt="Portfolio project 5" loading="lazy">
 
                 <div class="portfolio-number">
                     05
@@ -966,6 +1209,7 @@
             </article>
 
             <article class="portfolio-card">
+                <img class="portfolio-card-image" src="Images/service-article-writing.jpg" alt="Portfolio project 6" loading="lazy">
 
                 <div class="portfolio-number">
                     06
@@ -1043,100 +1287,39 @@
 ========================== -->
 
 <section class="capabilities-section">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span class="section-label">
-                OUR CAPABILITIES
-            </span>
-
-            <h2>
-                What We Bring to Every Project
-            </h2>
-
-            <p>
-                We combine research expertise, analytical thinking,
-                clear communication, and practical solutions.
-            </p>
-
+    <div class="capabilities-container">
+        <div class="capabilities-heading">
+            <span class="section-label">OUR CAPABILITIES</span>
+            <h2>What We Bring to Every Project</h2>
+            <p>We combine research expertise, analytical thinking, clear communication, and practical solutions.</p>
         </div>
 
-        <div class="benefits-grid">
+        <div class="capabilities-grid">
+            <div class="capability-item">
+                <img src="Images/service-research-writing.jpg" alt="Research expertise" loading="lazy">
+                <h3>Research Expertise</h3>
+                <p>Strong research methods and evidence-based approaches for academic and business projects.</p>
+            </div>
 
-            <article class="benefit-card">
+            <div class="capability-item">
+                <img src="Images/service-data-analysis.jpg" alt="Analytical thinking" loading="lazy">
+                <h3>Analytical Thinking</h3>
+                <p>We turn complex data and information into meaningful findings and insights.</p>
+            </div>
 
-                <div class="benefit-icon">
-                    🔎
-                </div>
+            <div class="capability-item">
+                <img src="Images/service-article-writing.jpg" alt="Clear presentation" loading="lazy">
+                <h3>Clear Presentation</h3>
+                <p>Professional reports and presentations that communicate findings clearly and effectively.</p>
+            </div>
 
-                <h3>
-                    Research Expertise
-                </h3>
-
-                <p>
-                    Strong research methods and evidence-based
-                    approaches for academic and business projects.
-                </p>
-
-            </article>
-
-            <article class="benefit-card">
-
-                <div class="benefit-icon">
-                    📊
-                </div>
-
-                <h3>
-                    Analytical Thinking
-                </h3>
-
-                <p>
-                    We turn complex data and information into
-                    meaningful findings and insights.
-                </p>
-
-            </article>
-
-            <article class="benefit-card">
-
-                <div class="benefit-icon">
-                    📝
-                </div>
-
-                <h3>
-                    Clear Presentation
-                </h3>
-
-                <p>
-                    Professional reports and presentations that
-                    communicate findings clearly and effectively.
-                </p>
-
-            </article>
-
-            <article class="benefit-card">
-
-                <div class="benefit-icon">
-                    💡
-                </div>
-
-                <h3>
-                    Practical Solutions
-                </h3>
-
-                <p>
-                    Actionable recommendations designed to support
-                    better decisions and measurable results.
-                </p>
-
-            </article>
-
+            <div class="capability-item">
+                <img src="Images/service-business-research.jpg" alt="Practical solutions" loading="lazy">
+                <h3>Practical Solutions</h3>
+                <p>Actionable recommendations designed to support better decisions and measurable results.</p>
+            </div>
         </div>
-
     </div>
-
 </section>
 
 <!-- =========================
@@ -1543,15 +1726,13 @@
                             doc.url || "#"
                         );
 
+                    const documentKeywords =
+                        String(doc.title || "") + " " +
+                        String(doc.description || "") + " " +
+                        String(doc.name || "") + " " +
+                        fileType;
                     return `
                         <article class="document-card">
-
-                            <div
-                                class="document-icon"
-                                aria-hidden="true"
-                            >
-                                📄
-                            </div>
 
                             <div class="document-content">
 
@@ -1642,3 +1823,7 @@
 </script>
 </body>
 </html>
+
+
+
+

@@ -15,639 +15,323 @@
     <title>Courses | EAGLE WRITES</title>
 
     <style>
-        /* ==================================================
-           RESET
-        ================================================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f7fb;
-            color: #172033;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        img {
-            display: block;
-            max-width: 100%;
-        }
-
-
-        /* ==================================================
-           HEADER
-        ================================================== */
-        .header {
-            width: 100%;
-            background: #0b1f3a;
-            color: #ffffff;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.18);
-        }
-
-        .navbar {
-            width: 100%;
-            max-width: 1250px;
-            min-height: 92px;
-            margin: 0 auto;
-            padding: 15px 25px;
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-
-        /* ==================================================
-           LOGO
-        ================================================== */
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-right: auto;
-        }
-
-        .logo-icon img {
-            width: 64px;
-            height: 64px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid #f4b942;
-        }
-
-        .brand-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.05;
-        }
-
-        .brand-name-eagle {
-            color: #ffffff;
-            font-size: 21px;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .brand-name-writes {
-            color: #f4b942;
-            font-size: 21px;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .brand-tagline {
-            color: #cbd5e1;
-            font-size: 9px;
-            margin-top: 5px;
-            letter-spacing: 0.6px;
-        }
-
-
-        /* ==================================================
-           NAVIGATION
-        ================================================== */
-        .nav-menu {
-            display: block;
-        }
-
-        .nav-list {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            list-style: none;
-        }
-
-        .nav-link {
-            display: inline-block;
-            padding: 10px 11px;
-            border-radius: 7px;
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.25s ease;
-        }
-
-        .nav-link:hover {
-            background: rgba(244, 185, 66, 0.18);
-            color: #f4b942;
-        }
-
-        .nav-link.active {
-            background: #f4b942;
-            color: #0b1f3a;
-        }
-
-
-        /* ==================================================
-           HEADER BUTTONS
-        ================================================== */
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-whatsapp,
-        .btn-get-started-header {
-            display: inline-block;
-            padding: 11px 15px;
-            border-radius: 7px;
-            font-size: 13px;
-            font-weight: 700;
-            transition: all 0.25s ease;
-            white-space: nowrap;
-        }
-
-        .btn-whatsapp {
-            background: #25d366;
-            color: #ffffff;
-        }
-
-        .btn-whatsapp:hover {
-            background: #1da851;
-        }
-
-        .btn-get-started-header {
-            background: #f4b942;
-            color: #0b1f3a;
-        }
-
-        .btn-get-started-header:hover {
-            background: #ffd166;
-        }
-
-
-        /* ==================================================
-           HERO
-        ================================================== */
-        .hero {
-            background: linear-gradient(135deg, #0b1f3a, #174979);
-            color: #ffffff;
-            padding: 95px 20px;
-            text-align: center;
-        }
-
-        .hero-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 8px 17px;
-            border-radius: 30px;
-            border: 1px solid #f4b942;
-            background: rgba(244, 185, 66, 0.12);
-            margin-bottom: 20px;
-        }
-
-        .badge-text {
-            color: #f4b942;
-            font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .hero-heading {
-            color: #ffffff;
-            font-size: clamp(40px, 6vw, 65px);
-            line-height: 1.1;
-            margin-bottom: 20px;
-            font-weight: 800;
-        }
-
-        .hero-highlight {
-            color: #f4b942;
-        }
-
-        .hero-description {
-            max-width: 720px;
-            margin: 0 auto;
-            color: #e2e8f0;
-            font-size: 18px;
-        }
-
-
-        /* ==================================================
-           MAIN COURSES SECTION
-        ================================================== */
-        .courses {
-            padding: 85px 20px;
-            background: #ffffff;
-        }
-
-        .courses-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            max-width: 800px;
-            margin: 0 auto 50px;
-            text-align: center;
-        }
-
-        .section-label {
-            display: inline-block;
-            color: #c27d00;
-            font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            margin-bottom: 10px;
-        }
-
-        .section-heading {
-            color: #0b1f3a;
-            font-size: clamp(30px, 4vw, 45px);
-            line-height: 1.15;
-            margin-bottom: 15px;
-        }
-
-        .section-header p {
-            color: #5b6678;
-            font-size: 16px;
-        }
-
-
-        /* ==================================================
-           COURSE GRID
-        ================================================== */
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .course-card {
-            position: relative;
-            background: #ffffff;
-            border: 1px solid #dce3ec;
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 8px 25px rgba(11, 31, 58, 0.08);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .course-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 17px 35px rgba(11, 31, 58, 0.14);
-        }
-
-        .course-card.featured-course {
-            border: 2px solid #f4b942;
-        }
-
-        .course-number {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: #c27d00;
-            font-size: 14px;
-            font-weight: 800;
-        }
-
-        .course-icon {
-            width: 62px;
-            height: 62px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 14px;
-            background: #fff4d2;
-            font-size: 29px;
-            margin-bottom: 21px;
-        }
-
-        .course-title {
-            color: #0b1f3a;
-            font-size: 23px;
-            margin-bottom: 14px;
-        }
-
-        .course-description {
-            color: #596579;
-            margin-bottom: 20px;
-            font-size: 15px;
-        }
-
-        .course-features {
-            list-style: none;
-            margin-bottom: 25px;
-        }
-
-        .course-features li {
-            color: #344054;
-            padding: 8px 0;
-            border-bottom: 1px solid #edf0f4;
-            font-size: 14px;
-        }
-
-        .course-features li::before {
-            content: "✓";
-            color: #c27d00;
-            font-weight: 800;
-            margin-right: 9px;
-        }
-
-
-        /* ==================================================
-           BUTTONS
-        ================================================== */
-        .btn {
-            display: inline-block;
-            padding: 13px 22px;
-            border-radius: 8px;
-            border: none;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-
-        .btn-primary {
-            background: #0b1f3a;
-            color: #ffffff;
-        }
-
-        .btn-primary:hover {
-            background: #174979;
-            transform: translateY(-1px);
-        }
-
-
-        /* ==================================================
-           WHY LEARN WITH US
-        ================================================== */
-        .why-choose-us {
-            padding: 85px 20px;
-            background: #eef3f9;
-        }
-
-        .why-choose-us-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .benefit-card {
-            background: #ffffff;
-            padding: 28px 22px;
-            border-radius: 14px;
-            text-align: center;
-            box-shadow: 0 7px 20px rgba(11, 31, 58, 0.07);
-        }
-
-        .benefit-icon {
-            font-size: 31px;
-            margin-bottom: 15px;
-        }
-
-        .benefit-title {
-            color: #0b1f3a;
-            font-size: 19px;
-            margin-bottom: 10px;
-        }
-
-        .benefit-description {
-            color: #5b6678;
-            font-size: 14px;
-        }
-
-
-        /* ==================================================
-           CTA
-        ================================================== */
-        .contact {
-            background: #0b1f3a;
-            padding: 85px 20px;
-            color: #ffffff;
-            text-align: center;
-        }
-
-        .contact-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .contact .section-label {
-            color: #f4b942;
-        }
-
-        .contact .section-heading {
-            color: #ffffff;
-        }
-
-        .contact .hero-description {
-            color: #d7dee8;
-            margin-bottom: 30px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn-secondary {
-            background: #ffffff;
-            color: #0b1f3a;
-        }
-
-        .btn-secondary:hover {
-            background: #e8edf3;
-        }
-
-
-        /* ==================================================
-           FOOTER
-        ================================================== */
-        .footer {
-            background: #071426;
-            color: #ffffff;
-            padding-top: 60px;
-        }
-
-        .footer-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1.3fr;
-            gap: 45px;
-        }
-
-        .footer-title {
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
-
-        .footer-tagline {
-            color: #f4b942;
-            font-size: 13px;
-            margin-bottom: 8px;
-        }
-
-        .footer-founder {
-            color: #cbd5e1;
-        }
-
-        .footer-nav-heading,
-        .footer-contact-heading {
-            color: #ffffff;
-            margin-bottom: 15px;
-        }
-
-        .footer-nav-list,
-        .footer-contact-list {
-            list-style: none;
-        }
-
-        .footer-nav-list li,
-        .footer-contact-list li {
-            margin-bottom: 9px;
-        }
-
-        .footer-link,
-        .footer-contact-link {
-            color: #cbd5e1;
-            font-size: 14px;
-            transition: color 0.25s ease;
-        }
-
-        .footer-link:hover,
-        .footer-contact-link:hover {
-            color: #f4b942;
-        }
-
-        .footer-bottom {
-            margin-top: 45px;
-            padding: 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .footer-bottom p {
-            color: #94a3b8;
-            font-size: 13px;
-        }
-
-
-        /* ==================================================
-           MOBILE
-        ================================================== */
-        @media (max-width: 1050px) {
-
-            .navbar {
-                flex-wrap: wrap;
-            }
-
-            .nav-menu {
-                width: 100%;
-                order: 3;
-                display: flex;
-                justify-content: center;
-            }
-
-            .nav-actions {
-                margin-left: auto;
-            }
-
-            .courses-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .benefits-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-
-        @media (max-width: 700px) {
-
-            .navbar {
-                padding: 12px 15px;
-            }
-
-            .logo-container {
-                width: 100%;
-            }
-
-            .brand-tagline {
-                display: none;
-            }
-
-            .logo-icon img {
-                width: 54px;
-                height: 54px;
-            }
-
-            .brand-name-eagle,
-            .brand-name-writes {
-                font-size: 18px;
-            }
-
-            .nav-menu {
-                width: 100%;
-            }
-
-            .nav-list {
-                width: 100%;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            .nav-link {
-                font-size: 13px;
-                padding: 8px 9px;
-            }
-
-            .nav-actions {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .courses-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding: 70px 20px;
-            }
-
-            .courses,
-            .why-choose-us,
-            .contact {
-                padding: 60px 20px;
-            }
-        }
-    </style>
+:root{--navy:#0b1f3a;--deep:#071426;--gold:#f4b942;--muted:#5b6678;--light:#f4f7fb;--border:#e0e6ef;--shadow:0 12px 35px rgba(11,31,58,.09)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--navy);background:#fff;font-family:Inter,"Segoe UI",Arial,sans-serif;line-height:1.65}
+a{text-decoration:none}
+.header{position:relative;z-index:10;background:#fff;border-bottom:1px solid var(--border)}
+.navbar{max-width:1240px;margin:auto;padding:15px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo-container{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.logo-icon img{width:58px;height:58px;object-fit:cover;border-radius:12px}
+.brand-text{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px}
+.brand-name-eagle,.brand-name-writes{font-size:20px;font-weight:900;letter-spacing:.5px}
+.brand-name-eagle{color:var(--navy)}.brand-name-writes{color:#b77a09}
+.brand-tagline{display:block;flex-basis:100%;font-size:9px;letter-spacing:1.2px;color:var(--muted)}
+.nav-list{display:flex;align-items:center;gap:4px;list-style:none;padding:0;margin:0}
+.nav-link{display:block;padding:10px 11px;color:var(--navy);font-size:13px;font-weight:650;border-radius:8px}
+.nav-link:hover,.nav-link.active{background:var(--light);color:#9a6500}
+.nav-actions{display:flex;gap:10px;align-items:center;flex-shrink:0}
+.btn-whatsapp,.btn-get-started-header{display:inline-flex;justify-content:center;align-items:center;padding:11px 15px;border-radius:8px;font-size:13px;font-weight:750}
+.btn-whatsapp{background:#e8f8ee;color:#167342}.btn-get-started-header{background:var(--gold);color:var(--navy)}
+.hero{position:relative;overflow:hidden;text-align:center;padding:100px 24px 110px;color:#fff;background:radial-gradient(ellipse at 80% 15%,rgba(244,185,66,.16),transparent 35%),linear-gradient(135deg,#071426,#0b1f3a 65%,#15395d)}
+.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.hero-container{max-width:850px;margin:auto;position:relative;z-index:1}
+.hero-badge,.section-label{display:inline-block;font-size:11px;font-weight:850;letter-spacing:2px;text-transform:uppercase}
+.hero-badge{padding:8px 13px;border:1px solid rgba(244,185,66,.55);border-radius:30px;color:var(--gold)}
+.hero-heading{margin:23px 0 18px;font-size:clamp(38px,6vw,66px);line-height:1.08;letter-spacing:-1.8px}
+.hero-highlight{color:var(--gold);display:block}
+.hero-description{max-width:690px;margin:0 auto;color:#d8e1ed;font-size:17px}
+.courses{padding:88px 24px 100px;background:var(--light)}
+.courses-container{max-width:1200px;margin:auto}
+.section-header{text-align:center;max-width:800px;margin:0 auto 45px}
+.section-label{color:#a56e00;margin-bottom:10px}
+.section-heading{margin:0 0 14px;font-size:clamp(30px,4vw,45px);line-height:1.15;letter-spacing:-.8px}
+.section-header p{margin:0;color:var(--muted);font-size:16px}
+.courses-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:25px;align-items:stretch}
+.course-card{display:flex;flex-direction:column;min-width:0;overflow:hidden;background:#fff;border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);transition:transform .25s ease,box-shadow .25s ease}
+.course-card:hover{transform:translateY(-6px);box-shadow:0 20px 45px rgba(11,31,58,.15)}
+.course-card.featured-course{border:2px solid var(--gold)}
+.course-photo{height:205px;overflow:hidden;background:#dce5ef}
+.course-photo img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+.course-card:hover .course-photo img{transform:scale(1.045)}
+.course-topline{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.course-content{display:flex;flex-direction:column;flex:1;padding:27px}
+.course-number{color:#9b6a0a;font-size:12px;font-weight:850;letter-spacing:1.5px}
+.course-tag{padding:5px 9px;border-radius:30px;background:#fff4d2;color:#805500;font-size:10px;font-weight:800}
+.course-icon{width:52px;height:52px;display:grid;place-items:center;margin-bottom:16px;border-radius:14px;background:#fff4d2;font-size:25px}
+.course-title{margin:0 0 12px;color:var(--navy);font-size:23px;line-height:1.25}
+.course-description{margin:0 0 17px;color:var(--muted);font-size:14px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border:0;border-radius:8px;font-size:14px;font-weight:800;cursor:pointer;transition:all .2s ease}
+.btn-primary{margin-top:auto;background:var(--navy);color:#fff}
+.btn-primary:hover{background:#174979;transform:translateY(-2px)}
+.featured-course .btn-primary{background:var(--gold);color:var(--navy)}
+.why-choose-us{padding:88px 24px;background:#fff}
+.why-choose-us-container{max-width:1200px;margin:auto}
+.benefits-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.benefit-card{padding:30px 23px;background:#fff;border:1px solid var(--border);border-radius:15px;text-align:center;box-shadow:0 7px 23px rgba(11,31,58,.05);transition:transform .2s ease,border-color .2s ease}
+.benefit-card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.benefit-icon{width:58px;height:58px;display:grid;place-items:center;margin:0 auto 18px;border-radius:16px;background:#fff4d2;font-size:27px}
+.benefit-title{margin:0 0 9px;font-size:18px}
+.benefit-description{margin:0;color:var(--muted);font-size:13px}
+.contact{padding:85px 24px;color:#fff;text-align:center;background:radial-gradient(ellipse at 80% 10%,rgba(244,185,66,.13),transparent 38%),var(--navy)}
+.contact-container{max-width:850px;margin:auto}
+.contact .section-label{color:var(--gold)}.contact .section-heading{color:#fff}.contact .section-header p{color:#d7dee8}
+.hero-buttons{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:13px;margin-top:28px}
+.contact .btn-primary{margin:0;background:var(--gold);color:var(--navy)}
+.btn-secondary{background:#fff;color:var(--navy)}.btn-secondary:hover{background:#e8edf3}
+.footer{padding-top:60px;color:#fff;background:var(--deep)}
+.footer-container{width:100%;max-width:1200px;margin:auto;padding:0 24px;display:grid;grid-template-columns:2fr 1fr 1.3fr;gap:45px}
+.footer-title{margin:0 0 10px;color:#fff}.footer-tagline{margin:0 0 8px;color:var(--gold);font-size:12px;letter-spacing:.7px}
+.footer-founder{color:#cbd5e1;font-size:14px}
+.footer-nav-heading,.footer-contact-heading{margin:0 0 15px;color:#fff;font-size:16px}
+.footer-nav-list,.footer-contact-list{list-style:none;padding:0;margin:0}
+.footer-nav-list li,.footer-contact-list li{margin-bottom:9px}
+.footer-link,.footer-contact-link{color:#cbd5e1;font-size:14px;transition:color .2s ease;overflow-wrap:anywhere}
+.footer-link:hover,.footer-contact-link:hover{color:var(--gold)}
+.footer-bottom{margin-top:45px;padding:20px;text-align:center;border-top:1px solid rgba(255,255,255,.1)}
+.footer-bottom p{margin:0;color:#94a3b8;font-size:13px}
+@media(max-width:1050px){.navbar{flex-wrap:wrap}.nav-menu{order:3;width:100%;display:flex;justify-content:center}.nav-actions{margin-left:auto}.courses-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.navbar{padding:13px 16px;gap:13px}.logo-container{width:100%;justify-content:center}.brand-tagline{font-size:8px}.nav-menu{width:100%}.nav-list{width:100%;justify-content:center;flex-wrap:wrap;gap:0}.nav-link{padding:8px;font-size:12px}.nav-actions{width:100%;justify-content:center;margin:0}.hero{padding:76px 20px 85px}.hero-heading{letter-spacing:-1px}.hero-description{font-size:15px}.courses,.why-choose-us{padding:62px 17px}.section-header{margin-bottom:30px}.courses-grid,.benefits-grid{grid-template-columns:1fr;gap:20px}.course-photo{height:220px}.course-content{padding:24px}.contact{padding:65px 18px}.footer-container{grid-template-columns:1fr;gap:25px;padding:0 22px}.footer-bottom{margin-top:30px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
+
+/* ===== CLEAN HEADER FIX ===== */
+.header {
+    width: 100%;
+    background: #0b1f3a !important;
+    border-bottom: 1px solid #263c57;
+}
+
+.navbar {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 15px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: transparent !important;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.logo-icon img {
+    display: block;
+    width: 58px;
+    height: 58px;
+    min-width: 58px;
+    border-radius: 50% !important;
+    object-fit: cover;
+}
+
+.brand-name-eagle,
+.brand-name-writes {
+    color: #ffffff !important;
+}
+
+.brand-tagline {
+    color: #ffffff !important;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-link,
+.nav-link:visited {
+    display: block;
+    padding: 10px 11px;
+    color: #ffffff !important;
+    font-size: 13px;
+    font-weight: 650;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: #f4b942 !important;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    gap: 10px;
+}
+
+.btn-whatsapp,
+.btn-whatsapp:visited {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 15px;
+    border-radius: 8px;
+    background: #25d366 !important;
+    color: #0b1f3a !important;
+    font-size: 13px;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.btn-get-started-header,
+.btn-get-started-header:visited {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 15px;
+    border-radius: 8px;
+    background: #f4b942 !important;
+    color: #0b1f3a !important;
+    font-size: 13px;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.btn-whatsapp:hover,
+.btn-get-started-header:hover {
+    filter: brightness(1.06);
+}
+
+/* Keep the existing course and benefit photos working */
+.course-photo,
+.benefit-photo {
+    display: block;
+    width: 100%;
+    height: 210px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: #edf2f7;
+}
+
+.course-photo img,
+.benefit-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.course-number,
+.course-icon,
+.benefit-icon {
+    display: none !important;
+}
+
+.benefit-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+}
+
+.benefit-content {
+    flex: 1;
+    padding: 24px;
+}
+
+@media (max-width: 1050px) {
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .nav-menu {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .nav-actions {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 700px) {
+    .navbar {
+        padding: 13px 16px;
+        gap: 13px;
+    }
+
+    .logo-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .nav-menu {
+        order: 2;
+        width: 100%;
+    }
+
+    .nav-list {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .nav-link {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .nav-actions {
+        order: 3;
+        width: 100%;
+        margin: 0;
+        flex-wrap: wrap;
+    }
+
+    .course-photo,
+    .benefit-photo {
+        height: 210px;
+    }
+}
+/* ===== END CLEAN HEADER FIX ===== */
+
+</style>
+<style id="course-feature-bullets-fix">
+.course-features {
+    list-style: disc !important;
+    list-style-position: outside !important;
+    margin: 0 0 25px !important;
+    padding: 0 0 0 22px !important;
+}
+
+.course-features li {
+    display: list-item !important;
+    list-style: disc outside !important;
+    position: static !important;
+    padding: 8px 0 !important;
+    border-bottom: 1px solid #edf0f4;
+    color: #344054;
+    font-size: 13px;
+}
+
+.course-features li::before {
+    content: none !important;
+    display: none !important;
+}
+</style>
 </head>
 
 
@@ -680,7 +364,7 @@
                     </span>
 
                     <span class="brand-tagline">
-                        RESEARCH • ANALYTICS • CONSULTING
+                        RESEARCH &bull; ANALYTICS &bull; CONSULTING
                     </span>
 
                 </div>
@@ -826,141 +510,66 @@
 
             <div class="courses-grid">
 
+    <article class="course-card">
+        <div class="course-photo">
+    <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+         alt="Notebook and writing materials on a desk"
+         loading="eager"
+         style="display:block;width:100%;height:220px;object-fit:cover;">
+</div>
+        <div class="course-content">
+            <h3 class="course-title">Pitch and Article Writing</h3>
+            <p class="course-description">Learn how to develop strong ideas, create compelling pitches, structure articles, and communicate ideas clearly to your target audience.</p>
+            <ul class="course-features">
+                <li>Idea Development</li>
+                <li>Pitch Writing</li>
+                <li>Article Structure</li>
+                <li>Professional Writing</li>
+                <li>Editing and Proofreading</li>
+            </ul>
+            <a href="enroll.html?course=pitch" class="btn btn-primary">Enroll Now</a>
+        </div>
+    </article>
 
-                <!-- COURSE 1 -->
-                <article class="course-card">
+    <article class="course-card featured-course">
+        <div class="course-photo">
+            <img src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"
+                 alt="Research books and academic notes" loading="lazy">
+        </div>
+        <div class="course-content">
+            <h3 class="course-title">Research Writing</h3>
+            <p class="course-description">Master the development of research proposals and research papers from topic selection through presentation of findings and conclusions.</p>
+            <ul class="course-features">
+                <li>Research Proposal Writing</li>
+                <li>Literature Review</li>
+                <li>Research Methodology</li>
+                <li>Data Presentation</li>
+                <li>Research Paper Writing</li>
+            </ul>
+            <a href="enroll.html?course=research" class="btn btn-primary">Enroll Now</a>
+        </div>
+    </article>
 
-                    <div class="course-number">
-                        01
-                    </div>
+    <article class="course-card">
+        <div class="course-photo">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"
+                 alt="Data analytics charts and dashboard" loading="lazy">
+        </div>
+        <div class="course-content">
+            <h3 class="course-title">Data Analysis</h3>
+            <p class="course-description">Develop practical data analysis skills using Microsoft Excel and SPSS for academic research and professional decision-making.</p>
+            <ul class="course-features">
+                <li>Data Preparation</li>
+                <li>Microsoft Excel</li>
+                <li>SPSS</li>
+                <li>Descriptive Statistics</li>
+                <li>Correlation and Regression</li>
+            </ul>
+            <a href="enroll.html?course=data-analysis" class="btn btn-primary">Enroll Now</a>
+        </div>
+    </article>
 
-                    <div class="course-icon">
-                        ✍️
-                    </div>
-
-                    <h3 class="course-title">
-                        Pitch and Article Writing
-                    </h3>
-
-                    <p class="course-description">
-
-                        Learn how to develop strong ideas, create compelling
-                        pitches, structure articles, and communicate ideas
-                        clearly to your target audience.
-
-                    </p>
-
-                    <ul class="course-features">
-
-                        <li>Idea Development</li>
-                        <li>Pitch Writing</li>
-                        <li>Article Structure</li>
-                        <li>Professional Writing</li>
-                        <li>Editing and Proofreading</li>
-
-                    </ul>
-
-                    <a
-                        href="enroll.html?course=pitch"
-                        class="btn btn-primary">
-
-                        Enroll Now
-
-                    </a>
-
-                </article>
-
-
-
-                <!-- COURSE 2 -->
-                <article class="course-card featured-course">
-
-                    <div class="course-number">
-                        02
-                    </div>
-
-                    <div class="course-icon">
-                        📚
-                    </div>
-
-                    <h3 class="course-title">
-                        Research Writing
-                    </h3>
-
-                    <p class="course-description">
-
-                        Master the development of research proposals and
-                        research papers from topic selection through
-                        presentation of findings and conclusions.
-
-                    </p>
-
-                    <ul class="course-features">
-
-                        <li>Research Proposal Writing</li>
-                        <li>Literature Review</li>
-                        <li>Research Methodology</li>
-                        <li>Data Presentation</li>
-                        <li>Research Paper Writing</li>
-
-                    </ul>
-
-                    <a
-                        href="enroll.html?course=research"
-                        class="btn btn-primary">
-
-                        Enroll Now
-
-                    </a>
-
-                </article>
-
-
-
-                <!-- COURSE 3 -->
-                <article class="course-card">
-
-                    <div class="course-number">
-                        03
-                    </div>
-
-                    <div class="course-icon">
-                        📊
-                    </div>
-
-                    <h3 class="course-title">
-                        Data Analysis
-                    </h3>
-
-                    <p class="course-description">
-
-                        Develop practical data analysis skills using
-                        Microsoft Excel and SPSS for academic research
-                        and professional decision-making.
-
-                    </p>
-
-                    <ul class="course-features">
-
-                        <li>Data Preparation</li>
-                        <li>Microsoft Excel</li>
-                        <li>SPSS</li>
-                        <li>Descriptive Statistics</li>
-                        <li>Correlation and Regression</li>
-
-                    </ul>
-
-                    <a
-                        href="enroll.html?course=data-analysis"
-                        class="btn btn-primary">
-
-                        Enroll Now
-
-                    </a>
-
-                </article>
-
-            </div>
+</div>
 
         </div>
 
@@ -990,91 +599,51 @@
 
             <div class="benefits-grid">
 
+    <article class="benefit-card">
+        <div class="benefit-photo">
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"
+                 alt="Student writing notes and practising skills" loading="lazy">
+        </div>
+        <div class="benefit-content">
+            <h3 class="benefit-title">Practical Learning</h3>
+            <p class="benefit-description">Focus on skills and techniques that can be applied to real academic and professional projects.</p>
+        </div>
+    </article>
 
-                <!-- BENEFIT 1 -->
-                <article class="benefit-card">
+    <article class="benefit-card">
+        <div class="benefit-photo">
+            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"
+                 alt="Teacher guiding learners" loading="lazy">
+        </div>
+        <div class="benefit-content">
+            <h3 class="benefit-title">Expert Guidance</h3>
+            <p class="benefit-description">Receive structured guidance from an experienced research and analytics consultant.</p>
+        </div>
+    </article>
 
-                    <div class="benefit-icon">
-                        🎯
-                    </div>
+    <article class="benefit-card">
+        <div class="benefit-photo">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"
+                 alt="Computer screen showing analytics and data" loading="lazy">
+        </div>
+        <div class="benefit-content">
+            <h3 class="benefit-title">Useful Tools</h3>
+            <p class="benefit-description">Learn practical tools including Microsoft Excel and SPSS for research and data analysis.</p>
+        </div>
+    </article>
 
-                    <h3 class="benefit-title">
-                        Practical Learning
-                    </h3>
+    <article class="benefit-card">
+        <div class="benefit-photo">
+            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&amp;fit=crop&amp;w=1000&amp;q=85"
+                 alt="Professionals collaborating on their work" loading="lazy">
+        </div>
+        <div class="benefit-content">
+            <h3 class="benefit-title">Career Growth</h3>
+            <p class="benefit-description">Build valuable skills that can support your academic, professional, and entrepreneurial journey.</p>
+        </div>
+    </article>
 
-                    <p class="benefit-description">
-
-                        Focus on skills and techniques that can be applied
-                        to real academic and professional projects.
-
-                    </p>
-
-                </article>
-
-
-                <!-- BENEFIT 2 -->
-                <article class="benefit-card">
-
-                    <div class="benefit-icon">
-                        👨‍🏫
-                    </div>
-
-                    <h3 class="benefit-title">
-                        Expert Guidance
-                    </h3>
-
-                    <p class="benefit-description">
-
-                        Receive structured guidance from an experienced
-                        research and analytics consultant.
-
-                    </p>
-
-                </article>
-
-
-                <!-- BENEFIT 3 -->
-                <article class="benefit-card">
-
-                    <div class="benefit-icon">
-                        💻
-                    </div>
-
-                    <h3 class="benefit-title">
-                        Useful Tools
-                    </h3>
-
-                    <p class="benefit-description">
-
-                        Learn practical tools including Microsoft Excel
-                        and SPSS for research and data analysis.
-
-                    </p>
-
-                </article>
-
-
-                <!-- BENEFIT 4 -->
-                <article class="benefit-card">
-
-                    <div class="benefit-icon">
-                        🚀
-                    </div>
-
-                    <h3 class="benefit-title">
-                        Career Growth
-                    </h3>
-
-                    <p class="benefit-description">
-
-                        Build valuable skills that can support your academic,
-                        professional, and entrepreneurial journey.
-
-                    </p>
-
-                </article>
-
-            </div>
+</div>
 
         </div>
 
@@ -1151,7 +720,7 @@
                 </h2>
 
                 <p class="footer-tagline">
-                    RESEARCH • ANALYTICS • CONSULTING
+                    RESEARCH &bull; ANALYTICS &bull; CONSULTING
                 </p>
 
                 <p class="footer-founder">
@@ -1268,5 +837,14 @@
 
     </footer>
 
+
+
+
 </body>
 </html>
+
+
+
+
+
+

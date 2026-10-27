@@ -1,1337 +1,2206 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
+    <meta name="description" content="EAGLE WRITES provides professional research writing, academic support, data analysis, digital learning resources, and consulting services by Arnold Milton.">
+    <meta name="keywords" content="EAGLE WRITES, research writing, academic writing, digital library, reading materials, data analysis, SPSS, Excel, Power BI, consulting">
+    <meta name="author" content="EAGLE WRITES">
+    <meta name="google-site-verification" content="xbtYx-6wWIwOYe3yG89UqUT-kiqWt2GXplE6HCmbkBk">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAGLE WRITES | Research • Analytics • Consulting</title>
 
-<meta name="description"
-    content="EAGLE WRITES - Professional research writing, academic support, data analysis, and consulting services by Arnold Milton.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpeg" href="Images/logo.milto.jpg">
 
-<meta name="keywords"
-    content="research writing, academic writing, data analysis, SPSS, Excel, Power BI, consulting">
+    <style>
+        /* ==================================================
+           EAGLE WRITES â€” SIDEBAR
+        ================================================== */
 
-<meta name="author" content="EAGLE WRITES">
+        .ew-sidebar,
+        .ew-sidebar * {
+            box-sizing: border-box;
+        }
 
-<title>EAGLE WRITES | Research • Analytics • Consulting</title>
+        .ew-sidebar {
+            position: fixed;
+            inset: 0 auto 0 0;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            width: 270px;
+            height: 100vh;
+            overflow-y: auto;
+            background: #0b1f3a;
+            color: #fff;
+            border-right: 1px solid rgba(244,185,66,.25);
+            transition: transform .3s ease, visibility .3s ease;
+        }
 
-<link rel="stylesheet" href="style.css">
+        .ew-sidebar-brand {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 20px 16px;
+            border-bottom: 1px solid rgba(255,255,255,.12);
+        }
 
-<meta name="google-site-verification"
-    content="xbtYx-6wWIwOYe3yG89UqUT-kiqWt2GXplE6HCmbkBk">
+        .ew-sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            min-width: 0;
+            color: #fff;
+            text-decoration: none;
+        }
 
-<!-- EAGLE WRITES Logo Favicon -->
-<link rel="icon" type="image/jpeg" href="Images/logo.milto.jpg">
+        .ew-sidebar-logo img {
+            width: 43px;
+            height: 43px;
+            flex-shrink: 0;
+            object-fit: cover;
+            border-radius: 50%;
+        }
 
-<!-- ================= ARTICLE SECTION STYLES ================= -->
+        .ew-sidebar-logo span {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
 
-<style>
+        .ew-sidebar-logo strong {
+            font-size: 16px;
+            letter-spacing: .5px;
+        }
 
-    .latest-articles-home {
-        padding: 80px 20px;
-        background: #f8f9fa;
-    }
+        .ew-sidebar-logo small {
+            color: #f4b942;
+            font-size: 9px;
+            line-height: 1.5;
+        }
 
-    .latest-articles-container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+        .ew-sidebar-nav {
+            flex: 1;
+            padding: 12px 12px 20px;
+        }
 
-    .latest-articles-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        margin-top: 40px;
-    }
+        .ew-sidebar-label {
+            margin: 23px 10px 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(244,185,66,.2);
+            color: #f4b942;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
 
-    .article-card {
-        background: #ffffff;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
+        .ew-sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-height: 43px;
+            margin: 4px 0;
+            padding: 10px 12px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            color: #e6edf6;
+            font-size: 13px;
+            line-height: 1.5;
+            text-decoration: none;
+            transition: background .2s ease, color .2s ease,
+                border-color .2s ease, transform .2s ease;
+        }
 
-    .article-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-    }
+        .ew-sidebar-link > span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            flex: 0 0 22px;
+            font-size: 16px;
+        }
 
-    .article-card-image {
-        width: 100%;
-        height: 220px;
-        object-fit: cover;
-        display: block;
-        background: #eeeeee;
-    }
+        .ew-sidebar-link:hover {
+            transform: translateX(2px);
+            border-color: rgba(244,185,66,.2);
+            background: rgba(244,185,66,.1);
+            color: #f4b942;
+        }
 
-    .article-card-content {
-        padding: 25px;
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-    }
+        .ew-sidebar-link.active {
+            border-color: rgba(244,185,66,.22);
+            border-left: 3px solid #f4b942;
+            background: rgba(244,185,66,.13);
+            color: #f4b942;
+            font-weight: 700;
+        }
 
-    .article-card-category {
-        display: inline-block;
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.8px;
-        text-transform: uppercase;
-        margin-bottom: 12px;
-        opacity: 0.75;
-    }
+        .ew-sidebar-link.ew-sidebar-featured {
+            margin-top: 12px;
+            background: #f4b942;
+            color: #0b1f3a;
+            font-weight: 800;
+        }
 
-    .article-card-title {
-        font-size: 22px;
-        line-height: 1.35;
-        margin: 0 0 12px;
-    }
+        .ew-sidebar-link.ew-sidebar-featured:hover {
+            background: #ffd16b;
+            color: #0b1f3a;
+        }
 
-    .article-card-title a {
-        text-decoration: none;
-        color: inherit;
-    }
+        .ew-sidebar-bottom {
+            margin-top: auto;
+            padding: 17px;
+            border-top: 1px solid rgba(255,255,255,.12);
+            color: #cbd5e1;
+            font-size: 11px;
+            line-height: 1.7;
+        }
 
-    .article-card-excerpt {
-        font-size: 15px;
-        line-height: 1.7;
-        margin: 0 0 18px;
-        opacity: 0.8;
-    }
+        .ew-sidebar-status {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            margin-right: 7px;
+            border-radius: 50%;
+            background: #f4b942;
+        }
 
-    .article-card-meta {
-        font-size: 13px;
-        line-height: 1.6;
-        margin-bottom: 20px;
-        opacity: 0.7;
-    }
+        .ew-sidebar-toggle,
+        .ew-sidebar-close,
+        .ew-sidebar-backdrop {
+            display: none;
+        }
 
-    .article-read-more {
-        margin-top: auto;
-        display: inline-block;
-        text-decoration: none;
-        font-weight: 700;
-        padding: 12px 18px;
-        border-radius: 6px;
-        text-align: center;
-        background: #f2c94c;
-        color: #111111;
-        transition: opacity 0.2s ease;
-    }
+        /* Desktop sidebar layout */
 
-    .article-read-more:hover {
-        opacity: 0.85;
-    }
+        @media (min-width: 1025px) {
+            body > header.header {
+                width: calc(100% - 270px);
+                margin-left: 270px;
+                box-sizing: border-box;
+            }
 
-    .articles-loading,
-    .articles-empty,
-    .articles-error {
-        text-align: center;
-        padding: 30px 15px;
-        font-size: 16px;
-    }
+            body > main,
+            body > footer.footer {
+                width: calc(100% - 270px);
+                margin-left: 270px;
+                box-sizing: border-box;
+            }
+        }
 
-    .articles-error {
-        display: none;
-    }
+        /* Mobile and tablet sidebar */
 
-    .latest-articles-cta {
-        text-align: center;
-        margin-top: 40px;
-    }
+        @media (max-width: 1024px) {
+            .ew-sidebar {
+                width: min(300px, 85vw);
+                visibility: hidden;
+                transform: translateX(-100%);
+            }
 
-    @media (max-width: 600px) {
+            .ew-sidebar.is-open {
+                visibility: visible;
+                transform: translateX(0);
+            }
+
+            .ew-sidebar-toggle {
+                position: fixed;
+                top: 12px;
+                left: 12px;
+                z-index: 1990;
+                display: block;
+                padding: 10px 14px;
+                border: 1px solid #f4b942;
+                border-radius: 7px;
+                background: #0b1f3a;
+                color: #fff;
+                font-weight: 700;
+                cursor: pointer;
+                box-shadow: 0 3px 10px rgba(0,0,0,.15);
+            }
+
+            .ew-sidebar-close {
+                display: block;
+                border: 0;
+                background: transparent;
+                color: #fff;
+                font-size: 28px;
+                cursor: pointer;
+            }
+
+            .ew-sidebar-backdrop.is-visible {
+                position: fixed;
+                inset: 0;
+                z-index: 1995;
+                display: block;
+                background: rgba(0,0,0,.55);
+            }
+
+            body.ew-sidebar-open {
+                overflow: hidden;
+            }
+        }
+
+        /* ==================================================
+           SHARED HOMEPAGE SECTION STYLES
+        ================================================== */
+
+        .about-home,
+        .services-home,
+        .latest-articles-home,
+        .home-cta,
+        .footer {
+            box-sizing: border-box;
+        }
+
+        .about-home,
+        .services-home,
+        .latest-articles-home,
+        .home-cta {
+            padding: 64px 24px;
+        }
+
+        .about-home-container,
+        .services-home-container,
+        .latest-articles-container,
+        .home-cta-container {
+            width: 100%;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .about-home .section-header,
+        .services-home .section-header,
+        .latest-articles-home .section-header {
+            max-width: 760px;
+            margin: 0 auto 32px;
+            text-align: center;
+        }
+
+        .about-home .section-label,
+        .services-home .section-label,
+        .latest-articles-home .section-label {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #9a6b00;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.6px;
+            line-height: 1.6;
+            text-transform: uppercase;
+        }
+
+        .about-home .section-heading,
+        .services-home .section-heading,
+        .latest-articles-home .section-heading {
+            margin: 0 0 14px;
+            color: #0b1f3a;
+            font-size: clamp(25px, 3vw, 35px);
+            font-weight: 800;
+            line-height: 1.3;
+            overflow-wrap: anywhere;
+        }
+
+        .services-home .section-subheading,
+        .latest-articles-home .section-subheading {
+            max-width: 650px;
+            margin: 0 auto;
+            color: #64748b;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* ==================================================
+           ABOUT SECTION
+        ================================================== */
+
+        .about-home {
+            background: #fff;
+        }
+
+        .about-home-container {
+            max-width: 850px;
+        }
+
+        .about-home .section-header {
+            margin-bottom: 24px;
+        }
+
+        .about-home-content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 26px 28px;
+            border-left: 4px solid #f4b942;
+            border-radius: 0 10px 10px 0;
+            background: #f4f7fb;
+        }
+
+        .about-home-content p {
+            margin: 0 0 14px;
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .about-home-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-home-content strong {
+            color: #0b1f3a;
+        }
+
+        .about-home-button,
+        .services-home-cta {
+            margin-top: 26px;
+            text-align: center;
+        }
+
+        /* ==================================================
+           SERVICES GRID
+        ================================================== */
+
+        .services-home {
+            background: #f4f7fb;
+        }
+
+        .services-name-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+            align-items: stretch;
+        }
+
+        .services-name-grid .service-name-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            min-width: 0;
+            min-height: 145px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: #fff;
+            color: #0b1f3a;
+            text-decoration: none;
+            box-shadow: 0 3px 12px rgba(11,31,58,.035);
+            transition: transform .2s ease, border-color .2s ease,
+                box-shadow .2s ease;
+        }
+
+        .services-name-grid .service-name-card:hover {
+            transform: translateY(-4px);
+            border-color: #f4b942;
+            box-shadow: 0 9px 22px rgba(11,31,58,.09);
+        }
+
+        .services-name-grid .service-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: #0b1f3a;
+            color: #f4b942;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .services-name-grid .service-name {
+            display: block;
+            color: #0b1f3a;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.55;
+            overflow-wrap: anywhere;
+        }
+
+        /* ==================================================
+           LATEST ARTICLES â€” COMPACT IMAGE CARDS
+        ================================================== */
 
         .latest-articles-home {
-            padding: 60px 15px;
+            background: #fff;
         }
 
-        .article-card-image {
-            height: 200px;
+        .latest-articles-container {
+            max-width: 1080px;
         }
 
-        .article-card-content {
-            padding: 20px;
+        .latest-articles-home .latest-articles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            align-items: stretch;
+            margin-top: 0;
         }
 
-        .article-card-title {
-            font-size: 20px;
+        .latest-articles-home .article-card {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            height: 100%;
+            overflow: hidden;
+            border: 1px solid #e5eaf0;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 4px 16px rgba(11,31,58,.055);
+            transition: transform .2s ease, box-shadow .2s ease;
         }
 
+        .latest-articles-home .article-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(11,31,58,.1);
+        }
+
+        .latest-articles-home .article-card-image {
+            display: block;
+            width: 100%;
+            height: 105px;
+            min-height: 105px;
+            max-height: 105px;
+            margin: 0;
+            object-fit: cover;
+            object-position: center;
+            background: #eef2f6;
+        }
+
+        .latest-articles-home .article-card-content {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: flex-start;
+            min-width: 0;
+            padding: 16px;
+        }
+
+        .latest-articles-home .article-card-category {
+            display: inline-block;
+            margin: 0 0 8px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: #f4f7fb;
+            color: #526173;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .6px;
+            line-height: 1.5;
+            text-transform: uppercase;
+            overflow-wrap: anywhere;
+        }
+
+        .latest-articles-home .article-card-title {
+            margin: 0 0 10px;
+            color: #0b1f3a;
+            font-size: 16px;
+            font-weight: 750;
+            line-height: 1.45;
+            overflow-wrap: anywhere;
+        }
+
+        .latest-articles-home .article-card-title a {
+            color: #0b1f3a;
+            text-decoration: none;
+        }
+
+        .latest-articles-home .article-card-title a:hover {
+            color: #9a6b00;
+        }
+
+        .latest-articles-home .article-card-excerpt {
+            display: -webkit-box;
+            margin: 0 0 12px;
+            overflow: hidden;
+            color: #64748b;
+            font-size: 12px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+        }
+
+        .latest-articles-home .article-card-meta {
+            margin: 0 0 14px;
+            color: #788596;
+            font-size: 10px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .latest-articles-home .article-read-more {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: auto;
+            padding: 9px 13px;
+            border-radius: 6px;
+            background: #f4b942;
+            color: #0b1f3a;
+            font-size: 12px;
+            font-weight: 800;
+            line-height: 1.5;
+            text-align: center;
+            text-decoration: none;
+            transition: background .2s ease;
+        }
+
+        .latest-articles-home .article-read-more:hover {
+            background: #ffd16b;
+        }
+
+        .articles-loading,
+        .articles-empty,
+        .articles-error {
+            padding: 24px 12px;
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        .articles-error {
+            display: none;
+        }
+
+        .latest-articles-cta {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* ==================================================
+           CALL TO ACTION
+        ================================================== */
+
+        .home-cta {
+            background: #0b1f3a;
+            color: #fff;
+            text-align: center;
+        }
+
+        .home-cta-container {
+            max-width: 800px;
+        }
+
+        .home-cta .section-label {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #f4b942;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.6px;
+        }
+
+        .home-cta h2 {
+            margin: 0 auto 14px;
+            color: #fff;
+            font-size: clamp(25px, 3vw, 36px);
+            line-height: 1.3;
+        }
+
+        .home-cta p {
+            max-width: 600px;
+            margin: 0 auto 25px;
+            color: #d5deea;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .home-cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .home-cta-buttons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 11px 18px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: 750;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        /* ==================================================
+           FOOTER
+        ================================================== */
+
+        .footer {
+            background: #08172b;
+            color: #e6edf6;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 42px;
+            width: 100%;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 48px 24px 36px;
+        }
+
+        .footer-brand,
+        .footer-nav,
+        .footer-contact {
+            min-width: 0;
+        }
+
+        .footer-title {
+            margin: 0 0 10px;
+            color: #fff;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: .6px;
+        }
+
+        .footer-tagline {
+            margin: 0 0 12px;
+            color: #f4b942;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.7;
+        }
+
+        .footer-founder {
+            margin: 0;
+            color: #bdc8d8;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .footer-nav-heading,
+        .footer-contact-heading {
+            margin: 0 0 18px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 750;
+        }
+
+        .footer-nav-list,
+        .footer-contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer-link,
+        .footer-contact-link {
+            color: #bdc8d8;
+            font-size: 13px;
+            line-height: 1.7;
+            text-decoration: none;
+            overflow-wrap: anywhere;
+            transition: color .2s ease;
+        }
+
+        .footer-link:hover,
+        .footer-contact-link:hover {
+            color: #f4b942;
+        }
+
+        .footer-bottom {
+            padding: 18px 20px;
+            border-top: 1px solid rgba(255,255,255,.12);
+            text-align: center;
+        }
+
+        .footer-copyright {
+            margin: 0;
+            color: #9eacbf;
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        /* ==================================================
+           TABLETS
+        ================================================== */
+
+        @media (min-width: 601px) and (max-width: 1024px) {
+            .about-home,
+            .services-home,
+            .latest-articles-home,
+            .home-cta {
+                padding: 52px 22px;
+            }
+
+            .services-name-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 14px;
+            }
+
+            .services-name-grid .service-name-card {
+                min-height: 125px;
+                padding: 18px;
+            }
+
+            .latest-articles-home .latest-articles-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 16px;
+            }
+
+            .latest-articles-home .article-card-image {
+                height: 110px;
+                min-height: 110px;
+                max-height: 110px;
+            }
+
+            .footer-container {
+                gap: 25px;
+                padding: 40px 24px 30px;
+            }
+        }
+
+        /* ==================================================
+           MOBILE PHONES
+        ================================================== */
+
+        @media (max-width: 600px) {
+            .about-home,
+            .services-home,
+            .latest-articles-home,
+            .home-cta {
+                padding: 42px 15px;
+            }
+
+            .about-home .section-header,
+            .services-home .section-header,
+            .latest-articles-home .section-header {
+                margin-bottom: 24px;
+            }
+
+            .about-home .section-heading,
+            .services-home .section-heading,
+            .latest-articles-home .section-heading {
+                font-size: 26px;
+            }
+
+            .about-home-content {
+                padding: 19px;
+            }
+
+            .about-home-content p {
+                font-size: 14px;
+                line-height: 1.8;
+            }
+
+            .services-name-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 11px;
+            }
+
+            .services-name-grid .service-name-card {
+                gap: 15px;
+                min-height: 125px;
+                padding: 14px;
+                border-radius: 10px;
+            }
+
+            .services-name-grid .service-number {
+                width: 30px;
+                height: 30px;
+                font-size: 11px;
+            }
+
+            .services-name-grid .service-name {
+                font-size: 13px;
+                line-height: 1.5;
+            }
+
+            /* Compact horizontal article cards on phones */
+
+            .latest-articles-home .latest-articles-grid {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 13px;
+            }
+
+            .latest-articles-home .article-card {
+                display: grid;
+                grid-template-columns: 100px minmax(0, 1fr);
+                align-items: stretch;
+                min-height: 150px;
+                height: auto;
+            }
+
+            .latest-articles-home .article-card-image {
+                width: 100%;
+                height: 100%;
+                min-height: 150px;
+                max-height: 100%;
+                object-fit: cover;
+            }
+
+            .latest-articles-home .article-card-content {
+                padding: 11px;
+            }
+
+            .latest-articles-home .article-card-category {
+                margin-bottom: 6px;
+                padding: 3px 6px;
+                font-size: 9px;
+            }
+
+            .latest-articles-home .article-card-title {
+                margin-bottom: 7px;
+                font-size: 13px;
+                line-height: 1.4;
+            }
+
+            .latest-articles-home .article-card-excerpt {
+                margin-bottom: 8px;
+                font-size: 11px;
+                line-height: 1.5;
+                -webkit-line-clamp: 3;
+            }
+
+            .latest-articles-home .article-card-meta {
+                margin-bottom: 9px;
+                font-size: 9px;
+            }
+
+            .latest-articles-home .article-read-more {
+                align-self: flex-start;
+                padding: 7px 10px;
+                font-size: 10px;
+            }
+
+            .home-cta h2 {
+                font-size: 26px;
+            }
+
+            .home-cta p {
+                font-size: 14px;
+            }
+
+            .home-cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .home-cta-buttons a {
+                width: 100%;
+            }
+
+            .footer-container {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 28px;
+                padding: 35px 22px 28px;
+            }
+
+            .footer-nav-heading,
+            .footer-contact-heading {
+                margin-bottom: 12px;
+            }
+
+            .footer-nav-list,
+            .footer-contact-list {
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .latest-articles-home .article-card {
+                grid-template-columns: 82px minmax(0, 1fr);
+            }
+
+            .latest-articles-home .article-card-image {
+                min-height: 145px;
+            }
+
+            .latest-articles-home .article-card-content {
+                padding: 9px;
+            }
+
+            .latest-articles-home .article-card-title {
+                font-size: 12px;
+            }
+
+            .services-name-grid .service-name-card {
+                padding: 11px;
+            }
+        }
+
+        /* Respect reduced-motion preferences */
+
+        @media (prefers-reduced-motion: reduce) {
+            .ew-sidebar,
+            .ew-sidebar-link,
+            .services-name-grid .service-name-card,
+            .latest-articles-home .article-card {
+                transition: none;
+            }
+        }
+    
+/* COMPACT CLICKABLE LATEST ARTICLE ROWS */
+.latest-articles-home .latest-articles-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.latest-articles-home .article-card {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    text-align: left;
+    min-width: 0;
+    cursor: pointer;
+}
+
+.latest-articles-home .article-card-image {
+    flex: 0 0 105px;
+    width: 105px !important;
+    height: 85px !important;
+    min-width: 105px;
+    object-fit: cover;
+    margin: 0 !important;
+    border-radius: 7px;
+}
+
+.latest-articles-home .article-card-content {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+}
+
+.latest-articles-home .article-card h3,
+.latest-articles-home .article-card-title {
+    margin: 0 0 6px;
+    font-size: 15px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.latest-articles-home .article-card p,
+.latest-articles-home .article-card-excerpt {
+    margin: 5px 0;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.latest-articles-home .article-card a {
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+    .latest-articles-home .article-card {
+        gap: 10px;
+        padding: 9px;
     }
 
-</style>
+    .latest-articles-home .article-card-image {
+        flex-basis: 82px;
+        width: 82px !important;
+        min-width: 82px;
+        height: 72px !important;
+    }
 
+    .latest-articles-home .article-card h3,
+    .latest-articles-home .article-card-title {
+        font-size: 13px;
+    }
+
+    .latest-articles-home .article-card p,
+    .latest-articles-home .article-card-excerpt {
+        font-size: 12px;
+    }
+}
+
+/* EAGLE WRITES ABOUT & SERVICES REDESIGN */
+
+.about-home {
+    background: #fff;
+}
+
+.about-home-container,
+.services-home-container {
+    max-width: 1120px;
+}
+
+.about-home .section-header,
+.services-home .section-header {
+    margin-bottom: 32px;
+}
+
+.about-redesign {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    overflow: hidden;
+    border: 1px solid #e5eaf0;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 12px 35px rgba(11, 31, 58, .07);
+}
+
+.about-redesign-image {
+    position: relative;
+    min-height: 360px;
+    overflow: hidden;
+    background: #e8edf3;
+}
+
+.about-redesign-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    object-fit: cover;
+}
+
+.about-image-caption {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    left: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 255, 255, .35);
+    border-radius: 10px;
+    background: rgba(11, 31, 58, .88);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    backdrop-filter: blur(8px);
+}
+
+.about-caption-mark {
+    width: 9px;
+    height: 9px;
+    flex: 0 0 9px;
+    border-radius: 50%;
+    background: #f4b942;
+}
+
+.about-redesign-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 38px;
+}
+
+.about-kicker {
+    margin-bottom: 12px;
+    color: #9a6a00;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+.about-redesign-copy h3 {
+    margin: 0 0 16px;
+    color: #0b1f3a;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.25;
+}
+
+.about-redesign-copy p {
+    margin: 0 0 15px;
+    color: #475569;
+    font-size: 15px;
+    line-height: 1.85;
+}
+
+.about-redesign-copy strong {
+    color: #0b1f3a;
+}
+
+.about-redesign-copy .btn {
+    margin-top: 10px;
+}
+
+.services-home {
+    background: #f4f7fb;
+}
+
+.services-home .section-heading {
+    max-width: 760px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.services-home .section-subheading {
+    max-width: 640px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.services-image-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.services-image-grid .service-name-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    background: #fff;
+    color: #0b1f3a;
+    text-decoration: none;
+    box-shadow: 0 5px 18px rgba(11, 31, 58, .045);
+    transition: transform .22s ease, border-color .22s ease,
+        box-shadow .22s ease;
+}
+
+.services-image-grid .service-name-card:hover,
+.services-image-grid .service-name-card:focus-visible {
+    transform: translateY(-5px);
+    border-color: #f4b942;
+    box-shadow: 0 14px 28px rgba(11, 31, 58, .12);
+}
+
+.services-image-grid .service-name-card > img {
+    display: block;
+    width: 100%;
+    height: 155px;
+    object-fit: cover;
+    background: #e2e8f0;
+    transition: transform .35s ease;
+}
+
+.services-image-grid .service-name-card:hover > img {
+    transform: scale(1.035);
+}
+
+.services-image-grid .service-card-copy {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+    padding: 18px 18px 22px;
+}
+
+.services-image-grid .service-name {
+    display: block;
+    color: #0b1f3a;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+.services-image-grid .service-card-description {
+    display: block;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+.services-image-grid .service-card-arrow {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255, 255, 255, .55);
+    border-radius: 50%;
+    background: rgba(11, 31, 58, .88);
+    color: #f4b942;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.services-image-grid .service-number {
+    display: none !important;
+}
+
+@media (max-width: 900px) {
+    .services-image-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .services-image-grid .service-name-card > img {
+        height: 175px;
+    }
+
+    .about-redesign-copy {
+        padding: 28px;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-redesign {
+        grid-template-columns: 1fr;
+        border-radius: 14px;
+    }
+
+    .about-redesign-image,
+    .about-redesign-image img {
+        min-height: 0;
+        height: 235px;
+    }
+
+    .about-redesign-copy {
+        padding: 25px 22px;
+    }
+
+    .about-redesign-copy h3 {
+        font-size: 26px;
+    }
+
+    .services-image-grid {
+        gap: 12px;
+    }
+
+    .services-image-grid .service-name-card > img {
+        height: 125px;
+    }
+
+    .services-image-grid .service-card-copy {
+        padding: 14px 12px 17px;
+    }
+
+    .services-image-grid .service-name {
+        font-size: 14px;
+    }
+
+    .services-image-grid .service-card-description {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .services-image-grid .service-card-arrow {
+        top: 8px;
+        right: 8px;
+        width: 27px;
+        height: 27px;
+        font-size: 16px;
+    }
+}
+
+
+/* EAGLE WRITES ABOUT TYPOGRAPHY POLISH */
+
+.about-redesign-copy {
+    padding: clamp(28px, 4vw, 48px);
+    background: linear-gradient(145deg, #ffffff 0%, #fbfcfe 100%);
+}
+
+.about-redesign-copy .about-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 18px;
+    color: #967020;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.5;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+}
+
+.about-redesign-copy .about-kicker::before {
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 2px;
+    border-radius: 2px;
+    background: #f4b942;
+}
+
+.about-redesign-copy h3 {
+    max-width: 480px;
+    margin: 0 0 22px;
+    color: #0b1f3a;
+    font-family: inherit;
+    font-size: clamp(29px, 3.2vw, 40px);
+    font-weight: 800;
+    line-height: 1.16;
+    letter-spacing: -1.2px;
+    text-wrap: balance;
+}
+
+.about-redesign-copy p {
+    max-width: 540px;
+    margin: 0 0 18px;
+    color: #526176;
+    font-size: 15.5px;
+    font-weight: 400;
+    line-height: 1.95;
+    letter-spacing: 0.05px;
+}
+
+.about-redesign-copy p strong {
+    color: #0b1f3a;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.about-redesign-copy p:last-of-type {
+    margin-bottom: 22px;
+}
+
+.about-redesign-copy .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 13px 23px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 750;
+    letter-spacing: 0.2px;
+    text-decoration: none;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.about-redesign-copy .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(11, 31, 58, .16);
+}
+
+@media (max-width: 600px) {
+    .about-redesign-copy {
+        padding: 27px 23px 30px;
+    }
+
+    .about-redesign-copy .about-kicker {
+        margin-bottom: 15px;
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .about-redesign-copy h3 {
+        margin-bottom: 17px;
+        font-size: 30px;
+        line-height: 1.2;
+        letter-spacing: -0.7px;
+    }
+
+    .about-redesign-copy p {
+        margin-bottom: 15px;
+        font-size: 14.5px;
+        line-height: 1.85;
+    }
+
+    .about-redesign-copy p:last-of-type {
+        margin-bottom: 20px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+    <!-- MOBILE SIDEBAR CONTROLS -->
 
-<header class="header" id="header">
+    <button
+        class="ew-sidebar-toggle"
+        id="ew-sidebar-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-controls="ew-sidebar"
+        aria-expanded="false">
+        â˜° Menu
+    </button>
 
-    <nav class="navbar" id="navbar">
+    <div
+        class="ew-sidebar-backdrop"
+        id="ew-sidebar-backdrop"
+        aria-hidden="true">
+    </div>
 
+    <!-- SIDEBAR NAVIGATION -->
 
-        <!-- LOGO -->
+    <aside class="ew-sidebar" id="ew-sidebar" aria-label="Main navigation">
 
-        <a href="index.html" class="logo-container">
-
-            <div class="logo-icon">
-
-                <img
-                    src="Images/logo.milto.jpg"
-                    alt="EAGLE WRITES logo"
-                >
-
-            </div>
-
-
-            <div class="brand-text">
-
-                <span class="brand-name-eagle">
-                    EAGLE
+        <div class="ew-sidebar-brand">
+            <a href="index.html" class="ew-sidebar-logo">
+                <img src="Images/logo.milto.jpg" alt="EAGLE WRITES logo">
+                <span>
+                    <strong>EAGLE WRITES</strong>
+                    <small>RESEARCH • ANALYTICS • CONSULTING</small>
                 </span>
-
-                <span class="brand-name-writes">
-                    WRITES
-                </span>
-
-            </div>
-
-
-            <div class="brand-tagline">
-                RESEARCH • ANALYTICS • CONSULTING
-            </div>
-
-        </a>
-
-
-
-        <!-- MOBILE MENU -->
-
-        <button
-            class="mobile-menu-toggle"
-            id="mobile-menu-toggle"
-            aria-label="Toggle navigation menu"
-            type="button"
-        >
-
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </button>
-
-
-
-        <!-- NAVIGATION -->
-
-        <nav class="nav-menu" id="nav-menu">
-
-            <ul class="nav-list">
-
-
-                <li>
-
-                    <a
-                        href="index.html"
-                        class="nav-link active"
-                    >
-                        Home
-                    </a>
-
-                </li>
-
-
-                <li>
-
-                    <a
-                        href="about.html"
-                        class="nav-link"
-                    >
-                        About
-                    </a>
-
-                </li>
-
-
-                <li>
-
-                    <a
-                        href="get-started.html"
-                        class="nav-link"
-                    >
-                        Get Started
-                    </a>
-
-                </li>
-
-
-            </ul>
-
-        </nav>
-
-
-
-        <!-- ACTION BUTTONS -->
-
-        <div class="nav-actions">
-
-
-            <!-- PUBLISH ARTICLE -->
-
-            <a
-                href="submit-article.html"
-                class="btn btn-primary"
-            >
-                Publish Your Article
             </a>
 
+            <button
+                type="button"
+                class="ew-sidebar-close"
+                id="ew-sidebar-close"
+                aria-label="Close navigation menu">
+                ×
+            </button>
+        </div>
 
-            <!-- WHATSAPP -->
+        <nav class="ew-sidebar-nav" aria-label="Main site sections">
+
+            <p class="ew-sidebar-label">Main Menu</p>
+
+            <a href="index.html" class="ew-sidebar-link active" aria-current="page">
+                <span aria-hidden="true">&#8962;</span> Home
+            </a>
+
+            <a href="library.html" class="ew-sidebar-link">
+                <span aria-hidden="true">&#128218;</span> Digital Library
+            </a>
+
+            <a href="library.html?level=primary" class="ew-sidebar-link">
+                <span aria-hidden="true">&#128214;</span> Primary School
+            </a>
+
+            <a href="library.html?level=secondary" class="ew-sidebar-link">
+                <span aria-hidden="true">&#127891;</span> Secondary School
+            </a>
+
+            <a href="library.html?level=college" class="ew-sidebar-link">
+                <span aria-hidden="true">&#127979;</span> Colleges &amp; Universities
+            </a>
+
+            <a href="library.html?level=professional" class="ew-sidebar-link">
+                <span aria-hidden="true">&#128213;</span> Professional Courses
+            </a>
+
+            <p class="ew-sidebar-label">Learn &amp; Explore</p>
+
+            <a href="articles.html" class="ew-sidebar-link">
+                <span aria-hidden="true">&#9998;</span> Articles &amp; Research
+            </a>
+
+            <a href="submit-article.html" class="ew-sidebar-link">
+                <span aria-hidden="true">&#43;</span> Publish an Article
+            </a>
+
+            <a href="services.html" class="ew-sidebar-link">
+                <span aria-hidden="true">&#128187;</span> Writing Services
+            </a>
+
+            <a href="courses.html" class="ew-sidebar-link">
+                <span aria-hidden="true">&#9993;</span> Courses
+            </a>
+
+            <a href="get-started.html" class="ew-sidebar-link">
+                <span aria-hidden="true"></span> Get Started
+            </a>
+
+            <p class="ew-sidebar-label">Contribute &amp; Connect</p>
+
+            <a href="submit-material.html" class="ew-sidebar-link">
+                <span aria-hidden="true"></span> Submit Reading Materials
+            </a>
+
+            <a href="about.html" class="ew-sidebar-link">
+                <span aria-hidden="true"></span> About Us
+            </a>
+
+            <a href="contact.html" class="ew-sidebar-link">
+                <span aria-hidden="true"></span> Contact Us
+            </a>
 
             <a
                 href="https://wa.me/254748513346"
-                class="btn-whatsapp"
+                class="ew-sidebar-link"
                 target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Contact EAGLE WRITES on WhatsApp"
-            >
-
-                <span class="icon-whatsapp"></span>
-
-                WhatsApp
-
+                rel="noopener noreferrer">
+                <span aria-hidden="true"></span> WhatsApp Us
             </a>
 
+        </nav>
 
-            <!-- GET STARTED -->
+        <div class="ew-sidebar-bottom">
+            <span class="ew-sidebar-status"></span>
+            Your knowledge. Your growth.
+        </div>
 
-            <a
-                href="get-started.html"
-                class="btn-get-started-header"
-            >
-                Get Started
+    </aside>
+
+    <!-- EXISTING WEBSITE HEADER -->
+
+    <header class="header" id="header">
+        <nav class="navbar" id="navbar">
+
+            <a href="index.html" class="logo-container">
+                <div class="logo-icon">
+                    <img src="Images/logo.milto.jpg" alt="EAGLE WRITES logo">
+                </div>
+
+                <div class="brand-text">
+                    <span class="brand-name-eagle">EAGLE</span>
+                    <span class="brand-name-writes">WRITES</span>
+                </div>
+
+                <div class="brand-tagline">
+                    RESEARCH • ANALYTICS • CONSULTING
+                </div>
             </a>
 
-
-        </div>
-
-
-    </nav>
-
-</header>
-
-
-
-<!-- ================= MAIN ================= -->
-
-<main>
-
-
-    <!-- ================= HERO ================= -->
-
-    <section class="hero" id="home">
-
-        <div class="hero-container">
-
-
-            <div class="hero-badge">
-
-                <span class="badge-text">
-
-                    RESEARCH • WRITE • ANALYZE • SUCCEED
-
-                </span>
-
-            </div>
-
-
-
-            <h1 class="hero-heading">
-
-                Turn Your Ideas Into
-
-                <span class="hero-highlight">
-                    Powerful Research
-                </span>
-
-            </h1>
-
-
-
-            <p class="hero-description">
-
-                EAGLE WRITES provides professional research writing,
-                academic support, data analysis, and consulting
-                services for researchers, students, professionals,
-                and businesses.
-
-            </p>
-
-
-
-            <div class="hero-buttons">
-
-
-                <a
-                    href="get-started.html"
-                    class="btn btn-primary"
-                >
-                    Get Started
-                </a>
-
-
-                <a
-                    href="#services"
-                    class="btn btn-primary explore-services-btn"
-                >
-                    Explore Our Services
-                </a>
-
-
-            </div>
-
-
-
-            <p class="hero-credibility">
-
-                Professional • Reliable • Results-Driven
-
-            </p>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= BRIEF ABOUT ================= -->
-
-    <section class="about-home">
-
-        <div class="about-home-container">
-
-
-            <div class="section-header">
-
-                <span class="section-label">
-
-                    ABOUT EAGLE WRITES
-
-                </span>
-
-
-                <h2 class="section-heading">
-
-                    Research Excellence With Purpose
-
-                </h2>
-
-            </div>
-
-
-
-            <div class="about-home-content">
-
-
-                <p>
-
-                    EAGLE WRITES helps individuals and organizations
-                    turn ideas, information, and data into clear,
-                    credible, and useful results.
-
-                </p>
-
-
-                <p>
-
-                    Founded by <strong>Arnold Milton</strong>,
-                    EAGLE WRITES focuses on research writing,
-                    analytics, academic support, and professional
-                    consulting.
-
-                </p>
-
-
-            </div>
-
-
-
-            <div class="about-home-button">
-
-                <a
-                    href="about.html"
-                    class="btn btn-primary"
-                >
-                    Learn More About Us
-                </a>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= SERVICES ================= -->
-
-    <section
-        class="services-home"
-        id="services"
-    >
-
-        <div class="services-home-container">
-
-
-            <div class="section-header">
-
-
-                <span class="section-label">
-
-                    WHAT WE DO
-
-                </span>
-
-
-                <h2 class="section-heading">
-
-                    Our Services
-
-                </h2>
-
-
-                <p class="section-subheading">
-
-                    Professional support across research,
-                    analytics, writing, and consulting.
-
-                </p>
-
-
-            </div>
-
-
-
-            <div class="services-name-grid">
-
-
-                <a
-                    href="services.html"
-                    class="service-name-card"
-                >
-
-                    <span class="service-number">
-                        01
-                    </span>
-
-                    <span class="service-name">
-                        Research Writing
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="services.html"
-                    class="service-name-card"
-                >
-
-                    <span class="service-number">
-                        02
-                    </span>
-
-                    <span class="service-name">
-                        Academic Writing
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="services.html"
-                    class="service-name-card"
-                >
-
-                    <span class="service-number">
-                        03
-                    </span>
-
-                    <span class="service-name">
-                        Data Analysis
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="services.html"
-                    class="service-name-card"
-                >
-
-                    <span class="service-number">
-                        04
-                    </span>
-
-                    <span class="service-name">
-                        Power BI Dashboards
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="services.html"
-                    class="service-name-card"
-                >
-
-                    <span class="service-number">
-                        05
-                    </span>
-
-                    <span class="service-name">
-                        Article Writing
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="services.html"
-                    class="service-name-card"
-                >
-
-                    <span class="service-number">
-                        06
-                    </span>
-
-                    <span class="service-name">
-                        Business &amp; Financial Research
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="services.html"
-                    class="service-name-card"
-                >
-
-                    <span class="service-number">
-                        07
-                    </span>
-
-                    <span class="service-name">
-                        Statistical Analysis
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="services.html"
-                    class="service-name-card"
-                >
-
-                    <span class="service-number">
-                        08
-                    </span>
-
-                    <span class="service-name">
-                        Consulting
-                    </span>
-
-                </a>
-
-
-            </div>
-
-
-
-            <div class="services-home-cta">
-
-                <a
-                    href="get-started.html"
-                    class="btn btn-primary"
-                >
-                    Explore Your Options
-                </a>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= LATEST ARTICLES ================= -->
-
-    <section
-        class="latest-articles-home"
-        id="latest-articles"
-    >
-
-        <div class="latest-articles-container">
-
-
-            <div class="section-header">
-
-                <span class="section-label">
-                    EAGLE WRITES ARTICLES
-                </span>
-
-                <h2 class="section-heading">
-                    Latest Articles
-                </h2>
-
-                <p class="section-subheading">
-                    Explore research, insights, analysis, and ideas
-                    published by EAGLE WRITES contributors.
-                </p>
-
-            </div>
-
-
-            <!-- LOADING MESSAGE -->
-
-            <div
-                id="articles-loading"
-                class="articles-loading"
-            >
-                Loading latest articles...
-            </div>
-
-
-            <!-- EMPTY MESSAGE -->
-
-            <div
-                id="articles-empty"
-                class="articles-empty"
-                style="display:none;"
-            >
-                No articles have been published yet.
-            </div>
-
-
-            <!-- ERROR MESSAGE -->
-
-            <div
-                id="articles-error"
-                class="articles-error"
-            >
-                Articles could not be loaded at this time.
-            </div>
-
-
-            <!-- LATEST 6 ARTICLE CARDS -->
-
-            <div
-                id="latest-articles-grid"
-                class="latest-articles-grid"
-            >
-            </div>
-
-
-            <!-- VIEW ALL ARTICLES BUTTON -->
-
-            <div
-                class="latest-articles-cta"
-                id="latest-articles-cta"
-                style="display:none;"
-            >
-
-                <a
-                    href="articles.html"
-                    class="btn btn-primary"
-                >
-                    View All Articles
-                </a>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= GET STARTED CTA ================= -->
-
-    <section class="home-cta">
-
-        <div class="home-cta-container">
-
-
-            <span class="section-label">
-
-                READY TO BEGIN?
-
-            </span>
-
-
-            <h2>
-
-                Let's Work On Your Next Project
-
-            </h2>
-
-
-            <p>
-
-                Access our services, courses, portfolio,
-                and contact options from one place.
-
-            </p>
-
-
-            <div class="home-cta-buttons">
-
-
-                <a
-                    href="get-started.html"
-                    class="btn btn-primary"
-                >
-                    Get Started
-                </a>
-
-
-                <a
-                    href="submit-article.html"
-                    class="btn btn-primary"
-                >
+            <button
+                class="mobile-menu-toggle"
+                id="mobile-menu-toggle"
+                aria-label="Toggle navigation menu"
+                type="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="get-started.html" class="nav-link">Get Started</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="submit-article.html" class="btn btn-primary">
                     Publish Your Article
                 </a>
 
-
                 <a
                     href="https://wa.me/254748513346"
-                    class="btn btn-secondary"
+                    class="btn-whatsapp"
                     target="_blank"
                     rel="noopener noreferrer"
-                >
-                    WhatsApp Us
+                    aria-label="Contact EAGLE WRITES on WhatsApp">
+                    <span class="icon-whatsapp"></span>
+                    WhatsApp
                 </a>
 
-
+                <a href="get-started.html" class="btn-get-started-header">
+                    Get Started
+                </a>
             </div>
 
+        </nav>
+    </header>
 
-        </div>
+    <!-- MAIN CONTENT -->
 
-    </section>
+    <main>
 
+        <!-- HERO -->
 
-</main>
+        <section class="hero" id="home">
+            <div class="hero-container">
 
+                <div class="hero-badge">
+                    <span class="badge-text">
+                        RESEARCH • WRITE • ANALYZE • SUCCEED
+                    </span>
+                </div>
 
+                <h1 class="hero-heading">
+                    Turn Your Ideas Into
+                    <span class="hero-highlight">Powerful Research</span>
+                </h1>
 
-<!-- ================= FOOTER ================= -->
+                <p class="hero-description">
+                    EAGLE WRITES provides professional research writing,
+                    academic support, data analysis, and consulting
+                    services for researchers, students, professionals,
+                    and businesses.
+                </p>
 
-<footer
-    class="footer"
-    id="footer"
->
+                <div class="hero-buttons">
+                    <a href="get-started.html" class="btn btn-primary">
+                        Get Started
+                    </a>
 
+                    <a href="#services" class="btn btn-primary explore-services-btn">
+                        Explore Our Services
+                    </a>
+                </div>
 
-    <div class="footer-container">
+                <p class="hero-credibility">
+                    Professional • Reliable • Results-Driven
+                </p>
 
+            </div>
+        </section>
 
-        <div class="footer-brand">
-
-
-            <h2 class="footer-title">
-
-                EAGLE WRITES
-
-            </h2>
-
-
-            <p class="footer-tagline">
-
-                RESEARCH • ANALYTICS • CONSULTING
-
+        <!-- ABOUT -->
+<section class="about-home" id="about-home">
+    <div class="about-home-container">
+        <div class="section-header">
+            <span class="section-label">ABOUT EAGLE WRITES</span>
+            <h2 class="section-heading">Research Excellence With Purpose</h2>
+            <p class="section-subheading">
+                Turning knowledge, research, and data into meaningful results.
             </p>
+        </div>
 
+        <div class="about-redesign">
+            <div class="about-redesign-image">
+                <img
+                    src="Images/profile.%20jpg.jpeg"
+                    alt="Professional reviewing research and business documents"
+                    loading="lazy">
+                <div class="about-image-caption">
+                    <span class="about-caption-mark"></span>
+                    <span>Knowledge. Insight. Impact.</span>
+                </div>
+            </div>
 
-            <p class="footer-founder">
+            <div class="about-redesign-copy">
+                <span class="about-kicker">WHO WE ARE</span>
+                <h3>Ideas deserve more than just words.</h3>
+                <p>
+                    EAGLE WRITES helps individuals and organizations turn
+                    ideas, information, and data into clear, credible, and
+                    useful results.
+                </p>
+                <p>
+                    Founded by <strong>Arnold Milton</strong>, we provide
+                    research writing, academic support, data analytics,
+                    professional writing, and consulting services with a
+                    focus on clarity, quality, and purpose.
+                </p>
+                <a href="about.html" class="btn btn-primary">
+                    Learn More About Us
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
-                Founded by Arnold Milton
-
+<!-- SERVICES -->
+<section class="services-home" id="services">
+    <div class="services-home-container">
+        <div class="section-header">
+            <span class="section-label">WHAT WE DO</span>
+            <h2 class="section-heading">Expertise That Moves You Forward</h2>
+            <p class="section-subheading">
+                Professional support across research, analytics, writing,
+                and consulting.
             </p>
-
-
         </div>
 
+        <div class="services-name-grid services-image-grid">
+            <a href="services.html" class="service-name-card">
+                <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                     alt="Research writing and note-taking" loading="lazy">
+                <span class="service-card-copy">
+                    <span class="service-name">Research Writing</span>
+                    <span class="service-card-description">Clear, structured research and professional reports.</span>
+                </span>
+                <span class="service-card-arrow" aria-hidden="true">↗</span>
+            </a>
 
+            <a href="services.html" class="service-name-card">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                     alt="Academic learning and writing" loading="lazy">
+                <span class="service-card-copy">
+                    <span class="service-name">Academic Writing</span>
+                    <span class="service-card-description">Structured academic support and editing.</span>
+                </span>
+                <span class="service-card-arrow" aria-hidden="true">↗</span>
+            </a>
 
-        <div class="footer-nav">
+            <a href="services.html" class="service-name-card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                     alt="Data analytics and visual reports" loading="lazy">
+                <span class="service-card-copy">
+                    <span class="service-name">Data Analysis</span>
+                    <span class="service-card-description">Transform raw data into useful insights.</span>
+                </span>
+                <span class="service-card-arrow" aria-hidden="true">↗</span>
+            </a>
 
+            <a href="services.html" class="service-name-card">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                     alt="Business dashboard with charts and metrics" loading="lazy">
+                <span class="service-card-copy">
+                    <span class="service-name">Power BI Dashboards</span>
+                    <span class="service-card-description">Interactive dashboards for better decisions.</span>
+                </span>
+                <span class="service-card-arrow" aria-hidden="true">↗</span>
+            </a>
 
-            <h3 class="footer-nav-heading">
+            <a href="services.html" class="service-name-card">
+                <img src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                     alt="Writing and content planning" loading="lazy">
+                <span class="service-card-copy">
+                    <span class="service-name">Article Writing</span>
+                    <span class="service-card-description">Engaging articles shaped around your message.</span>
+                </span>
+                <span class="service-card-arrow" aria-hidden="true">↗</span>
+            </a>
 
-                Quick Links
+            <a href="services.html" class="service-name-card">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                     alt="Business performance and financial analytics" loading="lazy">
+                <span class="service-card-copy">
+                    <span class="service-name">Business &amp; Financial Research</span>
+                    <span class="service-card-description">Evidence-based business and financial insights.</span>
+                </span>
+                <span class="service-card-arrow" aria-hidden="true">↗</span>
+            </a>
 
-            </h3>
+            <a href="services.html" class="service-name-card">
+                <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                     alt="Statistical charts and quantitative analysis" loading="lazy">
+                <span class="service-card-copy">
+                    <span class="service-name">Statistical Analysis</span>
+                    <span class="service-card-description">Reliable statistical analysis and interpretation.</span>
+                </span>
+                <span class="service-card-arrow" aria-hidden="true">↗</span>
+            </a>
 
-
-            <ul class="footer-nav-list">
-
-
-                <li>
-
-                    <a
-                        href="index.html"
-                        class="footer-link"
-                    >
-                        Home
-                    </a>
-
-                </li>
-
-
-                <li>
-
-                    <a
-                        href="about.html"
-                        class="footer-link"
-                    >
-                        About
-                    </a>
-
-                </li>
-
-
-                <li>
-
-                    <a
-                        href="services.html"
-                        class="footer-link"
-                    >
-                        Services
-                    </a>
-
-                </li>
-
-
-                <li>
-
-                    <a
-                        href="courses.html"
-                        class="footer-link"
-                    >
-                        Courses
-                    </a>
-
-                </li>
-
-
-                <li>
-
-                    <a
-                        href="portfolio.html"
-                        class="footer-link"
-                    >
-                        Portfolio
-                    </a>
-
-                </li>
-
-
-                <li>
-
-                    <a
-                        href="contact.html"
-                        class="footer-link"
-                    >
-                        Contact
-                    </a>
-
-                </li>
-
-
-            </ul>
-
-
+            <a href="services.html" class="service-name-card">
+                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                     alt="Professionals collaborating on a project" loading="lazy">
+                <span class="service-card-copy">
+                    <span class="service-name">Consulting</span>
+                    <span class="service-card-description">Practical guidance for projects and decisions.</span>
+                </span>
+                <span class="service-card-arrow" aria-hidden="true">↗</span>
+            </a>
         </div>
 
+        <div class="services-home-cta">
+            <a href="get-started.html" class="btn btn-primary">
+                Explore Your Options
+            </a>
+        </div>
+    </div>
+</section>
+<!-- LATEST ARTICLES -->
 
+        <section class="latest-articles-home" id="latest-articles">
+            <div class="latest-articles-container">
 
-        <div class="footer-contact">
+                <div class="section-header">
+                    <span class="section-label">EAGLE WRITES ARTICLES</span>
 
+                    <h2 class="section-heading">Latest Articles</h2>
 
-            <h3 class="footer-contact-heading">
+                    <p class="section-subheading">
+                        Explore research, insights, analysis, and ideas
+                        published by EAGLE WRITES contributors.
+                    </p>
+                </div>
 
-                Contact Us
+                <div id="articles-loading" class="articles-loading" role="status">
+                    Loading latest articles...
+                </div>
 
-            </h3>
+                <div
+                    id="articles-empty"
+                    class="articles-empty"
+                    style="display:none;">
+                    No articles have been published yet.
+                </div>
 
+                <div
+                    id="articles-error"
+                    class="articles-error"
+                    role="alert">
+                    Articles could not be loaded at this time.
+                </div>
 
-            <ul class="footer-contact-list">
+                <div id="latest-articles-grid" class="latest-articles-grid"></div>
 
+                <div
+                    class="latest-articles-cta"
+                    id="latest-articles-cta"
+                    style="display:none;">
+                    <a href="articles.html" class="btn btn-primary">
+                        View All Articles
+                    </a>
+                </div>
 
-                <li>
+            </div>
+        </section>
 
-                    <a
-                        href="tel:+254748513346"
-                        class="footer-contact-link"
-                    >
-                        +254 748 513 346
+        <!-- CALL TO ACTION -->
+
+        <section class="home-cta">
+            <div class="home-cta-container">
+
+                <span class="section-label">READY TO BEGIN?</span>
+
+                <h2>Let's Work On Your Next Project</h2>
+
+                <p>
+                    Access our services, courses, portfolio,
+                    and contact options from one place.
+                </p>
+
+                <div class="home-cta-buttons">
+                    <a href="get-started.html" class="btn btn-primary">
+                        Get Started
                     </a>
 
-                </li>
-
-
-                <li>
-
-                    <a
-                        href="mailto:miltonarnold535@gmail.com"
-                        class="footer-contact-link"
-                    >
-                        miltonarnold535@gmail.com
+                    <a href="submit-article.html" class="btn btn-primary">
+                        Publish Your Article
                     </a>
-
-                </li>
-
-
-                <li>
 
                     <a
                         href="https://wa.me/254748513346"
-                        class="footer-contact-link"
+                        class="btn btn-secondary"
                         target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        WhatsApp
+                        rel="noopener noreferrer">
+                        WhatsApp Us
                     </a>
+                </div>
 
-                </li>
+            </div>
+        </section>
 
+    </main>
 
-            </ul>
+    <!-- FOOTER -->
 
+    <footer class="footer" id="footer">
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <h2 class="footer-title">EAGLE WRITES</h2>
+
+                <p class="footer-tagline">
+                    RESEARCH • ANALYTICS • CONSULTING
+                </p>
+
+                <p class="footer-founder">Founded by Arnold Milton</p>
+            </div>
+
+            <div class="footer-nav">
+                <h3 class="footer-nav-heading">Quick Links</h3>
+
+                <ul class="footer-nav-list">
+                    <li><a href="index.html" class="footer-link">Home</a></li>
+                    <li><a href="about.html" class="footer-link">About</a></li>
+                    <li><a href="services.html" class="footer-link">Services</a></li>
+                    <li><a href="courses.html" class="footer-link">Courses</a></li>
+                    <li><a href="portfolio.html" class="footer-link">Portfolio</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    <li><a href="library.html" class="footer-link">Digital Library</a></li>
+                    <li><a href="articles.html" class="footer-link">Articles &amp; Research</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3 class="footer-contact-heading">Contact Us</h3>
+
+                <ul class="footer-contact-list">
+                    <li>
+                        <a href="tel:+254748513346" class="footer-contact-link">
+                            +254 748 513 346
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="mailto:miltonarnold535@gmail.com"
+                            class="footer-contact-link">
+                            miltonarnold535@gmail.com
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://wa.me/254748513346"
+                            class="footer-contact-link"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            WhatsApp
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
         </div>
 
+        <div class="footer-bottom">
+            <p class="footer-copyright">
+                © 2026 EAGLE WRITES. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
 
-    </div>
+    <!-- SUPABASE AND LATEST ARTICLES -->
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+    <script>
+        (function () {
+            const SUPABASE_URL =
+                'https://ekkvghdnejvyjykagafr.supabase.co';
 
-    <div class="footer-bottom">
+            const SUPABASE_KEY =
+                'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
 
+            const FALLBACK_IMAGE = 'Images/logo.milto.jpg';
 
-        <p class="footer-copyright">
+            async function loadLatestArticles() {
+                const loading = document.getElementById('articles-loading');
+                const empty = document.getElementById('articles-empty');
+                const errorMessage = document.getElementById('articles-error');
+                const grid = document.getElementById('latest-articles-grid');
+                const cta = document.getElementById('latest-articles-cta');
 
-            © 2026 EAGLE WRITES. All Rights Reserved.
-
-        </p>
-
-
-    </div>
-
-
-</footer>
-
-
-
-<!-- ================= SUPABASE ================= -->
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-
-<script>
-
-    const SUPABASE_URL =
-        'https://ekkvghdnejvyjykagafr.supabase.co';
-
-    const SUPABASE_KEY =
-        'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
-
-    const supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
-
-
-    async function loadLatestArticles() {
-
-        const loading =
-            document.getElementById('articles-loading');
-
-        const empty =
-            document.getElementById('articles-empty');
-
-        const error =
-            document.getElementById('articles-error');
-
-        const grid =
-            document.getElementById('latest-articles-grid');
-
-        const cta =
-            document.getElementById('latest-articles-cta');
-
-
-        try {
-
-            const { data, error: fetchError } =
-                await supabaseClient
-                    .from('articles')
-                    .select(`
-                        id,
-                        title,
-                        slug,
-                        content,
-                        author_name,
-                        category,
-                        featured_image,
-                        meta_description,
-                        created_at
-                    `)
-                    .eq('status', 'approved')
-                    .order('created_at', {
-                        ascending: false
-                    })
-                    .limit(6);
-
-
-            if (fetchError) {
-
-                console.error(
-                    'Article loading error:',
-                    fetchError
-                );
-
-                loading.style.display = 'none';
-                error.style.display = 'block';
-
-                return;
-            }
-
-
-            loading.style.display = 'none';
-
-
-            if (!data || data.length === 0) {
-
-                empty.style.display = 'block';
-
-                return;
-            }
-
-
-            grid.innerHTML = '';
-
-
-            data.forEach(article => {
-
-                const card =
-                    document.createElement('article');
-
-                card.className = 'article-card';
-
-
-                const image =
-                    document.createElement('img');
-
-                image.className =
-                    'article-card-image';
-
-                image.alt =
-                    article.title || 'EAGLE WRITES article';
-
-                image.loading = 'lazy';
-
-
-                if (article.featured_image) {
-
-                    image.src =
-                        article.featured_image;
-
-                } else {
-
-                    image.src =
-                        'Images/logo.milto.jpg';
-
+                if (!loading || !empty || !errorMessage || !grid || !cta) {
+                    console.error('One or more homepage article elements are missing.');
+                    return;
                 }
 
+                loading.style.display = 'block';
+                empty.style.display = 'none';
+                errorMessage.style.display = 'none';
+                grid.replaceChildren();
+                cta.style.display = 'none';
 
-                const content =
-                    document.createElement('div');
+                try {
+                    if (!window.supabase) {
+                        throw new Error('Supabase library did not load.');
+                    }
 
-                content.className =
-                    'article-card-content';
+                    const supabaseClient = window.supabase.createClient(
+                        SUPABASE_URL,
+                        SUPABASE_KEY
+                    );
 
+                    const { data, error: fetchError } =
+                        await supabaseClient
+                            .from('articles')
+                            .select(`
+                                id,
+                                title,
+                                slug,
+                                content,
+                                author_name,
+                                category,
+                                featured_image,
+                                meta_description,
+                                created_at
+                            `)
+                            .eq('status', 'approved')
+                            .order('created_at', { ascending: false })
+                            .limit(6);
 
-                const category =
-                    document.createElement('div');
+                    if (fetchError) {
+                        throw fetchError;
+                    }
 
-                category.className =
-                    'article-card-category';
+                    loading.style.display = 'none';
 
-                category.textContent =
-                    article.category ||
-                    'Research & Insights';
+                    if (!data || data.length === 0) {
+                        empty.style.display = 'block';
+                        return;
+                    }
 
+                    const fragment = document.createDocumentFragment();
 
-                const title =
-                    document.createElement('h3');
+                    data.forEach(function (article) {
+                        const card = document.createElement('article');
+                        card.className = 'article-card';
 
-                title.className =
-                    'article-card-title';
+                        const image = document.createElement('img');
+                        image.className = 'article-card-image';
+                        image.alt = article.title
+                            ? 'Cover image for ' + article.title
+                            : 'EAGLE WRITES article cover';
+                        image.loading = 'lazy';
+                        image.decoding = 'async';
+                        image.src = article.featured_image || FALLBACK_IMAGE;
 
-
-                const titleLink =
-                    document.createElement('a');
-
-                titleLink.href =
-                    'article.html?slug=' +
-                    encodeURIComponent(article.slug);
-
-                titleLink.textContent =
-                    article.title;
-
-
-                title.appendChild(titleLink);
-
-
-                const excerpt =
-                    document.createElement('p');
-
-                excerpt.className =
-                    'article-card-excerpt';
-
-
-                const description =
-                    article.meta_description ||
-                    article.content ||
-                    'Read this article from EAGLE WRITES.';
-
-
-                excerpt.textContent =
-                    description.length > 150
-                        ? description.substring(0, 150) + '...'
-                        : description;
-
-
-                const meta =
-                    document.createElement('div');
-
-                meta.className =
-                    'article-card-meta';
-
-
-                const author =
-                    article.author_name ||
-                    'EAGLE WRITES';
-
-
-                const date =
-                    article.created_at
-                        ? new Date(
-                            article.created_at
-                        ).toLocaleDateString(
-                            'en-GB',
-                            {
-                                day: 'numeric',
-                                month: 'long',
-                                year: 'numeric'
+                        image.addEventListener('error', function () {
+                            if (image.dataset.fallbackApplied !== 'true') {
+                                image.dataset.fallbackApplied = 'true';
+                                image.src = FALLBACK_IMAGE;
                             }
-                        )
-                        : '';
+                        });
 
+                        const content = document.createElement('div');
+                        content.className = 'article-card-content';
 
-                meta.textContent =
-                    'By ' +
-                    author +
-                    (date ? ' • ' + date : '');
+                        const category = document.createElement('div');
+                        category.className = 'article-card-category';
+                        category.textContent =
+                            article.category || 'Research & Insights';
 
+                        const title = document.createElement('h3');
+                        title.className = 'article-card-title';
 
-                const readMore =
-                    document.createElement('a');
+                        const articleUrl = article.slug
+                            ? 'article.html?slug=' + encodeURIComponent(article.slug)
+                            : 'articles.html';
 
-                readMore.className =
-                    'article-read-more';
+                        const titleLink = document.createElement('a');
+                        titleLink.href = articleUrl;
+                        titleLink.textContent =
+                            article.title || 'Untitled Article';
 
-                readMore.href =
-                    'article.html?slug=' +
-                    encodeURIComponent(article.slug);
+                        title.appendChild(titleLink);
 
-                readMore.textContent =
-                    'Read Article';
+                        const excerpt = document.createElement('p');
+                        excerpt.className = 'article-card-excerpt';
 
+                        const rawDescription =
+                            article.meta_description ||
+                            article.content ||
+                            'Read this article from EAGLE WRITES.';
 
-                content.appendChild(category);
-                content.appendChild(title);
-                content.appendChild(excerpt);
-                content.appendChild(meta);
-                content.appendChild(readMore);
+                        const plainDescription = String(rawDescription)
+                            .replace(/<[^>]*>/g, ' ')
+                            .replace(/\s+/g, ' ')
+                            .trim();
 
+                        excerpt.textContent =
+                            plainDescription.length > 115
+                                ? plainDescription.substring(0, 115).trimEnd() + '...'
+                                : plainDescription;
 
-                card.appendChild(image);
-                card.appendChild(content);
+                        const meta = document.createElement('div');
+                        meta.className = 'article-card-meta';
 
+                        const author = article.author_name || 'EAGLE WRITES';
 
-                grid.appendChild(card);
+                        const date = article.created_at
+                            ? new Date(article.created_at).toLocaleDateString(
+                                'en-GB',
+                                {
+                                    day: 'numeric',
+                                    month: 'short',
+                                    year: 'numeric'
+                                }
+                            )
+                            : '';
 
+                        meta.textContent =
+                            'By ' + author + (date ? ' • ' + date : '');
+
+                        const readMore = document.createElement('a');
+                        readMore.className = 'article-read-more';
+                        readMore.href = articleUrl;
+                        readMore.textContent = 'Read Article';
+                        readMore.setAttribute(
+                            'aria-label',
+                            'Read article: ' + (article.title || 'Untitled Article')
+                        );
+
+                        content.appendChild(category);
+                        content.appendChild(title);
+                        content.appendChild(excerpt);
+                        content.appendChild(meta);
+                        content.appendChild(readMore);
+
+                        card.appendChild(image);
+                        card.appendChild(content);
+
+                        fragment.appendChild(card);
+                    });
+
+                    grid.appendChild(fragment);
+                    cta.style.display = 'block';
+
+                } catch (err) {
+                    console.error('Article loading error:', err);
+                    loading.style.display = 'none';
+                    errorMessage.style.display = 'block';
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener(
+                    'DOMContentLoaded',
+                    loadLatestArticles,
+                    { once: true }
+                );
+            } else {
+                loadLatestArticles();
+            }
+        })();
+    </script>
+
+    <!-- SIDEBAR BEHAVIOUR -->
+
+    <script>
+        (function () {
+            const sidebar = document.getElementById('ew-sidebar');
+            const toggle = document.getElementById('ew-sidebar-toggle');
+            const close = document.getElementById('ew-sidebar-close');
+            const backdrop = document.getElementById('ew-sidebar-backdrop');
+
+            if (!sidebar || !toggle || !close || !backdrop) {
+                return;
+            }
+
+            function openSidebar() {
+                sidebar.classList.add('is-open');
+                backdrop.classList.add('is-visible');
+                document.body.classList.add('ew-sidebar-open');
+
+                toggle.setAttribute('aria-expanded', 'true');
+                backdrop.setAttribute('aria-hidden', 'false');
+                close.focus();
+            }
+
+            function closeSidebar() {
+                sidebar.classList.remove('is-open');
+                backdrop.classList.remove('is-visible');
+                document.body.classList.remove('ew-sidebar-open');
+
+                toggle.setAttribute('aria-expanded', 'false');
+                backdrop.setAttribute('aria-hidden', 'true');
+            }
+
+            toggle.addEventListener('click', openSidebar);
+            close.addEventListener('click', closeSidebar);
+            backdrop.addEventListener('click', closeSidebar);
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') {
+                    closeSidebar();
+                }
             });
 
+            sidebar.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 1024) {
+                        closeSidebar();
+                    }
+                });
+            });
 
-            /*
-             * Always show the archive button once
-             * approved articles are available.
-             */
-            cta.style.display = 'block';
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 1024) {
+                    closeSidebar();
+                }
+            });
+        })();
+    </script>
 
+    <!-- EXISTING WEBSITE JAVASCRIPT -->
 
-        } catch (err) {
-
-            console.error(
-                'Unexpected article error:',
-                err
-            );
-
-            loading.style.display = 'none';
-            error.style.display = 'block';
-
-        }
-
-    }
-
-
-    document.addEventListener(
-        'DOMContentLoaded',
-        loadLatestArticles
-    );
-
-</script>
-
-
-<!-- ================= EXISTING SITE JAVASCRIPT ================= -->
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
-
 </html>
+
+
