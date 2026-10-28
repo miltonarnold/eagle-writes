@@ -1,3 +1,4 @@
+﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +16,39 @@
     <link rel="icon" type="image/jpeg" href="Images/logo.milto.jpg">
 
     <style>
-        /* ==================================================
-           EAGLE WRITES â€” SIDEBAR
-        ================================================== */
+        :root {
+            --ew-navy: #0b1f3a;
+            --ew-navy-dark: #08172b;
+            --ew-gold: #f4b942;
+            --ew-gold-hover: #ffd16b;
+            --ew-background: #f4f7fb;
+            --ew-text: #475569;
+            --ew-muted: #64748b;
+            --ew-border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            max-width: 100%;
+        }
+
+        img,
+        video,
+        iframe {
+            max-width: 100%;
+        }
+
+        /* ================================
+           SIDEBAR NAVIGATION
+        ================================= */
 
         .ew-sidebar,
         .ew-sidebar * {
@@ -32,10 +63,11 @@
             flex-direction: column;
             width: 270px;
             height: 100vh;
+            height: 100dvh;
             overflow-y: auto;
-            background: #0b1f3a;
+            background: var(--ew-navy);
             color: #fff;
-            border-right: 1px solid rgba(244,185,66,.25);
+            border-right: 1px solid rgba(244, 185, 66, .25);
             transition: transform .3s ease, visibility .3s ease;
         }
 
@@ -69,6 +101,7 @@
             display: flex;
             flex-direction: column;
             gap: 5px;
+            min-width: 0;
         }
 
         .ew-sidebar-logo strong {
@@ -77,7 +110,7 @@
         }
 
         .ew-sidebar-logo small {
-            color: #f4b942;
+            color: var(--ew-gold);
             font-size: 9px;
             line-height: 1.5;
         }
@@ -91,7 +124,7 @@
             margin: 23px 10px 10px;
             padding-bottom: 8px;
             border-bottom: 1px solid rgba(244,185,66,.2);
-            color: #f4b942;
+            color: var(--ew-gold);
             font-size: 10px;
             font-weight: 800;
             letter-spacing: 1.2px;
@@ -112,7 +145,7 @@
             line-height: 1.5;
             text-decoration: none;
             transition: background .2s ease, color .2s ease,
-                border-color .2s ease, transform .2s ease;
+                border-color .2s ease;
         }
 
         .ew-sidebar-link > span {
@@ -126,30 +159,28 @@
         }
 
         .ew-sidebar-link:hover {
-            transform: translateX(2px);
             border-color: rgba(244,185,66,.2);
             background: rgba(244,185,66,.1);
-            color: #f4b942;
+            color: var(--ew-gold);
         }
 
         .ew-sidebar-link.active {
             border-color: rgba(244,185,66,.22);
-            border-left: 3px solid #f4b942;
+            border-left: 3px solid var(--ew-gold);
             background: rgba(244,185,66,.13);
-            color: #f4b942;
+            color: var(--ew-gold);
             font-weight: 700;
         }
 
         .ew-sidebar-link.ew-sidebar-featured {
             margin-top: 12px;
-            background: #f4b942;
-            color: #0b1f3a;
+            background: var(--ew-gold);
+            color: var(--ew-navy);
             font-weight: 800;
         }
 
         .ew-sidebar-link.ew-sidebar-featured:hover {
-            background: #ffd16b;
-            color: #0b1f3a;
+            background: var(--ew-gold-hover);
         }
 
         .ew-sidebar-bottom {
@@ -167,7 +198,7 @@
             height: 7px;
             margin-right: 7px;
             border-radius: 50%;
-            background: #f4b942;
+            background: var(--ew-gold);
         }
 
         .ew-sidebar-toggle,
@@ -176,24 +207,18 @@
             display: none;
         }
 
-        /* Desktop sidebar layout */
+        /* Desktop: sidebar remains visible */
 
         @media (min-width: 1025px) {
-            body > header.header {
-                width: calc(100% - 270px);
-                margin-left: 270px;
-                box-sizing: border-box;
-            }
-
+            body > header.header,
             body > main,
             body > footer.footer {
                 width: calc(100% - 270px);
                 margin-left: 270px;
-                box-sizing: border-box;
             }
         }
 
-        /* Mobile and tablet sidebar */
+        /* Tablet and mobile: sidebar becomes a drawer */
 
         @media (max-width: 1024px) {
             .ew-sidebar {
@@ -214,9 +239,9 @@
                 z-index: 1990;
                 display: block;
                 padding: 10px 14px;
-                border: 1px solid #f4b942;
+                border: 1px solid var(--ew-gold);
                 border-radius: 7px;
-                background: #0b1f3a;
+                background: var(--ew-navy);
                 color: #fff;
                 font-weight: 700;
                 cursor: pointer;
@@ -225,6 +250,7 @@
 
             .ew-sidebar-close {
                 display: block;
+                flex-shrink: 0;
                 border: 0;
                 background: transparent;
                 color: #fff;
@@ -243,11 +269,28 @@
             body.ew-sidebar-open {
                 overflow: hidden;
             }
+
+            /* Prevent a second mobile menu from appearing. */
+            .header .mobile-menu-toggle,
+            .header .nav-menu,
+            .header .nav-actions {
+                display: none !important;
+            }
+
+            .header,
+            .header .navbar {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .header .navbar {
+                padding-left: 100px;
+            }
         }
 
-        /* ==================================================
-           SHARED HOMEPAGE SECTION STYLES
-        ================================================== */
+        /* ================================
+           SHARED SECTION STYLES
+        ================================= */
 
         .about-home,
         .services-home,
@@ -269,7 +312,7 @@
         .latest-articles-container,
         .home-cta-container {
             width: 100%;
-            max-width: 1080px;
+            max-width: 1120px;
             margin: 0 auto;
         }
 
@@ -298,175 +341,301 @@
         .services-home .section-heading,
         .latest-articles-home .section-heading {
             margin: 0 0 14px;
-            color: #0b1f3a;
+            color: var(--ew-navy);
             font-size: clamp(25px, 3vw, 35px);
             font-weight: 800;
             line-height: 1.3;
             overflow-wrap: anywhere;
         }
 
+        .about-home .section-subheading,
         .services-home .section-subheading,
         .latest-articles-home .section-subheading {
             max-width: 650px;
             margin: 0 auto;
-            color: #64748b;
+            color: var(--ew-muted);
             font-size: 15px;
             line-height: 1.8;
         }
 
-        /* ==================================================
+        /* ================================
            ABOUT SECTION
-        ================================================== */
+        ================================= */
 
         .about-home {
             background: #fff;
         }
 
-        .about-home-container {
-            max-width: 850px;
-        }
-
-        .about-home .section-header {
-            margin-bottom: 24px;
-        }
-
-        .about-home-content {
-            max-width: 760px;
-            margin: 0 auto;
-            padding: 26px 28px;
-            border-left: 4px solid #f4b942;
-            border-radius: 0 10px 10px 0;
-            background: #f4f7fb;
-        }
-
-        .about-home-content p {
-            margin: 0 0 14px;
-            color: #475569;
-            font-size: 15px;
-            line-height: 1.9;
-        }
-
-        .about-home-content p:last-child {
-            margin-bottom: 0;
-        }
-
-        .about-home-content strong {
-            color: #0b1f3a;
-        }
-
-        .about-home-button,
-        .services-home-cta {
-            margin-top: 26px;
-            text-align: center;
-        }
-
-        /* ==================================================
-           SERVICES GRID
-        ================================================== */
-
-        .services-home {
-            background: #f4f7fb;
-        }
-
-        .services-name-grid {
+        .about-redesign {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 16px;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
             align-items: stretch;
+            overflow: hidden;
+            border: 1px solid #e5eaf0;
+            border-radius: 18px;
+            background: #fff;
+            box-shadow: 0 12px 35px rgba(11,31,58,.07);
         }
 
-        .services-name-grid .service-name-card {
+        .about-redesign-image {
+            position: relative;
+            min-height: 360px;
+            overflow: hidden;
+            background: #e8edf3;
+        }
+
+        .about-redesign-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 360px;
+            object-fit: cover;
+        }
+
+        .about-image-caption {
+            position: absolute;
+            right: 18px;
+            bottom: 18px;
+            left: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 16px;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 10px;
+            background: rgba(11,31,58,.88);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .about-caption-mark {
+            width: 9px;
+            height: 9px;
+            flex: 0 0 9px;
+            border-radius: 50%;
+            background: var(--ew-gold);
+        }
+
+        .about-redesign-copy {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            justify-content: space-between;
-            gap: 20px;
-            min-width: 0;
-            min-height: 145px;
-            padding: 20px;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            background: #fff;
-            color: #0b1f3a;
-            text-decoration: none;
-            box-shadow: 0 3px 12px rgba(11,31,58,.035);
-            transition: transform .2s ease, border-color .2s ease,
-                box-shadow .2s ease;
+            justify-content: center;
+            padding: clamp(28px, 4vw, 48px);
+            background: linear-gradient(145deg, #fff 0%, #fbfcfe 100%);
         }
 
-        .services-name-grid .service-name-card:hover {
-            transform: translateY(-4px);
-            border-color: #f4b942;
-            box-shadow: 0 9px 22px rgba(11,31,58,.09);
-        }
-
-        .services-name-grid .service-number {
+        .about-redesign-copy .about-kicker {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            width: 34px;
-            height: 34px;
-            border-radius: 8px;
-            background: #0b1f3a;
-            color: #f4b942;
-            font-size: 12px;
+            gap: 10px;
+            margin: 0 0 18px;
+            color: #967020;
+            font-size: 11px;
             font-weight: 800;
+            line-height: 1.5;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .services-name-grid .service-name {
-            display: block;
-            color: #0b1f3a;
-            font-size: 15px;
-            font-weight: 700;
-            line-height: 1.55;
+        .about-redesign-copy .about-kicker::before {
+            content: "";
+            display: inline-block;
+            width: 28px;
+            height: 2px;
+            border-radius: 2px;
+            background: var(--ew-gold);
+        }
+
+        .about-redesign-copy h3 {
+            max-width: 480px;
+            margin: 0 0 22px;
+            color: var(--ew-navy);
+            font-size: clamp(27px, 3.2vw, 40px);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -.8px;
             overflow-wrap: anywhere;
         }
 
-        /* ==================================================
-           LATEST ARTICLES â€” COMPACT IMAGE CARDS
-        ================================================== */
+        .about-redesign-copy p {
+            max-width: 540px;
+            margin: 0 0 18px;
+            color: #526176;
+            font-size: 15px;
+            line-height: 1.85;
+        }
+
+        .about-redesign-copy p strong {
+            color: var(--ew-navy);
+            font-weight: 800;
+        }
+
+        .about-redesign-copy .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            max-width: 100%;
+            margin-top: 10px;
+            padding: 13px 23px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: 750;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        /* ================================
+           SERVICES IMAGE GRID
+        ================================= */
+
+        .services-home {
+            background: var(--ew-background);
+        }
+
+        .services-home .section-heading,
+        .services-home .section-subheading {
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .services-image-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .services-image-grid .service-name-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid var(--ew-border);
+            border-radius: 14px;
+            background: #fff;
+            color: var(--ew-navy);
+            text-decoration: none;
+            box-shadow: 0 5px 18px rgba(11,31,58,.045);
+            transition: transform .22s ease, border-color .22s ease,
+                box-shadow .22s ease;
+        }
+
+        .services-image-grid .service-name-card:hover,
+        .services-image-grid .service-name-card:focus-visible {
+            transform: translateY(-4px);
+            border-color: var(--ew-gold);
+            box-shadow: 0 14px 28px rgba(11,31,58,.12);
+        }
+
+        .services-image-grid .service-name-card > img {
+            display: block;
+            width: 100%;
+            height: 155px;
+            object-fit: cover;
+            background: #e2e8f0;
+        }
+
+        .services-image-grid .service-card-copy {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            width: 100%;
+            padding: 18px 18px 22px;
+        }
+
+        .services-image-grid .service-name {
+            display: block;
+            color: var(--ew-navy);
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 1.45;
+            overflow-wrap: anywhere;
+        }
+
+        .services-image-grid .service-card-description {
+            display: block;
+            color: var(--ew-muted);
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        .services-image-grid .service-card-arrow {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(255,255,255,.55);
+            border-radius: 50%;
+            background: rgba(11,31,58,.88);
+            color: var(--ew-gold);
+            font-size: 18px;
+        }
+
+        .services-home-cta {
+            margin-top: 28px;
+            text-align: center;
+        }
+
+        /* ================================
+           LATEST ARTICLES
+           Image left, content right
+        ================================= */
 
         .latest-articles-home {
             background: #fff;
         }
 
         .latest-articles-container {
-            max-width: 1080px;
+            max-width: 1000px;
         }
 
         .latest-articles-home .latest-articles-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 20px;
-            align-items: stretch;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 14px;
             margin-top: 0;
         }
 
         .latest-articles-home .article-card {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            align-items: stretch;
+            gap: 16px;
+            width: 100%;
             min-width: 0;
-            height: 100%;
+            min-height: 142px;
+            padding: 12px;
             overflow: hidden;
             border: 1px solid #e5eaf0;
             border-radius: 12px;
             background: #fff;
-            box-shadow: 0 4px 16px rgba(11,31,58,.055);
-            transition: transform .2s ease, box-shadow .2s ease;
+            box-shadow: 0 4px 16px rgba(11,31,58,.045);
+            transition: border-color .2s ease, box-shadow .2s ease;
         }
 
         .latest-articles-home .article-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 24px rgba(11,31,58,.1);
+            border-color: #d6b15a;
+            box-shadow: 0 8px 22px rgba(11,31,58,.09);
         }
 
         .latest-articles-home .article-card-image {
             display: block;
-            width: 100%;
-            height: 105px;
-            min-height: 105px;
-            max-height: 105px;
+            flex: 0 0 145px;
+            width: 145px;
+            min-width: 145px;
+            height: 116px;
+            min-height: 116px;
             margin: 0;
+            border-radius: 8px;
             object-fit: cover;
             object-position: center;
             background: #eef2f6;
@@ -474,39 +643,40 @@
 
         .latest-articles-home .article-card-content {
             display: flex;
-            flex: 1;
+            flex: 1 1 auto;
             flex-direction: column;
             align-items: flex-start;
             min-width: 0;
-            padding: 16px;
+            padding: 2px 0;
         }
 
         .latest-articles-home .article-card-category {
             display: inline-block;
-            margin: 0 0 8px;
-            padding: 4px 8px;
+            max-width: 100%;
+            margin: 0 0 6px;
+            padding: 3px 7px;
             border-radius: 4px;
-            background: #f4f7fb;
+            background: var(--ew-background);
             color: #526173;
             font-size: 10px;
             font-weight: 800;
-            letter-spacing: .6px;
+            letter-spacing: .5px;
             line-height: 1.5;
             text-transform: uppercase;
             overflow-wrap: anywhere;
         }
 
         .latest-articles-home .article-card-title {
-            margin: 0 0 10px;
-            color: #0b1f3a;
+            margin: 0 0 7px;
+            color: var(--ew-navy);
             font-size: 16px;
             font-weight: 750;
-            line-height: 1.45;
+            line-height: 1.4;
             overflow-wrap: anywhere;
         }
 
         .latest-articles-home .article-card-title a {
-            color: #0b1f3a;
+            color: var(--ew-navy);
             text-decoration: none;
         }
 
@@ -516,21 +686,21 @@
 
         .latest-articles-home .article-card-excerpt {
             display: -webkit-box;
-            margin: 0 0 12px;
+            margin: 0 0 8px;
             overflow: hidden;
-            color: #64748b;
+            color: var(--ew-muted);
             font-size: 12px;
-            line-height: 1.7;
+            line-height: 1.55;
             overflow-wrap: anywhere;
             -webkit-box-orient: vertical;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
         }
 
         .latest-articles-home .article-card-meta {
-            margin: 0 0 14px;
+            margin: 0 0 8px;
             color: #788596;
             font-size: 10px;
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-wrap: anywhere;
         }
 
@@ -538,28 +708,28 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            min-height: 32px;
             margin-top: auto;
-            padding: 9px 13px;
+            padding: 7px 11px;
             border-radius: 6px;
-            background: #f4b942;
-            color: #0b1f3a;
-            font-size: 12px;
+            background: var(--ew-gold);
+            color: var(--ew-navy);
+            font-size: 11px;
             font-weight: 800;
-            line-height: 1.5;
+            line-height: 1.4;
             text-align: center;
             text-decoration: none;
-            transition: background .2s ease;
         }
 
         .latest-articles-home .article-read-more:hover {
-            background: #ffd16b;
+            background: var(--ew-gold-hover);
         }
 
         .articles-loading,
         .articles-empty,
         .articles-error {
             padding: 24px 12px;
-            color: #64748b;
+            color: var(--ew-muted);
             font-size: 14px;
             line-height: 1.7;
             text-align: center;
@@ -570,16 +740,16 @@
         }
 
         .latest-articles-cta {
-            margin-top: 30px;
+            margin-top: 28px;
             text-align: center;
         }
 
-        /* ==================================================
+        /* ================================
            CALL TO ACTION
-        ================================================== */
+        ================================= */
 
         .home-cta {
-            background: #0b1f3a;
+            background: var(--ew-navy);
             color: #fff;
             text-align: center;
         }
@@ -591,7 +761,7 @@
         .home-cta .section-label {
             display: inline-block;
             margin-bottom: 10px;
-            color: #f4b942;
+            color: var(--ew-gold);
             font-size: 11px;
             font-weight: 800;
             letter-spacing: 1.6px;
@@ -602,6 +772,7 @@
             color: #fff;
             font-size: clamp(25px, 3vw, 36px);
             line-height: 1.3;
+            overflow-wrap: anywhere;
         }
 
         .home-cta p {
@@ -625,6 +796,7 @@
             align-items: center;
             justify-content: center;
             min-height: 44px;
+            max-width: 100%;
             padding: 11px 18px;
             border-radius: 7px;
             font-size: 13px;
@@ -633,19 +805,19 @@
             text-decoration: none;
         }
 
-        /* ==================================================
+        /* ================================
            FOOTER
-        ================================================== */
+        ================================= */
 
         .footer {
-            background: #08172b;
+            background: var(--ew-navy-dark);
             color: #e6edf6;
         }
 
         .footer-container {
             display: grid;
             grid-template-columns: 1.2fr 1fr 1fr;
-            gap: 42px;
+            gap: 35px;
             width: 100%;
             max-width: 1080px;
             margin: 0 auto;
@@ -668,7 +840,7 @@
 
         .footer-tagline {
             margin: 0 0 12px;
-            color: #f4b942;
+            color: var(--ew-gold);
             font-size: 10px;
             font-weight: 700;
             letter-spacing: 1px;
@@ -707,12 +879,11 @@
             line-height: 1.7;
             text-decoration: none;
             overflow-wrap: anywhere;
-            transition: color .2s ease;
         }
 
         .footer-link:hover,
         .footer-contact-link:hover {
-            color: #f4b942;
+            color: var(--ew-gold);
         }
 
         .footer-bottom {
@@ -728,9 +899,9 @@
             line-height: 1.7;
         }
 
-        /* ==================================================
+        /* ================================
            TABLETS
-        ================================================== */
+        ================================= */
 
         @media (min-width: 601px) and (max-width: 1024px) {
             .about-home,
@@ -740,25 +911,29 @@
                 padding: 52px 22px;
             }
 
-            .services-name-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 14px;
+            .about-redesign {
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
             }
 
-            .services-name-grid .service-name-card {
-                min-height: 125px;
-                padding: 18px;
+            .about-redesign-copy {
+                padding: 25px;
             }
 
-            .latest-articles-home .latest-articles-grid {
+            .services-image-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
                 gap: 16px;
             }
 
+            .services-image-grid .service-name-card > img {
+                height: 175px;
+            }
+
             .latest-articles-home .article-card-image {
+                flex-basis: 125px;
+                width: 125px;
+                min-width: 125px;
                 height: 110px;
                 min-height: 110px;
-                max-height: 110px;
             }
 
             .footer-container {
@@ -767,11 +942,86 @@
             }
         }
 
-        /* ==================================================
+        /* ================================
            MOBILE PHONES
-        ================================================== */
+        ================================= */
 
         @media (max-width: 600px) {
+            html,
+            body {
+                width: 100%;
+                max-width: 100%;
+                overflow-x: clip;
+            }
+
+            .header,
+            .header .navbar,
+            main,
+            .hero,
+            .hero-container,
+            .footer {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .header .navbar {
+                gap: 8px;
+                padding: 10px 12px 10px 96px;
+            }
+
+            .logo-container {
+                min-width: 0;
+                max-width: 100%;
+            }
+
+            .logo-icon img {
+                max-width: 42px;
+                height: auto;
+            }
+
+            .brand-tagline {
+                font-size: 9px;
+                letter-spacing: .02em;
+                white-space: normal;
+                overflow-wrap: anywhere;
+            }
+
+            .hero {
+                padding: 44px 16px 32px;
+            }
+
+            .hero-container {
+                width: 100%;
+                margin-inline: auto;
+            }
+
+            .hero-heading {
+                font-size: clamp(28px, 8vw, 40px);
+                line-height: 1.2;
+                overflow-wrap: anywhere;
+            }
+
+            .hero-description {
+                font-size: 15px;
+                line-height: 1.65;
+            }
+
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                width: 100%;
+            }
+
+            .hero-buttons a,
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 100%;
+                justify-content: center;
+                white-space: normal;
+                text-align: center;
+            }
+
             .about-home,
             .services-home,
             .latest-articles-home,
@@ -791,92 +1041,135 @@
                 font-size: 26px;
             }
 
-            .about-home-content {
-                padding: 19px;
+            .about-redesign {
+                grid-template-columns: minmax(0, 1fr);
+                border-radius: 14px;
             }
 
-            .about-home-content p {
+            .about-redesign-image,
+            .about-redesign-image img {
+                min-height: 0;
+                height: 235px;
+            }
+
+            .about-redesign-copy {
+                padding: 27px 22px 30px;
+            }
+
+            .about-redesign-copy .about-kicker {
+                margin-bottom: 15px;
+                font-size: 10px;
+                letter-spacing: 2px;
+            }
+
+            .about-redesign-copy h3 {
+                margin-bottom: 17px;
+                font-size: 29px;
+                line-height: 1.2;
+            }
+
+            .about-redesign-copy p {
+                margin-bottom: 15px;
                 font-size: 14px;
-                line-height: 1.8;
+                line-height: 1.85;
             }
 
-            .services-name-grid {
+            .about-redesign-copy p strong {
+                white-space: normal;
+            }
+
+            .about-redesign-copy .btn {
+                align-self: stretch;
+            }
+
+            .services-image-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 11px;
+                gap: 12px;
             }
 
-            .services-name-grid .service-name-card {
-                gap: 15px;
-                min-height: 125px;
-                padding: 14px;
-                border-radius: 10px;
+            .services-image-grid .service-name-card > img {
+                height: 125px;
             }
 
-            .services-name-grid .service-number {
-                width: 30px;
-                height: 30px;
-                font-size: 11px;
+            .services-image-grid .service-card-copy {
+                padding: 14px 12px 17px;
             }
 
-            .services-name-grid .service-name {
-                font-size: 13px;
+            .services-image-grid .service-name {
+                font-size: 14px;
+            }
+
+            .services-image-grid .service-card-description {
+                font-size: 12px;
                 line-height: 1.5;
             }
 
-            /* Compact horizontal article cards on phones */
+            .services-image-grid .service-card-arrow {
+                top: 8px;
+                right: 8px;
+                width: 27px;
+                height: 27px;
+                font-size: 16px;
+            }
+
+            /* Horizontal article rows: image left, details right */
 
             .latest-articles-home .latest-articles-grid {
                 grid-template-columns: minmax(0, 1fr);
-                gap: 13px;
+                gap: 12px;
             }
 
             .latest-articles-home .article-card {
-                display: grid;
-                grid-template-columns: 100px minmax(0, 1fr);
+                display: flex;
+                flex-direction: row;
                 align-items: stretch;
-                min-height: 150px;
-                height: auto;
+                gap: 10px;
+                min-height: 125px;
+                padding: 9px;
             }
 
             .latest-articles-home .article-card-image {
-                width: 100%;
-                height: 100%;
-                min-height: 150px;
-                max-height: 100%;
-                object-fit: cover;
+                flex: 0 0 96px;
+                width: 96px;
+                min-width: 96px;
+                height: 105px;
+                min-height: 105px;
+                max-height: 105px;
             }
 
             .latest-articles-home .article-card-content {
-                padding: 11px;
+                flex: 1 1 auto;
+                padding: 1px 0;
             }
 
             .latest-articles-home .article-card-category {
-                margin-bottom: 6px;
-                padding: 3px 6px;
+                margin-bottom: 5px;
+                padding: 3px 5px;
                 font-size: 9px;
             }
 
             .latest-articles-home .article-card-title {
-                margin-bottom: 7px;
+                margin-bottom: 6px;
                 font-size: 13px;
                 line-height: 1.4;
             }
 
             .latest-articles-home .article-card-excerpt {
-                margin-bottom: 8px;
+                margin-bottom: 6px;
                 font-size: 11px;
-                line-height: 1.5;
-                -webkit-line-clamp: 3;
+                line-height: 1.45;
+                -webkit-line-clamp: 2;
             }
 
             .latest-articles-home .article-card-meta {
-                margin-bottom: 9px;
+                margin-bottom: 7px;
                 font-size: 9px;
             }
 
             .latest-articles-home .article-read-more {
                 align-self: flex-start;
-                padding: 7px 10px;
+                min-height: 29px;
+                padding: 6px 9px;
                 font-size: 10px;
             }
 
@@ -914,511 +1207,372 @@
             }
         }
 
-        @media (max-width: 360px) {
+        @media (max-width: 380px) {
+            .header .navbar {
+                padding-right: 9px;
+                padding-left: 91px;
+            }
+
+            .services-image-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .services-image-grid .service-name-card > img {
+                height: 170px;
+            }
+
             .latest-articles-home .article-card {
-                grid-template-columns: 82px minmax(0, 1fr);
+                gap: 8px;
+                padding: 8px;
             }
 
             .latest-articles-home .article-card-image {
-                min-height: 145px;
-            }
-
-            .latest-articles-home .article-card-content {
-                padding: 9px;
+                flex-basis: 78px;
+                width: 78px;
+                min-width: 78px;
+                height: 92px;
+                min-height: 92px;
+                max-height: 92px;
             }
 
             .latest-articles-home .article-card-title {
                 font-size: 12px;
             }
 
-            .services-name-grid .service-name-card {
-                padding: 11px;
+            .latest-articles-home .article-card-excerpt {
+                font-size: 10px;
+            }
+
+            .latest-articles-home .article-card-meta {
+                font-size: 8px;
             }
         }
 
-        /* Respect reduced-motion preferences */
-
         @media (prefers-reduced-motion: reduce) {
-            .ew-sidebar,
-            .ew-sidebar-link,
-            .services-name-grid .service-name-card,
-            .latest-articles-home .article-card {
-                transition: none;
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
             }
         }
     
-/* COMPACT CLICKABLE LATEST ARTICLE ROWS */
-.latest-articles-home .latest-articles-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-}
+        /* FOOTER LAYOUT FIX */
+        .footer-container {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr);
+            gap: 28px;
+            align-items: start;
+            width: 100%;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 45px 24px 32px;
+            box-sizing: border-box;
+        }
 
-.latest-articles-home .article-card {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center;
-    gap: 14px;
-    padding: 12px;
-    text-align: left;
-    min-width: 0;
-    cursor: pointer;
-}
+        .footer-brand,
+        .footer-nav,
+        .footer-contact {
+            min-width: 0;
+            overflow-wrap: anywhere;
+            word-break: normal;
+        }
 
-.latest-articles-home .article-card-image {
-    flex: 0 0 105px;
-    width: 105px !important;
-    height: 85px !important;
-    min-width: 105px;
-    object-fit: cover;
-    margin: 0 !important;
-    border-radius: 7px;
-}
+        .footer-title {
+            overflow-wrap: anywhere;
+            line-height: 1.25;
+        }
 
-.latest-articles-home .article-card-content {
-    flex: 1;
-    min-width: 0;
-    text-align: left;
-}
+        .footer-tagline {
+            max-width: 100%;
+            line-height: 1.8;
+            letter-spacing: .6px;
+            overflow-wrap: anywhere;
+        }
 
-.latest-articles-home .article-card h3,
-.latest-articles-home .article-card-title {
-    margin: 0 0 6px;
-    font-size: 15px;
-    line-height: 1.4;
-    overflow-wrap: anywhere;
-}
+        .footer-nav-list,
+        .footer-contact-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
 
-.latest-articles-home .article-card p,
-.latest-articles-home .article-card-excerpt {
-    margin: 5px 0;
-    font-size: 13px;
-    line-height: 1.45;
-}
+        .footer-nav-list li,
+        .footer-contact-list li {
+            margin-bottom: 10px;
+            min-width: 0;
+        }
 
-.latest-articles-home .article-card a {
-    overflow-wrap: anywhere;
-}
+        .footer-link,
+        .footer-contact-link {
+            display: inline-block;
+            max-width: 100%;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
 
-@media (max-width: 480px) {
-    .latest-articles-home .article-card {
-        gap: 10px;
-        padding: 9px;
-    }
+        .footer-bottom {
+            padding: 18px 16px;
+            text-align: center;
+        }
 
-    .latest-articles-home .article-card-image {
-        flex-basis: 82px;
-        width: 82px !important;
-        min-width: 82px;
-        height: 72px !important;
-    }
+        .footer-copyright {
+            margin: 0;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
 
-    .latest-articles-home .article-card h3,
-    .latest-articles-home .article-card-title {
-        font-size: 13px;
-    }
+        @media (max-width: 760px) {
+            .footer-container {
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+                gap: 28px 20px;
+                padding: 32px 20px 26px;
+            }
 
-    .latest-articles-home .article-card p,
-    .latest-articles-home .article-card-excerpt {
-        font-size: 12px;
-    }
-}
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
 
-/* EAGLE WRITES ABOUT & SERVICES REDESIGN */
+            .footer-tagline {
+                font-size: 11px;
+                letter-spacing: .4px;
+            }
+        }
 
-.about-home {
-    background: #fff;
-}
+        @media (max-width: 420px) {
+            .footer-container {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 24px;
+                padding: 28px 18px 24px;
+            }
 
-.about-home-container,
-.services-home-container {
-    max-width: 1120px;
-}
+            .footer-brand {
+                grid-column: auto;
+            }
 
-.about-home .section-header,
-.services-home .section-header {
-    margin-bottom: 32px;
-}
+            .footer-title {
+                font-size: 21px;
+            }
 
-.about-redesign {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    align-items: stretch;
-    overflow: hidden;
-    border: 1px solid #e5eaf0;
-    border-radius: 18px;
-    background: #fff;
-    box-shadow: 0 12px 35px rgba(11, 31, 58, .07);
-}
+            .footer-nav-heading,
+            .footer-contact-heading {
+                margin-bottom: 12px;
+            }
 
-.about-redesign-image {
-    position: relative;
-    min-height: 360px;
-    overflow: hidden;
-    background: #e8edf3;
-}
+            .footer-link,
+            .footer-contact-link {
+                font-size: 14px;
+            }
 
-.about-redesign-image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    min-height: 360px;
-    object-fit: cover;
-}
+            .footer-copyright {
+                font-size: 12px;
+            }
+        }
+    
+        /* CLEAN MOBILE HEADER ALIGNMENT */
+        @media (max-width: 1024px) {
+            body > header.header {
+                width: 100%;
+                margin-left: 0;
+                box-sizing: border-box;
+            }
 
-.about-image-caption {
-    position: absolute;
-    right: 18px;
-    bottom: 18px;
-    left: 18px;
+            .header .navbar {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                width: 100%;
+                min-width: 0;
+                box-sizing: border-box;
+                padding: 12px 14px 12px 96px;
+                gap: 0;
+            }
+
+            .header .logo-container {
+                display: flex;
+                flex: 1 1 auto;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                min-width: 0;
+                max-width: 100%;
+                gap: 5px;
+            }
+
+            .header .brand-text {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 5px;
+                min-width: 0;
+                max-width: 100%;
+                line-height: 1.2;
+            }
+
+            .header .brand-name-eagle,
+            .header .brand-name-writes {
+                font-size: 18px;
+                line-height: 1.2;
+            }
+
+            .header .brand-tagline {
+                display: block;
+                max-width: 100%;
+                font-size: 10px;
+                line-height: 1.5;
+                letter-spacing: .3px;
+                white-space: normal;
+                overflow-wrap: anywhere;
+            }
+
+            .header .mobile-menu-toggle,
+            .header .nav-menu,
+            .header .nav-actions {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .header .navbar {
+                padding-left: 88px;
+                padding-right: 10px;
+            }
+
+            .header .brand-name-eagle,
+            .header .brand-name-writes {
+                font-size: 16px;
+            }
+
+            .header .brand-tagline {
+                font-size: 9px;
+            }
+        }
+    
+        /* SHOW ALL HEADER ACTION BUTTONS ON MOBILE */
+        @media (max-width: 1024px) {
+            .header .navbar {
+                flex-wrap: wrap;
+                align-items: center;
+                row-gap: 12px;
+            }
+
+            .header .logo-container {
+                flex: 1 1 100%;
+            }
+
+            .header .nav-actions {
+                display: flex !important;
+                flex: 1 1 100%;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 8px;
+                min-width: 0;
+                width: 100%;
+            }
+
+            .header .nav-actions > a {
+                display: inline-flex !important;
+                align-items: center;
+                justify-content: center;
+                flex: 1 1 auto;
+                min-width: 0;
+                max-width: 100%;
+                box-sizing: border-box;
+                padding: 9px 10px;
+                font-size: 12px;
+                line-height: 1.3;
+                text-align: center;
+                white-space: normal;
+                overflow-wrap: anywhere;
+            }
+
+            .header .nav-menu,
+            .header .mobile-menu-toggle {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .header .nav-actions {
+                gap: 6px;
+            }
+
+            .header .nav-actions > a {
+                padding: 8px 6px;
+                font-size: 11px;
+            }
+        }
+    
+/* HEADER BUTTONS — BRANDING REMOVED */
+@media (max-width: 1024px) {
+  .header .navbar {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
     gap: 10px;
-    padding: 14px 16px;
-    border: 1px solid rgba(255, 255, 255, .35);
-    border-radius: 10px;
-    background: rgba(11, 31, 58, .88);
-    color: #fff;
-    font-size: 13px;
-    font-weight: 700;
-    backdrop-filter: blur(8px);
-}
+    padding: 12px 12px 12px 96px;
+    box-sizing: border-box;
+  }
 
-.about-caption-mark {
-    width: 9px;
-    height: 9px;
-    flex: 0 0 9px;
-    border-radius: 50%;
-    background: #f4b942;
-}
-
-.about-redesign-copy {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 38px;
-}
-
-.about-kicker {
-    margin-bottom: 12px;
-    color: #9a6a00;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.8px;
-}
-
-.about-redesign-copy h3 {
-    margin: 0 0 16px;
-    color: #0b1f3a;
-    font-size: clamp(24px, 3vw, 34px);
-    line-height: 1.25;
-}
-
-.about-redesign-copy p {
-    margin: 0 0 15px;
-    color: #475569;
-    font-size: 15px;
-    line-height: 1.85;
-}
-
-.about-redesign-copy strong {
-    color: #0b1f3a;
-}
-
-.about-redesign-copy .btn {
-    margin-top: 10px;
-}
-
-.services-home {
-    background: #f4f7fb;
-}
-
-.services-home .section-heading {
-    max-width: 760px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.services-home .section-subheading {
-    max-width: 640px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.services-image-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 20px;
-}
-
-.services-image-grid .service-name-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 0;
-    min-width: 0;
-    min-height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    background: #fff;
-    color: #0b1f3a;
-    text-decoration: none;
-    box-shadow: 0 5px 18px rgba(11, 31, 58, .045);
-    transition: transform .22s ease, border-color .22s ease,
-        box-shadow .22s ease;
-}
-
-.services-image-grid .service-name-card:hover,
-.services-image-grid .service-name-card:focus-visible {
-    transform: translateY(-5px);
-    border-color: #f4b942;
-    box-shadow: 0 14px 28px rgba(11, 31, 58, .12);
-}
-
-.services-image-grid .service-name-card > img {
-    display: block;
-    width: 100%;
-    height: 155px;
-    object-fit: cover;
-    background: #e2e8f0;
-    transition: transform .35s ease;
-}
-
-.services-image-grid .service-name-card:hover > img {
-    transform: scale(1.035);
-}
-
-.services-image-grid .service-card-copy {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: flex-start;
+  .header .nav-actions {
+    display: flex !important;
+    flex: 1 1 100%;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
     width: 100%;
-    padding: 18px 18px 22px;
-}
+    min-width: 0;
+  }
 
-.services-image-grid .service-name {
-    display: block;
-    color: #0b1f3a;
-    font-size: 16px;
-    font-weight: 800;
-    line-height: 1.45;
+  .header .nav-actions > a {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 100px;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 10px 8px;
+    text-align: center;
+    white-space: normal;
     overflow-wrap: anywhere;
-}
+    line-height: 1.3;
+    font-size: 12px;
+  }
 
-.services-image-grid .service-card-description {
-    display: block;
-    color: #64748b;
-    font-size: 13px;
-    line-height: 1.65;
-}
-
-.services-image-grid .service-card-arrow {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border: 1px solid rgba(255, 255, 255, .55);
-    border-radius: 50%;
-    background: rgba(11, 31, 58, .88);
-    color: #f4b942;
-    font-size: 18px;
-    line-height: 1;
-}
-
-.services-image-grid .service-number {
+  .header .nav-menu,
+  .header .mobile-menu-toggle {
     display: none !important;
+  }
 }
 
-@media (max-width: 900px) {
-    .services-image-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
-    }
+@media (max-width: 380px) {
+  .header .navbar {
+    padding-left: 88px;
+    padding-right: 8px;
+  }
 
-    .services-image-grid .service-name-card > img {
-        height: 175px;
-    }
+  .header .nav-actions {
+    gap: 5px;
+  }
 
-    .about-redesign-copy {
-        padding: 28px;
-    }
-}
-
-@media (max-width: 600px) {
-    .about-redesign {
-        grid-template-columns: 1fr;
-        border-radius: 14px;
-    }
-
-    .about-redesign-image,
-    .about-redesign-image img {
-        min-height: 0;
-        height: 235px;
-    }
-
-    .about-redesign-copy {
-        padding: 25px 22px;
-    }
-
-    .about-redesign-copy h3 {
-        font-size: 26px;
-    }
-
-    .services-image-grid {
-        gap: 12px;
-    }
-
-    .services-image-grid .service-name-card > img {
-        height: 125px;
-    }
-
-    .services-image-grid .service-card-copy {
-        padding: 14px 12px 17px;
-    }
-
-    .services-image-grid .service-name {
-        font-size: 14px;
-    }
-
-    .services-image-grid .service-card-description {
-        font-size: 12px;
-        line-height: 1.5;
-    }
-
-    .services-image-grid .service-card-arrow {
-        top: 8px;
-        right: 8px;
-        width: 27px;
-        height: 27px;
-        font-size: 16px;
-    }
-}
-
-
-/* EAGLE WRITES ABOUT TYPOGRAPHY POLISH */
-
-.about-redesign-copy {
-    padding: clamp(28px, 4vw, 48px);
-    background: linear-gradient(145deg, #ffffff 0%, #fbfcfe 100%);
-}
-
-.about-redesign-copy .about-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 0 18px;
-    color: #967020;
+  .header .nav-actions > a {
+    flex: 1 1 85px;
+    padding: 8px 5px;
     font-size: 11px;
-    font-weight: 800;
-    line-height: 1.5;
-    letter-spacing: 2.4px;
-    text-transform: uppercase;
-}
-
-.about-redesign-copy .about-kicker::before {
-    content: "";
-    display: inline-block;
-    width: 28px;
-    height: 2px;
-    border-radius: 2px;
-    background: #f4b942;
-}
-
-.about-redesign-copy h3 {
-    max-width: 480px;
-    margin: 0 0 22px;
-    color: #0b1f3a;
-    font-family: inherit;
-    font-size: clamp(29px, 3.2vw, 40px);
-    font-weight: 800;
-    line-height: 1.16;
-    letter-spacing: -1.2px;
-    text-wrap: balance;
-}
-
-.about-redesign-copy p {
-    max-width: 540px;
-    margin: 0 0 18px;
-    color: #526176;
-    font-size: 15.5px;
-    font-weight: 400;
-    line-height: 1.95;
-    letter-spacing: 0.05px;
-}
-
-.about-redesign-copy p strong {
-    color: #0b1f3a;
-    font-weight: 800;
-    white-space: nowrap;
-}
-
-.about-redesign-copy p:last-of-type {
-    margin-bottom: 22px;
-}
-
-.about-redesign-copy .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 48px;
-    padding: 13px 23px;
-    border-radius: 7px;
-    font-size: 13px;
-    font-weight: 750;
-    letter-spacing: 0.2px;
-    text-decoration: none;
-    transition: transform .2s ease, box-shadow .2s ease;
-}
-
-.about-redesign-copy .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(11, 31, 58, .16);
-}
-
-@media (max-width: 600px) {
-    .about-redesign-copy {
-        padding: 27px 23px 30px;
-    }
-
-    .about-redesign-copy .about-kicker {
-        margin-bottom: 15px;
-        font-size: 10px;
-        letter-spacing: 2px;
-    }
-
-    .about-redesign-copy h3 {
-        margin-bottom: 17px;
-        font-size: 30px;
-        line-height: 1.2;
-        letter-spacing: -0.7px;
-    }
-
-    .about-redesign-copy p {
-        margin-bottom: 15px;
-        font-size: 14.5px;
-        line-height: 1.85;
-    }
-
-    .about-redesign-copy p:last-of-type {
-        margin-bottom: 20px;
-    }
+  }
 }
 </style>
 </head>
 
 <body>
 
-    <!-- MOBILE SIDEBAR CONTROLS -->
-
+    <!-- MOBILE AND TABLET MENU BUTTON -->
     <button
         class="ew-sidebar-toggle"
         id="ew-sidebar-toggle"
@@ -1435,10 +1589,8 @@
         aria-hidden="true">
     </div>
 
-    <!-- SIDEBAR NAVIGATION -->
-
+    <!-- SITE SIDEBAR -->
     <aside class="ew-sidebar" id="ew-sidebar" aria-label="Main navigation">
-
         <div class="ew-sidebar-brand">
             <a href="index.html" class="ew-sidebar-logo">
                 <img src="Images/logo.milto.jpg" alt="EAGLE WRITES logo">
@@ -1458,7 +1610,6 @@
         </div>
 
         <nav class="ew-sidebar-nav" aria-label="Main site sections">
-
             <p class="ew-sidebar-label">Main Menu</p>
 
             <a href="index.html" class="ew-sidebar-link active" aria-current="page">
@@ -1504,21 +1655,21 @@
             </a>
 
             <a href="get-started.html" class="ew-sidebar-link">
-                <span aria-hidden="true"></span> Get Started
+                <span aria-hidden="true">&#8594;</span> Get Started
             </a>
 
             <p class="ew-sidebar-label">Contribute &amp; Connect</p>
 
             <a href="submit-material.html" class="ew-sidebar-link">
-                <span aria-hidden="true"></span> Submit Reading Materials
+                <span aria-hidden="true">&#128196;</span> Submit Reading Materials
             </a>
 
             <a href="about.html" class="ew-sidebar-link">
-                <span aria-hidden="true"></span> About Us
+                <span aria-hidden="true">&#9432;</span> About Us
             </a>
 
             <a href="contact.html" class="ew-sidebar-link">
-                <span aria-hidden="true"></span> Contact Us
+                <span aria-hidden="true">&#9993;</span> Contact Us
             </a>
 
             <a
@@ -1526,38 +1677,21 @@
                 class="ew-sidebar-link"
                 target="_blank"
                 rel="noopener noreferrer">
-                <span aria-hidden="true"></span> WhatsApp Us
+                <span aria-hidden="true">&#9742;</span> WhatsApp Us
             </a>
-
         </nav>
 
         <div class="ew-sidebar-bottom">
             <span class="ew-sidebar-status"></span>
             Your knowledge. Your growth.
         </div>
-
     </aside>
 
-    <!-- EXISTING WEBSITE HEADER -->
-
+    <!-- WEBSITE HEADER -->
     <header class="header" id="header">
         <nav class="navbar" id="navbar">
 
-            <a href="index.html" class="logo-container">
-                <div class="logo-icon">
-                    <img src="Images/logo.milto.jpg" alt="EAGLE WRITES logo">
-                </div>
-
-                <div class="brand-text">
-                    <span class="brand-name-eagle">EAGLE</span>
-                    <span class="brand-name-writes">WRITES</span>
-                </div>
-
-                <div class="brand-tagline">
-                    RESEARCH • ANALYTICS • CONSULTING
-                </div>
-            </a>
-
+            <!-- Original desktop navigation; hidden on mobile/tablet -->
             <button
                 class="mobile-menu-toggle"
                 id="mobile-menu-toggle"
@@ -1595,19 +1729,13 @@
                     Get Started
                 </a>
             </div>
-
         </nav>
     </header>
 
-    <!-- MAIN CONTENT -->
-
     <main>
-
         <!-- HERO -->
-
         <section class="hero" id="home">
             <div class="hero-container">
-
                 <div class="hero-badge">
                     <span class="badge-text">
                         RESEARCH • WRITE • ANALYZE • SUCCEED
@@ -1639,166 +1767,198 @@
                 <p class="hero-credibility">
                     Professional • Reliable • Results-Driven
                 </p>
-
             </div>
         </section>
 
         <!-- ABOUT -->
-<section class="about-home" id="about-home">
-    <div class="about-home-container">
-        <div class="section-header">
-            <span class="section-label">ABOUT EAGLE WRITES</span>
-            <h2 class="section-heading">Research Excellence With Purpose</h2>
-            <p class="section-subheading">
-                Turning knowledge, research, and data into meaningful results.
-            </p>
-        </div>
+        <section class="about-home" id="about-home">
+            <div class="about-home-container">
+                <div class="section-header">
+                    <span class="section-label">ABOUT EAGLE WRITES</span>
+                    <h2 class="section-heading">Research Excellence With Purpose</h2>
+                    <p class="section-subheading">
+                        Turning knowledge, research, and data into meaningful results.
+                    </p>
+                </div>
 
-        <div class="about-redesign">
-            <div class="about-redesign-image">
-                <img
-                    src="Images/profile.%20jpg.jpeg"
-                    alt="Professional reviewing research and business documents"
-                    loading="lazy">
-                <div class="about-image-caption">
-                    <span class="about-caption-mark"></span>
-                    <span>Knowledge. Insight. Impact.</span>
+                <div class="about-redesign">
+                    <div class="about-redesign-image">
+                        <img
+                            src="Images/profile.%20jpg.jpeg"
+                            alt="Professional reviewing research and business documents"
+                            loading="lazy">
+
+                        <div class="about-image-caption">
+                            <span class="about-caption-mark"></span>
+                            <span>Knowledge. Insight. Impact.</span>
+                        </div>
+                    </div>
+
+                    <div class="about-redesign-copy">
+                        <span class="about-kicker">WHO WE ARE</span>
+                        <h3>Ideas deserve more than just words.</h3>
+
+                        <p>
+                            EAGLE WRITES helps individuals and organizations turn
+                            ideas, information, and data into clear, credible, and
+                            useful results.
+                        </p>
+
+                        <p>
+                            Founded by <strong>Arnold Milton</strong>, we provide
+                            research writing, academic support, data analytics,
+                            professional writing, and consulting services with a
+                            focus on clarity, quality, and purpose.
+                        </p>
+
+                        <a href="about.html" class="btn btn-primary">
+                            Learn More About Us
+                        </a>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="about-redesign-copy">
-                <span class="about-kicker">WHO WE ARE</span>
-                <h3>Ideas deserve more than just words.</h3>
-                <p>
-                    EAGLE WRITES helps individuals and organizations turn
-                    ideas, information, and data into clear, credible, and
-                    useful results.
-                </p>
-                <p>
-                    Founded by <strong>Arnold Milton</strong>, we provide
-                    research writing, academic support, data analytics,
-                    professional writing, and consulting services with a
-                    focus on clarity, quality, and purpose.
-                </p>
-                <a href="about.html" class="btn btn-primary">
-                    Learn More About Us
-                </a>
+        <!-- SERVICES -->
+        <section class="services-home" id="services">
+            <div class="services-home-container">
+                <div class="section-header">
+                    <span class="section-label">WHAT WE DO</span>
+                    <h2 class="section-heading">Expertise That Moves You Forward</h2>
+                    <p class="section-subheading">
+                        Professional support across research, analytics, writing,
+                        and consulting.
+                    </p>
+                </div>
+
+                <div class="services-name-grid services-image-grid">
+                    <a href="services.html" class="service-name-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                            alt="Research writing and note-taking"
+                            loading="lazy">
+                        <span class="service-card-copy">
+                            <span class="service-name">Research Writing</span>
+                            <span class="service-card-description">
+                                Clear, structured research and professional reports.
+                            </span>
+                        </span>
+                        <span class="service-card-arrow" aria-hidden="true">↗</span>
+                    </a>
+
+                    <a href="services.html" class="service-name-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                            alt="Academic learning and writing"
+                            loading="lazy">
+                        <span class="service-card-copy">
+                            <span class="service-name">Academic Writing</span>
+                            <span class="service-card-description">
+                                Structured academic support and editing.
+                            </span>
+                        </span>
+                        <span class="service-card-arrow" aria-hidden="true">↗</span>
+                    </a>
+
+                    <a href="services.html" class="service-name-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                            alt="Data analytics and visual reports"
+                            loading="lazy">
+                        <span class="service-card-copy">
+                            <span class="service-name">Data Analysis</span>
+                            <span class="service-card-description">
+                                Transform raw data into useful insights.
+                            </span>
+                        </span>
+                        <span class="service-card-arrow" aria-hidden="true">↗</span>
+                    </a>
+
+                    <a href="services.html" class="service-name-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                            alt="Business dashboard with charts and metrics"
+                            loading="lazy">
+                        <span class="service-card-copy">
+                            <span class="service-name">Power BI Dashboards</span>
+                            <span class="service-card-description">
+                                Interactive dashboards for better decisions.
+                            </span>
+                        </span>
+                        <span class="service-card-arrow" aria-hidden="true">↗</span>
+                    </a>
+
+                    <a href="services.html" class="service-name-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                            alt="Writing and content planning"
+                            loading="lazy">
+                        <span class="service-card-copy">
+                            <span class="service-name">Article Writing</span>
+                            <span class="service-card-description">
+                                Engaging articles shaped around your message.
+                            </span>
+                        </span>
+                        <span class="service-card-arrow" aria-hidden="true">↗</span>
+                    </a>
+
+                    <a href="services.html" class="service-name-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                            alt="Business performance and financial analytics"
+                            loading="lazy">
+                        <span class="service-card-copy">
+                            <span class="service-name">Business &amp; Financial Research</span>
+                            <span class="service-card-description">
+                                Evidence-based business and financial insights.
+                            </span>
+                        </span>
+                        <span class="service-card-arrow" aria-hidden="true">↗</span>
+                    </a>
+
+                    <a href="services.html" class="service-name-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                            alt="Statistical charts and quantitative analysis"
+                            loading="lazy">
+                        <span class="service-card-copy">
+                            <span class="service-name">Statistical Analysis</span>
+                            <span class="service-card-description">
+                                Reliable statistical analysis and interpretation.
+                            </span>
+                        </span>
+                        <span class="service-card-arrow" aria-hidden="true">↗</span>
+                    </a>
+
+                    <a href="services.html" class="service-name-card">
+                        <img
+                            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                            alt="Professionals collaborating on a project"
+                            loading="lazy">
+                        <span class="service-card-copy">
+                            <span class="service-name">Consulting</span>
+                            <span class="service-card-description">
+                                Practical guidance for projects and decisions.
+                            </span>
+                        </span>
+                        <span class="service-card-arrow" aria-hidden="true">↗</span>
+                    </a>
+                </div>
+
+                <div class="services-home-cta">
+                    <a href="get-started.html" class="btn btn-primary">
+                        Explore Your Options
+                    </a>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- SERVICES -->
-<section class="services-home" id="services">
-    <div class="services-home-container">
-        <div class="section-header">
-            <span class="section-label">WHAT WE DO</span>
-            <h2 class="section-heading">Expertise That Moves You Forward</h2>
-            <p class="section-subheading">
-                Professional support across research, analytics, writing,
-                and consulting.
-            </p>
-        </div>
-
-        <div class="services-name-grid services-image-grid">
-            <a href="services.html" class="service-name-card">
-                <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
-                     alt="Research writing and note-taking" loading="lazy">
-                <span class="service-card-copy">
-                    <span class="service-name">Research Writing</span>
-                    <span class="service-card-description">Clear, structured research and professional reports.</span>
-                </span>
-                <span class="service-card-arrow" aria-hidden="true">↗</span>
-            </a>
-
-            <a href="services.html" class="service-name-card">
-                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
-                     alt="Academic learning and writing" loading="lazy">
-                <span class="service-card-copy">
-                    <span class="service-name">Academic Writing</span>
-                    <span class="service-card-description">Structured academic support and editing.</span>
-                </span>
-                <span class="service-card-arrow" aria-hidden="true">↗</span>
-            </a>
-
-            <a href="services.html" class="service-name-card">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
-                     alt="Data analytics and visual reports" loading="lazy">
-                <span class="service-card-copy">
-                    <span class="service-name">Data Analysis</span>
-                    <span class="service-card-description">Transform raw data into useful insights.</span>
-                </span>
-                <span class="service-card-arrow" aria-hidden="true">↗</span>
-            </a>
-
-            <a href="services.html" class="service-name-card">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
-                     alt="Business dashboard with charts and metrics" loading="lazy">
-                <span class="service-card-copy">
-                    <span class="service-name">Power BI Dashboards</span>
-                    <span class="service-card-description">Interactive dashboards for better decisions.</span>
-                </span>
-                <span class="service-card-arrow" aria-hidden="true">↗</span>
-            </a>
-
-            <a href="services.html" class="service-name-card">
-                <img src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
-                     alt="Writing and content planning" loading="lazy">
-                <span class="service-card-copy">
-                    <span class="service-name">Article Writing</span>
-                    <span class="service-card-description">Engaging articles shaped around your message.</span>
-                </span>
-                <span class="service-card-arrow" aria-hidden="true">↗</span>
-            </a>
-
-            <a href="services.html" class="service-name-card">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
-                     alt="Business performance and financial analytics" loading="lazy">
-                <span class="service-card-copy">
-                    <span class="service-name">Business &amp; Financial Research</span>
-                    <span class="service-card-description">Evidence-based business and financial insights.</span>
-                </span>
-                <span class="service-card-arrow" aria-hidden="true">↗</span>
-            </a>
-
-            <a href="services.html" class="service-name-card">
-                <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
-                     alt="Statistical charts and quantitative analysis" loading="lazy">
-                <span class="service-card-copy">
-                    <span class="service-name">Statistical Analysis</span>
-                    <span class="service-card-description">Reliable statistical analysis and interpretation.</span>
-                </span>
-                <span class="service-card-arrow" aria-hidden="true">↗</span>
-            </a>
-
-            <a href="services.html" class="service-name-card">
-                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&amp;fit=crop&amp;w=700&amp;q=80"
-                     alt="Professionals collaborating on a project" loading="lazy">
-                <span class="service-card-copy">
-                    <span class="service-name">Consulting</span>
-                    <span class="service-card-description">Practical guidance for projects and decisions.</span>
-                </span>
-                <span class="service-card-arrow" aria-hidden="true">↗</span>
-            </a>
-        </div>
-
-        <div class="services-home-cta">
-            <a href="get-started.html" class="btn btn-primary">
-                Explore Your Options
-            </a>
-        </div>
-    </div>
-</section>
-<!-- LATEST ARTICLES -->
-
+        <!-- LATEST ARTICLES -->
         <section class="latest-articles-home" id="latest-articles">
             <div class="latest-articles-container">
-
                 <div class="section-header">
                     <span class="section-label">EAGLE WRITES ARTICLES</span>
-
                     <h2 class="section-heading">Latest Articles</h2>
-
                     <p class="section-subheading">
                         Explore research, insights, analysis, and ideas
                         published by EAGLE WRITES contributors.
@@ -1833,17 +1993,13 @@
                         View All Articles
                     </a>
                 </div>
-
             </div>
         </section>
 
         <!-- CALL TO ACTION -->
-
         <section class="home-cta">
             <div class="home-cta-container">
-
                 <span class="section-label">READY TO BEGIN?</span>
-
                 <h2>Let's Work On Your Next Project</h2>
 
                 <p>
@@ -1868,24 +2024,18 @@
                         WhatsApp Us
                     </a>
                 </div>
-
             </div>
         </section>
-
     </main>
 
     <!-- FOOTER -->
-
     <footer class="footer" id="footer">
         <div class="footer-container">
-
             <div class="footer-brand">
                 <h2 class="footer-title">EAGLE WRITES</h2>
-
                 <p class="footer-tagline">
                     RESEARCH • ANALYTICS • CONSULTING
                 </p>
-
                 <p class="footer-founder">Founded by Arnold Milton</p>
             </div>
 
@@ -1913,7 +2063,6 @@
                             +254 748 513 346
                         </a>
                     </li>
-
                     <li>
                         <a
                             href="mailto:miltonarnold535@gmail.com"
@@ -1921,7 +2070,6 @@
                             miltonarnold535@gmail.com
                         </a>
                     </li>
-
                     <li>
                         <a
                             href="https://wa.me/254748513346"
@@ -1933,7 +2081,6 @@
                     </li>
                 </ul>
             </div>
-
         </div>
 
         <div class="footer-bottom">
@@ -1943,10 +2090,10 @@
         </div>
     </footer>
 
-    <!-- SUPABASE AND LATEST ARTICLES -->
-
+    <!-- SUPABASE LIBRARY -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+    <!-- LATEST ARTICLES -->
     <script>
         (function () {
             const SUPABASE_URL =
@@ -1965,7 +2112,7 @@
                 const cta = document.getElementById('latest-articles-cta');
 
                 if (!loading || !empty || !errorMessage || !grid || !cta) {
-                    console.error('One or more homepage article elements are missing.');
+                    console.error('Homepage article elements are missing.');
                     return;
                 }
 
@@ -2112,7 +2259,6 @@
 
                         card.appendChild(image);
                         card.appendChild(content);
-
                         fragment.appendChild(card);
                     });
 
@@ -2139,7 +2285,6 @@
     </script>
 
     <!-- SIDEBAR BEHAVIOUR -->
-
     <script>
         (function () {
             const sidebar = document.getElementById('ew-sidebar');
@@ -2157,6 +2302,7 @@
                 document.body.classList.add('ew-sidebar-open');
 
                 toggle.setAttribute('aria-expanded', 'true');
+                toggle.setAttribute('aria-label', 'Close navigation menu');
                 backdrop.setAttribute('aria-hidden', 'false');
                 close.focus();
             }
@@ -2167,10 +2313,17 @@
                 document.body.classList.remove('ew-sidebar-open');
 
                 toggle.setAttribute('aria-expanded', 'false');
-                backdrop.setAttribute('aria-hidden', 'true');
+                toggle.setAttribute('aria-label', 'Open navigation menu');
             }
 
-            toggle.addEventListener('click', openSidebar);
+            toggle.addEventListener('click', function () {
+                if (sidebar.classList.contains('is-open')) {
+                    closeSidebar();
+                } else {
+                    openSidebar();
+                }
+            });
+
             close.addEventListener('click', closeSidebar);
             backdrop.addEventListener('click', closeSidebar);
 
@@ -2197,7 +2350,6 @@
     </script>
 
     <!-- EXISTING WEBSITE JAVASCRIPT -->
-
     <script src="script.js"></script>
 
 </body>
@@ -2205,106 +2357,7 @@
 
 
 
-<style id="eagle-home-mobile-fix">
-@media (max-width: 600px) {
-    html, body {
-        max-width: 100%;
-        overflow-x: clip;
-    }
 
-    .header, .navbar {
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
-    }
 
-    .navbar {
-        gap: 8px;
-        padding: 10px 14px;
-    }
 
-    .logo-container {
-        min-width: 0;
-        max-width: calc(100% - 55px);
-    }
 
-    .logo-icon img {
-        max-width: 42px;
-        height: auto;
-    }
-
-    .brand-tagline {
-        font-size: 9px;
-        letter-spacing: 0.02em;
-        overflow-wrap: anywhere;
-    }
-
-    .hero, .hero-container, main > section {
-        box-sizing: border-box;
-        max-width: 100%;
-    }
-
-    .hero {
-        padding: 48px 16px 32px;
-    }
-
-    .hero-container {
-        width: 100%;
-        margin-inline: auto;
-    }
-
-    .hero-heading {
-        font-size: clamp(28px, 8vw, 40px);
-        line-height: 1.15;
-        overflow-wrap: anywhere;
-    }
-
-    .hero-description {
-        font-size: 15px;
-        line-height: 1.65;
-    }
-
-    .hero-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        width: 100%;
-    }
-
-    .hero-buttons a, .hero-buttons .btn {
-        box-sizing: border-box;
-        width: 100%;
-        max-width: 100%;
-        justify-content: center;
-        white-space: normal;
-    }
-
-    .services-name-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-    }
-
-    img, video, iframe {
-        max-width: 100%;
-    }
-
-    input, select, textarea, button {
-        max-width: 100%;
-        box-sizing: border-box;
-    }
-}
-
-@media (max-width: 380px) {
-    .navbar {
-        padding-inline: 10px;
-    }
-
-    .services-name-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero {
-        padding-inline: 12px;
-    }
-}
-</style>
