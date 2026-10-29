@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Reading Materials | EAGLE WRITES</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="Images/logo.milto.jpg">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    :root {
+      --navy: #0b1f3a;
+      --gold: #f4b942;
+      --light: #f4f7fb;
+    }
+
+    body {
+      margin: 0;
+      background: var(--light);
+      color: var(--navy);
+      font-family: Arial, sans-serif;
+    }
+
+    .submit-container {
+      max-width: 760px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .submit-card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 5px 24px rgba(11, 31, 58, .09);
+    }
+
+    .submit-card h1 {
+      margin-top: 0;
+      color: var(--navy);
+    }
+
+    .submit-card p {
+      line-height: 1.6;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      border: 1px solid #ccd4df;
+      border-radius: 7px;
+      font: inherit;
+      background: #fff;
+    }
+
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 7px;
+      background: var(--navy);
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background: #17365e;
+    }
+
+    .submit-button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    #formMessage {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 7px;
+      display: none;
+      overflow-wrap: anywhere;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--navy);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .notice {
+      padding: 12px;
+      background: #fff7e4;
+      border-left: 4px solid var(--gold);
+      border-radius: 5px;
+    }
+
+    @media (max-width: 600px) {
+      .submit-container {
+        margin: 15px auto;
+        padding: 12px;
+      }
+
+      .submit-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="submit-container">
+    <a class="back-link" href="library.html">← Back to Digital Library</a>
+
+    <section class="submit-card">
+      <h1>Submit Reading Materials</h1>
+      <p>
+        Share useful notes, revision materials, study guides, and other
+        educational resources with the EAGLE WRITES community.
+      </p>
+
+      <p class="notice">
+        Submissions will be reviewed before appearing in the Digital Library.
+        Accepted file types: PDF, DOC, and DOCX. Maximum file size: 20 MB.
+      </p>
+
+      <form id="materialForm">
+        <div class="form-group">
+          <label for="title">Material title *</label>
+          <input id="title" name="title" type="text" maxlength="200" required>
+        </div>
+
+        <div class="form-group">
+          <label for="educationLevel">Education level *</label>
+          <select id="educationLevel" name="educationLevel" required>
+            <option value="">Select education level</option>
+            <option value="primary">Primary School</option>
+            <option value="secondary">Secondary School</option>
+            <option value="college">Colleges & Universities</option>
+            <option value="professional">Professional Courses</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject or field</label>
+          <input id="subject" name="subject" type="text" maxlength="150"
+                 placeholder="e.g. Mathematics, Accounting, ICT">
+        </div>
+
+        <div class="form-group">
+          <label for="classCourse">Class, grade, or course</label>
+          <input id="classCourse" name="classCourse" type="text" maxlength="150"
+                 placeholder="e.g. Grade 8, CPA, Bachelor of Commerce">
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" maxlength="2000"
+                    placeholder="Briefly describe the material"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="materialFile">Choose your file *</label>
+          <input id="materialFile" name="materialFile" type="file"
+                 accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                 required>
+        </div>
+
+        <div class="form-group">
+          <label for="contributorName">Your name *</label>
+          <input id="contributorName" name="contributorName" type="text"
+                 maxlength="150" required>
+        </div>
+
+        <div class="form-group">
+          <label for="contributorEmail">Your email address</label>
+          <input id="contributorEmail" name="contributorEmail" type="email"
+                 maxlength="254">
+        </div>
+
+        <button class="submit-button" id="submitButton" type="submit">
+          Submit Material
+        </button>
+
+        <div id="formMessage" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const SUPABASE_URL = 'https://ekkvghdnejvyjykagafr.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
+
+    const client = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+    const form = document.getElementById('materialForm');
+    const submitButton = document.getElementById('submitButton');
+    const message = document.getElementById('formMessage');
+    const fileInput = document.getElementById('materialFile');
+
+    function showMessage(text, success = false) {
+      message.style.display = 'block';
+      message.textContent = text;
+      message.style.background = success ? '#e8f7ed' : '#fff0f0';
+      message.style.color = success ? '#176534' : '#9b1c1c';
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const file = fileInput.files[0];
+
+      if (!file) {
+        showMessage('Please choose a file.');
+        return;
+      }
+
+      const allowedExtensions = ['pdf', 'doc', 'docx'];
+      const extension = file.name.split('.').pop().toLowerCase();
+
+      if (!allowedExtensions.includes(extension)) {
+        showMessage('Please upload a PDF, DOC, or DOCX file.');
+        return;
+      }
+
+      if (file.size > 20 * 1024 * 1024) {
+        showMessage('Your file exceeds the 20 MB limit.');
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Submitting...';
+
+      let uploadedPath = null;
+
+      try {
+        const safeName = file.name
+          .normalize('NFKD')
+          .replace(/[^a-zA-Z0-9._-]/g, '_')
+          .slice(-120);
+
+        const filePath =
+          'pending/' + crypto.randomUUID() + '-' + safeName;
+
+        const { data: uploadData, error: uploadError } =
+          await client.storage
+            .from('reading-materials')
+            .upload(filePath, file, {
+              upsert: false,
+              contentType: file.type || 'application/octet-stream'
+            });
+
+        if (uploadError) throw uploadError;
+
+        uploadedPath = uploadData.path;
+
+        const { error: insertError } = await client
+          .from('reading_materials')
+          .insert({
+            title: document.getElementById('title').value.trim(),
+            description: document.getElementById('description').value.trim() || null,
+            education_level: document.getElementById('educationLevel').value,
+            subject: document.getElementById('subject').value.trim() || null,
+            class_course: document.getElementById('classCourse').value.trim() || null,
+            file_path: uploadedPath,
+            file_name: file.name,
+            file_type: extension,
+            file_size_bytes: file.size,
+            contributor_name: document.getElementById('contributorName').value.trim(),
+            contributor_email: document.getElementById('contributorEmail').value.trim() || null,
+            status: 'pending'
+          });
+
+        if (insertError) throw insertError;
+
+        showMessage(
+          'Thank you! Your material has been submitted for review.',
+          true
+        );
+        form.reset();
+
+      } catch (error) {
+        console.error('Material submission error:', error);
+
+        if (uploadedPath) {
+          const { error: cleanupError } = await client.storage
+            .from('reading-materials')
+            .remove([uploadedPath]);
+
+          if (cleanupError) {
+            console.error('Temporary upload cleanup failed:', cleanupError);
+          }
+        }
+
+        showMessage(
+          'Submission failed. The required storage permissions may not be configured yet. Please try again later.'
+        );
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit Material';
+      }
+    });
+  </script>
+</body>
+</html>

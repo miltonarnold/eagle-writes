@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EAGLE WRITES — Admin Dashboard</title>
+<title>EAGLE WRITES â€” Admin Dashboard</title>
 
 <link rel="icon" type="image/jpeg" href="Images/logo.milto.jpg">
 
@@ -888,6 +888,14 @@ tbody tr:hover {
         >
             Articles
         </button>
+        <button
+            id="reading-materials-tab-button"
+            class="tab-button"
+            type="button"
+            onclick="showTab('reading-materials')"
+        >
+            Reading Materials
+        </button>
 
     </div>
 
@@ -1346,6 +1354,82 @@ tbody tr:hover {
     </section>
 
 
+    <!-- READING MATERIALS -->
+
+    <section
+        id="reading-materials-tab"
+        class="tab-content"
+    >
+        <div class="section-header">
+            <div class="section-title">
+                <h2>Reading Materials</h2>
+                <p>Review, approve or reject materials submitted by visitors.</p>
+            </div>
+
+            <button
+                type="button"
+                class="refresh-button"
+                onclick="loadReadingMaterials()"
+            >
+                Refresh Materials
+            </button>
+        </div>
+
+        <div class="filters">
+            <input
+                type="text"
+                id="search-reading-materials"
+                placeholder="Search title, contributor, subject..."
+                oninput="filterReadingMaterials()"
+            >
+
+            <select
+                id="reading-materials-status-filter"
+                onchange="filterReadingMaterials()"
+            >
+                <option value="all">All Statuses</option>
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
+            </select>
+
+            <select
+                id="reading-materials-level-filter"
+                onchange="filterReadingMaterials()"
+            >
+                <option value="all">All Education Levels</option>
+                <option value="primary">Primary</option>
+                <option value="secondary">Secondary</option>
+                <option value="college">College</option>
+                <option value="professional">Professional</option>
+            </select>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Education Level</th>
+                        <th>Subject / Course</th>
+                        <th>Contributor</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="reading-materials-body">
+                    <tr>
+                        <td colspan="7" class="loading">
+                            Click Refresh Materials to load submissions.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
     <!-- ARTICLE REVIEW MODAL -->
 
     <div
@@ -1474,6 +1558,7 @@ let allEnrollments = [];
 let allMessages = [];
 let allDocuments = [];
 let allArticles = [];
+let allReadingMaterials = [];
 
 
 /* =========================================================
@@ -2075,7 +2160,7 @@ function renderDocuments(
                         ? new Date(
                             documentItem.created_at
                         ).toLocaleString()
-                        : '—';
+                        : 'â€”';
 
 
                 return `
@@ -2104,7 +2189,7 @@ function renderDocuments(
                         <td>
                             ${escapeHtml(
                                 documentItem.description ||
-                                '—'
+                                'â€”'
                             )}
                         </td>
 
@@ -2391,7 +2476,7 @@ function renderEnrollments(
                         ? new Date(
                             enrollment.created_at
                         ).toLocaleString()
-                        : '—';
+                        : 'â€”';
 
 
                 const status =
@@ -2405,14 +2490,14 @@ function renderEnrollments(
                         <td>
                             ${escapeHtml(
                                 enrollment.full_name ||
-                                '—'
+                                'â€”'
                             )}
                         </td>
 
                         <td>
                             ${escapeHtml(
                                 enrollment.course_title ||
-                                '—'
+                                'â€”'
                             )}
                         </td>
 
@@ -2426,7 +2511,7 @@ function renderEnrollments(
                             >
                                 ${escapeHtml(
                                     enrollment.email ||
-                                    '—'
+                                    'â€”'
                                 )}
                             </a>
 
@@ -2435,7 +2520,7 @@ function renderEnrollments(
                         <td>
                             ${escapeHtml(
                                 enrollment.phone ||
-                                '—'
+                                'â€”'
                             )}
                         </td>
 
@@ -2910,7 +2995,7 @@ function renderMessages(
                         ? new Date(
                             item.created_at
                         ).toLocaleString()
-                        : '—';
+                        : 'â€”';
 
 
                 return `
@@ -2919,7 +3004,7 @@ function renderMessages(
                         <td>
                             ${escapeHtml(
                                 item.name ||
-                                '—'
+                                'â€”'
                             )}
                         </td>
 
@@ -2939,7 +3024,7 @@ function renderMessages(
                                             )}
                                         </a>
                                     `
-                                    : '—'
+                                    : 'â€”'
                             }
 
                         </td>
@@ -2960,7 +3045,7 @@ function renderMessages(
                                             )}
                                         </a>
                                     `
-                                    : '—'
+                                    : 'â€”'
                             }
 
                         </td>
@@ -2982,7 +3067,7 @@ function renderMessages(
 
                             ${escapeHtml(
                                 item.message ||
-                                '—'
+                                'â€”'
                             )}
 
                         </td>
@@ -3073,7 +3158,8 @@ async function showTab(
         'enrollments',
         'messages',
         'documents',
-        'articles'
+        'articles',
+        'reading-materials'
     ];
 
 
@@ -3130,6 +3216,10 @@ async function showTab(
 
     if (tabName === 'articles') {
         await loadArticles();
+    }
+
+    if (tabName === 'reading-materials') {
+        await loadReadingMaterials();
     }
 }
 
@@ -3602,7 +3692,7 @@ function renderArticles(
                         ? new Date(
                             article.created_at
                         ).toLocaleString()
-                        : '—';
+                        : 'â€”';
 
 
                 return `
@@ -3623,7 +3713,7 @@ function renderArticles(
                         <td>
                             ${escapeHtml(
                                 article.author_name ||
-                                '—'
+                                'â€”'
                             )}
                         </td>
 
@@ -3631,7 +3721,7 @@ function renderArticles(
                         <td>
                             ${escapeHtml(
                                 article.author_email ||
-                                '—'
+                                'â€”'
                             )}
                         </td>
 
@@ -3639,7 +3729,7 @@ function renderArticles(
                         <td>
                             ${escapeHtml(
                                 article.category ||
-                                '—'
+                                'â€”'
                             )}
                         </td>
 
@@ -3787,7 +3877,7 @@ function reviewArticle(
         <strong>Author:</strong>
         ${escapeHtml(
             article.author_name ||
-            '—'
+            'â€”'
         )}
 
         <br>
@@ -3795,7 +3885,7 @@ function reviewArticle(
         <strong>Email:</strong>
         ${escapeHtml(
             article.author_email ||
-            '—'
+            'â€”'
         )}
 
         <br>
@@ -3803,7 +3893,7 @@ function reviewArticle(
         <strong>Category:</strong>
         ${escapeHtml(
             article.category ||
-            '—'
+            'â€”'
         )}
 
         <br>
@@ -3822,7 +3912,7 @@ function reviewArticle(
                 ? new Date(
                     article.created_at
                 ).toLocaleString()
-                : '—'
+                : 'â€”'
         )}
 
     `;

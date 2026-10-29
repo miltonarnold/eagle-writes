@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore approved educational notes, study guides, and reading materials in the EAGLE WRITES Digital Library.">
+  <title>Digital Library | EAGLE WRITES</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/jpeg" href="Images/logo.milto.jpg">
+  <style>
+    :root {
+      --ew-navy: #0b1f3a;
+      --ew-gold: #f4b942;
+      --ew-bg: #f4f7fb;
+      --ew-text: #475569;
+      --ew-border: #e2e8f0;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--ew-bg); color: var(--ew-text); }
+    .ew-library { max-width: 1120px; margin: 0 auto; padding: 42px 20px 65px; }
+    .ew-hero { padding: 38px 24px; border-radius: 16px; background: var(--ew-navy); color: white; text-align: center; }
+    .ew-hero .eyebrow { color: var(--ew-gold); font-weight: 800; font-size: 12px; letter-spacing: 1.5px; }
+    .ew-hero h1 { margin: 12px 0; font-size: clamp(28px, 4vw, 42px); line-height: 1.2; }
+    .ew-hero p { max-width: 680px; margin: 0 auto; line-height: 1.8; color: #dbe4ef; }
+    .ew-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 22px; }
+    .ew-button { display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border-radius: 7px; background: var(--ew-gold); color: var(--ew-navy); font-weight: 800; text-decoration: none; border: 0; cursor: pointer; }
+    .ew-button.secondary { background: white; }
+    .ew-controls { display: grid; grid-template-columns: minmax(0, 2fr) minmax(190px, 1fr); gap: 12px; margin: 26px 0 12px; }
+    .ew-controls input, .ew-controls select { width: 100%; min-width: 0; padding: 13px; border: 1px solid #cbd5e1; border-radius: 8px; background: white; color: var(--ew-navy); font: inherit; }
+    .ew-status { min-height: 28px; margin: 16px 0; line-height: 1.6; }
+    .ew-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px; }
+    .ew-card { display: flex; flex-direction: column; min-width: 0; padding: 20px; border: 1px solid var(--ew-border); border-radius: 12px; background: white; box-shadow: 0 5px 16px #0b1f3a0a; }
+    .ew-card .ew-level { align-self: flex-start; padding: 5px 8px; border-radius: 5px; background: #fff4d7; color: #785300; font-size: 11px; font-weight: 800; }
+    .ew-card h2 { margin: 13px 0 8px; color: var(--ew-navy); font-size: 19px; line-height: 1.4; overflow-wrap: anywhere; }
+    .ew-card p { margin: 0 0 12px; font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+    .ew-meta { margin-top: auto; padding-top: 8px; color: #64748b; font-size: 12px; line-height: 1.8; }
+    .ew-card .ew-button { margin-top: 15px; }
+    .ew-empty { padding: 35px 15px; border: 1px dashed #cbd5e1; border-radius: 10px; background: white; text-align: center; line-height: 1.8; }
+    .ew-loading { color: #64748b; }
+    @media (max-width: 800px) { .ew-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) {
+      .ew-library { padding: 25px 13px 45px; }
+      .ew-hero { padding: 30px 17px; }
+      .ew-controls, .ew-grid { grid-template-columns: minmax(0, 1fr); }
+      .ew-card { padding: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="ew-library">
+    <section class="ew-hero">
+      <span class="eyebrow">LEARN • GROW • SUCCEED</span>
+      <h1>EAGLE WRITES Digital Library</h1>
+      <p>Discover approved study notes, revision materials, learning resources, and professional course documents.</p>
+      <div class="ew-actions">
+        <a class="ew-button" href="submit-material.html">Submit Reading Materials</a>
+        <a class="ew-button secondary" href="index.html">Back to Home</a>
+      </div>
+    </section>
+
+    <section aria-label="Search the digital library">
+      <div class="ew-controls">
+        <input id="searchInput" type="search" placeholder="Search title, subject, or course..." aria-label="Search reading materials">
+        <select id="levelFilter" aria-label="Filter by education level">
+          <option value="">All education levels</option>
+          <option value="primary">Primary School</option>
+          <option value="secondary">Secondary School</option>
+          <option value="college">Colleges &amp; Universities</option>
+          <option value="professional">Professional Courses</option>
+        </select>
+      </div>
+      <p id="libraryStatus" class="ew-status ew-loading" role="status">Loading approved reading materials...</p>
+      <div id="materialsGrid" class="ew-grid"></div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    (() => {
+      const SUPABASE_URL = 'https://ekkvghdnejvyjykagafr.supabase.co';
+      const SUPABASE_KEY = 'sb_publishable_Ih6_PG5YhHoW9zhlhZddsg_Z9zwrn1h';
+      const BUCKET = 'reading-materials';
+      const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+      const grid = document.getElementById('materialsGrid');
+      const status = document.getElementById('libraryStatus');
+      const searchInput = document.getElementById('searchInput');
+      const levelFilter = document.getElementById('levelFilter');
+      let materials = [];
+
+      const levelNames = {
+        primary: 'Primary School',
+        secondary: 'Secondary School',
+        college: 'Colleges & Universities',
+        professional: 'Professional Courses'
+      };
+
+      function element(tag, className, text) {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text !== undefined) node.textContent = text;
+        return node;
+      }
+
+      function render() {
+        const term = searchInput.value.trim().toLowerCase();
+        const level = levelFilter.value;
+        const filtered = materials.filter(item => {
+          const searchable = [
+            item.title, item.description, item.subject,
+            item.class_course, item.file_name
+          ].filter(Boolean).join(' ').toLowerCase();
+
+          return (!term || searchable.includes(term)) &&
+                 (!level || item.education_level === level);
+        });
+
+        grid.replaceChildren();
+
+        if (!filtered.length) {
+          grid.appendChild(element(
+            'div', 'ew-empty',
+            materials.length
+              ? 'No approved materials match your search. Try another keyword or education level.'
+              : 'No approved reading materials are available yet. Please check again later.'
+          ));
+          return;
+        }
+
+        filtered.forEach(item => {
+          const card = element('article', 'ew-card');
+          card.appendChild(element('span', 'ew-level', levelNames[item.education_level] || item.education_level));
+
+          card.appendChild(element('h2', '', item.title));
+          if (item.description) card.appendChild(element('p', '', item.description));
+
+          const meta = element('div', 'ew-meta');
+          if (item.subject) meta.appendChild(element('div', '', 'Subject: ' + item.subject));
+          if (item.class_course) meta.appendChild(element('div', '', 'Class/Course: ' + item.class_course));
+          if (item.file_type) meta.appendChild(element('div', '', 'File type: ' + item.file_type));
+          if (item.file_size_bytes) {
+            const size = item.file_size_bytes / (1024 * 1024);
+            meta.appendChild(element('div', '', 'File size: ' + (size < 1 ? (item.file_size_bytes / 1024).toFixed(0) + ' KB' : size.toFixed(2) + ' MB')));
+          }
+          card.appendChild(meta);
+
+          const download = element('button', 'ew-button', 'Download Material');
+          download.type = 'button';
+          download.addEventListener('click', async () => {
+            if (!item.file_path) {
+              status.textContent = 'A file has not been attached to this material yet.';
+              return;
+            }
+
+            download.disabled = true;
+            download.textContent = 'Preparing download...';
+
+            try {
+              const { data, error } = await client.storage
+                .from(BUCKET)
+                .createSignedUrl(item.file_path, 60);
+
+              if (error) throw error;
+              if (!data || !data.signedUrl) throw new Error('No download link was returned.');
+
+              window.open(data.signedUrl, '_blank', 'noopener,noreferrer');
+              status.textContent = 'Your download link is ready.';
+            } catch (err) {
+              console.error('Download error:', err);
+              status.textContent = 'Download is not available yet. Storage access policies may need configuration.';
+            } finally {
+              download.disabled = false;
+              download.textContent = 'Download Material';
+            }
+          });
+
+          card.appendChild(download);
+          grid.appendChild(card);
+        });
+      }
+
+      async function loadMaterials() {
+        try {
+          const { data, error } = await client
+            .from('reading_materials')
+            .select('id,title,description,education_level,subject,class_course,file_path,file_name,file_type,file_size_bytes,created_at')
+            .eq('status', 'approved')
+            .order('created_at', { ascending: false });
+
+          if (error) throw error;
+          materials = data || [];
+          status.textContent = materials.length
+            ? materials.length + ' approved material(s) available.'
+            : 'The library is ready. Approved materials will appear here.';
+          render();
+        } catch (err) {
+          console.error('Library loading error:', err);
+          status.textContent = 'We could not load the library. Check your Supabase table permissions and connection.';
+        }
+      }
+
+      searchInput.addEventListener('input', render);
+      levelFilter.addEventListener('change', render);
+
+      const params = new URLSearchParams(window.location.search);
+      const requestedLevel = params.get('level');
+      if (['primary', 'secondary', 'college', 'professional'].includes(requestedLevel)) {
+        levelFilter.value = requestedLevel;
+      }
+
+      loadMaterials();
+    })();
+  </script>
+</body>
+</html>
