@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -841,6 +841,31 @@
             }
         }
 
+            /* EAGLE WRITES MOBILE ENROLLMENT FIX */
+        @media (max-width: 700px) {
+            .form-select,
+            .form-input,
+            .form-textarea {
+                box-sizing: border-box;
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+            }
+
+            .enrollment-form-container {
+                min-width: 0;
+            }
+
+            .enrollment-course {
+                min-width: 0;
+                align-items: flex-start;
+            }
+
+            .enrollment-course > div:last-child {
+                min-width: 0;
+                overflow-wrap: anywhere;
+            }
+        }
     </style>
 
 </head>
@@ -1042,7 +1067,7 @@
                     <div class="enrollment-course">
 
                         <div class="course-icon">
-                            âœï¸
+                            &#9997;&#65039;
                         </div>
 
                         <div>
@@ -1065,7 +1090,7 @@
                     <div class="enrollment-course">
 
                         <div class="course-icon">
-                            ðŸ“š
+                            &#128218;
                         </div>
 
                         <div>
@@ -1088,7 +1113,7 @@
                     <div class="enrollment-course">
 
                         <div class="course-icon">
-                            ðŸ“Š
+                            &#128202;
                         </div>
 
                         <div>
@@ -1736,3 +1761,4 @@
 
 </body>
 </html>
+
