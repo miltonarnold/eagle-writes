@@ -5500,3 +5500,154 @@ img {
     background: none !important;
     box-shadow: none !important;
 }
+
+/* =========================================================
+   EAGLE WRITES RESPONSIVE FOUNDATION
+   Desktop styles and image presentation remain unchanged.
+   ========================================================= */
+
+html {
+    max-width: 100%;
+    scroll-padding-top: 80px;
+}
+
+body {
+    max-width: 100%;
+}
+
+img,
+video,
+iframe,
+embed {
+    max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+    /* Prevent grid content from forcing horizontal overflow. */
+    main,
+    section,
+    article,
+    aside,
+    .container,
+    .section-container {
+        min-width: 0;
+    }
+
+    /* Allow wide layouts to use available tablet width. */
+    .container,
+    .section-container,
+    .page-container {
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Consistent sizing on smaller screens. */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    body {
+        overflow-wrap: break-word;
+    }
+
+    /* Let existing navigation and action groups wrap naturally. */
+    .navbar,
+    .nav-actions,
+    .navigation,
+    .navigation .nav-list,
+    .article-actions,
+    .hero-buttons,
+    .cta-buttons,
+    .button-group,
+    .form-actions {
+        flex-wrap: wrap;
+        max-width: 100%;
+    }
+
+    /* Keep content within the viewport. */
+    main,
+    section,
+    article,
+    .container,
+    .section-container,
+    .page-container,
+    .content-wrapper {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    /* Keep media proportional; do not change image cropping. */
+    img,
+    video {
+        max-width: 100%;
+    }
+
+    /* Make form controls usable on phones. */
+    input,
+    select,
+    textarea {
+        max-width: 100%;
+    }
+
+    button,
+    .btn {
+        max-width: 100%;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    /* Keep wide tables accessible without forcing page overflow. */
+    table {
+        max-width: 100%;
+    }
+
+    pre,
+    code {
+        overflow-wrap: anywhere;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Reduce excessive side padding without changing colours. */
+    main,
+    .container,
+    .section-container,
+    .page-container,
+    .content-wrapper {
+        max-width: 100%;
+    }
+
+    /* Let form fields fill the available phone width. */
+    input,
+    select,
+    textarea {
+        min-width: 0;
+        width: 100%;
+    }
+
+    /* Prevent long URLs and headings from breaking layouts. */
+    h1,
+    h2,
+    h3,
+    p,
+    a {
+        overflow-wrap: anywhere;
+    }
+
+    /* Keep article navigation and actions visible. */
+    .article-actions,
+    .hero-buttons,
+    .cta-buttons,
+    .form-actions {
+        gap: 10px;
+    }
+}
