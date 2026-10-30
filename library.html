@@ -425,7 +425,7 @@
       document.addEventListener('keydown', event => {
         if (event.key === 'Escape') closePdfPreview();
       });
-      async function loadMaterials()async function loadMaterials() {
+      async function loadMaterials() {
         try {
           const { data, error } = await client
             .from('reading_materials')
