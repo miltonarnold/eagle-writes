@@ -830,6 +830,20 @@ tbody tr:hover {
             </div>
 
         </div>
+        <div class="stat-card">
+            <div class="stat-label">Total Reading Materials</div>
+            <div class="stat-number" id="total-reading-materials">0</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">Pending Reading Materials</div>
+            <div class="stat-number" id="pending-reading-materials">0</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-label">Approved Reading Materials</div>
+            <div class="stat-number" id="approved-reading-materials">0</div>
+        </div>
 
     </div>
 
@@ -1781,6 +1795,8 @@ async function loadAllAdminData() {
     await loadDocuments();
 
     await loadArticles();
+
+    await loadReadingMaterials();
 }
 
 
@@ -4211,6 +4227,286 @@ async function deleteArticle(
 }
 
 
+
+/* =========================================================
+   READING MATERIALS ADMIN MANAGEMENT
+   ========================================================= */
+
+const READING_MATERIALS_TABLE = 'reading_materials';
+const READING_MATERIALS_BUCKET = 'reading-materials';
+
+
+function escapeReadingMaterialHTML(value) {
+    return String(value ?? '').replace(/[&<>"']/g, character => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    })[character]);
+}
+
+
+async function loadReadingMaterials() {
+    const body = document.getElementById('reading-materials-body');
+
+    if (body) {
+        body.innerHTML = `
+            <tr>
+                <td colspan="7" class="loading">Loading reading materials...</td>
+            </tr>
+        `;
+    }
+
+    try {
+        const { data, error } = await supabaseClient
+            .from(READING_MATERIALS_TABLE)
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        allReadingMaterials = data || [];
+
+        updateReadingMaterialsStatistics();
+        filterReadingMaterials();
+
+    } catch (error) {
+        console.error('Reading Materials loading error:', error);
+
+        if (body) {
+            body.innerHTML = `
+                <tr>
+                    <td colspan="7" class="loading">
+                        Could not load reading materials: ${escapeReadingMaterialHTML(error.message)}
+                    </td>
+                </tr>
+            `;
+        }
+
+        showAdminError('Could not load reading materials: ' + error.message);
+    }
+}
+
+
+function updateReadingMaterialsStatistics() {
+    const total = allReadingMaterials.length;
+
+    const pending = allReadingMaterials.filter(
+        item => item.status === 'pending'
+    ).length;
+
+    const approved = allReadingMaterials.filter(
+        item => item.status === 'approved'
+    ).length;
+
+    const values = {
+        'total-reading-materials': total,
+        'pending-reading-materials': pending,
+        'approved-reading-materials': approved
+    };
+
+    Object.entries(values).forEach(([id, value]) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = value;
+    });
+}
+
+
+function filterReadingMaterials() {
+    const search = (
+        document.getElementById('search-reading-materials')?.value || ''
+    ).trim().toLowerCase();
+
+    const selectedStatus =
+        document.getElementById('reading-materials-status-filter')?.value || 'all';
+
+    const selectedLevel =
+        document.getElementById('reading-materials-level-filter')?.value || 'all';
+
+    const filtered = allReadingMaterials.filter(item => {
+        const searchable = [
+            item.title,
+            item.description,
+            item.subject,
+            item.class_course,
+            item.contributor_name,
+            item.contributor_email
+        ].join(' ').toLowerCase();
+
+        const matchesSearch = searchable.includes(search);
+
+        const matchesStatus =
+            selectedStatus === 'all' || item.status === selectedStatus;
+
+        const matchesLevel =
+            selectedLevel === 'all' || item.education_level === selectedLevel;
+
+        return matchesSearch && matchesStatus && matchesLevel;
+    });
+
+    renderReadingMaterials(filtered);
+}
+
+
+function renderReadingMaterials(items) {
+    const body = document.getElementById('reading-materials-body');
+    if (!body) return;
+
+    if (!items.length) {
+        body.innerHTML = `
+            <tr>
+                <td colspan="7" class="loading">No reading materials found.</td>
+            </tr>
+        `;
+        return;
+    }
+
+    body.innerHTML = items.map(item => {
+        const id = escapeReadingMaterialHTML(item.id);
+        const title = escapeReadingMaterialHTML(item.title || 'Untitled');
+        const level = escapeReadingMaterialHTML(item.education_level || '—');
+        const subject = escapeReadingMaterialHTML(
+            item.subject || item.class_course || '—'
+        );
+        const contributor = escapeReadingMaterialHTML(
+            item.contributor_name || item.contributor_email || 'Unknown'
+        );
+
+        const date = item.created_at
+            ? new Date(item.created_at).toLocaleDateString()
+            : '—';
+
+        const status = escapeReadingMaterialHTML(item.status || 'pending');
+
+        return `
+            <tr>
+                <td>${title}</td>
+                <td>${level}</td>
+                <td>${subject}</td>
+                <td>${contributor}</td>
+                <td>${date}</td>
+                <td>${status}</td>
+                <td>
+                    <button type="button"
+                        class="refresh-button"
+                        onclick="viewReadingMaterial('${id}')">
+                        View
+                    </button>
+
+                    ${item.status === 'pending' ? `
+                        <button type="button"
+                            class="refresh-button"
+                            onclick="approveReadingMaterial('${id}')">
+                            Approve
+                        </button>
+
+                        <button type="button"
+                            class="refresh-button"
+                            onclick="rejectReadingMaterial('${id}')">
+                            Reject
+                        </button>
+                    ` : ''}
+                </td>
+            </tr>
+        `;
+    }).join('');
+}
+
+
+async function viewReadingMaterial(id) {
+    try {
+        const item = allReadingMaterials.find(
+            material => String(material.id) === String(id)
+        );
+
+        if (!item || !item.file_path) {
+            throw new Error('The uploaded file path could not be found.');
+        }
+
+        const { data, error } = await supabaseClient.storage
+            .from(READING_MATERIALS_BUCKET)
+            .createSignedUrl(item.file_path, 300);
+
+        if (error) throw error;
+
+        if (!data?.signedUrl) {
+            throw new Error('Could not generate a file viewing link.');
+        }
+
+        window.open(data.signedUrl, '_blank', 'noopener');
+
+    } catch (error) {
+        console.error('Reading Material view error:', error);
+        showAdminError('Could not open this material: ' + error.message);
+    }
+}
+
+
+async function approveReadingMaterial(id) {
+    const item = allReadingMaterials.find(
+        material => String(material.id) === String(id)
+    );
+
+    if (!item) return;
+
+    if (!confirm(`Approve "${item.title || 'this reading material'}"?`)) {
+        return;
+    }
+
+    try {
+        const { error } = await supabaseClient
+            .from(READING_MATERIALS_TABLE)
+            .update({
+                status: 'approved',
+                approved_at: new Date().toISOString()
+            })
+            .eq('id', id);
+
+        if (error) throw error;
+
+        showAdminSuccess('Reading material approved successfully.');
+        await loadReadingMaterials();
+
+    } catch (error) {
+        console.error('Reading Material approval error:', error);
+        showAdminError('Approval failed: ' + error.message);
+    }
+}
+
+
+async function rejectReadingMaterial(id) {
+    const item = allReadingMaterials.find(
+        material => String(material.id) === String(id)
+    );
+
+    if (!item) return;
+
+    if (!confirm(`Reject "${item.title || 'this reading material'}"?`)) {
+        return;
+    }
+
+    try {
+        const { error } = await supabaseClient
+            .from(READING_MATERIALS_TABLE)
+            .update({
+                status: 'rejected',
+                approved_at: null
+            })
+            .eq('id', id);
+
+        if (error) throw error;
+
+        showAdminSuccess('Reading material rejected.');
+        await loadReadingMaterials();
+
+    } catch (error) {
+        console.error('Reading Material rejection error:', error);
+        showAdminError('Rejection failed: ' + error.message);
+    }
+}
+
+
 /* =========================================================
    START
    ========================================================= */
@@ -4221,3 +4517,4 @@ checkAdmin();
 
 </body>
 </html>
+
