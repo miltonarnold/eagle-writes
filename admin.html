@@ -4454,18 +4454,47 @@ async function approveReadingMaterial(id) {
         return;
     }
 
+    if (!item.file_path || !item.file_path.startsWith('pending/')) {
+        showAdminError('The file is not in the pending folder. Check its storage path.');
+        return;
+    }
+
+    const oldPath = item.file_path;
+    const approvedPath = oldPath.replace(/^pending\//, 'approved/');
+
     try {
-        const { error } = await supabaseClient
+        const { error: moveError } = await supabaseClient.storage
+            .from(READING_MATERIALS_BUCKET)
+            .move(oldPath, approvedPath);
+
+        if (moveError) throw moveError;
+
+        const { error: updateError } = await supabaseClient
             .from(READING_MATERIALS_TABLE)
             .update({
+                file_path: approvedPath,
                 status: 'approved',
                 approved_at: new Date().toISOString()
             })
             .eq('id', id);
 
-        if (error) throw error;
+        if (updateError) {
+            const { error: rollbackError } = await supabaseClient.storage
+                .from(READING_MATERIALS_BUCKET)
+                .move(approvedPath, oldPath);
 
-        showAdminSuccess('Reading material approved successfully.');
+            if (rollbackError) {
+                console.error('Storage rollback failed:', rollbackError);
+                throw new Error(
+                    'Database update failed and file rollback failed. ' +
+                    updateError.message + ' | ' + rollbackError.message
+                );
+            }
+
+            throw updateError;
+        }
+
+        showAdminSuccess('Reading material approved and published successfully.');
         await loadReadingMaterials();
 
     } catch (error) {
@@ -4473,7 +4502,6 @@ async function approveReadingMaterial(id) {
         showAdminError('Approval failed: ' + error.message);
     }
 }
-
 
 async function rejectReadingMaterial(id) {
     const item = allReadingMaterials.find(
