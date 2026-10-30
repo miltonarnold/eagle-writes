@@ -273,7 +273,7 @@
           const heading = element('h2');
           const titleButton = element('button', '', item.title || 'Untitled Material');
           titleButton.type = 'button';
-          titleButton.addEventListener('click', () => openPdfPreview(item));
+          titleButton.addEventListener('click', () => openMaterial(item));
           heading.appendChild(titleButton);
           card.appendChild(heading);
 
@@ -302,63 +302,44 @@
 
           card.appendChild(meta);
 
-          const actions = element('div', 'ew-card-actions');
-
-          const preview = element('button', 'ew-button preview', 'Preview PDF');
-          preview.type = 'button';
-          preview.addEventListener('click', () => openPdfPreview(item));
-
-          const download = element('button', 'ew-button', 'Download PDF');
-          download.type = 'button';
-          download.addEventListener('click', () => downloadMaterial(item, download));
-
-          actions.appendChild(preview);
-          actions.appendChild(download);
-          card.appendChild(actions);
-
           grid.appendChild(card);
         });
       }
 
 
 
-      async function openPdfPreview(item) {
-        const modal = document.getElementById('pdfPreviewModal');
-        const frame = document.getElementById('pdfPreviewFrame');
-        const title = document.getElementById('pdfPreviewTitle');
-
+      async function openMaterial(item) {
         if (!item.file_path) {
-          status.textContent = 'The PDF file is not attached.';
+          status.textContent = 'The document file is not attached.';
           return;
         }
 
-        if (item.file_type && !item.file_type.toLowerCase().includes('pdf') &&
-            !(item.file_name || '').toLowerCase().endsWith('.pdf')) {
-          status.textContent = 'Online preview is currently available for PDF files only.';
+        // Open a tab immediately so the browser does not block the popup.
+        const documentTab = window.open('about:blank', '_blank');
+
+        if (!documentTab) {
+          status.textContent = 'Allow pop-ups to open the document.';
           return;
         }
 
-        title.textContent = item.title || 'PDF Preview';
-        frame.src = 'about:blank';
-        modal.classList.add('active');
-        status.textContent = 'Preparing PDF preview...';
+        status.textContent = 'Opening document...';
 
         try {
           const { data, error } = await client.storage
             .from(BUCKET)
-            .createSignedUrl(item.file_path, 300);
+            .createSignedUrl(item.file_path, 3600);
 
           if (error) throw error;
           if (!data || !data.signedUrl) {
-            throw new Error('No preview link was returned.');
+            throw new Error('No document link was returned.');
           }
 
-          frame.src = data.signedUrl;
-          status.textContent = 'PDF preview opened.';
+          documentTab.location.href = data.signedUrl;
+          status.textContent = 'Document opened in a new tab.';
         } catch (err) {
-          console.error('PDF preview error:', err);
-          modal.classList.remove('active');
-          status.textContent = 'Could not open the PDF. Check Supabase storage permissions.';
+          console.error('Document opening error:', err);
+          documentTab.close();
+          status.textContent = 'Could not open the document. Check storage permissions.';
         }
       }
 
