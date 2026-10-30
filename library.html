@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -28,13 +28,137 @@
     .ew-controls { display: grid; grid-template-columns: minmax(0, 2fr) minmax(190px, 1fr); gap: 12px; margin: 26px 0 12px; }
     .ew-controls input, .ew-controls select { width: 100%; min-width: 0; padding: 13px; border: 1px solid #cbd5e1; border-radius: 8px; background: white; color: var(--ew-navy); font: inherit; }
     .ew-status { min-height: 28px; margin: 16px 0; line-height: 1.6; }
-    .ew-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px; }
-    .ew-card { display: flex; flex-direction: column; min-width: 0; padding: 20px; border: 1px solid var(--ew-border); border-radius: 12px; background: white; box-shadow: 0 5px 16px #0b1f3a0a; }
-    .ew-card .ew-level { align-self: flex-start; padding: 5px 8px; border-radius: 5px; background: #fff4d7; color: #785300; font-size: 11px; font-weight: 800; }
-    .ew-card h2 { margin: 13px 0 8px; color: var(--ew-navy); font-size: 19px; line-height: 1.4; overflow-wrap: anywhere; }
-    .ew-card p { margin: 0 0 12px; font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
-    .ew-meta { margin-top: auto; padding-top: 8px; color: #64748b; font-size: 12px; line-height: 1.8; }
-    .ew-card .ew-button { margin-top: 15px; }
+    .ew-grid {
+      display: block;
+      border-top: 1px solid var(--ew-border);
+      background: white;
+    }
+    .ew-card {
+      display: block;
+      padding: 22px 18px;
+      border-bottom: 1px solid var(--ew-border);
+      background: white;
+    }
+    .ew-card .ew-level {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: #fff4d7;
+      color: #785300;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .ew-card h2 {
+      margin: 9px 0;
+      color: #1a0dab;
+      font-size: 19px;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
+    .ew-card h2 button {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+    .ew-card h2 button:hover {
+      text-decoration: underline;
+    }
+    .ew-card p {
+      margin: 8px 0;
+      font-size: 14px;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+    .ew-meta {
+      padding-top: 5px;
+      color: #64748b;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+    .ew-card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 13px;
+    }
+    .ew-card-actions .ew-button {
+      margin: 0;
+      font-size: 13px;
+    }
+    .ew-button.preview {
+      background: var(--ew-navy);
+      color: white;
+    }
+    .ew-button:disabled {
+      opacity: .6;
+      cursor: wait;
+    }
+    .ew-preview-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      padding: 20px;
+      background: rgba(5, 15, 30, .88);
+      align-items: center;
+      justify-content: center;
+    }
+    .ew-preview-modal.active {
+      display: flex;
+    }
+    .ew-preview-dialog {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 1100px;
+      height: 92vh;
+      overflow: hidden;
+      border-radius: 10px;
+      background: white;
+    }
+    .ew-preview-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--ew-navy);
+      color: white;
+    }
+    .ew-preview-header strong {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .ew-preview-close {
+      padding: 8px 13px;
+      border: 0;
+      border-radius: 5px;
+      background: var(--ew-gold);
+      color: var(--ew-navy);
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .ew-preview-frame {
+      flex: 1;
+      width: 100%;
+      border: 0;
+      background: #e2e8f0;
+    }
+    @media (max-width: 800px) {
+      .ew-grid { display: block; }
+    }
+    @media (max-width: 560px) {
+      .ew-preview-modal { padding: 0; }
+      .ew-preview-dialog {
+        height: 100vh;
+        border-radius: 0;
+      }
+    }
     .ew-empty { padding: 35px 15px; border: 1px dashed #cbd5e1; border-radius: 10px; background: white; text-align: center; line-height: 1.8; }
     .ew-loading { color: #64748b; }
     @media (max-width: 800px) { .ew-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -49,7 +173,7 @@
 <body>
   <main class="ew-library">
     <section class="ew-hero">
-      <span class="eyebrow">LEARN • GROW • SUCCEED</span>
+      <span class="eyebrow">LEARN â€¢ GROW â€¢ SUCCEED</span>
       <h1>EAGLE WRITES Digital Library</h1>
       <p>Discover approved study notes, revision materials, learning resources, and professional course documents.</p>
       <div class="ew-actions">
@@ -74,6 +198,15 @@
     </section>
   </main>
 
+  <div id="pdfPreviewModal" class="ew-preview-modal" role="dialog" aria-modal="true" aria-label="PDF document preview">
+    <div class="ew-preview-dialog">
+      <div class="ew-preview-header">
+        <strong id="pdfPreviewTitle">Document Preview</strong>
+        <button type="button" class="ew-preview-close" id="closePdfPreview">Close Preview</button>
+      </div>
+      <iframe id="pdfPreviewFrame" class="ew-preview-frame" title="PDF document preview"></iframe>
+    </div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     (() => {
@@ -105,10 +238,11 @@
       function render() {
         const term = searchInput.value.trim().toLowerCase();
         const level = levelFilter.value;
+
         const filtered = materials.filter(item => {
           const searchable = [
             item.title, item.description, item.subject,
-            item.class_course, item.file_name
+            item.class_course, item.file_name, item.contributor_name
           ].filter(Boolean).join(' ').toLowerCase();
 
           return (!term || searchable.includes(term)) &&
@@ -129,57 +263,169 @@
 
         filtered.forEach(item => {
           const card = element('article', 'ew-card');
-          card.appendChild(element('span', 'ew-level', levelNames[item.education_level] || item.education_level));
 
-          card.appendChild(element('h2', '', item.title));
-          if (item.description) card.appendChild(element('p', '', item.description));
+          card.appendChild(element(
+            'span',
+            'ew-level',
+            levelNames[item.education_level] || item.education_level || 'Study Material'
+          ));
+
+          const heading = element('h2');
+          const titleButton = element('button', '', item.title || 'Untitled Material');
+          titleButton.type = 'button';
+          titleButton.addEventListener('click', () => openPdfPreview(item));
+          heading.appendChild(titleButton);
+          card.appendChild(heading);
+
+          if (item.description) {
+            card.appendChild(element('p', '', item.description));
+          }
 
           const meta = element('div', 'ew-meta');
-          if (item.subject) meta.appendChild(element('div', '', 'Subject: ' + item.subject));
-          if (item.class_course) meta.appendChild(element('div', '', 'Class/Course: ' + item.class_course));
-          if (item.file_type) meta.appendChild(element('div', '', 'File type: ' + item.file_type));
-          if (item.file_size_bytes) {
-            const size = item.file_size_bytes / (1024 * 1024);
-            meta.appendChild(element('div', '', 'File size: ' + (size < 1 ? (item.file_size_bytes / 1024).toFixed(0) + ' KB' : size.toFixed(2) + ' MB')));
+
+          if (item.contributor_name) {
+            meta.appendChild(element('div', '', 'Contributor: ' + item.contributor_name));
           }
+          if (item.subject) {
+            meta.appendChild(element('div', '', 'Subject: ' + item.subject));
+          }
+          if (item.class_course) {
+            meta.appendChild(element('div', '', 'Class/Course: ' + item.class_course));
+          }
+          if (item.created_at) {
+            meta.appendChild(element(
+              'div',
+              '',
+              'Published: ' + new Date(item.created_at).toLocaleDateString()
+            ));
+          }
+
           card.appendChild(meta);
 
-          const download = element('button', 'ew-button', 'Download Material');
+          const actions = element('div', 'ew-card-actions');
+
+          const preview = element('button', 'ew-button preview', 'Preview PDF');
+          preview.type = 'button';
+          preview.addEventListener('click', () => openPdfPreview(item));
+
+          const download = element('button', 'ew-button', 'Download PDF');
           download.type = 'button';
-          download.addEventListener('click', async () => {
-            if (!item.file_path) {
-              status.textContent = 'A file has not been attached to this material yet.';
-              return;
-            }
+          download.addEventListener('click', () => downloadMaterial(item, download));
 
-            download.disabled = true;
-            download.textContent = 'Preparing download...';
+          actions.appendChild(preview);
+          actions.appendChild(download);
+          card.appendChild(actions);
 
-            try {
-              const { data, error } = await client.storage
-                .from(BUCKET)
-                .createSignedUrl(item.file_path, 60);
-
-              if (error) throw error;
-              if (!data || !data.signedUrl) throw new Error('No download link was returned.');
-
-              window.open(data.signedUrl, '_blank', 'noopener,noreferrer');
-              status.textContent = 'Your download link is ready.';
-            } catch (err) {
-              console.error('Download error:', err);
-              status.textContent = 'Download is not available yet. Storage access policies may need configuration.';
-            } finally {
-              download.disabled = false;
-              download.textContent = 'Download Material';
-            }
-          });
-
-          card.appendChild(download);
           grid.appendChild(card);
         });
       }
 
-      async function loadMaterials() {
+
+
+      async function openPdfPreview(item) {
+        const modal = document.getElementById('pdfPreviewModal');
+        const frame = document.getElementById('pdfPreviewFrame');
+        const title = document.getElementById('pdfPreviewTitle');
+
+        if (!item.file_path) {
+          status.textContent = 'The PDF file is not attached.';
+          return;
+        }
+
+        if (item.file_type && !item.file_type.toLowerCase().includes('pdf') &&
+            !(item.file_name || '').toLowerCase().endsWith('.pdf')) {
+          status.textContent = 'Online preview is currently available for PDF files only.';
+          return;
+        }
+
+        title.textContent = item.title || 'PDF Preview';
+        frame.src = 'about:blank';
+        modal.classList.add('active');
+        status.textContent = 'Preparing PDF preview...';
+
+        try {
+          const { data, error } = await client.storage
+            .from(BUCKET)
+            .createSignedUrl(item.file_path, 300);
+
+          if (error) throw error;
+          if (!data || !data.signedUrl) {
+            throw new Error('No preview link was returned.');
+          }
+
+          frame.src = data.signedUrl;
+          status.textContent = 'PDF preview opened.';
+        } catch (err) {
+          console.error('PDF preview error:', err);
+          modal.classList.remove('active');
+          status.textContent = 'Could not open the PDF. Check Supabase storage permissions.';
+        }
+      }
+
+
+      async function downloadMaterial(item, button) {
+        if (!item.file_path) {
+          status.textContent = 'The file is not attached.';
+          return;
+        }
+
+        button.disabled = true;
+        button.textContent = 'Preparing...';
+
+        try {
+          const { data, error } = await client.storage
+            .from(BUCKET)
+            .createSignedUrl(item.file_path, 60, {
+              download: item.file_name || true
+            });
+
+          if (error) throw error;
+          if (!data || !data.signedUrl) {
+            throw new Error('No download link was returned.');
+          }
+
+          const link = document.createElement('a');
+          link.href = data.signedUrl;
+          link.download = item.file_name || 'reading-material.pdf';
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+
+          status.textContent = 'Your download has started.';
+        } catch (err) {
+          console.error('Download error:', err);
+          status.textContent = 'Download failed. Check Supabase storage permissions.';
+        } finally {
+          button.disabled = false;
+          button.textContent = 'Download PDF';
+        }
+      }
+
+
+      function closePdfPreview() {
+        document.getElementById('pdfPreviewFrame').src = 'about:blank';
+        document.getElementById('pdfPreviewModal').classList.remove('active');
+      }
+
+
+      document.getElementById('closePdfPreview').addEventListener(
+        'click',
+        closePdfPreview
+      );
+
+      document.getElementById('pdfPreviewModal').addEventListener(
+        'click',
+        event => {
+          if (event.target.id === 'pdfPreviewModal') {
+            closePdfPreview();
+          }
+        }
+      );
+
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closePdfPreview();
+      });
+      async function loadMaterials()async function loadMaterials() {
         try {
           const { data, error } = await client
             .from('reading_materials')
@@ -213,3 +459,4 @@
   </script>
 </body>
 </html>
+
